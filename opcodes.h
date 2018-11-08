@@ -5,23 +5,22 @@
 #ifndef MVM_OPCODES_H
 #define MVM_OPCODES_H
 enum Op{
-    /**
-     * The following opcodes are not interpreted during runtime, they are used for positioning.
-     */
-    sfunc,
-    nfunc,
-    /**
-     * Interpreted opcodes start here
-     */
-    bsp,
-    sbp,
-    gbp,
-
-    sha256,
-    sha3,
-    ripemd160,
-    keccak256,
-
+//    /**
+//     * The following opcodes are not interpreted during runtime, they are used for positioning.
+//     */
+//    sfunc,
+//    nfunc,
+//    /**
+//     * Interpreted opcodes start here
+//     */
+//    bsp,
+//    sbp,
+//    gbp,
+//
+//    sha256,
+//    sha3,
+//    ripemd160,
+//    keccak256,
 
 
     mark,/** mark a specific location. **/
@@ -67,2802 +66,2802 @@ enum Op{
     baconsti,/** push a byte array using size_int32_t **/
     bacast_a,/** cast a byte array into a pointer **/
     basizeof,/** push the size of a byte array to stack **/
-    bprintba            ,/** print a byte array. **/
-    bconst              ,/** push a const int_8 into the stack. **/
-    bconst_0            ,/** push a const int_8 into the stack (value = 0). **/
-    bconst_1            ,/** push a const int_8 into the stack (value = 1). **/
-    bconst_2            ,/** push a const int_8 into the stack (value = 2). **/
-    bconst_3            ,/** push a const int_8 into the stack (value = 3). **/
-    bconst_4            ,/** push a const int_8 into the stack (value = 4). **/
-    bconst_5            ,/** push a const int_8 into the stack (value = 5). **/
-    bconst_6            ,/** push a const int_8 into the stack (value = 6). **/
-    bconst_9            ,/** push a const int_8 into the stack (value = 9). **/
-    bconst_10           ,/** push a const int_8 into the stack (value = 10). **/
-    bconst_11           ,/** push a const int_8 into the stack (value = 11). **/
-    bconst_12           ,/** push a const int_8 into the stack (value = 12). **/
-    bload               ,/** load a int_8 into the stack from local variable. **/
-    bload_0             ,/** load a int_8 into the stack from local variable 0. **/
-    bload_1             ,/** load a int_8 into the stack from local variable 1. **/
-    bload_2             ,/** load a int_8 into the stack from local variable 2. **/
-    bload_3             ,/** load a int_8 into the stack from local variable 3. **/
-    bload_4             ,/** load a int_8 into the stack from local variable 4. **/
-    bstore              ,/** store a int_8 from stack into local variable. **/
-    bstore_0            ,/** store a int_8 from stack into local variable 0. **/
-    bstore_1            ,/** store a int_8 from stack into local variable 1. **/
-    bstore_2            ,/** store a int_8 from stack into local variable 2. **/
-    bstore_3            ,/** store a int_8 from stack into local variable 3. **/
-    bstore_4            ,/** store a int_8 from stack into local variable 4. **/
-    bcast_b             ,/** cast int_8 to type Byte. **/
-    bucast_b            ,/** cast unsigned uint_8 to type Byte. **/
-    badd_b              ,/** add int_8 with type Byte. **/
-    buadd_b             ,/** add unsigned uint_8 with type Byte. **/
-    bsub_b              ,/** subtract int_8 with type Byte. **/
-    busub_b             ,/** subtract unsigned uint_8 with type Byte. **/
-    bmul_b              ,/** multiply int_8 with type Byte. **/
-    bumul_b             ,/** multiply unsigned uint_8 with type Byte. **/
-    bdiv_b              ,/** divide int_8 with type Byte. **/
-    budiv_b             ,/** divide unsigned uint_8 with type Byte. **/
-    bcmpl_b             ,/** compare int_8 less than type Byte. **/
-    bucmpl_b            ,/** compare unsigned uint_8 less than type Byte. **/
-    bcmpg_b             ,/** compare int_8 greater than type Byte. **/
-    bucmpg_b            ,/** compare unsigned uint_8 greater than type Byte. **/
-    bcmpe_b             ,/** compare int_8 equal with type Byte. **/
-    bucmpe_b            ,/** compare unsigned uint_8 equal with type Byte. **/
-    bcmple_b            ,/** compare int_8 less than or equal to type Byte. **/
-    bucmple_b           ,/** compare unsigned uint_8 less than or equal to type Byte. **/
-    bcmpge_b            ,/** compare int_8 greater than or equal to type Byte. **/
-    bucmpge_b           ,/** compare unsigned uint_8 greater than or equal to type Byte. **/
-    bcmpne_b            ,/** compare int_8 not equal with type Byte. **/
-    bucmpne_b           ,/** compare unsigned uint_8 not equal with type Byte. **/
-    bcast_s             ,/** cast int_8 to type Short. **/
-    bucast_s            ,/** cast unsigned uint_8 to type Short. **/
-    badd_s              ,/** add int_8 with type Short. **/
-    buadd_s             ,/** add unsigned uint_8 with type Short. **/
-    bsub_s              ,/** subtract int_8 with type Short. **/
-    busub_s             ,/** subtract unsigned uint_8 with type Short. **/
-    bmul_s              ,/** multiply int_8 with type Short. **/
-    bumul_s             ,/** multiply unsigned uint_8 with type Short. **/
-    bdiv_s              ,/** divide int_8 with type Short. **/
-    budiv_s             ,/** divide unsigned uint_8 with type Short. **/
-    bcmpl_s             ,/** compare int_8 less than type Short. **/
-    bucmpl_s            ,/** compare unsigned uint_8 less than type Short. **/
-    bcmpg_s             ,/** compare int_8 greater than type Short. **/
-    bucmpg_s            ,/** compare unsigned uint_8 greater than type Short. **/
-    bcmpe_s             ,/** compare int_8 equal with type Short. **/
-    bucmpe_s            ,/** compare unsigned uint_8 equal with type Short. **/
-    bcmple_s            ,/** compare int_8 less than or equal to type Short. **/
-    bucmple_s           ,/** compare unsigned uint_8 less than or equal to type Short. **/
-    bcmpge_s            ,/** compare int_8 greater than or equal to type Short. **/
-    bucmpge_s           ,/** compare unsigned uint_8 greater than or equal to type Short. **/
-    bcmpne_s            ,/** compare int_8 not equal with type Short. **/
-    bucmpne_s           ,/** compare unsigned uint_8 not equal with type Short. **/
-    bcast_i             ,/** cast int_8 to type Int. **/
-    bucast_i            ,/** cast unsigned uint_8 to type Int. **/
-    badd_i              ,/** add int_8 with type Int. **/
-    buadd_i             ,/** add unsigned uint_8 with type Int. **/
-    bsub_i              ,/** subtract int_8 with type Int. **/
-    busub_i             ,/** subtract unsigned uint_8 with type Int. **/
-    bmul_i              ,/** multiply int_8 with type Int. **/
-    bumul_i             ,/** multiply unsigned uint_8 with type Int. **/
-    bdiv_i              ,/** divide int_8 with type Int. **/
-    budiv_i             ,/** divide unsigned uint_8 with type Int. **/
-    bcmpl_i             ,/** compare int_8 less than type Int. **/
-    bucmpl_i            ,/** compare unsigned uint_8 less than type Int. **/
-    bcmpg_i             ,/** compare int_8 greater than type Int. **/
-    bucmpg_i            ,/** compare unsigned uint_8 greater than type Int. **/
-    bcmpe_i             ,/** compare int_8 equal with type Int. **/
-    bucmpe_i            ,/** compare unsigned uint_8 equal with type Int. **/
-    bcmple_i            ,/** compare int_8 less than or equal to type Int. **/
-    bucmple_i           ,/** compare unsigned uint_8 less than or equal to type Int. **/
-    bcmpge_i            ,/** compare int_8 greater than or equal to type Int. **/
-    bucmpge_i           ,/** compare unsigned uint_8 greater than or equal to type Int. **/
-    bcmpne_i            ,/** compare int_8 not equal with type Int. **/
-    bucmpne_i           ,/** compare unsigned uint_8 not equal with type Int. **/
-    bcast_l             ,/** cast int_8 to type Long. **/
-    bucast_l            ,/** cast unsigned uint_8 to type Long. **/
-    badd_l              ,/** add int_8 with type Long. **/
-    buadd_l             ,/** add unsigned uint_8 with type Long. **/
-    bsub_l              ,/** subtract int_8 with type Long. **/
-    busub_l             ,/** subtract unsigned uint_8 with type Long. **/
-    bmul_l              ,/** multiply int_8 with type Long. **/
-    bumul_l             ,/** multiply unsigned uint_8 with type Long. **/
-    bdiv_l              ,/** divide int_8 with type Long. **/
-    budiv_l             ,/** divide unsigned uint_8 with type Long. **/
-    bcmpl_l             ,/** compare int_8 less than type Long. **/
-    bucmpl_l            ,/** compare unsigned uint_8 less than type Long. **/
-    bcmpg_l             ,/** compare int_8 greater than type Long. **/
-    bucmpg_l            ,/** compare unsigned uint_8 greater than type Long. **/
-    bcmpe_l             ,/** compare int_8 equal with type Long. **/
-    bucmpe_l            ,/** compare unsigned uint_8 equal with type Long. **/
-    bcmple_l            ,/** compare int_8 less than or equal to type Long. **/
-    bucmple_l           ,/** compare unsigned uint_8 less than or equal to type Long. **/
-    bcmpge_l            ,/** compare int_8 greater than or equal to type Long. **/
-    bucmpge_l           ,/** compare unsigned uint_8 greater than or equal to type Long. **/
-    bcmpne_l            ,/** compare int_8 not equal with type Long. **/
-    bucmpne_l           ,/** compare unsigned uint_8 not equal with type Long. **/
-    bcast_li            ,/** cast int_8 to type LongInt. **/
-    bucast_li           ,/** cast unsigned uint_8 to type LongInt. **/
-    badd_li             ,/** add int_8 with type LongInt. **/
-    buadd_li            ,/** add unsigned uint_8 with type LongInt. **/
-    bsub_li             ,/** subtract int_8 with type LongInt. **/
-    busub_li            ,/** subtract unsigned uint_8 with type LongInt. **/
-    bmul_li             ,/** multiply int_8 with type LongInt. **/
-    bumul_li            ,/** multiply unsigned uint_8 with type LongInt. **/
-    bdiv_li             ,/** divide int_8 with type LongInt. **/
-    budiv_li            ,/** divide unsigned uint_8 with type LongInt. **/
-    bcmpl_li            ,/** compare int_8 less than type LongInt. **/
-    bucmpl_li           ,/** compare unsigned uint_8 less than type LongInt. **/
-    bcmpg_li            ,/** compare int_8 greater than type LongInt. **/
-    bucmpg_li           ,/** compare unsigned uint_8 greater than type LongInt. **/
-    bcmpe_li            ,/** compare int_8 equal with type LongInt. **/
-    bucmpe_li           ,/** compare unsigned uint_8 equal with type LongInt. **/
-    bcmple_li           ,/** compare int_8 less than or equal to type LongInt. **/
-    bucmple_li          ,/** compare unsigned uint_8 less than or equal to type LongInt. **/
-    bcmpge_li           ,/** compare int_8 greater than or equal to type LongInt. **/
-    bucmpge_li          ,/** compare unsigned uint_8 greater than or equal to type LongInt. **/
-    bcmpne_li           ,/** compare int_8 not equal with type LongInt. **/
-    bucmpne_li          ,/** compare unsigned uint_8 not equal with type LongInt. **/
-    bcast_ll            ,/** cast int_8 to type LongLong. **/
-    bucast_ll           ,/** cast unsigned uint_8 to type LongLong. **/
-    badd_ll             ,/** add int_8 with type LongLong. **/
-    buadd_ll            ,/** add unsigned uint_8 with type LongLong. **/
-    bsub_ll             ,/** subtract int_8 with type LongLong. **/
-    busub_ll            ,/** subtract unsigned uint_8 with type LongLong. **/
-    bmul_ll             ,/** multiply int_8 with type LongLong. **/
-    bumul_ll            ,/** multiply unsigned uint_8 with type LongLong. **/
-    bdiv_ll             ,/** divide int_8 with type LongLong. **/
-    budiv_ll            ,/** divide unsigned uint_8 with type LongLong. **/
-    bcmpl_ll            ,/** compare int_8 less than type LongLong. **/
-    bucmpl_ll           ,/** compare unsigned uint_8 less than type LongLong. **/
-    bcmpg_ll            ,/** compare int_8 greater than type LongLong. **/
-    bucmpg_ll           ,/** compare unsigned uint_8 greater than type LongLong. **/
-    bcmpe_ll            ,/** compare int_8 equal with type LongLong. **/
-    bucmpe_ll           ,/** compare unsigned uint_8 equal with type LongLong. **/
-    bcmple_ll           ,/** compare int_8 less than or equal to type LongLong. **/
-    bucmple_ll          ,/** compare unsigned uint_8 less than or equal to type LongLong. **/
-    bcmpge_ll           ,/** compare int_8 greater than or equal to type LongLong. **/
-    bucmpge_ll          ,/** compare unsigned uint_8 greater than or equal to type LongLong. **/
-    bcmpne_ll           ,/** compare int_8 not equal with type LongLong. **/
-    bucmpne_ll          ,/** compare unsigned uint_8 not equal with type LongLong. **/
-    bcast_f             ,/** cast int_8 to type Float. **/
-    bucast_f            ,/** cast unsigned uint_8 to type Float. **/
-    badd_f              ,/** add int_8 with type Float. **/
-    buadd_f             ,/** add unsigned uint_8 with type Float. **/
-    bsub_f              ,/** subtract int_8 with type Float. **/
-    busub_f             ,/** subtract unsigned uint_8 with type Float. **/
-    bmul_f              ,/** multiply int_8 with type Float. **/
-    bumul_f             ,/** multiply unsigned uint_8 with type Float. **/
-    bdiv_f              ,/** divide int_8 with type Float. **/
-    budiv_f             ,/** divide unsigned uint_8 with type Float. **/
-    bcmpl_f             ,/** compare int_8 less than type Float. **/
-    bucmpl_f            ,/** compare unsigned uint_8 less than type Float. **/
-    bcmpg_f             ,/** compare int_8 greater than type Float. **/
-    bucmpg_f            ,/** compare unsigned uint_8 greater than type Float. **/
-    bcmpe_f             ,/** compare int_8 equal with type Float. **/
-    bucmpe_f            ,/** compare unsigned uint_8 equal with type Float. **/
-    bcmple_f            ,/** compare int_8 less than or equal to type Float. **/
-    bucmple_f           ,/** compare unsigned uint_8 less than or equal to type Float. **/
-    bcmpge_f            ,/** compare int_8 greater than or equal to type Float. **/
-    bucmpge_f           ,/** compare unsigned uint_8 greater than or equal to type Float. **/
-    bcmpne_f            ,/** compare int_8 not equal with type Float. **/
-    bucmpne_f           ,/** compare unsigned uint_8 not equal with type Float. **/
-    bcast_d             ,/** cast int_8 to type Double. **/
-    bucast_d            ,/** cast unsigned uint_8 to type Double. **/
-    badd_d              ,/** add int_8 with type Double. **/
-    buadd_d             ,/** add unsigned uint_8 with type Double. **/
-    bsub_d              ,/** subtract int_8 with type Double. **/
-    busub_d             ,/** subtract unsigned uint_8 with type Double. **/
-    bmul_d              ,/** multiply int_8 with type Double. **/
-    bumul_d             ,/** multiply unsigned uint_8 with type Double. **/
-    bdiv_d              ,/** divide int_8 with type Double. **/
-    budiv_d             ,/** divide unsigned uint_8 with type Double. **/
-    bcmpl_d             ,/** compare int_8 less than type Double. **/
-    bucmpl_d            ,/** compare unsigned uint_8 less than type Double. **/
-    bcmpg_d             ,/** compare int_8 greater than type Double. **/
-    bucmpg_d            ,/** compare unsigned uint_8 greater than type Double. **/
-    bcmpe_d             ,/** compare int_8 equal with type Double. **/
-    bucmpe_d            ,/** compare unsigned uint_8 equal with type Double. **/
-    bcmple_d            ,/** compare int_8 less than or equal to type Double. **/
-    bucmple_d           ,/** compare unsigned uint_8 less than or equal to type Double. **/
-    bcmpge_d            ,/** compare int_8 greater than or equal to type Double. **/
-    bucmpge_d           ,/** compare unsigned uint_8 greater than or equal to type Double. **/
-    bcmpne_d            ,/** compare int_8 not equal with type Double. **/
-    bucmpne_d           ,/** compare unsigned uint_8 not equal with type Double. **/
-    bcast_df            ,/** cast int_8 to type DoubleFloat. **/
-    bucast_df           ,/** cast unsigned uint_8 to type DoubleFloat. **/
-    badd_df             ,/** add int_8 with type DoubleFloat. **/
-    buadd_df            ,/** add unsigned uint_8 with type DoubleFloat. **/
-    bsub_df             ,/** subtract int_8 with type DoubleFloat. **/
-    busub_df            ,/** subtract unsigned uint_8 with type DoubleFloat. **/
-    bmul_df             ,/** multiply int_8 with type DoubleFloat. **/
-    bumul_df            ,/** multiply unsigned uint_8 with type DoubleFloat. **/
-    bdiv_df             ,/** divide int_8 with type DoubleFloat. **/
-    budiv_df            ,/** divide unsigned uint_8 with type DoubleFloat. **/
-    bcmpl_df            ,/** compare int_8 less than type DoubleFloat. **/
-    bucmpl_df           ,/** compare unsigned uint_8 less than type DoubleFloat. **/
-    bcmpg_df            ,/** compare int_8 greater than type DoubleFloat. **/
-    bucmpg_df           ,/** compare unsigned uint_8 greater than type DoubleFloat. **/
-    bcmpe_df            ,/** compare int_8 equal with type DoubleFloat. **/
-    bucmpe_df           ,/** compare unsigned uint_8 equal with type DoubleFloat. **/
-    bcmple_df           ,/** compare int_8 less than or equal to type DoubleFloat. **/
-    bucmple_df          ,/** compare unsigned uint_8 less than or equal to type DoubleFloat. **/
-    bcmpge_df           ,/** compare int_8 greater than or equal to type DoubleFloat. **/
-    bucmpge_df          ,/** compare unsigned uint_8 greater than or equal to type DoubleFloat. **/
-    bcmpne_df           ,/** compare int_8 not equal with type DoubleFloat. **/
-    bucmpne_df          ,/** compare unsigned uint_8 not equal with type DoubleFloat. **/
-    bcast_dd            ,/** cast int_8 to type DoubleDouble. **/
-    bucast_dd           ,/** cast unsigned uint_8 to type DoubleDouble. **/
-    badd_dd             ,/** add int_8 with type DoubleDouble. **/
-    buadd_dd            ,/** add unsigned uint_8 with type DoubleDouble. **/
-    bsub_dd             ,/** subtract int_8 with type DoubleDouble. **/
-    busub_dd            ,/** subtract unsigned uint_8 with type DoubleDouble. **/
-    bmul_dd             ,/** multiply int_8 with type DoubleDouble. **/
-    bumul_dd            ,/** multiply unsigned uint_8 with type DoubleDouble. **/
-    bdiv_dd             ,/** divide int_8 with type DoubleDouble. **/
-    budiv_dd            ,/** divide unsigned uint_8 with type DoubleDouble. **/
-    bcmpl_dd            ,/** compare int_8 less than type DoubleDouble. **/
-    bucmpl_dd           ,/** compare unsigned uint_8 less than type DoubleDouble. **/
-    bcmpg_dd            ,/** compare int_8 greater than type DoubleDouble. **/
-    bucmpg_dd           ,/** compare unsigned uint_8 greater than type DoubleDouble. **/
-    bcmpe_dd            ,/** compare int_8 equal with type DoubleDouble. **/
-    bucmpe_dd           ,/** compare unsigned uint_8 equal with type DoubleDouble. **/
-    bcmple_dd           ,/** compare int_8 less than or equal to type DoubleDouble. **/
-    bucmple_dd          ,/** compare unsigned uint_8 less than or equal to type DoubleDouble. **/
-    bcmpge_dd           ,/** compare int_8 greater than or equal to type DoubleDouble. **/
-    bucmpge_dd          ,/** compare unsigned uint_8 greater than or equal to type DoubleDouble. **/
-    bcmpne_dd           ,/** compare int_8 not equal with type DoubleDouble. **/
-    bucmpne_dd          ,/** compare unsigned uint_8 not equal with type DoubleDouble. **/
-    bmod_b              ,/** modulo int_8 with type Byte. **/
-    bcast_ub            ,/** cast int_8 to unsigned type Byte. **/
-    bucast_ub           ,/** cast unsigned uint_8 to unsigned type Byte. **/
-    badd_ub             ,/** add int_8 with unsigned type Byte. **/
-    buadd_ub            ,/** add unsigned uint_8 with unsigned type Byte. **/
-    bsub_ub             ,/** subtract int_8 with unsigned type Byte. **/
-    busub_ub            ,/** subtract unsigned uint_8 with unsigned type Byte. **/
-    bmul_ub             ,/** multiply int_8 with unsigned type Byte. **/
-    bumul_ub            ,/** multiply unsigned uint_8 with unsigned type Byte. **/
-    bdiv_ub             ,/** divide int_8 with unsigned type Byte. **/
-    budiv_ub            ,/** divide unsigned uint_8 with unsigned type Byte. **/
-    bcmpl_ub            ,/** compare int_8 less than unsigned type Byte. **/
-    bucmpl_ub           ,/** compare unsigned uint_8 less than unsigned type Byte. **/
-    bcmpg_ub            ,/** compare int_8 greater than unsigned type Byte. **/
-    bucmpg_ub           ,/** compare unsigned uint_8 greater than unsigned type Byte. **/
-    bcmpe_ub            ,/** compare int_8 equal with unsigned type Byte. **/
-    bucmpe_ub           ,/** compare unsigned uint_8 equal with unsigned type Byte. **/
-    bcmple_ub           ,/** compare int_8 less than or equal to unsigned type Byte. **/
-    bucmple_ub          ,/** compare unsigned uint_8 less than or equal to unsigned type Byte. **/
-    bcmpge_ub           ,/** compare int_8 greater than or equal to unsigned type Byte. **/
-    bucmpge_ub          ,/** compare unsigned uint_8 greater than or equal to unsigned type Byte. **/
-    bcmpne_ub           ,/** compare int_8 not equal with unsigned type Byte. **/
-    bucmpne_ub          ,/** compare unsigned uint_8 not equal with unsigned type Byte. **/
-    bmod_s              ,/** modulo int_8 with type Short. **/
-    bcast_us            ,/** cast int_8 to unsigned type Short. **/
-    bucast_us           ,/** cast unsigned uint_8 to unsigned type Short. **/
-    badd_us             ,/** add int_8 with unsigned type Short. **/
-    buadd_us            ,/** add unsigned uint_8 with unsigned type Short. **/
-    bsub_us             ,/** subtract int_8 with unsigned type Short. **/
-    busub_us            ,/** subtract unsigned uint_8 with unsigned type Short. **/
-    bmul_us             ,/** multiply int_8 with unsigned type Short. **/
-    bumul_us            ,/** multiply unsigned uint_8 with unsigned type Short. **/
-    bdiv_us             ,/** divide int_8 with unsigned type Short. **/
-    budiv_us            ,/** divide unsigned uint_8 with unsigned type Short. **/
-    bcmpl_us            ,/** compare int_8 less than unsigned type Short. **/
-    bucmpl_us           ,/** compare unsigned uint_8 less than unsigned type Short. **/
-    bcmpg_us            ,/** compare int_8 greater than unsigned type Short. **/
-    bucmpg_us           ,/** compare unsigned uint_8 greater than unsigned type Short. **/
-    bcmpe_us            ,/** compare int_8 equal with unsigned type Short. **/
-    bucmpe_us           ,/** compare unsigned uint_8 equal with unsigned type Short. **/
-    bcmple_us           ,/** compare int_8 less than or equal to unsigned type Short. **/
-    bucmple_us          ,/** compare unsigned uint_8 less than or equal to unsigned type Short. **/
-    bcmpge_us           ,/** compare int_8 greater than or equal to unsigned type Short. **/
-    bucmpge_us          ,/** compare unsigned uint_8 greater than or equal to unsigned type Short. **/
-    bcmpne_us           ,/** compare int_8 not equal with unsigned type Short. **/
-    bucmpne_us          ,/** compare unsigned uint_8 not equal with unsigned type Short. **/
-    bmod_i              ,/** modulo int_8 with type Int. **/
-    bcast_ui            ,/** cast int_8 to unsigned type Int. **/
-    bucast_ui           ,/** cast unsigned uint_8 to unsigned type Int. **/
-    badd_ui             ,/** add int_8 with unsigned type Int. **/
-    buadd_ui            ,/** add unsigned uint_8 with unsigned type Int. **/
-    bsub_ui             ,/** subtract int_8 with unsigned type Int. **/
-    busub_ui            ,/** subtract unsigned uint_8 with unsigned type Int. **/
-    bmul_ui             ,/** multiply int_8 with unsigned type Int. **/
-    bumul_ui            ,/** multiply unsigned uint_8 with unsigned type Int. **/
-    bdiv_ui             ,/** divide int_8 with unsigned type Int. **/
-    budiv_ui            ,/** divide unsigned uint_8 with unsigned type Int. **/
-    bcmpl_ui            ,/** compare int_8 less than unsigned type Int. **/
-    bucmpl_ui           ,/** compare unsigned uint_8 less than unsigned type Int. **/
-    bcmpg_ui            ,/** compare int_8 greater than unsigned type Int. **/
-    bucmpg_ui           ,/** compare unsigned uint_8 greater than unsigned type Int. **/
-    bcmpe_ui            ,/** compare int_8 equal with unsigned type Int. **/
-    bucmpe_ui           ,/** compare unsigned uint_8 equal with unsigned type Int. **/
-    bcmple_ui           ,/** compare int_8 less than or equal to unsigned type Int. **/
-    bucmple_ui          ,/** compare unsigned uint_8 less than or equal to unsigned type Int. **/
-    bcmpge_ui           ,/** compare int_8 greater than or equal to unsigned type Int. **/
-    bucmpge_ui          ,/** compare unsigned uint_8 greater than or equal to unsigned type Int. **/
-    bcmpne_ui           ,/** compare int_8 not equal with unsigned type Int. **/
-    bucmpne_ui          ,/** compare unsigned uint_8 not equal with unsigned type Int. **/
-    bmod_l              ,/** modulo int_8 with type Long. **/
-    bcast_ul            ,/** cast int_8 to unsigned type Long. **/
-    bucast_ul           ,/** cast unsigned uint_8 to unsigned type Long. **/
-    badd_ul             ,/** add int_8 with unsigned type Long. **/
-    buadd_ul            ,/** add unsigned uint_8 with unsigned type Long. **/
-    bsub_ul             ,/** subtract int_8 with unsigned type Long. **/
-    busub_ul            ,/** subtract unsigned uint_8 with unsigned type Long. **/
-    bmul_ul             ,/** multiply int_8 with unsigned type Long. **/
-    bumul_ul            ,/** multiply unsigned uint_8 with unsigned type Long. **/
-    bdiv_ul             ,/** divide int_8 with unsigned type Long. **/
-    budiv_ul            ,/** divide unsigned uint_8 with unsigned type Long. **/
-    bcmpl_ul            ,/** compare int_8 less than unsigned type Long. **/
-    bucmpl_ul           ,/** compare unsigned uint_8 less than unsigned type Long. **/
-    bcmpg_ul            ,/** compare int_8 greater than unsigned type Long. **/
-    bucmpg_ul           ,/** compare unsigned uint_8 greater than unsigned type Long. **/
-    bcmpe_ul            ,/** compare int_8 equal with unsigned type Long. **/
-    bucmpe_ul           ,/** compare unsigned uint_8 equal with unsigned type Long. **/
-    bcmple_ul           ,/** compare int_8 less than or equal to unsigned type Long. **/
-    bucmple_ul          ,/** compare unsigned uint_8 less than or equal to unsigned type Long. **/
-    bcmpge_ul           ,/** compare int_8 greater than or equal to unsigned type Long. **/
-    bucmpge_ul          ,/** compare unsigned uint_8 greater than or equal to unsigned type Long. **/
-    bcmpne_ul           ,/** compare int_8 not equal with unsigned type Long. **/
-    bucmpne_ul          ,/** compare unsigned uint_8 not equal with unsigned type Long. **/
-    bmod_li             ,/** modulo int_8 with type LongInt. **/
-    bcast_uli           ,/** cast int_8 to unsigned type LongInt. **/
-    bucast_uli          ,/** cast unsigned uint_8 to unsigned type LongInt. **/
-    badd_uli            ,/** add int_8 with unsigned type LongInt. **/
-    buadd_uli           ,/** add unsigned uint_8 with unsigned type LongInt. **/
-    bsub_uli            ,/** subtract int_8 with unsigned type LongInt. **/
-    busub_uli           ,/** subtract unsigned uint_8 with unsigned type LongInt. **/
-    bmul_uli            ,/** multiply int_8 with unsigned type LongInt. **/
-    bumul_uli           ,/** multiply unsigned uint_8 with unsigned type LongInt. **/
-    bdiv_uli            ,/** divide int_8 with unsigned type LongInt. **/
-    budiv_uli           ,/** divide unsigned uint_8 with unsigned type LongInt. **/
-    bcmpl_uli           ,/** compare int_8 less than unsigned type LongInt. **/
-    bucmpl_uli          ,/** compare unsigned uint_8 less than unsigned type LongInt. **/
-    bcmpg_uli           ,/** compare int_8 greater than unsigned type LongInt. **/
-    bucmpg_uli          ,/** compare unsigned uint_8 greater than unsigned type LongInt. **/
-    bcmpe_uli           ,/** compare int_8 equal with unsigned type LongInt. **/
-    bucmpe_uli          ,/** compare unsigned uint_8 equal with unsigned type LongInt. **/
-    bcmple_uli          ,/** compare int_8 less than or equal to unsigned type LongInt. **/
-    bucmple_uli         ,/** compare unsigned uint_8 less than or equal to unsigned type LongInt. **/
-    bcmpge_uli          ,/** compare int_8 greater than or equal to unsigned type LongInt. **/
-    bucmpge_uli         ,/** compare unsigned uint_8 greater than or equal to unsigned type LongInt. **/
-    bcmpne_uli          ,/** compare int_8 not equal with unsigned type LongInt. **/
-    bucmpne_uli         ,/** compare unsigned uint_8 not equal with unsigned type LongInt. **/
-    bmod_ll             ,/** modulo int_8 with type LongLong. **/
-    bcast_ull           ,/** cast int_8 to unsigned type LongLong. **/
-    bucast_ull          ,/** cast unsigned uint_8 to unsigned type LongLong. **/
-    badd_ull            ,/** add int_8 with unsigned type LongLong. **/
-    buadd_ull           ,/** add unsigned uint_8 with unsigned type LongLong. **/
-    bsub_ull            ,/** subtract int_8 with unsigned type LongLong. **/
-    busub_ull           ,/** subtract unsigned uint_8 with unsigned type LongLong. **/
-    bmul_ull            ,/** multiply int_8 with unsigned type LongLong. **/
-    bumul_ull           ,/** multiply unsigned uint_8 with unsigned type LongLong. **/
-    bdiv_ull            ,/** divide int_8 with unsigned type LongLong. **/
-    budiv_ull           ,/** divide unsigned uint_8 with unsigned type LongLong. **/
-    bcmpl_ull           ,/** compare int_8 less than unsigned type LongLong. **/
-    bucmpl_ull          ,/** compare unsigned uint_8 less than unsigned type LongLong. **/
-    bcmpg_ull           ,/** compare int_8 greater than unsigned type LongLong. **/
-    bucmpg_ull          ,/** compare unsigned uint_8 greater than unsigned type LongLong. **/
-    bcmpe_ull           ,/** compare int_8 equal with unsigned type LongLong. **/
-    bucmpe_ull          ,/** compare unsigned uint_8 equal with unsigned type LongLong. **/
-    bcmple_ull          ,/** compare int_8 less than or equal to unsigned type LongLong. **/
-    bucmple_ull         ,/** compare unsigned uint_8 less than or equal to unsigned type LongLong. **/
-    bcmpge_ull          ,/** compare int_8 greater than or equal to unsigned type LongLong. **/
-    bucmpge_ull         ,/** compare unsigned uint_8 greater than or equal to unsigned type LongLong. **/
-    bcmpne_ull          ,/** compare int_8 not equal with unsigned type LongLong. **/
-    bucmpne_ull         ,/** compare unsigned uint_8 not equal with unsigned type LongLong. **/
-    band_b              ,/** bitwise and int_8 with type Byte. **/
-    bor_b               ,/** bitwise or int_8 with type Byte. **/
-    bxor_b              ,/** bitwise xor int_8 with type Byte. **/
-    bshftr_b            ,/** shift right int_8 with type Byte. **/
-    bshftl_b            ,/** shift left xor int_8 with type Byte. **/
-    band_s              ,/** bitwise and int_8 with type Short. **/
-    bor_s               ,/** bitwise or int_8 with type Short. **/
-    bxor_s              ,/** bitwise xor int_8 with type Short. **/
-    bshftr_s            ,/** shift right int_8 with type Short. **/
-    bshftl_s            ,/** shift left xor int_8 with type Short. **/
-    band_i              ,/** bitwise and int_8 with type Int. **/
-    bor_i               ,/** bitwise or int_8 with type Int. **/
-    bxor_i              ,/** bitwise xor int_8 with type Int. **/
-    bshftr_i            ,/** shift right int_8 with type Int. **/
-    bshftl_i            ,/** shift left xor int_8 with type Int. **/
-    band_l              ,/** bitwise and int_8 with type Long. **/
-    bor_l               ,/** bitwise or int_8 with type Long. **/
-    bxor_l              ,/** bitwise xor int_8 with type Long. **/
-    bshftr_l            ,/** shift right int_8 with type Long. **/
-    bshftl_l            ,/** shift left xor int_8 with type Long. **/
-    band_li             ,/** bitwise and int_8 with type LongInt. **/
-    bor_li              ,/** bitwise or int_8 with type LongInt. **/
-    bxor_li             ,/** bitwise xor int_8 with type LongInt. **/
-    bshftr_li           ,/** shift right int_8 with type LongInt. **/
-    bshftl_li           ,/** shift left xor int_8 with type LongInt. **/
-    band_ll             ,/** bitwise and int_8 with type LongLong. **/
-    bor_ll              ,/** bitwise or int_8 with type LongLong. **/
-    bxor_ll             ,/** bitwise xor int_8 with type LongLong. **/
-    bshftr_ll           ,/** shift right int_8 with type LongLong. **/
-    bshftl_ll           ,/** shift left xor int_8 with type LongLong. **/
-    bdup                ,/** duplicate a int_8 on the stack. **/
-    bdup2               ,/** duplicate a int_8 2 times on the stack. **/
-    bdup3               ,/** duplicate a int_8 3 times on the stack. **/
-    bdup4               ,/** duplicate a int_8 4 times on the stack. **/
-    bdup5               ,/** duplicate a int_8 5 times on the stack. **/
-    bset                ,/** set a int_8 from stack into a field on base pointer. **/
-    bget                ,/** get a int_8 from a field on base pointer to stack. **/
-    bvset               ,/** set a int_8 from value into a field on base pointer. **/
-    bsget               ,/** get a int_8 from a field on base pointer to stack using address from stack. **/
-    bsset               ,/** set a int_8 from stack into a field on base pointer using address from stack. **/
-    bsetl               ,/** set a int_8 from local variable into a field on base pointer. **/
-    binc_1              ,/** increment int_8 by 1 on stack. **/
-    binc_2              ,/** increment int_8 by 2 on stack. **/
-    bstinc_1            ,/** increment int_8 by 1 on stack. **/
-    bstinc_2            ,/** increment int_8 by 2 on stack. **/
-    breturn             ,/** return a int_8 into the main stack. **/
-    bmainst             ,/** store a int_8 from main stack in a local variable.. **/
-    bmainst_0           ,/** store a int_8 from main stack in local variable 0. **/
-    bmainst_1           ,/** store a int_8 from main stack in local variable 1. **/
-    bmainst_2           ,/** store a int_8 from main stack in local variable 2. **/
-    bmainst_3           ,/** store a int_8 from main stack in local variable 3. **/
-    bprint              ,/** print a int_8 from stack. **/
-    buprint             ,/** print a unsigned uint_8 from stack. **/
-    sprintba            ,/** print a byte array. **/
-    sconst              ,/** push a const int_16 into the stack. **/
-    sconst_0            ,/** push a const int_16 into the stack (value = 0). **/
-    sconst_1            ,/** push a const int_16 into the stack (value = 1). **/
-    sconst_2            ,/** push a const int_16 into the stack (value = 2). **/
-    sconst_3            ,/** push a const int_16 into the stack (value = 3). **/
-    sconst_4            ,/** push a const int_16 into the stack (value = 4). **/
-    sconst_5            ,/** push a const int_16 into the stack (value = 5). **/
-    sconst_6            ,/** push a const int_16 into the stack (value = 6). **/
-    sconst_9            ,/** push a const int_16 into the stack (value = 9). **/
-    sconst_10           ,/** push a const int_16 into the stack (value = 10). **/
-    sconst_11           ,/** push a const int_16 into the stack (value = 11). **/
-    sconst_12           ,/** push a const int_16 into the stack (value = 12). **/
-    sload               ,/** load a int_16 into the stack from local variable. **/
-    sload_0             ,/** load a int_16 into the stack from local variable 0. **/
-    sload_1             ,/** load a int_16 into the stack from local variable 1. **/
-    sload_2             ,/** load a int_16 into the stack from local variable 2. **/
-    sload_3             ,/** load a int_16 into the stack from local variable 3. **/
-    sload_4             ,/** load a int_16 into the stack from local variable 4. **/
-    sstore              ,/** store a int_16 from stack into local variable. **/
-    sstore_0            ,/** store a int_16 from stack into local variable 0. **/
-    sstore_1            ,/** store a int_16 from stack into local variable 1. **/
-    sstore_2            ,/** store a int_16 from stack into local variable 2. **/
-    sstore_3            ,/** store a int_16 from stack into local variable 3. **/
-    sstore_4            ,/** store a int_16 from stack into local variable 4. **/
-    scast_b             ,/** cast int_16 to type Byte. **/
-    sucast_b            ,/** cast unsigned uint_16 to type Byte. **/
-    sadd_b              ,/** add int_16 with type Byte. **/
-    suadd_b             ,/** add unsigned uint_16 with type Byte. **/
-    ssub_b              ,/** subtract int_16 with type Byte. **/
-    susub_b             ,/** subtract unsigned uint_16 with type Byte. **/
-    smul_b              ,/** multiply int_16 with type Byte. **/
-    sumul_b             ,/** multiply unsigned uint_16 with type Byte. **/
-    sdiv_b              ,/** divide int_16 with type Byte. **/
-    sudiv_b             ,/** divide unsigned uint_16 with type Byte. **/
-    scmpl_b             ,/** compare int_16 less than type Byte. **/
-    sucmpl_b            ,/** compare unsigned uint_16 less than type Byte. **/
-    scmpg_b             ,/** compare int_16 greater than type Byte. **/
-    sucmpg_b            ,/** compare unsigned uint_16 greater than type Byte. **/
-    scmpe_b             ,/** compare int_16 equal with type Byte. **/
-    sucmpe_b            ,/** compare unsigned uint_16 equal with type Byte. **/
-    scmple_b            ,/** compare int_16 less than or equal to type Byte. **/
-    sucmple_b           ,/** compare unsigned uint_16 less than or equal to type Byte. **/
-    scmpge_b            ,/** compare int_16 greater than or equal to type Byte. **/
-    sucmpge_b           ,/** compare unsigned uint_16 greater than or equal to type Byte. **/
-    scmpne_b            ,/** compare int_16 not equal with type Byte. **/
-    sucmpne_b           ,/** compare unsigned uint_16 not equal with type Byte. **/
-    scast_s             ,/** cast int_16 to type Short. **/
-    sucast_s            ,/** cast unsigned uint_16 to type Short. **/
-    sadd_s              ,/** add int_16 with type Short. **/
-    suadd_s             ,/** add unsigned uint_16 with type Short. **/
-    ssub_s              ,/** subtract int_16 with type Short. **/
-    susub_s             ,/** subtract unsigned uint_16 with type Short. **/
-    smul_s              ,/** multiply int_16 with type Short. **/
-    sumul_s             ,/** multiply unsigned uint_16 with type Short. **/
-    sdiv_s              ,/** divide int_16 with type Short. **/
-    sudiv_s             ,/** divide unsigned uint_16 with type Short. **/
-    scmpl_s             ,/** compare int_16 less than type Short. **/
-    sucmpl_s            ,/** compare unsigned uint_16 less than type Short. **/
-    scmpg_s             ,/** compare int_16 greater than type Short. **/
-    sucmpg_s            ,/** compare unsigned uint_16 greater than type Short. **/
-    scmpe_s             ,/** compare int_16 equal with type Short. **/
-    sucmpe_s            ,/** compare unsigned uint_16 equal with type Short. **/
-    scmple_s            ,/** compare int_16 less than or equal to type Short. **/
-    sucmple_s           ,/** compare unsigned uint_16 less than or equal to type Short. **/
-    scmpge_s            ,/** compare int_16 greater than or equal to type Short. **/
-    sucmpge_s           ,/** compare unsigned uint_16 greater than or equal to type Short. **/
-    scmpne_s            ,/** compare int_16 not equal with type Short. **/
-    sucmpne_s           ,/** compare unsigned uint_16 not equal with type Short. **/
-    scast_i             ,/** cast int_16 to type Int. **/
-    sucast_i            ,/** cast unsigned uint_16 to type Int. **/
-    sadd_i              ,/** add int_16 with type Int. **/
-    suadd_i             ,/** add unsigned uint_16 with type Int. **/
-    ssub_i              ,/** subtract int_16 with type Int. **/
-    susub_i             ,/** subtract unsigned uint_16 with type Int. **/
-    smul_i              ,/** multiply int_16 with type Int. **/
-    sumul_i             ,/** multiply unsigned uint_16 with type Int. **/
-    sdiv_i              ,/** divide int_16 with type Int. **/
-    sudiv_i             ,/** divide unsigned uint_16 with type Int. **/
-    scmpl_i             ,/** compare int_16 less than type Int. **/
-    sucmpl_i            ,/** compare unsigned uint_16 less than type Int. **/
-    scmpg_i             ,/** compare int_16 greater than type Int. **/
-    sucmpg_i            ,/** compare unsigned uint_16 greater than type Int. **/
-    scmpe_i             ,/** compare int_16 equal with type Int. **/
-    sucmpe_i            ,/** compare unsigned uint_16 equal with type Int. **/
-    scmple_i            ,/** compare int_16 less than or equal to type Int. **/
-    sucmple_i           ,/** compare unsigned uint_16 less than or equal to type Int. **/
-    scmpge_i            ,/** compare int_16 greater than or equal to type Int. **/
-    sucmpge_i           ,/** compare unsigned uint_16 greater than or equal to type Int. **/
-    scmpne_i            ,/** compare int_16 not equal with type Int. **/
-    sucmpne_i           ,/** compare unsigned uint_16 not equal with type Int. **/
-    scast_l             ,/** cast int_16 to type Long. **/
-    sucast_l            ,/** cast unsigned uint_16 to type Long. **/
-    sadd_l              ,/** add int_16 with type Long. **/
-    suadd_l             ,/** add unsigned uint_16 with type Long. **/
-    ssub_l              ,/** subtract int_16 with type Long. **/
-    susub_l             ,/** subtract unsigned uint_16 with type Long. **/
-    smul_l              ,/** multiply int_16 with type Long. **/
-    sumul_l             ,/** multiply unsigned uint_16 with type Long. **/
-    sdiv_l              ,/** divide int_16 with type Long. **/
-    sudiv_l             ,/** divide unsigned uint_16 with type Long. **/
-    scmpl_l             ,/** compare int_16 less than type Long. **/
-    sucmpl_l            ,/** compare unsigned uint_16 less than type Long. **/
-    scmpg_l             ,/** compare int_16 greater than type Long. **/
-    sucmpg_l            ,/** compare unsigned uint_16 greater than type Long. **/
-    scmpe_l             ,/** compare int_16 equal with type Long. **/
-    sucmpe_l            ,/** compare unsigned uint_16 equal with type Long. **/
-    scmple_l            ,/** compare int_16 less than or equal to type Long. **/
-    sucmple_l           ,/** compare unsigned uint_16 less than or equal to type Long. **/
-    scmpge_l            ,/** compare int_16 greater than or equal to type Long. **/
-    sucmpge_l           ,/** compare unsigned uint_16 greater than or equal to type Long. **/
-    scmpne_l            ,/** compare int_16 not equal with type Long. **/
-    sucmpne_l           ,/** compare unsigned uint_16 not equal with type Long. **/
-    scast_li            ,/** cast int_16 to type LongInt. **/
-    sucast_li           ,/** cast unsigned uint_16 to type LongInt. **/
-    sadd_li             ,/** add int_16 with type LongInt. **/
-    suadd_li            ,/** add unsigned uint_16 with type LongInt. **/
-    ssub_li             ,/** subtract int_16 with type LongInt. **/
-    susub_li            ,/** subtract unsigned uint_16 with type LongInt. **/
-    smul_li             ,/** multiply int_16 with type LongInt. **/
-    sumul_li            ,/** multiply unsigned uint_16 with type LongInt. **/
-    sdiv_li             ,/** divide int_16 with type LongInt. **/
-    sudiv_li            ,/** divide unsigned uint_16 with type LongInt. **/
-    scmpl_li            ,/** compare int_16 less than type LongInt. **/
-    sucmpl_li           ,/** compare unsigned uint_16 less than type LongInt. **/
-    scmpg_li            ,/** compare int_16 greater than type LongInt. **/
-    sucmpg_li           ,/** compare unsigned uint_16 greater than type LongInt. **/
-    scmpe_li            ,/** compare int_16 equal with type LongInt. **/
-    sucmpe_li           ,/** compare unsigned uint_16 equal with type LongInt. **/
-    scmple_li           ,/** compare int_16 less than or equal to type LongInt. **/
-    sucmple_li          ,/** compare unsigned uint_16 less than or equal to type LongInt. **/
-    scmpge_li           ,/** compare int_16 greater than or equal to type LongInt. **/
-    sucmpge_li          ,/** compare unsigned uint_16 greater than or equal to type LongInt. **/
-    scmpne_li           ,/** compare int_16 not equal with type LongInt. **/
-    sucmpne_li          ,/** compare unsigned uint_16 not equal with type LongInt. **/
-    scast_ll            ,/** cast int_16 to type LongLong. **/
-    sucast_ll           ,/** cast unsigned uint_16 to type LongLong. **/
-    sadd_ll             ,/** add int_16 with type LongLong. **/
-    suadd_ll            ,/** add unsigned uint_16 with type LongLong. **/
-    ssub_ll             ,/** subtract int_16 with type LongLong. **/
-    susub_ll            ,/** subtract unsigned uint_16 with type LongLong. **/
-    smul_ll             ,/** multiply int_16 with type LongLong. **/
-    sumul_ll            ,/** multiply unsigned uint_16 with type LongLong. **/
-    sdiv_ll             ,/** divide int_16 with type LongLong. **/
-    sudiv_ll            ,/** divide unsigned uint_16 with type LongLong. **/
-    scmpl_ll            ,/** compare int_16 less than type LongLong. **/
-    sucmpl_ll           ,/** compare unsigned uint_16 less than type LongLong. **/
-    scmpg_ll            ,/** compare int_16 greater than type LongLong. **/
-    sucmpg_ll           ,/** compare unsigned uint_16 greater than type LongLong. **/
-    scmpe_ll            ,/** compare int_16 equal with type LongLong. **/
-    sucmpe_ll           ,/** compare unsigned uint_16 equal with type LongLong. **/
-    scmple_ll           ,/** compare int_16 less than or equal to type LongLong. **/
-    sucmple_ll          ,/** compare unsigned uint_16 less than or equal to type LongLong. **/
-    scmpge_ll           ,/** compare int_16 greater than or equal to type LongLong. **/
-    sucmpge_ll          ,/** compare unsigned uint_16 greater than or equal to type LongLong. **/
-    scmpne_ll           ,/** compare int_16 not equal with type LongLong. **/
-    sucmpne_ll          ,/** compare unsigned uint_16 not equal with type LongLong. **/
-    scast_f             ,/** cast int_16 to type Float. **/
-    sucast_f            ,/** cast unsigned uint_16 to type Float. **/
-    sadd_f              ,/** add int_16 with type Float. **/
-    suadd_f             ,/** add unsigned uint_16 with type Float. **/
-    ssub_f              ,/** subtract int_16 with type Float. **/
-    susub_f             ,/** subtract unsigned uint_16 with type Float. **/
-    smul_f              ,/** multiply int_16 with type Float. **/
-    sumul_f             ,/** multiply unsigned uint_16 with type Float. **/
-    sdiv_f              ,/** divide int_16 with type Float. **/
-    sudiv_f             ,/** divide unsigned uint_16 with type Float. **/
-    scmpl_f             ,/** compare int_16 less than type Float. **/
-    sucmpl_f            ,/** compare unsigned uint_16 less than type Float. **/
-    scmpg_f             ,/** compare int_16 greater than type Float. **/
-    sucmpg_f            ,/** compare unsigned uint_16 greater than type Float. **/
-    scmpe_f             ,/** compare int_16 equal with type Float. **/
-    sucmpe_f            ,/** compare unsigned uint_16 equal with type Float. **/
-    scmple_f            ,/** compare int_16 less than or equal to type Float. **/
-    sucmple_f           ,/** compare unsigned uint_16 less than or equal to type Float. **/
-    scmpge_f            ,/** compare int_16 greater than or equal to type Float. **/
-    sucmpge_f           ,/** compare unsigned uint_16 greater than or equal to type Float. **/
-    scmpne_f            ,/** compare int_16 not equal with type Float. **/
-    sucmpne_f           ,/** compare unsigned uint_16 not equal with type Float. **/
-    scast_d             ,/** cast int_16 to type Double. **/
-    sucast_d            ,/** cast unsigned uint_16 to type Double. **/
-    sadd_d              ,/** add int_16 with type Double. **/
-    suadd_d             ,/** add unsigned uint_16 with type Double. **/
-    ssub_d              ,/** subtract int_16 with type Double. **/
-    susub_d             ,/** subtract unsigned uint_16 with type Double. **/
-    smul_d              ,/** multiply int_16 with type Double. **/
-    sumul_d             ,/** multiply unsigned uint_16 with type Double. **/
-    sdiv_d              ,/** divide int_16 with type Double. **/
-    sudiv_d             ,/** divide unsigned uint_16 with type Double. **/
-    scmpl_d             ,/** compare int_16 less than type Double. **/
-    sucmpl_d            ,/** compare unsigned uint_16 less than type Double. **/
-    scmpg_d             ,/** compare int_16 greater than type Double. **/
-    sucmpg_d            ,/** compare unsigned uint_16 greater than type Double. **/
-    scmpe_d             ,/** compare int_16 equal with type Double. **/
-    sucmpe_d            ,/** compare unsigned uint_16 equal with type Double. **/
-    scmple_d            ,/** compare int_16 less than or equal to type Double. **/
-    sucmple_d           ,/** compare unsigned uint_16 less than or equal to type Double. **/
-    scmpge_d            ,/** compare int_16 greater than or equal to type Double. **/
-    sucmpge_d           ,/** compare unsigned uint_16 greater than or equal to type Double. **/
-    scmpne_d            ,/** compare int_16 not equal with type Double. **/
-    sucmpne_d           ,/** compare unsigned uint_16 not equal with type Double. **/
-    scast_df            ,/** cast int_16 to type DoubleFloat. **/
-    sucast_df           ,/** cast unsigned uint_16 to type DoubleFloat. **/
-    sadd_df             ,/** add int_16 with type DoubleFloat. **/
-    suadd_df            ,/** add unsigned uint_16 with type DoubleFloat. **/
-    ssub_df             ,/** subtract int_16 with type DoubleFloat. **/
-    susub_df            ,/** subtract unsigned uint_16 with type DoubleFloat. **/
-    smul_df             ,/** multiply int_16 with type DoubleFloat. **/
-    sumul_df            ,/** multiply unsigned uint_16 with type DoubleFloat. **/
-    sdiv_df             ,/** divide int_16 with type DoubleFloat. **/
-    sudiv_df            ,/** divide unsigned uint_16 with type DoubleFloat. **/
-    scmpl_df            ,/** compare int_16 less than type DoubleFloat. **/
-    sucmpl_df           ,/** compare unsigned uint_16 less than type DoubleFloat. **/
-    scmpg_df            ,/** compare int_16 greater than type DoubleFloat. **/
-    sucmpg_df           ,/** compare unsigned uint_16 greater than type DoubleFloat. **/
-    scmpe_df            ,/** compare int_16 equal with type DoubleFloat. **/
-    sucmpe_df           ,/** compare unsigned uint_16 equal with type DoubleFloat. **/
-    scmple_df           ,/** compare int_16 less than or equal to type DoubleFloat. **/
-    sucmple_df          ,/** compare unsigned uint_16 less than or equal to type DoubleFloat. **/
-    scmpge_df           ,/** compare int_16 greater than or equal to type DoubleFloat. **/
-    sucmpge_df          ,/** compare unsigned uint_16 greater than or equal to type DoubleFloat. **/
-    scmpne_df           ,/** compare int_16 not equal with type DoubleFloat. **/
-    sucmpne_df          ,/** compare unsigned uint_16 not equal with type DoubleFloat. **/
-    scast_dd            ,/** cast int_16 to type DoubleDouble. **/
-    sucast_dd           ,/** cast unsigned uint_16 to type DoubleDouble. **/
-    sadd_dd             ,/** add int_16 with type DoubleDouble. **/
-    suadd_dd            ,/** add unsigned uint_16 with type DoubleDouble. **/
-    ssub_dd             ,/** subtract int_16 with type DoubleDouble. **/
-    susub_dd            ,/** subtract unsigned uint_16 with type DoubleDouble. **/
-    smul_dd             ,/** multiply int_16 with type DoubleDouble. **/
-    sumul_dd            ,/** multiply unsigned uint_16 with type DoubleDouble. **/
-    sdiv_dd             ,/** divide int_16 with type DoubleDouble. **/
-    sudiv_dd            ,/** divide unsigned uint_16 with type DoubleDouble. **/
-    scmpl_dd            ,/** compare int_16 less than type DoubleDouble. **/
-    sucmpl_dd           ,/** compare unsigned uint_16 less than type DoubleDouble. **/
-    scmpg_dd            ,/** compare int_16 greater than type DoubleDouble. **/
-    sucmpg_dd           ,/** compare unsigned uint_16 greater than type DoubleDouble. **/
-    scmpe_dd            ,/** compare int_16 equal with type DoubleDouble. **/
-    sucmpe_dd           ,/** compare unsigned uint_16 equal with type DoubleDouble. **/
-    scmple_dd           ,/** compare int_16 less than or equal to type DoubleDouble. **/
-    sucmple_dd          ,/** compare unsigned uint_16 less than or equal to type DoubleDouble. **/
-    scmpge_dd           ,/** compare int_16 greater than or equal to type DoubleDouble. **/
-    sucmpge_dd          ,/** compare unsigned uint_16 greater than or equal to type DoubleDouble. **/
-    scmpne_dd           ,/** compare int_16 not equal with type DoubleDouble. **/
-    sucmpne_dd          ,/** compare unsigned uint_16 not equal with type DoubleDouble. **/
-    smod_b              ,/** modulo int_16 with type Byte. **/
-    scast_ub            ,/** cast int_16 to unsigned type Byte. **/
-    sucast_ub           ,/** cast unsigned uint_16 to unsigned type Byte. **/
-    sadd_ub             ,/** add int_16 with unsigned type Byte. **/
-    suadd_ub            ,/** add unsigned uint_16 with unsigned type Byte. **/
-    ssub_ub             ,/** subtract int_16 with unsigned type Byte. **/
-    susub_ub            ,/** subtract unsigned uint_16 with unsigned type Byte. **/
-    smul_ub             ,/** multiply int_16 with unsigned type Byte. **/
-    sumul_ub            ,/** multiply unsigned uint_16 with unsigned type Byte. **/
-    sdiv_ub             ,/** divide int_16 with unsigned type Byte. **/
-    sudiv_ub            ,/** divide unsigned uint_16 with unsigned type Byte. **/
-    scmpl_ub            ,/** compare int_16 less than unsigned type Byte. **/
-    sucmpl_ub           ,/** compare unsigned uint_16 less than unsigned type Byte. **/
-    scmpg_ub            ,/** compare int_16 greater than unsigned type Byte. **/
-    sucmpg_ub           ,/** compare unsigned uint_16 greater than unsigned type Byte. **/
-    scmpe_ub            ,/** compare int_16 equal with unsigned type Byte. **/
-    sucmpe_ub           ,/** compare unsigned uint_16 equal with unsigned type Byte. **/
-    scmple_ub           ,/** compare int_16 less than or equal to unsigned type Byte. **/
-    sucmple_ub          ,/** compare unsigned uint_16 less than or equal to unsigned type Byte. **/
-    scmpge_ub           ,/** compare int_16 greater than or equal to unsigned type Byte. **/
-    sucmpge_ub          ,/** compare unsigned uint_16 greater than or equal to unsigned type Byte. **/
-    scmpne_ub           ,/** compare int_16 not equal with unsigned type Byte. **/
-    sucmpne_ub          ,/** compare unsigned uint_16 not equal with unsigned type Byte. **/
-    smod_s              ,/** modulo int_16 with type Short. **/
-    scast_us            ,/** cast int_16 to unsigned type Short. **/
-    sucast_us           ,/** cast unsigned uint_16 to unsigned type Short. **/
-    sadd_us             ,/** add int_16 with unsigned type Short. **/
-    suadd_us            ,/** add unsigned uint_16 with unsigned type Short. **/
-    ssub_us             ,/** subtract int_16 with unsigned type Short. **/
-    susub_us            ,/** subtract unsigned uint_16 with unsigned type Short. **/
-    smul_us             ,/** multiply int_16 with unsigned type Short. **/
-    sumul_us            ,/** multiply unsigned uint_16 with unsigned type Short. **/
-    sdiv_us             ,/** divide int_16 with unsigned type Short. **/
-    sudiv_us            ,/** divide unsigned uint_16 with unsigned type Short. **/
-    scmpl_us            ,/** compare int_16 less than unsigned type Short. **/
-    sucmpl_us           ,/** compare unsigned uint_16 less than unsigned type Short. **/
-    scmpg_us            ,/** compare int_16 greater than unsigned type Short. **/
-    sucmpg_us           ,/** compare unsigned uint_16 greater than unsigned type Short. **/
-    scmpe_us            ,/** compare int_16 equal with unsigned type Short. **/
-    sucmpe_us           ,/** compare unsigned uint_16 equal with unsigned type Short. **/
-    scmple_us           ,/** compare int_16 less than or equal to unsigned type Short. **/
-    sucmple_us          ,/** compare unsigned uint_16 less than or equal to unsigned type Short. **/
-    scmpge_us           ,/** compare int_16 greater than or equal to unsigned type Short. **/
-    sucmpge_us          ,/** compare unsigned uint_16 greater than or equal to unsigned type Short. **/
-    scmpne_us           ,/** compare int_16 not equal with unsigned type Short. **/
-    sucmpne_us          ,/** compare unsigned uint_16 not equal with unsigned type Short. **/
-    smod_i              ,/** modulo int_16 with type Int. **/
-    scast_ui            ,/** cast int_16 to unsigned type Int. **/
-    sucast_ui           ,/** cast unsigned uint_16 to unsigned type Int. **/
-    sadd_ui             ,/** add int_16 with unsigned type Int. **/
-    suadd_ui            ,/** add unsigned uint_16 with unsigned type Int. **/
-    ssub_ui             ,/** subtract int_16 with unsigned type Int. **/
-    susub_ui            ,/** subtract unsigned uint_16 with unsigned type Int. **/
-    smul_ui             ,/** multiply int_16 with unsigned type Int. **/
-    sumul_ui            ,/** multiply unsigned uint_16 with unsigned type Int. **/
-    sdiv_ui             ,/** divide int_16 with unsigned type Int. **/
-    sudiv_ui            ,/** divide unsigned uint_16 with unsigned type Int. **/
-    scmpl_ui            ,/** compare int_16 less than unsigned type Int. **/
-    sucmpl_ui           ,/** compare unsigned uint_16 less than unsigned type Int. **/
-    scmpg_ui            ,/** compare int_16 greater than unsigned type Int. **/
-    sucmpg_ui           ,/** compare unsigned uint_16 greater than unsigned type Int. **/
-    scmpe_ui            ,/** compare int_16 equal with unsigned type Int. **/
-    sucmpe_ui           ,/** compare unsigned uint_16 equal with unsigned type Int. **/
-    scmple_ui           ,/** compare int_16 less than or equal to unsigned type Int. **/
-    sucmple_ui          ,/** compare unsigned uint_16 less than or equal to unsigned type Int. **/
-    scmpge_ui           ,/** compare int_16 greater than or equal to unsigned type Int. **/
-    sucmpge_ui          ,/** compare unsigned uint_16 greater than or equal to unsigned type Int. **/
-    scmpne_ui           ,/** compare int_16 not equal with unsigned type Int. **/
-    sucmpne_ui          ,/** compare unsigned uint_16 not equal with unsigned type Int. **/
-    smod_l              ,/** modulo int_16 with type Long. **/
-    scast_ul            ,/** cast int_16 to unsigned type Long. **/
-    sucast_ul           ,/** cast unsigned uint_16 to unsigned type Long. **/
-    sadd_ul             ,/** add int_16 with unsigned type Long. **/
-    suadd_ul            ,/** add unsigned uint_16 with unsigned type Long. **/
-    ssub_ul             ,/** subtract int_16 with unsigned type Long. **/
-    susub_ul            ,/** subtract unsigned uint_16 with unsigned type Long. **/
-    smul_ul             ,/** multiply int_16 with unsigned type Long. **/
-    sumul_ul            ,/** multiply unsigned uint_16 with unsigned type Long. **/
-    sdiv_ul             ,/** divide int_16 with unsigned type Long. **/
-    sudiv_ul            ,/** divide unsigned uint_16 with unsigned type Long. **/
-    scmpl_ul            ,/** compare int_16 less than unsigned type Long. **/
-    sucmpl_ul           ,/** compare unsigned uint_16 less than unsigned type Long. **/
-    scmpg_ul            ,/** compare int_16 greater than unsigned type Long. **/
-    sucmpg_ul           ,/** compare unsigned uint_16 greater than unsigned type Long. **/
-    scmpe_ul            ,/** compare int_16 equal with unsigned type Long. **/
-    sucmpe_ul           ,/** compare unsigned uint_16 equal with unsigned type Long. **/
-    scmple_ul           ,/** compare int_16 less than or equal to unsigned type Long. **/
-    sucmple_ul          ,/** compare unsigned uint_16 less than or equal to unsigned type Long. **/
-    scmpge_ul           ,/** compare int_16 greater than or equal to unsigned type Long. **/
-    sucmpge_ul          ,/** compare unsigned uint_16 greater than or equal to unsigned type Long. **/
-    scmpne_ul           ,/** compare int_16 not equal with unsigned type Long. **/
-    sucmpne_ul          ,/** compare unsigned uint_16 not equal with unsigned type Long. **/
-    smod_li             ,/** modulo int_16 with type LongInt. **/
-    scast_uli           ,/** cast int_16 to unsigned type LongInt. **/
-    sucast_uli          ,/** cast unsigned uint_16 to unsigned type LongInt. **/
-    sadd_uli            ,/** add int_16 with unsigned type LongInt. **/
-    suadd_uli           ,/** add unsigned uint_16 with unsigned type LongInt. **/
-    ssub_uli            ,/** subtract int_16 with unsigned type LongInt. **/
-    susub_uli           ,/** subtract unsigned uint_16 with unsigned type LongInt. **/
-    smul_uli            ,/** multiply int_16 with unsigned type LongInt. **/
-    sumul_uli           ,/** multiply unsigned uint_16 with unsigned type LongInt. **/
-    sdiv_uli            ,/** divide int_16 with unsigned type LongInt. **/
-    sudiv_uli           ,/** divide unsigned uint_16 with unsigned type LongInt. **/
-    scmpl_uli           ,/** compare int_16 less than unsigned type LongInt. **/
-    sucmpl_uli          ,/** compare unsigned uint_16 less than unsigned type LongInt. **/
-    scmpg_uli           ,/** compare int_16 greater than unsigned type LongInt. **/
-    sucmpg_uli          ,/** compare unsigned uint_16 greater than unsigned type LongInt. **/
-    scmpe_uli           ,/** compare int_16 equal with unsigned type LongInt. **/
-    sucmpe_uli          ,/** compare unsigned uint_16 equal with unsigned type LongInt. **/
-    scmple_uli          ,/** compare int_16 less than or equal to unsigned type LongInt. **/
-    sucmple_uli         ,/** compare unsigned uint_16 less than or equal to unsigned type LongInt. **/
-    scmpge_uli          ,/** compare int_16 greater than or equal to unsigned type LongInt. **/
-    sucmpge_uli         ,/** compare unsigned uint_16 greater than or equal to unsigned type LongInt. **/
-    scmpne_uli          ,/** compare int_16 not equal with unsigned type LongInt. **/
-    sucmpne_uli         ,/** compare unsigned uint_16 not equal with unsigned type LongInt. **/
-    smod_ll             ,/** modulo int_16 with type LongLong. **/
-    scast_ull           ,/** cast int_16 to unsigned type LongLong. **/
-    sucast_ull          ,/** cast unsigned uint_16 to unsigned type LongLong. **/
-    sadd_ull            ,/** add int_16 with unsigned type LongLong. **/
-    suadd_ull           ,/** add unsigned uint_16 with unsigned type LongLong. **/
-    ssub_ull            ,/** subtract int_16 with unsigned type LongLong. **/
-    susub_ull           ,/** subtract unsigned uint_16 with unsigned type LongLong. **/
-    smul_ull            ,/** multiply int_16 with unsigned type LongLong. **/
-    sumul_ull           ,/** multiply unsigned uint_16 with unsigned type LongLong. **/
-    sdiv_ull            ,/** divide int_16 with unsigned type LongLong. **/
-    sudiv_ull           ,/** divide unsigned uint_16 with unsigned type LongLong. **/
-    scmpl_ull           ,/** compare int_16 less than unsigned type LongLong. **/
-    sucmpl_ull          ,/** compare unsigned uint_16 less than unsigned type LongLong. **/
-    scmpg_ull           ,/** compare int_16 greater than unsigned type LongLong. **/
-    sucmpg_ull          ,/** compare unsigned uint_16 greater than unsigned type LongLong. **/
-    scmpe_ull           ,/** compare int_16 equal with unsigned type LongLong. **/
-    sucmpe_ull          ,/** compare unsigned uint_16 equal with unsigned type LongLong. **/
-    scmple_ull          ,/** compare int_16 less than or equal to unsigned type LongLong. **/
-    sucmple_ull         ,/** compare unsigned uint_16 less than or equal to unsigned type LongLong. **/
-    scmpge_ull          ,/** compare int_16 greater than or equal to unsigned type LongLong. **/
-    sucmpge_ull         ,/** compare unsigned uint_16 greater than or equal to unsigned type LongLong. **/
-    scmpne_ull          ,/** compare int_16 not equal with unsigned type LongLong. **/
-    sucmpne_ull         ,/** compare unsigned uint_16 not equal with unsigned type LongLong. **/
-    sand_b              ,/** bitwise and int_16 with type Byte. **/
-    sor_b               ,/** bitwise or int_16 with type Byte. **/
-    sxor_b              ,/** bitwise xor int_16 with type Byte. **/
-    sshftr_b            ,/** shift right int_16 with type Byte. **/
-    sshftl_b            ,/** shift left xor int_16 with type Byte. **/
-    sand_s              ,/** bitwise and int_16 with type Short. **/
-    sor_s               ,/** bitwise or int_16 with type Short. **/
-    sxor_s              ,/** bitwise xor int_16 with type Short. **/
-    sshftr_s            ,/** shift right int_16 with type Short. **/
-    sshftl_s            ,/** shift left xor int_16 with type Short. **/
-    sand_i              ,/** bitwise and int_16 with type Int. **/
-    sor_i               ,/** bitwise or int_16 with type Int. **/
-    sxor_i              ,/** bitwise xor int_16 with type Int. **/
-    sshftr_i            ,/** shift right int_16 with type Int. **/
-    sshftl_i            ,/** shift left xor int_16 with type Int. **/
-    sand_l              ,/** bitwise and int_16 with type Long. **/
-    sor_l               ,/** bitwise or int_16 with type Long. **/
-    sxor_l              ,/** bitwise xor int_16 with type Long. **/
-    sshftr_l            ,/** shift right int_16 with type Long. **/
-    sshftl_l            ,/** shift left xor int_16 with type Long. **/
-    sand_li             ,/** bitwise and int_16 with type LongInt. **/
-    sor_li              ,/** bitwise or int_16 with type LongInt. **/
-    sxor_li             ,/** bitwise xor int_16 with type LongInt. **/
-    sshftr_li           ,/** shift right int_16 with type LongInt. **/
-    sshftl_li           ,/** shift left xor int_16 with type LongInt. **/
-    sand_ll             ,/** bitwise and int_16 with type LongLong. **/
-    sor_ll              ,/** bitwise or int_16 with type LongLong. **/
-    sxor_ll             ,/** bitwise xor int_16 with type LongLong. **/
-    sshftr_ll           ,/** shift right int_16 with type LongLong. **/
-    sshftl_ll           ,/** shift left xor int_16 with type LongLong. **/
-    sdup                ,/** duplicate a int_16 on the stack. **/
-    sdup2               ,/** duplicate a int_16 2 times on the stack. **/
-    sdup3               ,/** duplicate a int_16 3 times on the stack. **/
-    sdup4               ,/** duplicate a int_16 4 times on the stack. **/
-    sdup5               ,/** duplicate a int_16 5 times on the stack. **/
-    sset                ,/** set a int_16 from stack into a field on base pointer. **/
-    sget                ,/** get a int_16 from a field on base pointer to stack. **/
-    svset               ,/** set a int_16 from value into a field on base pointer. **/
-    ssget               ,/** get a int_16 from a field on base pointer to stack using address from stack. **/
-    ssset               ,/** set a int_16 from stack into a field on base pointer using address from stack. **/
-    ssetl               ,/** set a int_16 from local variable into a field on base pointer. **/
-    sinc_1              ,/** increment int_16 by 1 on stack. **/
-    sinc_2              ,/** increment int_16 by 2 on stack. **/
-    sstinc_1            ,/** increment int_16 by 1 on stack. **/
-    sstinc_2            ,/** increment int_16 by 2 on stack. **/
-    sreturn             ,/** return a int_16 into the main stack. **/
-    smainst             ,/** store a int_16 from main stack in a local variable.. **/
-    smainst_0           ,/** store a int_16 from main stack in local variable 0. **/
-    smainst_1           ,/** store a int_16 from main stack in local variable 1. **/
-    smainst_2           ,/** store a int_16 from main stack in local variable 2. **/
-    smainst_3           ,/** store a int_16 from main stack in local variable 3. **/
-    sprint              ,/** print a int_16 from stack. **/
-    suprint             ,/** print a unsigned uint_16 from stack. **/
-    iprintba            ,/** print a byte array. **/
-    iconst              ,/** push a const int_32 into the stack. **/
-    iconst_0            ,/** push a const int_32 into the stack (value = 0). **/
-    iconst_1            ,/** push a const int_32 into the stack (value = 1). **/
-    iconst_2            ,/** push a const int_32 into the stack (value = 2). **/
-    iconst_3            ,/** push a const int_32 into the stack (value = 3). **/
-    iconst_4            ,/** push a const int_32 into the stack (value = 4). **/
-    iconst_5            ,/** push a const int_32 into the stack (value = 5). **/
-    iconst_6            ,/** push a const int_32 into the stack (value = 6). **/
-    iconst_9            ,/** push a const int_32 into the stack (value = 9). **/
-    iconst_10           ,/** push a const int_32 into the stack (value = 10). **/
-    iconst_11           ,/** push a const int_32 into the stack (value = 11). **/
-    iconst_12           ,/** push a const int_32 into the stack (value = 12). **/
-    iload               ,/** load a int_32 into the stack from local variable. **/
-    iload_0             ,/** load a int_32 into the stack from local variable 0. **/
-    iload_1             ,/** load a int_32 into the stack from local variable 1. **/
-    iload_2             ,/** load a int_32 into the stack from local variable 2. **/
-    iload_3             ,/** load a int_32 into the stack from local variable 3. **/
-    iload_4             ,/** load a int_32 into the stack from local variable 4. **/
-    istore              ,/** store a int_32 from stack into local variable. **/
-    istore_0            ,/** store a int_32 from stack into local variable 0. **/
-    istore_1            ,/** store a int_32 from stack into local variable 1. **/
-    istore_2            ,/** store a int_32 from stack into local variable 2. **/
-    istore_3            ,/** store a int_32 from stack into local variable 3. **/
-    istore_4            ,/** store a int_32 from stack into local variable 4. **/
-    icast_b             ,/** cast int_32 to type Byte. **/
-    iucast_b            ,/** cast unsigned uint_32 to type Byte. **/
-    iadd_b              ,/** add int_32 with type Byte. **/
-    iuadd_b             ,/** add unsigned uint_32 with type Byte. **/
-    isub_b              ,/** subtract int_32 with type Byte. **/
-    iusub_b             ,/** subtract unsigned uint_32 with type Byte. **/
-    imul_b              ,/** multiply int_32 with type Byte. **/
-    iumul_b             ,/** multiply unsigned uint_32 with type Byte. **/
-    idiv_b              ,/** divide int_32 with type Byte. **/
-    iudiv_b             ,/** divide unsigned uint_32 with type Byte. **/
-    icmpl_b             ,/** compare int_32 less than type Byte. **/
-    iucmpl_b            ,/** compare unsigned uint_32 less than type Byte. **/
-    icmpg_b             ,/** compare int_32 greater than type Byte. **/
-    iucmpg_b            ,/** compare unsigned uint_32 greater than type Byte. **/
-    icmpe_b             ,/** compare int_32 equal with type Byte. **/
-    iucmpe_b            ,/** compare unsigned uint_32 equal with type Byte. **/
-    icmple_b            ,/** compare int_32 less than or equal to type Byte. **/
-    iucmple_b           ,/** compare unsigned uint_32 less than or equal to type Byte. **/
-    icmpge_b            ,/** compare int_32 greater than or equal to type Byte. **/
-    iucmpge_b           ,/** compare unsigned uint_32 greater than or equal to type Byte. **/
-    icmpne_b            ,/** compare int_32 not equal with type Byte. **/
-    iucmpne_b           ,/** compare unsigned uint_32 not equal with type Byte. **/
-    icast_s             ,/** cast int_32 to type Short. **/
-    iucast_s            ,/** cast unsigned uint_32 to type Short. **/
-    iadd_s              ,/** add int_32 with type Short. **/
-    iuadd_s             ,/** add unsigned uint_32 with type Short. **/
-    isub_s              ,/** subtract int_32 with type Short. **/
-    iusub_s             ,/** subtract unsigned uint_32 with type Short. **/
-    imul_s              ,/** multiply int_32 with type Short. **/
-    iumul_s             ,/** multiply unsigned uint_32 with type Short. **/
-    idiv_s              ,/** divide int_32 with type Short. **/
-    iudiv_s             ,/** divide unsigned uint_32 with type Short. **/
-    icmpl_s             ,/** compare int_32 less than type Short. **/
-    iucmpl_s            ,/** compare unsigned uint_32 less than type Short. **/
-    icmpg_s             ,/** compare int_32 greater than type Short. **/
-    iucmpg_s            ,/** compare unsigned uint_32 greater than type Short. **/
-    icmpe_s             ,/** compare int_32 equal with type Short. **/
-    iucmpe_s            ,/** compare unsigned uint_32 equal with type Short. **/
-    icmple_s            ,/** compare int_32 less than or equal to type Short. **/
-    iucmple_s           ,/** compare unsigned uint_32 less than or equal to type Short. **/
-    icmpge_s            ,/** compare int_32 greater than or equal to type Short. **/
-    iucmpge_s           ,/** compare unsigned uint_32 greater than or equal to type Short. **/
-    icmpne_s            ,/** compare int_32 not equal with type Short. **/
-    iucmpne_s           ,/** compare unsigned uint_32 not equal with type Short. **/
-    icast_i             ,/** cast int_32 to type Int. **/
-    iucast_i            ,/** cast unsigned uint_32 to type Int. **/
-    iadd_i              ,/** add int_32 with type Int. **/
-    iuadd_i             ,/** add unsigned uint_32 with type Int. **/
-    isub_i              ,/** subtract int_32 with type Int. **/
-    iusub_i             ,/** subtract unsigned uint_32 with type Int. **/
-    imul_i              ,/** multiply int_32 with type Int. **/
-    iumul_i             ,/** multiply unsigned uint_32 with type Int. **/
-    idiv_i              ,/** divide int_32 with type Int. **/
-    iudiv_i             ,/** divide unsigned uint_32 with type Int. **/
-    icmpl_i             ,/** compare int_32 less than type Int. **/
-    iucmpl_i            ,/** compare unsigned uint_32 less than type Int. **/
-    icmpg_i             ,/** compare int_32 greater than type Int. **/
-    iucmpg_i            ,/** compare unsigned uint_32 greater than type Int. **/
-    icmpe_i             ,/** compare int_32 equal with type Int. **/
-    iucmpe_i            ,/** compare unsigned uint_32 equal with type Int. **/
-    icmple_i            ,/** compare int_32 less than or equal to type Int. **/
-    iucmple_i           ,/** compare unsigned uint_32 less than or equal to type Int. **/
-    icmpge_i            ,/** compare int_32 greater than or equal to type Int. **/
-    iucmpge_i           ,/** compare unsigned uint_32 greater than or equal to type Int. **/
-    icmpne_i            ,/** compare int_32 not equal with type Int. **/
-    iucmpne_i           ,/** compare unsigned uint_32 not equal with type Int. **/
-    icast_l             ,/** cast int_32 to type Long. **/
-    iucast_l            ,/** cast unsigned uint_32 to type Long. **/
-    iadd_l              ,/** add int_32 with type Long. **/
-    iuadd_l             ,/** add unsigned uint_32 with type Long. **/
-    isub_l              ,/** subtract int_32 with type Long. **/
-    iusub_l             ,/** subtract unsigned uint_32 with type Long. **/
-    imul_l              ,/** multiply int_32 with type Long. **/
-    iumul_l             ,/** multiply unsigned uint_32 with type Long. **/
-    idiv_l              ,/** divide int_32 with type Long. **/
-    iudiv_l             ,/** divide unsigned uint_32 with type Long. **/
-    icmpl_l             ,/** compare int_32 less than type Long. **/
-    iucmpl_l            ,/** compare unsigned uint_32 less than type Long. **/
-    icmpg_l             ,/** compare int_32 greater than type Long. **/
-    iucmpg_l            ,/** compare unsigned uint_32 greater than type Long. **/
-    icmpe_l             ,/** compare int_32 equal with type Long. **/
-    iucmpe_l            ,/** compare unsigned uint_32 equal with type Long. **/
-    icmple_l            ,/** compare int_32 less than or equal to type Long. **/
-    iucmple_l           ,/** compare unsigned uint_32 less than or equal to type Long. **/
-    icmpge_l            ,/** compare int_32 greater than or equal to type Long. **/
-    iucmpge_l           ,/** compare unsigned uint_32 greater than or equal to type Long. **/
-    icmpne_l            ,/** compare int_32 not equal with type Long. **/
-    iucmpne_l           ,/** compare unsigned uint_32 not equal with type Long. **/
-    icast_li            ,/** cast int_32 to type LongInt. **/
-    iucast_li           ,/** cast unsigned uint_32 to type LongInt. **/
-    iadd_li             ,/** add int_32 with type LongInt. **/
-    iuadd_li            ,/** add unsigned uint_32 with type LongInt. **/
-    isub_li             ,/** subtract int_32 with type LongInt. **/
-    iusub_li            ,/** subtract unsigned uint_32 with type LongInt. **/
-    imul_li             ,/** multiply int_32 with type LongInt. **/
-    iumul_li            ,/** multiply unsigned uint_32 with type LongInt. **/
-    idiv_li             ,/** divide int_32 with type LongInt. **/
-    iudiv_li            ,/** divide unsigned uint_32 with type LongInt. **/
-    icmpl_li            ,/** compare int_32 less than type LongInt. **/
-    iucmpl_li           ,/** compare unsigned uint_32 less than type LongInt. **/
-    icmpg_li            ,/** compare int_32 greater than type LongInt. **/
-    iucmpg_li           ,/** compare unsigned uint_32 greater than type LongInt. **/
-    icmpe_li            ,/** compare int_32 equal with type LongInt. **/
-    iucmpe_li           ,/** compare unsigned uint_32 equal with type LongInt. **/
-    icmple_li           ,/** compare int_32 less than or equal to type LongInt. **/
-    iucmple_li          ,/** compare unsigned uint_32 less than or equal to type LongInt. **/
-    icmpge_li           ,/** compare int_32 greater than or equal to type LongInt. **/
-    iucmpge_li          ,/** compare unsigned uint_32 greater than or equal to type LongInt. **/
-    icmpne_li           ,/** compare int_32 not equal with type LongInt. **/
-    iucmpne_li          ,/** compare unsigned uint_32 not equal with type LongInt. **/
-    icast_ll            ,/** cast int_32 to type LongLong. **/
-    iucast_ll           ,/** cast unsigned uint_32 to type LongLong. **/
-    iadd_ll             ,/** add int_32 with type LongLong. **/
-    iuadd_ll            ,/** add unsigned uint_32 with type LongLong. **/
-    isub_ll             ,/** subtract int_32 with type LongLong. **/
-    iusub_ll            ,/** subtract unsigned uint_32 with type LongLong. **/
-    imul_ll             ,/** multiply int_32 with type LongLong. **/
-    iumul_ll            ,/** multiply unsigned uint_32 with type LongLong. **/
-    idiv_ll             ,/** divide int_32 with type LongLong. **/
-    iudiv_ll            ,/** divide unsigned uint_32 with type LongLong. **/
-    icmpl_ll            ,/** compare int_32 less than type LongLong. **/
-    iucmpl_ll           ,/** compare unsigned uint_32 less than type LongLong. **/
-    icmpg_ll            ,/** compare int_32 greater than type LongLong. **/
-    iucmpg_ll           ,/** compare unsigned uint_32 greater than type LongLong. **/
-    icmpe_ll            ,/** compare int_32 equal with type LongLong. **/
-    iucmpe_ll           ,/** compare unsigned uint_32 equal with type LongLong. **/
-    icmple_ll           ,/** compare int_32 less than or equal to type LongLong. **/
-    iucmple_ll          ,/** compare unsigned uint_32 less than or equal to type LongLong. **/
-    icmpge_ll           ,/** compare int_32 greater than or equal to type LongLong. **/
-    iucmpge_ll          ,/** compare unsigned uint_32 greater than or equal to type LongLong. **/
-    icmpne_ll           ,/** compare int_32 not equal with type LongLong. **/
-    iucmpne_ll          ,/** compare unsigned uint_32 not equal with type LongLong. **/
-    icast_f             ,/** cast int_32 to type Float. **/
-    iucast_f            ,/** cast unsigned uint_32 to type Float. **/
-    iadd_f              ,/** add int_32 with type Float. **/
-    iuadd_f             ,/** add unsigned uint_32 with type Float. **/
-    isub_f              ,/** subtract int_32 with type Float. **/
-    iusub_f             ,/** subtract unsigned uint_32 with type Float. **/
-    imul_f              ,/** multiply int_32 with type Float. **/
-    iumul_f             ,/** multiply unsigned uint_32 with type Float. **/
-    idiv_f              ,/** divide int_32 with type Float. **/
-    iudiv_f             ,/** divide unsigned uint_32 with type Float. **/
-    icmpl_f             ,/** compare int_32 less than type Float. **/
-    iucmpl_f            ,/** compare unsigned uint_32 less than type Float. **/
-    icmpg_f             ,/** compare int_32 greater than type Float. **/
-    iucmpg_f            ,/** compare unsigned uint_32 greater than type Float. **/
-    icmpe_f             ,/** compare int_32 equal with type Float. **/
-    iucmpe_f            ,/** compare unsigned uint_32 equal with type Float. **/
-    icmple_f            ,/** compare int_32 less than or equal to type Float. **/
-    iucmple_f           ,/** compare unsigned uint_32 less than or equal to type Float. **/
-    icmpge_f            ,/** compare int_32 greater than or equal to type Float. **/
-    iucmpge_f           ,/** compare unsigned uint_32 greater than or equal to type Float. **/
-    icmpne_f            ,/** compare int_32 not equal with type Float. **/
-    iucmpne_f           ,/** compare unsigned uint_32 not equal with type Float. **/
-    icast_d             ,/** cast int_32 to type Double. **/
-    iucast_d            ,/** cast unsigned uint_32 to type Double. **/
-    iadd_d              ,/** add int_32 with type Double. **/
-    iuadd_d             ,/** add unsigned uint_32 with type Double. **/
-    isub_d              ,/** subtract int_32 with type Double. **/
-    iusub_d             ,/** subtract unsigned uint_32 with type Double. **/
-    imul_d              ,/** multiply int_32 with type Double. **/
-    iumul_d             ,/** multiply unsigned uint_32 with type Double. **/
-    idiv_d              ,/** divide int_32 with type Double. **/
-    iudiv_d             ,/** divide unsigned uint_32 with type Double. **/
-    icmpl_d             ,/** compare int_32 less than type Double. **/
-    iucmpl_d            ,/** compare unsigned uint_32 less than type Double. **/
-    icmpg_d             ,/** compare int_32 greater than type Double. **/
-    iucmpg_d            ,/** compare unsigned uint_32 greater than type Double. **/
-    icmpe_d             ,/** compare int_32 equal with type Double. **/
-    iucmpe_d            ,/** compare unsigned uint_32 equal with type Double. **/
-    icmple_d            ,/** compare int_32 less than or equal to type Double. **/
-    iucmple_d           ,/** compare unsigned uint_32 less than or equal to type Double. **/
-    icmpge_d            ,/** compare int_32 greater than or equal to type Double. **/
-    iucmpge_d           ,/** compare unsigned uint_32 greater than or equal to type Double. **/
-    icmpne_d            ,/** compare int_32 not equal with type Double. **/
-    iucmpne_d           ,/** compare unsigned uint_32 not equal with type Double. **/
-    icast_df            ,/** cast int_32 to type DoubleFloat. **/
-    iucast_df           ,/** cast unsigned uint_32 to type DoubleFloat. **/
-    iadd_df             ,/** add int_32 with type DoubleFloat. **/
-    iuadd_df            ,/** add unsigned uint_32 with type DoubleFloat. **/
-    isub_df             ,/** subtract int_32 with type DoubleFloat. **/
-    iusub_df            ,/** subtract unsigned uint_32 with type DoubleFloat. **/
-    imul_df             ,/** multiply int_32 with type DoubleFloat. **/
-    iumul_df            ,/** multiply unsigned uint_32 with type DoubleFloat. **/
-    idiv_df             ,/** divide int_32 with type DoubleFloat. **/
-    iudiv_df            ,/** divide unsigned uint_32 with type DoubleFloat. **/
-    icmpl_df            ,/** compare int_32 less than type DoubleFloat. **/
-    iucmpl_df           ,/** compare unsigned uint_32 less than type DoubleFloat. **/
-    icmpg_df            ,/** compare int_32 greater than type DoubleFloat. **/
-    iucmpg_df           ,/** compare unsigned uint_32 greater than type DoubleFloat. **/
-    icmpe_df            ,/** compare int_32 equal with type DoubleFloat. **/
-    iucmpe_df           ,/** compare unsigned uint_32 equal with type DoubleFloat. **/
-    icmple_df           ,/** compare int_32 less than or equal to type DoubleFloat. **/
-    iucmple_df          ,/** compare unsigned uint_32 less than or equal to type DoubleFloat. **/
-    icmpge_df           ,/** compare int_32 greater than or equal to type DoubleFloat. **/
-    iucmpge_df          ,/** compare unsigned uint_32 greater than or equal to type DoubleFloat. **/
-    icmpne_df           ,/** compare int_32 not equal with type DoubleFloat. **/
-    iucmpne_df          ,/** compare unsigned uint_32 not equal with type DoubleFloat. **/
-    icast_dd            ,/** cast int_32 to type DoubleDouble. **/
-    iucast_dd           ,/** cast unsigned uint_32 to type DoubleDouble. **/
-    iadd_dd             ,/** add int_32 with type DoubleDouble. **/
-    iuadd_dd            ,/** add unsigned uint_32 with type DoubleDouble. **/
-    isub_dd             ,/** subtract int_32 with type DoubleDouble. **/
-    iusub_dd            ,/** subtract unsigned uint_32 with type DoubleDouble. **/
-    imul_dd             ,/** multiply int_32 with type DoubleDouble. **/
-    iumul_dd            ,/** multiply unsigned uint_32 with type DoubleDouble. **/
-    idiv_dd             ,/** divide int_32 with type DoubleDouble. **/
-    iudiv_dd            ,/** divide unsigned uint_32 with type DoubleDouble. **/
-    icmpl_dd            ,/** compare int_32 less than type DoubleDouble. **/
-    iucmpl_dd           ,/** compare unsigned uint_32 less than type DoubleDouble. **/
-    icmpg_dd            ,/** compare int_32 greater than type DoubleDouble. **/
-    iucmpg_dd           ,/** compare unsigned uint_32 greater than type DoubleDouble. **/
-    icmpe_dd            ,/** compare int_32 equal with type DoubleDouble. **/
-    iucmpe_dd           ,/** compare unsigned uint_32 equal with type DoubleDouble. **/
-    icmple_dd           ,/** compare int_32 less than or equal to type DoubleDouble. **/
-    iucmple_dd          ,/** compare unsigned uint_32 less than or equal to type DoubleDouble. **/
-    icmpge_dd           ,/** compare int_32 greater than or equal to type DoubleDouble. **/
-    iucmpge_dd          ,/** compare unsigned uint_32 greater than or equal to type DoubleDouble. **/
-    icmpne_dd           ,/** compare int_32 not equal with type DoubleDouble. **/
-    iucmpne_dd          ,/** compare unsigned uint_32 not equal with type DoubleDouble. **/
-    imod_b              ,/** modulo int_32 with type Byte. **/
-    icast_ub            ,/** cast int_32 to unsigned type Byte. **/
-    iucast_ub           ,/** cast unsigned uint_32 to unsigned type Byte. **/
-    iadd_ub             ,/** add int_32 with unsigned type Byte. **/
-    iuadd_ub            ,/** add unsigned uint_32 with unsigned type Byte. **/
-    isub_ub             ,/** subtract int_32 with unsigned type Byte. **/
-    iusub_ub            ,/** subtract unsigned uint_32 with unsigned type Byte. **/
-    imul_ub             ,/** multiply int_32 with unsigned type Byte. **/
-    iumul_ub            ,/** multiply unsigned uint_32 with unsigned type Byte. **/
-    idiv_ub             ,/** divide int_32 with unsigned type Byte. **/
-    iudiv_ub            ,/** divide unsigned uint_32 with unsigned type Byte. **/
-    icmpl_ub            ,/** compare int_32 less than unsigned type Byte. **/
-    iucmpl_ub           ,/** compare unsigned uint_32 less than unsigned type Byte. **/
-    icmpg_ub            ,/** compare int_32 greater than unsigned type Byte. **/
-    iucmpg_ub           ,/** compare unsigned uint_32 greater than unsigned type Byte. **/
-    icmpe_ub            ,/** compare int_32 equal with unsigned type Byte. **/
-    iucmpe_ub           ,/** compare unsigned uint_32 equal with unsigned type Byte. **/
-    icmple_ub           ,/** compare int_32 less than or equal to unsigned type Byte. **/
-    iucmple_ub          ,/** compare unsigned uint_32 less than or equal to unsigned type Byte. **/
-    icmpge_ub           ,/** compare int_32 greater than or equal to unsigned type Byte. **/
-    iucmpge_ub          ,/** compare unsigned uint_32 greater than or equal to unsigned type Byte. **/
-    icmpne_ub           ,/** compare int_32 not equal with unsigned type Byte. **/
-    iucmpne_ub          ,/** compare unsigned uint_32 not equal with unsigned type Byte. **/
-    imod_s              ,/** modulo int_32 with type Short. **/
-    icast_us            ,/** cast int_32 to unsigned type Short. **/
-    iucast_us           ,/** cast unsigned uint_32 to unsigned type Short. **/
-    iadd_us             ,/** add int_32 with unsigned type Short. **/
-    iuadd_us            ,/** add unsigned uint_32 with unsigned type Short. **/
-    isub_us             ,/** subtract int_32 with unsigned type Short. **/
-    iusub_us            ,/** subtract unsigned uint_32 with unsigned type Short. **/
-    imul_us             ,/** multiply int_32 with unsigned type Short. **/
-    iumul_us            ,/** multiply unsigned uint_32 with unsigned type Short. **/
-    idiv_us             ,/** divide int_32 with unsigned type Short. **/
-    iudiv_us            ,/** divide unsigned uint_32 with unsigned type Short. **/
-    icmpl_us            ,/** compare int_32 less than unsigned type Short. **/
-    iucmpl_us           ,/** compare unsigned uint_32 less than unsigned type Short. **/
-    icmpg_us            ,/** compare int_32 greater than unsigned type Short. **/
-    iucmpg_us           ,/** compare unsigned uint_32 greater than unsigned type Short. **/
-    icmpe_us            ,/** compare int_32 equal with unsigned type Short. **/
-    iucmpe_us           ,/** compare unsigned uint_32 equal with unsigned type Short. **/
-    icmple_us           ,/** compare int_32 less than or equal to unsigned type Short. **/
-    iucmple_us          ,/** compare unsigned uint_32 less than or equal to unsigned type Short. **/
-    icmpge_us           ,/** compare int_32 greater than or equal to unsigned type Short. **/
-    iucmpge_us          ,/** compare unsigned uint_32 greater than or equal to unsigned type Short. **/
-    icmpne_us           ,/** compare int_32 not equal with unsigned type Short. **/
-    iucmpne_us          ,/** compare unsigned uint_32 not equal with unsigned type Short. **/
-    imod_i              ,/** modulo int_32 with type Int. **/
-    icast_ui            ,/** cast int_32 to unsigned type Int. **/
-    iucast_ui           ,/** cast unsigned uint_32 to unsigned type Int. **/
-    iadd_ui             ,/** add int_32 with unsigned type Int. **/
-    iuadd_ui            ,/** add unsigned uint_32 with unsigned type Int. **/
-    isub_ui             ,/** subtract int_32 with unsigned type Int. **/
-    iusub_ui            ,/** subtract unsigned uint_32 with unsigned type Int. **/
-    imul_ui             ,/** multiply int_32 with unsigned type Int. **/
-    iumul_ui            ,/** multiply unsigned uint_32 with unsigned type Int. **/
-    idiv_ui             ,/** divide int_32 with unsigned type Int. **/
-    iudiv_ui            ,/** divide unsigned uint_32 with unsigned type Int. **/
-    icmpl_ui            ,/** compare int_32 less than unsigned type Int. **/
-    iucmpl_ui           ,/** compare unsigned uint_32 less than unsigned type Int. **/
-    icmpg_ui            ,/** compare int_32 greater than unsigned type Int. **/
-    iucmpg_ui           ,/** compare unsigned uint_32 greater than unsigned type Int. **/
-    icmpe_ui            ,/** compare int_32 equal with unsigned type Int. **/
-    iucmpe_ui           ,/** compare unsigned uint_32 equal with unsigned type Int. **/
-    icmple_ui           ,/** compare int_32 less than or equal to unsigned type Int. **/
-    iucmple_ui          ,/** compare unsigned uint_32 less than or equal to unsigned type Int. **/
-    icmpge_ui           ,/** compare int_32 greater than or equal to unsigned type Int. **/
-    iucmpge_ui          ,/** compare unsigned uint_32 greater than or equal to unsigned type Int. **/
-    icmpne_ui           ,/** compare int_32 not equal with unsigned type Int. **/
-    iucmpne_ui          ,/** compare unsigned uint_32 not equal with unsigned type Int. **/
-    imod_l              ,/** modulo int_32 with type Long. **/
-    icast_ul            ,/** cast int_32 to unsigned type Long. **/
-    iucast_ul           ,/** cast unsigned uint_32 to unsigned type Long. **/
-    iadd_ul             ,/** add int_32 with unsigned type Long. **/
-    iuadd_ul            ,/** add unsigned uint_32 with unsigned type Long. **/
-    isub_ul             ,/** subtract int_32 with unsigned type Long. **/
-    iusub_ul            ,/** subtract unsigned uint_32 with unsigned type Long. **/
-    imul_ul             ,/** multiply int_32 with unsigned type Long. **/
-    iumul_ul            ,/** multiply unsigned uint_32 with unsigned type Long. **/
-    idiv_ul             ,/** divide int_32 with unsigned type Long. **/
-    iudiv_ul            ,/** divide unsigned uint_32 with unsigned type Long. **/
-    icmpl_ul            ,/** compare int_32 less than unsigned type Long. **/
-    iucmpl_ul           ,/** compare unsigned uint_32 less than unsigned type Long. **/
-    icmpg_ul            ,/** compare int_32 greater than unsigned type Long. **/
-    iucmpg_ul           ,/** compare unsigned uint_32 greater than unsigned type Long. **/
-    icmpe_ul            ,/** compare int_32 equal with unsigned type Long. **/
-    iucmpe_ul           ,/** compare unsigned uint_32 equal with unsigned type Long. **/
-    icmple_ul           ,/** compare int_32 less than or equal to unsigned type Long. **/
-    iucmple_ul          ,/** compare unsigned uint_32 less than or equal to unsigned type Long. **/
-    icmpge_ul           ,/** compare int_32 greater than or equal to unsigned type Long. **/
-    iucmpge_ul          ,/** compare unsigned uint_32 greater than or equal to unsigned type Long. **/
-    icmpne_ul           ,/** compare int_32 not equal with unsigned type Long. **/
-    iucmpne_ul          ,/** compare unsigned uint_32 not equal with unsigned type Long. **/
-    imod_li             ,/** modulo int_32 with type LongInt. **/
-    icast_uli           ,/** cast int_32 to unsigned type LongInt. **/
-    iucast_uli          ,/** cast unsigned uint_32 to unsigned type LongInt. **/
-    iadd_uli            ,/** add int_32 with unsigned type LongInt. **/
-    iuadd_uli           ,/** add unsigned uint_32 with unsigned type LongInt. **/
-    isub_uli            ,/** subtract int_32 with unsigned type LongInt. **/
-    iusub_uli           ,/** subtract unsigned uint_32 with unsigned type LongInt. **/
-    imul_uli            ,/** multiply int_32 with unsigned type LongInt. **/
-    iumul_uli           ,/** multiply unsigned uint_32 with unsigned type LongInt. **/
-    idiv_uli            ,/** divide int_32 with unsigned type LongInt. **/
-    iudiv_uli           ,/** divide unsigned uint_32 with unsigned type LongInt. **/
-    icmpl_uli           ,/** compare int_32 less than unsigned type LongInt. **/
-    iucmpl_uli          ,/** compare unsigned uint_32 less than unsigned type LongInt. **/
-    icmpg_uli           ,/** compare int_32 greater than unsigned type LongInt. **/
-    iucmpg_uli          ,/** compare unsigned uint_32 greater than unsigned type LongInt. **/
-    icmpe_uli           ,/** compare int_32 equal with unsigned type LongInt. **/
-    iucmpe_uli          ,/** compare unsigned uint_32 equal with unsigned type LongInt. **/
-    icmple_uli          ,/** compare int_32 less than or equal to unsigned type LongInt. **/
-    iucmple_uli         ,/** compare unsigned uint_32 less than or equal to unsigned type LongInt. **/
-    icmpge_uli          ,/** compare int_32 greater than or equal to unsigned type LongInt. **/
-    iucmpge_uli         ,/** compare unsigned uint_32 greater than or equal to unsigned type LongInt. **/
-    icmpne_uli          ,/** compare int_32 not equal with unsigned type LongInt. **/
-    iucmpne_uli         ,/** compare unsigned uint_32 not equal with unsigned type LongInt. **/
-    imod_ll             ,/** modulo int_32 with type LongLong. **/
-    icast_ull           ,/** cast int_32 to unsigned type LongLong. **/
-    iucast_ull          ,/** cast unsigned uint_32 to unsigned type LongLong. **/
-    iadd_ull            ,/** add int_32 with unsigned type LongLong. **/
-    iuadd_ull           ,/** add unsigned uint_32 with unsigned type LongLong. **/
-    isub_ull            ,/** subtract int_32 with unsigned type LongLong. **/
-    iusub_ull           ,/** subtract unsigned uint_32 with unsigned type LongLong. **/
-    imul_ull            ,/** multiply int_32 with unsigned type LongLong. **/
-    iumul_ull           ,/** multiply unsigned uint_32 with unsigned type LongLong. **/
-    idiv_ull            ,/** divide int_32 with unsigned type LongLong. **/
-    iudiv_ull           ,/** divide unsigned uint_32 with unsigned type LongLong. **/
-    icmpl_ull           ,/** compare int_32 less than unsigned type LongLong. **/
-    iucmpl_ull          ,/** compare unsigned uint_32 less than unsigned type LongLong. **/
-    icmpg_ull           ,/** compare int_32 greater than unsigned type LongLong. **/
-    iucmpg_ull          ,/** compare unsigned uint_32 greater than unsigned type LongLong. **/
-    icmpe_ull           ,/** compare int_32 equal with unsigned type LongLong. **/
-    iucmpe_ull          ,/** compare unsigned uint_32 equal with unsigned type LongLong. **/
-    icmple_ull          ,/** compare int_32 less than or equal to unsigned type LongLong. **/
-    iucmple_ull         ,/** compare unsigned uint_32 less than or equal to unsigned type LongLong. **/
-    icmpge_ull          ,/** compare int_32 greater than or equal to unsigned type LongLong. **/
-    iucmpge_ull         ,/** compare unsigned uint_32 greater than or equal to unsigned type LongLong. **/
-    icmpne_ull          ,/** compare int_32 not equal with unsigned type LongLong. **/
-    iucmpne_ull         ,/** compare unsigned uint_32 not equal with unsigned type LongLong. **/
-    iand_b              ,/** bitwise and int_32 with type Byte. **/
-    ior_b               ,/** bitwise or int_32 with type Byte. **/
-    ixor_b              ,/** bitwise xor int_32 with type Byte. **/
-    ishftr_b            ,/** shift right int_32 with type Byte. **/
-    ishftl_b            ,/** shift left xor int_32 with type Byte. **/
-    iand_s              ,/** bitwise and int_32 with type Short. **/
-    ior_s               ,/** bitwise or int_32 with type Short. **/
-    ixor_s              ,/** bitwise xor int_32 with type Short. **/
-    ishftr_s            ,/** shift right int_32 with type Short. **/
-    ishftl_s            ,/** shift left xor int_32 with type Short. **/
-    iand_i              ,/** bitwise and int_32 with type Int. **/
-    ior_i               ,/** bitwise or int_32 with type Int. **/
-    ixor_i              ,/** bitwise xor int_32 with type Int. **/
-    ishftr_i            ,/** shift right int_32 with type Int. **/
-    ishftl_i            ,/** shift left xor int_32 with type Int. **/
-    iand_l              ,/** bitwise and int_32 with type Long. **/
-    ior_l               ,/** bitwise or int_32 with type Long. **/
-    ixor_l              ,/** bitwise xor int_32 with type Long. **/
-    ishftr_l            ,/** shift right int_32 with type Long. **/
-    ishftl_l            ,/** shift left xor int_32 with type Long. **/
-    iand_li             ,/** bitwise and int_32 with type LongInt. **/
-    ior_li              ,/** bitwise or int_32 with type LongInt. **/
-    ixor_li             ,/** bitwise xor int_32 with type LongInt. **/
-    ishftr_li           ,/** shift right int_32 with type LongInt. **/
-    ishftl_li           ,/** shift left xor int_32 with type LongInt. **/
-    iand_ll             ,/** bitwise and int_32 with type LongLong. **/
-    ior_ll              ,/** bitwise or int_32 with type LongLong. **/
-    ixor_ll             ,/** bitwise xor int_32 with type LongLong. **/
-    ishftr_ll           ,/** shift right int_32 with type LongLong. **/
-    ishftl_ll           ,/** shift left xor int_32 with type LongLong. **/
-    idup                ,/** duplicate a int_32 on the stack. **/
-    idup2               ,/** duplicate a int_32 2 times on the stack. **/
-    idup3               ,/** duplicate a int_32 3 times on the stack. **/
-    idup4               ,/** duplicate a int_32 4 times on the stack. **/
-    idup5               ,/** duplicate a int_32 5 times on the stack. **/
-    iset                ,/** set a int_32 from stack into a field on base pointer. **/
-    iget                ,/** get a int_32 from a field on base pointer to stack. **/
-    ivset               ,/** set a int_32 from value into a field on base pointer. **/
-    isget               ,/** get a int_32 from a field on base pointer to stack using address from stack. **/
-    isset               ,/** set a int_32 from stack into a field on base pointer using address from stack. **/
-    isetl               ,/** set a int_32 from local variable into a field on base pointer. **/
-    iinc_1              ,/** increment int_32 by 1 on stack. **/
-    iinc_2              ,/** increment int_32 by 2 on stack. **/
-    istinc_1            ,/** increment int_32 by 1 on stack. **/
-    istinc_2            ,/** increment int_32 by 2 on stack. **/
-    ireturn             ,/** return a int_32 into the main stack. **/
-    imainst             ,/** store a int_32 from main stack in a local variable.. **/
-    imainst_0           ,/** store a int_32 from main stack in local variable 0. **/
-    imainst_1           ,/** store a int_32 from main stack in local variable 1. **/
-    imainst_2           ,/** store a int_32 from main stack in local variable 2. **/
-    imainst_3           ,/** store a int_32 from main stack in local variable 3. **/
-    iprint              ,/** print a int_32 from stack. **/
-    iuprint             ,/** print a unsigned uint_32 from stack. **/
-    lprintba            ,/** print a byte array. **/
-    lconst              ,/** push a const int_64 into the stack. **/
-    lconst_0            ,/** push a const int_64 into the stack (value = 0). **/
-    lconst_1            ,/** push a const int_64 into the stack (value = 1). **/
-    lconst_2            ,/** push a const int_64 into the stack (value = 2). **/
-    lconst_3            ,/** push a const int_64 into the stack (value = 3). **/
-    lconst_4            ,/** push a const int_64 into the stack (value = 4). **/
-    lconst_5            ,/** push a const int_64 into the stack (value = 5). **/
-    lconst_6            ,/** push a const int_64 into the stack (value = 6). **/
-    lconst_9            ,/** push a const int_64 into the stack (value = 9). **/
-    lconst_10           ,/** push a const int_64 into the stack (value = 10). **/
-    lconst_11           ,/** push a const int_64 into the stack (value = 11). **/
-    lconst_12           ,/** push a const int_64 into the stack (value = 12). **/
-    lload               ,/** load a int_64 into the stack from local variable. **/
-    lload_0             ,/** load a int_64 into the stack from local variable 0. **/
-    lload_1             ,/** load a int_64 into the stack from local variable 1. **/
-    lload_2             ,/** load a int_64 into the stack from local variable 2. **/
-    lload_3             ,/** load a int_64 into the stack from local variable 3. **/
-    lload_4             ,/** load a int_64 into the stack from local variable 4. **/
-    lstore              ,/** store a int_64 from stack into local variable. **/
-    lstore_0            ,/** store a int_64 from stack into local variable 0. **/
-    lstore_1            ,/** store a int_64 from stack into local variable 1. **/
-    lstore_2            ,/** store a int_64 from stack into local variable 2. **/
-    lstore_3            ,/** store a int_64 from stack into local variable 3. **/
-    lstore_4            ,/** store a int_64 from stack into local variable 4. **/
-    lcast_b             ,/** cast int_64 to type Byte. **/
-    lucast_b            ,/** cast unsigned uint_64 to type Byte. **/
-    ladd_b              ,/** add int_64 with type Byte. **/
-    luadd_b             ,/** add unsigned uint_64 with type Byte. **/
-    lsub_b              ,/** subtract int_64 with type Byte. **/
-    lusub_b             ,/** subtract unsigned uint_64 with type Byte. **/
-    lmul_b              ,/** multiply int_64 with type Byte. **/
-    lumul_b             ,/** multiply unsigned uint_64 with type Byte. **/
-    ldiv_b              ,/** divide int_64 with type Byte. **/
-    ludiv_b             ,/** divide unsigned uint_64 with type Byte. **/
-    lcmpl_b             ,/** compare int_64 less than type Byte. **/
-    lucmpl_b            ,/** compare unsigned uint_64 less than type Byte. **/
-    lcmpg_b             ,/** compare int_64 greater than type Byte. **/
-    lucmpg_b            ,/** compare unsigned uint_64 greater than type Byte. **/
-    lcmpe_b             ,/** compare int_64 equal with type Byte. **/
-    lucmpe_b            ,/** compare unsigned uint_64 equal with type Byte. **/
-    lcmple_b            ,/** compare int_64 less than or equal to type Byte. **/
-    lucmple_b           ,/** compare unsigned uint_64 less than or equal to type Byte. **/
-    lcmpge_b            ,/** compare int_64 greater than or equal to type Byte. **/
-    lucmpge_b           ,/** compare unsigned uint_64 greater than or equal to type Byte. **/
-    lcmpne_b            ,/** compare int_64 not equal with type Byte. **/
-    lucmpne_b           ,/** compare unsigned uint_64 not equal with type Byte. **/
-    lcast_s             ,/** cast int_64 to type Short. **/
-    lucast_s            ,/** cast unsigned uint_64 to type Short. **/
-    ladd_s              ,/** add int_64 with type Short. **/
-    luadd_s             ,/** add unsigned uint_64 with type Short. **/
-    lsub_s              ,/** subtract int_64 with type Short. **/
-    lusub_s             ,/** subtract unsigned uint_64 with type Short. **/
-    lmul_s              ,/** multiply int_64 with type Short. **/
-    lumul_s             ,/** multiply unsigned uint_64 with type Short. **/
-    ldiv_s              ,/** divide int_64 with type Short. **/
-    ludiv_s             ,/** divide unsigned uint_64 with type Short. **/
-    lcmpl_s             ,/** compare int_64 less than type Short. **/
-    lucmpl_s            ,/** compare unsigned uint_64 less than type Short. **/
-    lcmpg_s             ,/** compare int_64 greater than type Short. **/
-    lucmpg_s            ,/** compare unsigned uint_64 greater than type Short. **/
-    lcmpe_s             ,/** compare int_64 equal with type Short. **/
-    lucmpe_s            ,/** compare unsigned uint_64 equal with type Short. **/
-    lcmple_s            ,/** compare int_64 less than or equal to type Short. **/
-    lucmple_s           ,/** compare unsigned uint_64 less than or equal to type Short. **/
-    lcmpge_s            ,/** compare int_64 greater than or equal to type Short. **/
-    lucmpge_s           ,/** compare unsigned uint_64 greater than or equal to type Short. **/
-    lcmpne_s            ,/** compare int_64 not equal with type Short. **/
-    lucmpne_s           ,/** compare unsigned uint_64 not equal with type Short. **/
-    lcast_i             ,/** cast int_64 to type Int. **/
-    lucast_i            ,/** cast unsigned uint_64 to type Int. **/
-    ladd_i              ,/** add int_64 with type Int. **/
-    luadd_i             ,/** add unsigned uint_64 with type Int. **/
-    lsub_i              ,/** subtract int_64 with type Int. **/
-    lusub_i             ,/** subtract unsigned uint_64 with type Int. **/
-    lmul_i              ,/** multiply int_64 with type Int. **/
-    lumul_i             ,/** multiply unsigned uint_64 with type Int. **/
-    ldiv_i              ,/** divide int_64 with type Int. **/
-    ludiv_i             ,/** divide unsigned uint_64 with type Int. **/
-    lcmpl_i             ,/** compare int_64 less than type Int. **/
-    lucmpl_i            ,/** compare unsigned uint_64 less than type Int. **/
-    lcmpg_i             ,/** compare int_64 greater than type Int. **/
-    lucmpg_i            ,/** compare unsigned uint_64 greater than type Int. **/
-    lcmpe_i             ,/** compare int_64 equal with type Int. **/
-    lucmpe_i            ,/** compare unsigned uint_64 equal with type Int. **/
-    lcmple_i            ,/** compare int_64 less than or equal to type Int. **/
-    lucmple_i           ,/** compare unsigned uint_64 less than or equal to type Int. **/
-    lcmpge_i            ,/** compare int_64 greater than or equal to type Int. **/
-    lucmpge_i           ,/** compare unsigned uint_64 greater than or equal to type Int. **/
-    lcmpne_i            ,/** compare int_64 not equal with type Int. **/
-    lucmpne_i           ,/** compare unsigned uint_64 not equal with type Int. **/
-    lcast_l             ,/** cast int_64 to type Long. **/
-    lucast_l            ,/** cast unsigned uint_64 to type Long. **/
-    ladd_l              ,/** add int_64 with type Long. **/
-    luadd_l             ,/** add unsigned uint_64 with type Long. **/
-    lsub_l              ,/** subtract int_64 with type Long. **/
-    lusub_l             ,/** subtract unsigned uint_64 with type Long. **/
-    lmul_l              ,/** multiply int_64 with type Long. **/
-    lumul_l             ,/** multiply unsigned uint_64 with type Long. **/
-    ldiv_l              ,/** divide int_64 with type Long. **/
-    ludiv_l             ,/** divide unsigned uint_64 with type Long. **/
-    lcmpl_l             ,/** compare int_64 less than type Long. **/
-    lucmpl_l            ,/** compare unsigned uint_64 less than type Long. **/
-    lcmpg_l             ,/** compare int_64 greater than type Long. **/
-    lucmpg_l            ,/** compare unsigned uint_64 greater than type Long. **/
-    lcmpe_l             ,/** compare int_64 equal with type Long. **/
-    lucmpe_l            ,/** compare unsigned uint_64 equal with type Long. **/
-    lcmple_l            ,/** compare int_64 less than or equal to type Long. **/
-    lucmple_l           ,/** compare unsigned uint_64 less than or equal to type Long. **/
-    lcmpge_l            ,/** compare int_64 greater than or equal to type Long. **/
-    lucmpge_l           ,/** compare unsigned uint_64 greater than or equal to type Long. **/
-    lcmpne_l            ,/** compare int_64 not equal with type Long. **/
-    lucmpne_l           ,/** compare unsigned uint_64 not equal with type Long. **/
-    lcast_li            ,/** cast int_64 to type LongInt. **/
-    lucast_li           ,/** cast unsigned uint_64 to type LongInt. **/
-    ladd_li             ,/** add int_64 with type LongInt. **/
-    luadd_li            ,/** add unsigned uint_64 with type LongInt. **/
-    lsub_li             ,/** subtract int_64 with type LongInt. **/
-    lusub_li            ,/** subtract unsigned uint_64 with type LongInt. **/
-    lmul_li             ,/** multiply int_64 with type LongInt. **/
-    lumul_li            ,/** multiply unsigned uint_64 with type LongInt. **/
-    ldiv_li             ,/** divide int_64 with type LongInt. **/
-    ludiv_li            ,/** divide unsigned uint_64 with type LongInt. **/
-    lcmpl_li            ,/** compare int_64 less than type LongInt. **/
-    lucmpl_li           ,/** compare unsigned uint_64 less than type LongInt. **/
-    lcmpg_li            ,/** compare int_64 greater than type LongInt. **/
-    lucmpg_li           ,/** compare unsigned uint_64 greater than type LongInt. **/
-    lcmpe_li            ,/** compare int_64 equal with type LongInt. **/
-    lucmpe_li           ,/** compare unsigned uint_64 equal with type LongInt. **/
-    lcmple_li           ,/** compare int_64 less than or equal to type LongInt. **/
-    lucmple_li          ,/** compare unsigned uint_64 less than or equal to type LongInt. **/
-    lcmpge_li           ,/** compare int_64 greater than or equal to type LongInt. **/
-    lucmpge_li          ,/** compare unsigned uint_64 greater than or equal to type LongInt. **/
-    lcmpne_li           ,/** compare int_64 not equal with type LongInt. **/
-    lucmpne_li          ,/** compare unsigned uint_64 not equal with type LongInt. **/
-    lcast_ll            ,/** cast int_64 to type LongLong. **/
-    lucast_ll           ,/** cast unsigned uint_64 to type LongLong. **/
-    ladd_ll             ,/** add int_64 with type LongLong. **/
-    luadd_ll            ,/** add unsigned uint_64 with type LongLong. **/
-    lsub_ll             ,/** subtract int_64 with type LongLong. **/
-    lusub_ll            ,/** subtract unsigned uint_64 with type LongLong. **/
-    lmul_ll             ,/** multiply int_64 with type LongLong. **/
-    lumul_ll            ,/** multiply unsigned uint_64 with type LongLong. **/
-    ldiv_ll             ,/** divide int_64 with type LongLong. **/
-    ludiv_ll            ,/** divide unsigned uint_64 with type LongLong. **/
-    lcmpl_ll            ,/** compare int_64 less than type LongLong. **/
-    lucmpl_ll           ,/** compare unsigned uint_64 less than type LongLong. **/
-    lcmpg_ll            ,/** compare int_64 greater than type LongLong. **/
-    lucmpg_ll           ,/** compare unsigned uint_64 greater than type LongLong. **/
-    lcmpe_ll            ,/** compare int_64 equal with type LongLong. **/
-    lucmpe_ll           ,/** compare unsigned uint_64 equal with type LongLong. **/
-    lcmple_ll           ,/** compare int_64 less than or equal to type LongLong. **/
-    lucmple_ll          ,/** compare unsigned uint_64 less than or equal to type LongLong. **/
-    lcmpge_ll           ,/** compare int_64 greater than or equal to type LongLong. **/
-    lucmpge_ll          ,/** compare unsigned uint_64 greater than or equal to type LongLong. **/
-    lcmpne_ll           ,/** compare int_64 not equal with type LongLong. **/
-    lucmpne_ll          ,/** compare unsigned uint_64 not equal with type LongLong. **/
-    lcast_f             ,/** cast int_64 to type Float. **/
-    lucast_f            ,/** cast unsigned uint_64 to type Float. **/
-    ladd_f              ,/** add int_64 with type Float. **/
-    luadd_f             ,/** add unsigned uint_64 with type Float. **/
-    lsub_f              ,/** subtract int_64 with type Float. **/
-    lusub_f             ,/** subtract unsigned uint_64 with type Float. **/
-    lmul_f              ,/** multiply int_64 with type Float. **/
-    lumul_f             ,/** multiply unsigned uint_64 with type Float. **/
-    ldiv_f              ,/** divide int_64 with type Float. **/
-    ludiv_f             ,/** divide unsigned uint_64 with type Float. **/
-    lcmpl_f             ,/** compare int_64 less than type Float. **/
-    lucmpl_f            ,/** compare unsigned uint_64 less than type Float. **/
-    lcmpg_f             ,/** compare int_64 greater than type Float. **/
-    lucmpg_f            ,/** compare unsigned uint_64 greater than type Float. **/
-    lcmpe_f             ,/** compare int_64 equal with type Float. **/
-    lucmpe_f            ,/** compare unsigned uint_64 equal with type Float. **/
-    lcmple_f            ,/** compare int_64 less than or equal to type Float. **/
-    lucmple_f           ,/** compare unsigned uint_64 less than or equal to type Float. **/
-    lcmpge_f            ,/** compare int_64 greater than or equal to type Float. **/
-    lucmpge_f           ,/** compare unsigned uint_64 greater than or equal to type Float. **/
-    lcmpne_f            ,/** compare int_64 not equal with type Float. **/
-    lucmpne_f           ,/** compare unsigned uint_64 not equal with type Float. **/
-    lcast_d             ,/** cast int_64 to type Double. **/
-    lucast_d            ,/** cast unsigned uint_64 to type Double. **/
-    ladd_d              ,/** add int_64 with type Double. **/
-    luadd_d             ,/** add unsigned uint_64 with type Double. **/
-    lsub_d              ,/** subtract int_64 with type Double. **/
-    lusub_d             ,/** subtract unsigned uint_64 with type Double. **/
-    lmul_d              ,/** multiply int_64 with type Double. **/
-    lumul_d             ,/** multiply unsigned uint_64 with type Double. **/
-    ldiv_d              ,/** divide int_64 with type Double. **/
-    ludiv_d             ,/** divide unsigned uint_64 with type Double. **/
-    lcmpl_d             ,/** compare int_64 less than type Double. **/
-    lucmpl_d            ,/** compare unsigned uint_64 less than type Double. **/
-    lcmpg_d             ,/** compare int_64 greater than type Double. **/
-    lucmpg_d            ,/** compare unsigned uint_64 greater than type Double. **/
-    lcmpe_d             ,/** compare int_64 equal with type Double. **/
-    lucmpe_d            ,/** compare unsigned uint_64 equal with type Double. **/
-    lcmple_d            ,/** compare int_64 less than or equal to type Double. **/
-    lucmple_d           ,/** compare unsigned uint_64 less than or equal to type Double. **/
-    lcmpge_d            ,/** compare int_64 greater than or equal to type Double. **/
-    lucmpge_d           ,/** compare unsigned uint_64 greater than or equal to type Double. **/
-    lcmpne_d            ,/** compare int_64 not equal with type Double. **/
-    lucmpne_d           ,/** compare unsigned uint_64 not equal with type Double. **/
-    lcast_df            ,/** cast int_64 to type DoubleFloat. **/
-    lucast_df           ,/** cast unsigned uint_64 to type DoubleFloat. **/
-    ladd_df             ,/** add int_64 with type DoubleFloat. **/
-    luadd_df            ,/** add unsigned uint_64 with type DoubleFloat. **/
-    lsub_df             ,/** subtract int_64 with type DoubleFloat. **/
-    lusub_df            ,/** subtract unsigned uint_64 with type DoubleFloat. **/
-    lmul_df             ,/** multiply int_64 with type DoubleFloat. **/
-    lumul_df            ,/** multiply unsigned uint_64 with type DoubleFloat. **/
-    ldiv_df             ,/** divide int_64 with type DoubleFloat. **/
-    ludiv_df            ,/** divide unsigned uint_64 with type DoubleFloat. **/
-    lcmpl_df            ,/** compare int_64 less than type DoubleFloat. **/
-    lucmpl_df           ,/** compare unsigned uint_64 less than type DoubleFloat. **/
-    lcmpg_df            ,/** compare int_64 greater than type DoubleFloat. **/
-    lucmpg_df           ,/** compare unsigned uint_64 greater than type DoubleFloat. **/
-    lcmpe_df            ,/** compare int_64 equal with type DoubleFloat. **/
-    lucmpe_df           ,/** compare unsigned uint_64 equal with type DoubleFloat. **/
-    lcmple_df           ,/** compare int_64 less than or equal to type DoubleFloat. **/
-    lucmple_df          ,/** compare unsigned uint_64 less than or equal to type DoubleFloat. **/
-    lcmpge_df           ,/** compare int_64 greater than or equal to type DoubleFloat. **/
-    lucmpge_df          ,/** compare unsigned uint_64 greater than or equal to type DoubleFloat. **/
-    lcmpne_df           ,/** compare int_64 not equal with type DoubleFloat. **/
-    lucmpne_df          ,/** compare unsigned uint_64 not equal with type DoubleFloat. **/
-    lcast_dd            ,/** cast int_64 to type DoubleDouble. **/
-    lucast_dd           ,/** cast unsigned uint_64 to type DoubleDouble. **/
-    ladd_dd             ,/** add int_64 with type DoubleDouble. **/
-    luadd_dd            ,/** add unsigned uint_64 with type DoubleDouble. **/
-    lsub_dd             ,/** subtract int_64 with type DoubleDouble. **/
-    lusub_dd            ,/** subtract unsigned uint_64 with type DoubleDouble. **/
-    lmul_dd             ,/** multiply int_64 with type DoubleDouble. **/
-    lumul_dd            ,/** multiply unsigned uint_64 with type DoubleDouble. **/
-    ldiv_dd             ,/** divide int_64 with type DoubleDouble. **/
-    ludiv_dd            ,/** divide unsigned uint_64 with type DoubleDouble. **/
-    lcmpl_dd            ,/** compare int_64 less than type DoubleDouble. **/
-    lucmpl_dd           ,/** compare unsigned uint_64 less than type DoubleDouble. **/
-    lcmpg_dd            ,/** compare int_64 greater than type DoubleDouble. **/
-    lucmpg_dd           ,/** compare unsigned uint_64 greater than type DoubleDouble. **/
-    lcmpe_dd            ,/** compare int_64 equal with type DoubleDouble. **/
-    lucmpe_dd           ,/** compare unsigned uint_64 equal with type DoubleDouble. **/
-    lcmple_dd           ,/** compare int_64 less than or equal to type DoubleDouble. **/
-    lucmple_dd          ,/** compare unsigned uint_64 less than or equal to type DoubleDouble. **/
-    lcmpge_dd           ,/** compare int_64 greater than or equal to type DoubleDouble. **/
-    lucmpge_dd          ,/** compare unsigned uint_64 greater than or equal to type DoubleDouble. **/
-    lcmpne_dd           ,/** compare int_64 not equal with type DoubleDouble. **/
-    lucmpne_dd          ,/** compare unsigned uint_64 not equal with type DoubleDouble. **/
-    lmod_b              ,/** modulo int_64 with type Byte. **/
-    lcast_ub            ,/** cast int_64 to unsigned type Byte. **/
-    lucast_ub           ,/** cast unsigned uint_64 to unsigned type Byte. **/
-    ladd_ub             ,/** add int_64 with unsigned type Byte. **/
-    luadd_ub            ,/** add unsigned uint_64 with unsigned type Byte. **/
-    lsub_ub             ,/** subtract int_64 with unsigned type Byte. **/
-    lusub_ub            ,/** subtract unsigned uint_64 with unsigned type Byte. **/
-    lmul_ub             ,/** multiply int_64 with unsigned type Byte. **/
-    lumul_ub            ,/** multiply unsigned uint_64 with unsigned type Byte. **/
-    ldiv_ub             ,/** divide int_64 with unsigned type Byte. **/
-    ludiv_ub            ,/** divide unsigned uint_64 with unsigned type Byte. **/
-    lcmpl_ub            ,/** compare int_64 less than unsigned type Byte. **/
-    lucmpl_ub           ,/** compare unsigned uint_64 less than unsigned type Byte. **/
-    lcmpg_ub            ,/** compare int_64 greater than unsigned type Byte. **/
-    lucmpg_ub           ,/** compare unsigned uint_64 greater than unsigned type Byte. **/
-    lcmpe_ub            ,/** compare int_64 equal with unsigned type Byte. **/
-    lucmpe_ub           ,/** compare unsigned uint_64 equal with unsigned type Byte. **/
-    lcmple_ub           ,/** compare int_64 less than or equal to unsigned type Byte. **/
-    lucmple_ub          ,/** compare unsigned uint_64 less than or equal to unsigned type Byte. **/
-    lcmpge_ub           ,/** compare int_64 greater than or equal to unsigned type Byte. **/
-    lucmpge_ub          ,/** compare unsigned uint_64 greater than or equal to unsigned type Byte. **/
-    lcmpne_ub           ,/** compare int_64 not equal with unsigned type Byte. **/
-    lucmpne_ub          ,/** compare unsigned uint_64 not equal with unsigned type Byte. **/
-    lmod_s              ,/** modulo int_64 with type Short. **/
-    lcast_us            ,/** cast int_64 to unsigned type Short. **/
-    lucast_us           ,/** cast unsigned uint_64 to unsigned type Short. **/
-    ladd_us             ,/** add int_64 with unsigned type Short. **/
-    luadd_us            ,/** add unsigned uint_64 with unsigned type Short. **/
-    lsub_us             ,/** subtract int_64 with unsigned type Short. **/
-    lusub_us            ,/** subtract unsigned uint_64 with unsigned type Short. **/
-    lmul_us             ,/** multiply int_64 with unsigned type Short. **/
-    lumul_us            ,/** multiply unsigned uint_64 with unsigned type Short. **/
-    ldiv_us             ,/** divide int_64 with unsigned type Short. **/
-    ludiv_us            ,/** divide unsigned uint_64 with unsigned type Short. **/
-    lcmpl_us            ,/** compare int_64 less than unsigned type Short. **/
-    lucmpl_us           ,/** compare unsigned uint_64 less than unsigned type Short. **/
-    lcmpg_us            ,/** compare int_64 greater than unsigned type Short. **/
-    lucmpg_us           ,/** compare unsigned uint_64 greater than unsigned type Short. **/
-    lcmpe_us            ,/** compare int_64 equal with unsigned type Short. **/
-    lucmpe_us           ,/** compare unsigned uint_64 equal with unsigned type Short. **/
-    lcmple_us           ,/** compare int_64 less than or equal to unsigned type Short. **/
-    lucmple_us          ,/** compare unsigned uint_64 less than or equal to unsigned type Short. **/
-    lcmpge_us           ,/** compare int_64 greater than or equal to unsigned type Short. **/
-    lucmpge_us          ,/** compare unsigned uint_64 greater than or equal to unsigned type Short. **/
-    lcmpne_us           ,/** compare int_64 not equal with unsigned type Short. **/
-    lucmpne_us          ,/** compare unsigned uint_64 not equal with unsigned type Short. **/
-    lmod_i              ,/** modulo int_64 with type Int. **/
-    lcast_ui            ,/** cast int_64 to unsigned type Int. **/
-    lucast_ui           ,/** cast unsigned uint_64 to unsigned type Int. **/
-    ladd_ui             ,/** add int_64 with unsigned type Int. **/
-    luadd_ui            ,/** add unsigned uint_64 with unsigned type Int. **/
-    lsub_ui             ,/** subtract int_64 with unsigned type Int. **/
-    lusub_ui            ,/** subtract unsigned uint_64 with unsigned type Int. **/
-    lmul_ui             ,/** multiply int_64 with unsigned type Int. **/
-    lumul_ui            ,/** multiply unsigned uint_64 with unsigned type Int. **/
-    ldiv_ui             ,/** divide int_64 with unsigned type Int. **/
-    ludiv_ui            ,/** divide unsigned uint_64 with unsigned type Int. **/
-    lcmpl_ui            ,/** compare int_64 less than unsigned type Int. **/
-    lucmpl_ui           ,/** compare unsigned uint_64 less than unsigned type Int. **/
-    lcmpg_ui            ,/** compare int_64 greater than unsigned type Int. **/
-    lucmpg_ui           ,/** compare unsigned uint_64 greater than unsigned type Int. **/
-    lcmpe_ui            ,/** compare int_64 equal with unsigned type Int. **/
-    lucmpe_ui           ,/** compare unsigned uint_64 equal with unsigned type Int. **/
-    lcmple_ui           ,/** compare int_64 less than or equal to unsigned type Int. **/
-    lucmple_ui          ,/** compare unsigned uint_64 less than or equal to unsigned type Int. **/
-    lcmpge_ui           ,/** compare int_64 greater than or equal to unsigned type Int. **/
-    lucmpge_ui          ,/** compare unsigned uint_64 greater than or equal to unsigned type Int. **/
-    lcmpne_ui           ,/** compare int_64 not equal with unsigned type Int. **/
-    lucmpne_ui          ,/** compare unsigned uint_64 not equal with unsigned type Int. **/
-    lmod_l              ,/** modulo int_64 with type Long. **/
-    lcast_ul            ,/** cast int_64 to unsigned type Long. **/
-    lucast_ul           ,/** cast unsigned uint_64 to unsigned type Long. **/
-    ladd_ul             ,/** add int_64 with unsigned type Long. **/
-    luadd_ul            ,/** add unsigned uint_64 with unsigned type Long. **/
-    lsub_ul             ,/** subtract int_64 with unsigned type Long. **/
-    lusub_ul            ,/** subtract unsigned uint_64 with unsigned type Long. **/
-    lmul_ul             ,/** multiply int_64 with unsigned type Long. **/
-    lumul_ul            ,/** multiply unsigned uint_64 with unsigned type Long. **/
-    ldiv_ul             ,/** divide int_64 with unsigned type Long. **/
-    ludiv_ul            ,/** divide unsigned uint_64 with unsigned type Long. **/
-    lcmpl_ul            ,/** compare int_64 less than unsigned type Long. **/
-    lucmpl_ul           ,/** compare unsigned uint_64 less than unsigned type Long. **/
-    lcmpg_ul            ,/** compare int_64 greater than unsigned type Long. **/
-    lucmpg_ul           ,/** compare unsigned uint_64 greater than unsigned type Long. **/
-    lcmpe_ul            ,/** compare int_64 equal with unsigned type Long. **/
-    lucmpe_ul           ,/** compare unsigned uint_64 equal with unsigned type Long. **/
-    lcmple_ul           ,/** compare int_64 less than or equal to unsigned type Long. **/
-    lucmple_ul          ,/** compare unsigned uint_64 less than or equal to unsigned type Long. **/
-    lcmpge_ul           ,/** compare int_64 greater than or equal to unsigned type Long. **/
-    lucmpge_ul          ,/** compare unsigned uint_64 greater than or equal to unsigned type Long. **/
-    lcmpne_ul           ,/** compare int_64 not equal with unsigned type Long. **/
-    lucmpne_ul          ,/** compare unsigned uint_64 not equal with unsigned type Long. **/
-    lmod_li             ,/** modulo int_64 with type LongInt. **/
-    lcast_uli           ,/** cast int_64 to unsigned type LongInt. **/
-    lucast_uli          ,/** cast unsigned uint_64 to unsigned type LongInt. **/
-    ladd_uli            ,/** add int_64 with unsigned type LongInt. **/
-    luadd_uli           ,/** add unsigned uint_64 with unsigned type LongInt. **/
-    lsub_uli            ,/** subtract int_64 with unsigned type LongInt. **/
-    lusub_uli           ,/** subtract unsigned uint_64 with unsigned type LongInt. **/
-    lmul_uli            ,/** multiply int_64 with unsigned type LongInt. **/
-    lumul_uli           ,/** multiply unsigned uint_64 with unsigned type LongInt. **/
-    ldiv_uli            ,/** divide int_64 with unsigned type LongInt. **/
-    ludiv_uli           ,/** divide unsigned uint_64 with unsigned type LongInt. **/
-    lcmpl_uli           ,/** compare int_64 less than unsigned type LongInt. **/
-    lucmpl_uli          ,/** compare unsigned uint_64 less than unsigned type LongInt. **/
-    lcmpg_uli           ,/** compare int_64 greater than unsigned type LongInt. **/
-    lucmpg_uli          ,/** compare unsigned uint_64 greater than unsigned type LongInt. **/
-    lcmpe_uli           ,/** compare int_64 equal with unsigned type LongInt. **/
-    lucmpe_uli          ,/** compare unsigned uint_64 equal with unsigned type LongInt. **/
-    lcmple_uli          ,/** compare int_64 less than or equal to unsigned type LongInt. **/
-    lucmple_uli         ,/** compare unsigned uint_64 less than or equal to unsigned type LongInt. **/
-    lcmpge_uli          ,/** compare int_64 greater than or equal to unsigned type LongInt. **/
-    lucmpge_uli         ,/** compare unsigned uint_64 greater than or equal to unsigned type LongInt. **/
-    lcmpne_uli          ,/** compare int_64 not equal with unsigned type LongInt. **/
-    lucmpne_uli         ,/** compare unsigned uint_64 not equal with unsigned type LongInt. **/
-    lmod_ll             ,/** modulo int_64 with type LongLong. **/
-    lcast_ull           ,/** cast int_64 to unsigned type LongLong. **/
-    lucast_ull          ,/** cast unsigned uint_64 to unsigned type LongLong. **/
-    ladd_ull            ,/** add int_64 with unsigned type LongLong. **/
-    luadd_ull           ,/** add unsigned uint_64 with unsigned type LongLong. **/
-    lsub_ull            ,/** subtract int_64 with unsigned type LongLong. **/
-    lusub_ull           ,/** subtract unsigned uint_64 with unsigned type LongLong. **/
-    lmul_ull            ,/** multiply int_64 with unsigned type LongLong. **/
-    lumul_ull           ,/** multiply unsigned uint_64 with unsigned type LongLong. **/
-    ldiv_ull            ,/** divide int_64 with unsigned type LongLong. **/
-    ludiv_ull           ,/** divide unsigned uint_64 with unsigned type LongLong. **/
-    lcmpl_ull           ,/** compare int_64 less than unsigned type LongLong. **/
-    lucmpl_ull          ,/** compare unsigned uint_64 less than unsigned type LongLong. **/
-    lcmpg_ull           ,/** compare int_64 greater than unsigned type LongLong. **/
-    lucmpg_ull          ,/** compare unsigned uint_64 greater than unsigned type LongLong. **/
-    lcmpe_ull           ,/** compare int_64 equal with unsigned type LongLong. **/
-    lucmpe_ull          ,/** compare unsigned uint_64 equal with unsigned type LongLong. **/
-    lcmple_ull          ,/** compare int_64 less than or equal to unsigned type LongLong. **/
-    lucmple_ull         ,/** compare unsigned uint_64 less than or equal to unsigned type LongLong. **/
-    lcmpge_ull          ,/** compare int_64 greater than or equal to unsigned type LongLong. **/
-    lucmpge_ull         ,/** compare unsigned uint_64 greater than or equal to unsigned type LongLong. **/
-    lcmpne_ull          ,/** compare int_64 not equal with unsigned type LongLong. **/
-    lucmpne_ull         ,/** compare unsigned uint_64 not equal with unsigned type LongLong. **/
-    land_b              ,/** bitwise and int_64 with type Byte. **/
-    lor_b               ,/** bitwise or int_64 with type Byte. **/
-    lxor_b              ,/** bitwise xor int_64 with type Byte. **/
-    lshftr_b            ,/** shift right int_64 with type Byte. **/
-    lshftl_b            ,/** shift left xor int_64 with type Byte. **/
-    land_s              ,/** bitwise and int_64 with type Short. **/
-    lor_s               ,/** bitwise or int_64 with type Short. **/
-    lxor_s              ,/** bitwise xor int_64 with type Short. **/
-    lshftr_s            ,/** shift right int_64 with type Short. **/
-    lshftl_s            ,/** shift left xor int_64 with type Short. **/
-    land_i              ,/** bitwise and int_64 with type Int. **/
-    lor_i               ,/** bitwise or int_64 with type Int. **/
-    lxor_i              ,/** bitwise xor int_64 with type Int. **/
-    lshftr_i            ,/** shift right int_64 with type Int. **/
-    lshftl_i            ,/** shift left xor int_64 with type Int. **/
-    land_l              ,/** bitwise and int_64 with type Long. **/
-    lor_l               ,/** bitwise or int_64 with type Long. **/
-    lxor_l              ,/** bitwise xor int_64 with type Long. **/
-    lshftr_l            ,/** shift right int_64 with type Long. **/
-    lshftl_l            ,/** shift left xor int_64 with type Long. **/
-    land_li             ,/** bitwise and int_64 with type LongInt. **/
-    lor_li              ,/** bitwise or int_64 with type LongInt. **/
-    lxor_li             ,/** bitwise xor int_64 with type LongInt. **/
-    lshftr_li           ,/** shift right int_64 with type LongInt. **/
-    lshftl_li           ,/** shift left xor int_64 with type LongInt. **/
-    land_ll             ,/** bitwise and int_64 with type LongLong. **/
-    lor_ll              ,/** bitwise or int_64 with type LongLong. **/
-    lxor_ll             ,/** bitwise xor int_64 with type LongLong. **/
-    lshftr_ll           ,/** shift right int_64 with type LongLong. **/
-    lshftl_ll           ,/** shift left xor int_64 with type LongLong. **/
-    ldup                ,/** duplicate a int_64 on the stack. **/
-    ldup2               ,/** duplicate a int_64 2 times on the stack. **/
-    ldup3               ,/** duplicate a int_64 3 times on the stack. **/
-    ldup4               ,/** duplicate a int_64 4 times on the stack. **/
-    ldup5               ,/** duplicate a int_64 5 times on the stack. **/
-    lset                ,/** set a int_64 from stack into a field on base pointer. **/
-    lget                ,/** get a int_64 from a field on base pointer to stack. **/
-    lvset               ,/** set a int_64 from value into a field on base pointer. **/
-    lsget               ,/** get a int_64 from a field on base pointer to stack using address from stack. **/
-    lsset               ,/** set a int_64 from stack into a field on base pointer using address from stack. **/
-    lsetl               ,/** set a int_64 from local variable into a field on base pointer. **/
-    linc_1              ,/** increment int_64 by 1 on stack. **/
-    linc_2              ,/** increment int_64 by 2 on stack. **/
-    lstinc_1            ,/** increment int_64 by 1 on stack. **/
-    lstinc_2            ,/** increment int_64 by 2 on stack. **/
-    lreturn             ,/** return a int_64 into the main stack. **/
-    lmainst             ,/** store a int_64 from main stack in a local variable.. **/
-    lmainst_0           ,/** store a int_64 from main stack in local variable 0. **/
-    lmainst_1           ,/** store a int_64 from main stack in local variable 1. **/
-    lmainst_2           ,/** store a int_64 from main stack in local variable 2. **/
-    lmainst_3           ,/** store a int_64 from main stack in local variable 3. **/
-    lprint              ,/** print a int_64 from stack. **/
-    luprint             ,/** print a unsigned uint_64 from stack. **/
-    liprintba           ,/** print a byte array. **/
-    liconst             ,/** push a const int_128 into the stack. **/
-    liconst_0           ,/** push a const int_128 into the stack (value = 0). **/
-    liconst_1           ,/** push a const int_128 into the stack (value = 1). **/
-    liconst_2           ,/** push a const int_128 into the stack (value = 2). **/
-    liconst_3           ,/** push a const int_128 into the stack (value = 3). **/
-    liconst_4           ,/** push a const int_128 into the stack (value = 4). **/
-    liconst_5           ,/** push a const int_128 into the stack (value = 5). **/
-    liconst_6           ,/** push a const int_128 into the stack (value = 6). **/
-    liconst_9           ,/** push a const int_128 into the stack (value = 9). **/
-    liconst_10          ,/** push a const int_128 into the stack (value = 10). **/
-    liconst_11          ,/** push a const int_128 into the stack (value = 11). **/
-    liconst_12          ,/** push a const int_128 into the stack (value = 12). **/
-    liload              ,/** load a int_128 into the stack from local variable. **/
-    liload_0            ,/** load a int_128 into the stack from local variable 0. **/
-    liload_1            ,/** load a int_128 into the stack from local variable 1. **/
-    liload_2            ,/** load a int_128 into the stack from local variable 2. **/
-    liload_3            ,/** load a int_128 into the stack from local variable 3. **/
-    liload_4            ,/** load a int_128 into the stack from local variable 4. **/
-    listore             ,/** store a int_128 from stack into local variable. **/
-    listore_0           ,/** store a int_128 from stack into local variable 0. **/
-    listore_1           ,/** store a int_128 from stack into local variable 1. **/
-    listore_2           ,/** store a int_128 from stack into local variable 2. **/
-    listore_3           ,/** store a int_128 from stack into local variable 3. **/
-    listore_4           ,/** store a int_128 from stack into local variable 4. **/
-    licast_b            ,/** cast int_128 to type Byte. **/
-    liucast_b           ,/** cast unsigned uint_128 to type Byte. **/
-    liadd_b             ,/** add int_128 with type Byte. **/
-    liuadd_b            ,/** add unsigned uint_128 with type Byte. **/
-    lisub_b             ,/** subtract int_128 with type Byte. **/
-    liusub_b            ,/** subtract unsigned uint_128 with type Byte. **/
-    limul_b             ,/** multiply int_128 with type Byte. **/
-    liumul_b            ,/** multiply unsigned uint_128 with type Byte. **/
-    lidiv_b             ,/** divide int_128 with type Byte. **/
-    liudiv_b            ,/** divide unsigned uint_128 with type Byte. **/
-    licmpl_b            ,/** compare int_128 less than type Byte. **/
-    liucmpl_b           ,/** compare unsigned uint_128 less than type Byte. **/
-    licmpg_b            ,/** compare int_128 greater than type Byte. **/
-    liucmpg_b           ,/** compare unsigned uint_128 greater than type Byte. **/
-    licmpe_b            ,/** compare int_128 equal with type Byte. **/
-    liucmpe_b           ,/** compare unsigned uint_128 equal with type Byte. **/
-    licmple_b           ,/** compare int_128 less than or equal to type Byte. **/
-    liucmple_b          ,/** compare unsigned uint_128 less than or equal to type Byte. **/
-    licmpge_b           ,/** compare int_128 greater than or equal to type Byte. **/
-    liucmpge_b          ,/** compare unsigned uint_128 greater than or equal to type Byte. **/
-    licmpne_b           ,/** compare int_128 not equal with type Byte. **/
-    liucmpne_b          ,/** compare unsigned uint_128 not equal with type Byte. **/
-    licast_s            ,/** cast int_128 to type Short. **/
-    liucast_s           ,/** cast unsigned uint_128 to type Short. **/
-    liadd_s             ,/** add int_128 with type Short. **/
-    liuadd_s            ,/** add unsigned uint_128 with type Short. **/
-    lisub_s             ,/** subtract int_128 with type Short. **/
-    liusub_s            ,/** subtract unsigned uint_128 with type Short. **/
-    limul_s             ,/** multiply int_128 with type Short. **/
-    liumul_s            ,/** multiply unsigned uint_128 with type Short. **/
-    lidiv_s             ,/** divide int_128 with type Short. **/
-    liudiv_s            ,/** divide unsigned uint_128 with type Short. **/
-    licmpl_s            ,/** compare int_128 less than type Short. **/
-    liucmpl_s           ,/** compare unsigned uint_128 less than type Short. **/
-    licmpg_s            ,/** compare int_128 greater than type Short. **/
-    liucmpg_s           ,/** compare unsigned uint_128 greater than type Short. **/
-    licmpe_s            ,/** compare int_128 equal with type Short. **/
-    liucmpe_s           ,/** compare unsigned uint_128 equal with type Short. **/
-    licmple_s           ,/** compare int_128 less than or equal to type Short. **/
-    liucmple_s          ,/** compare unsigned uint_128 less than or equal to type Short. **/
-    licmpge_s           ,/** compare int_128 greater than or equal to type Short. **/
-    liucmpge_s          ,/** compare unsigned uint_128 greater than or equal to type Short. **/
-    licmpne_s           ,/** compare int_128 not equal with type Short. **/
-    liucmpne_s          ,/** compare unsigned uint_128 not equal with type Short. **/
-    licast_i            ,/** cast int_128 to type Int. **/
-    liucast_i           ,/** cast unsigned uint_128 to type Int. **/
-    liadd_i             ,/** add int_128 with type Int. **/
-    liuadd_i            ,/** add unsigned uint_128 with type Int. **/
-    lisub_i             ,/** subtract int_128 with type Int. **/
-    liusub_i            ,/** subtract unsigned uint_128 with type Int. **/
-    limul_i             ,/** multiply int_128 with type Int. **/
-    liumul_i            ,/** multiply unsigned uint_128 with type Int. **/
-    lidiv_i             ,/** divide int_128 with type Int. **/
-    liudiv_i            ,/** divide unsigned uint_128 with type Int. **/
-    licmpl_i            ,/** compare int_128 less than type Int. **/
-    liucmpl_i           ,/** compare unsigned uint_128 less than type Int. **/
-    licmpg_i            ,/** compare int_128 greater than type Int. **/
-    liucmpg_i           ,/** compare unsigned uint_128 greater than type Int. **/
-    licmpe_i            ,/** compare int_128 equal with type Int. **/
-    liucmpe_i           ,/** compare unsigned uint_128 equal with type Int. **/
-    licmple_i           ,/** compare int_128 less than or equal to type Int. **/
-    liucmple_i          ,/** compare unsigned uint_128 less than or equal to type Int. **/
-    licmpge_i           ,/** compare int_128 greater than or equal to type Int. **/
-    liucmpge_i          ,/** compare unsigned uint_128 greater than or equal to type Int. **/
-    licmpne_i           ,/** compare int_128 not equal with type Int. **/
-    liucmpne_i          ,/** compare unsigned uint_128 not equal with type Int. **/
-    licast_l            ,/** cast int_128 to type Long. **/
-    liucast_l           ,/** cast unsigned uint_128 to type Long. **/
-    liadd_l             ,/** add int_128 with type Long. **/
-    liuadd_l            ,/** add unsigned uint_128 with type Long. **/
-    lisub_l             ,/** subtract int_128 with type Long. **/
-    liusub_l            ,/** subtract unsigned uint_128 with type Long. **/
-    limul_l             ,/** multiply int_128 with type Long. **/
-    liumul_l            ,/** multiply unsigned uint_128 with type Long. **/
-    lidiv_l             ,/** divide int_128 with type Long. **/
-    liudiv_l            ,/** divide unsigned uint_128 with type Long. **/
-    licmpl_l            ,/** compare int_128 less than type Long. **/
-    liucmpl_l           ,/** compare unsigned uint_128 less than type Long. **/
-    licmpg_l            ,/** compare int_128 greater than type Long. **/
-    liucmpg_l           ,/** compare unsigned uint_128 greater than type Long. **/
-    licmpe_l            ,/** compare int_128 equal with type Long. **/
-    liucmpe_l           ,/** compare unsigned uint_128 equal with type Long. **/
-    licmple_l           ,/** compare int_128 less than or equal to type Long. **/
-    liucmple_l          ,/** compare unsigned uint_128 less than or equal to type Long. **/
-    licmpge_l           ,/** compare int_128 greater than or equal to type Long. **/
-    liucmpge_l          ,/** compare unsigned uint_128 greater than or equal to type Long. **/
-    licmpne_l           ,/** compare int_128 not equal with type Long. **/
-    liucmpne_l          ,/** compare unsigned uint_128 not equal with type Long. **/
-    licast_li           ,/** cast int_128 to type LongInt. **/
-    liucast_li          ,/** cast unsigned uint_128 to type LongInt. **/
-    liadd_li            ,/** add int_128 with type LongInt. **/
-    liuadd_li           ,/** add unsigned uint_128 with type LongInt. **/
-    lisub_li            ,/** subtract int_128 with type LongInt. **/
-    liusub_li           ,/** subtract unsigned uint_128 with type LongInt. **/
-    limul_li            ,/** multiply int_128 with type LongInt. **/
-    liumul_li           ,/** multiply unsigned uint_128 with type LongInt. **/
-    lidiv_li            ,/** divide int_128 with type LongInt. **/
-    liudiv_li           ,/** divide unsigned uint_128 with type LongInt. **/
-    licmpl_li           ,/** compare int_128 less than type LongInt. **/
-    liucmpl_li          ,/** compare unsigned uint_128 less than type LongInt. **/
-    licmpg_li           ,/** compare int_128 greater than type LongInt. **/
-    liucmpg_li          ,/** compare unsigned uint_128 greater than type LongInt. **/
-    licmpe_li           ,/** compare int_128 equal with type LongInt. **/
-    liucmpe_li          ,/** compare unsigned uint_128 equal with type LongInt. **/
-    licmple_li          ,/** compare int_128 less than or equal to type LongInt. **/
-    liucmple_li         ,/** compare unsigned uint_128 less than or equal to type LongInt. **/
-    licmpge_li          ,/** compare int_128 greater than or equal to type LongInt. **/
-    liucmpge_li         ,/** compare unsigned uint_128 greater than or equal to type LongInt. **/
-    licmpne_li          ,/** compare int_128 not equal with type LongInt. **/
-    liucmpne_li         ,/** compare unsigned uint_128 not equal with type LongInt. **/
-    licast_ll           ,/** cast int_128 to type LongLong. **/
-    liucast_ll          ,/** cast unsigned uint_128 to type LongLong. **/
-    liadd_ll            ,/** add int_128 with type LongLong. **/
-    liuadd_ll           ,/** add unsigned uint_128 with type LongLong. **/
-    lisub_ll            ,/** subtract int_128 with type LongLong. **/
-    liusub_ll           ,/** subtract unsigned uint_128 with type LongLong. **/
-    limul_ll            ,/** multiply int_128 with type LongLong. **/
-    liumul_ll           ,/** multiply unsigned uint_128 with type LongLong. **/
-    lidiv_ll            ,/** divide int_128 with type LongLong. **/
-    liudiv_ll           ,/** divide unsigned uint_128 with type LongLong. **/
-    licmpl_ll           ,/** compare int_128 less than type LongLong. **/
-    liucmpl_ll          ,/** compare unsigned uint_128 less than type LongLong. **/
-    licmpg_ll           ,/** compare int_128 greater than type LongLong. **/
-    liucmpg_ll          ,/** compare unsigned uint_128 greater than type LongLong. **/
-    licmpe_ll           ,/** compare int_128 equal with type LongLong. **/
-    liucmpe_ll          ,/** compare unsigned uint_128 equal with type LongLong. **/
-    licmple_ll          ,/** compare int_128 less than or equal to type LongLong. **/
-    liucmple_ll         ,/** compare unsigned uint_128 less than or equal to type LongLong. **/
-    licmpge_ll          ,/** compare int_128 greater than or equal to type LongLong. **/
-    liucmpge_ll         ,/** compare unsigned uint_128 greater than or equal to type LongLong. **/
-    licmpne_ll          ,/** compare int_128 not equal with type LongLong. **/
-    liucmpne_ll         ,/** compare unsigned uint_128 not equal with type LongLong. **/
-    licast_f            ,/** cast int_128 to type Float. **/
-    liucast_f           ,/** cast unsigned uint_128 to type Float. **/
-    liadd_f             ,/** add int_128 with type Float. **/
-    liuadd_f            ,/** add unsigned uint_128 with type Float. **/
-    lisub_f             ,/** subtract int_128 with type Float. **/
-    liusub_f            ,/** subtract unsigned uint_128 with type Float. **/
-    limul_f             ,/** multiply int_128 with type Float. **/
-    liumul_f            ,/** multiply unsigned uint_128 with type Float. **/
-    lidiv_f             ,/** divide int_128 with type Float. **/
-    liudiv_f            ,/** divide unsigned uint_128 with type Float. **/
-    licmpl_f            ,/** compare int_128 less than type Float. **/
-    liucmpl_f           ,/** compare unsigned uint_128 less than type Float. **/
-    licmpg_f            ,/** compare int_128 greater than type Float. **/
-    liucmpg_f           ,/** compare unsigned uint_128 greater than type Float. **/
-    licmpe_f            ,/** compare int_128 equal with type Float. **/
-    liucmpe_f           ,/** compare unsigned uint_128 equal with type Float. **/
-    licmple_f           ,/** compare int_128 less than or equal to type Float. **/
-    liucmple_f          ,/** compare unsigned uint_128 less than or equal to type Float. **/
-    licmpge_f           ,/** compare int_128 greater than or equal to type Float. **/
-    liucmpge_f          ,/** compare unsigned uint_128 greater than or equal to type Float. **/
-    licmpne_f           ,/** compare int_128 not equal with type Float. **/
-    liucmpne_f          ,/** compare unsigned uint_128 not equal with type Float. **/
-    licast_d            ,/** cast int_128 to type Double. **/
-    liucast_d           ,/** cast unsigned uint_128 to type Double. **/
-    liadd_d             ,/** add int_128 with type Double. **/
-    liuadd_d            ,/** add unsigned uint_128 with type Double. **/
-    lisub_d             ,/** subtract int_128 with type Double. **/
-    liusub_d            ,/** subtract unsigned uint_128 with type Double. **/
-    limul_d             ,/** multiply int_128 with type Double. **/
-    liumul_d            ,/** multiply unsigned uint_128 with type Double. **/
-    lidiv_d             ,/** divide int_128 with type Double. **/
-    liudiv_d            ,/** divide unsigned uint_128 with type Double. **/
-    licmpl_d            ,/** compare int_128 less than type Double. **/
-    liucmpl_d           ,/** compare unsigned uint_128 less than type Double. **/
-    licmpg_d            ,/** compare int_128 greater than type Double. **/
-    liucmpg_d           ,/** compare unsigned uint_128 greater than type Double. **/
-    licmpe_d            ,/** compare int_128 equal with type Double. **/
-    liucmpe_d           ,/** compare unsigned uint_128 equal with type Double. **/
-    licmple_d           ,/** compare int_128 less than or equal to type Double. **/
-    liucmple_d          ,/** compare unsigned uint_128 less than or equal to type Double. **/
-    licmpge_d           ,/** compare int_128 greater than or equal to type Double. **/
-    liucmpge_d          ,/** compare unsigned uint_128 greater than or equal to type Double. **/
-    licmpne_d           ,/** compare int_128 not equal with type Double. **/
-    liucmpne_d          ,/** compare unsigned uint_128 not equal with type Double. **/
-    licast_df           ,/** cast int_128 to type DoubleFloat. **/
-    liucast_df          ,/** cast unsigned uint_128 to type DoubleFloat. **/
-    liadd_df            ,/** add int_128 with type DoubleFloat. **/
-    liuadd_df           ,/** add unsigned uint_128 with type DoubleFloat. **/
-    lisub_df            ,/** subtract int_128 with type DoubleFloat. **/
-    liusub_df           ,/** subtract unsigned uint_128 with type DoubleFloat. **/
-    limul_df            ,/** multiply int_128 with type DoubleFloat. **/
-    liumul_df           ,/** multiply unsigned uint_128 with type DoubleFloat. **/
-    lidiv_df            ,/** divide int_128 with type DoubleFloat. **/
-    liudiv_df           ,/** divide unsigned uint_128 with type DoubleFloat. **/
-    licmpl_df           ,/** compare int_128 less than type DoubleFloat. **/
-    liucmpl_df          ,/** compare unsigned uint_128 less than type DoubleFloat. **/
-    licmpg_df           ,/** compare int_128 greater than type DoubleFloat. **/
-    liucmpg_df          ,/** compare unsigned uint_128 greater than type DoubleFloat. **/
-    licmpe_df           ,/** compare int_128 equal with type DoubleFloat. **/
-    liucmpe_df          ,/** compare unsigned uint_128 equal with type DoubleFloat. **/
-    licmple_df          ,/** compare int_128 less than or equal to type DoubleFloat. **/
-    liucmple_df         ,/** compare unsigned uint_128 less than or equal to type DoubleFloat. **/
-    licmpge_df          ,/** compare int_128 greater than or equal to type DoubleFloat. **/
-    liucmpge_df         ,/** compare unsigned uint_128 greater than or equal to type DoubleFloat. **/
-    licmpne_df          ,/** compare int_128 not equal with type DoubleFloat. **/
-    liucmpne_df         ,/** compare unsigned uint_128 not equal with type DoubleFloat. **/
-    licast_dd           ,/** cast int_128 to type DoubleDouble. **/
-    liucast_dd          ,/** cast unsigned uint_128 to type DoubleDouble. **/
-    liadd_dd            ,/** add int_128 with type DoubleDouble. **/
-    liuadd_dd           ,/** add unsigned uint_128 with type DoubleDouble. **/
-    lisub_dd            ,/** subtract int_128 with type DoubleDouble. **/
-    liusub_dd           ,/** subtract unsigned uint_128 with type DoubleDouble. **/
-    limul_dd            ,/** multiply int_128 with type DoubleDouble. **/
-    liumul_dd           ,/** multiply unsigned uint_128 with type DoubleDouble. **/
-    lidiv_dd            ,/** divide int_128 with type DoubleDouble. **/
-    liudiv_dd           ,/** divide unsigned uint_128 with type DoubleDouble. **/
-    licmpl_dd           ,/** compare int_128 less than type DoubleDouble. **/
-    liucmpl_dd          ,/** compare unsigned uint_128 less than type DoubleDouble. **/
-    licmpg_dd           ,/** compare int_128 greater than type DoubleDouble. **/
-    liucmpg_dd          ,/** compare unsigned uint_128 greater than type DoubleDouble. **/
-    licmpe_dd           ,/** compare int_128 equal with type DoubleDouble. **/
-    liucmpe_dd          ,/** compare unsigned uint_128 equal with type DoubleDouble. **/
-    licmple_dd          ,/** compare int_128 less than or equal to type DoubleDouble. **/
-    liucmple_dd         ,/** compare unsigned uint_128 less than or equal to type DoubleDouble. **/
-    licmpge_dd          ,/** compare int_128 greater than or equal to type DoubleDouble. **/
-    liucmpge_dd         ,/** compare unsigned uint_128 greater than or equal to type DoubleDouble. **/
-    licmpne_dd          ,/** compare int_128 not equal with type DoubleDouble. **/
-    liucmpne_dd         ,/** compare unsigned uint_128 not equal with type DoubleDouble. **/
-    limod_b             ,/** modulo int_128 with type Byte. **/
-    licast_ub           ,/** cast int_128 to unsigned type Byte. **/
-    liucast_ub          ,/** cast unsigned uint_128 to unsigned type Byte. **/
-    liadd_ub            ,/** add int_128 with unsigned type Byte. **/
-    liuadd_ub           ,/** add unsigned uint_128 with unsigned type Byte. **/
-    lisub_ub            ,/** subtract int_128 with unsigned type Byte. **/
-    liusub_ub           ,/** subtract unsigned uint_128 with unsigned type Byte. **/
-    limul_ub            ,/** multiply int_128 with unsigned type Byte. **/
-    liumul_ub           ,/** multiply unsigned uint_128 with unsigned type Byte. **/
-    lidiv_ub            ,/** divide int_128 with unsigned type Byte. **/
-    liudiv_ub           ,/** divide unsigned uint_128 with unsigned type Byte. **/
-    licmpl_ub           ,/** compare int_128 less than unsigned type Byte. **/
-    liucmpl_ub          ,/** compare unsigned uint_128 less than unsigned type Byte. **/
-    licmpg_ub           ,/** compare int_128 greater than unsigned type Byte. **/
-    liucmpg_ub          ,/** compare unsigned uint_128 greater than unsigned type Byte. **/
-    licmpe_ub           ,/** compare int_128 equal with unsigned type Byte. **/
-    liucmpe_ub          ,/** compare unsigned uint_128 equal with unsigned type Byte. **/
-    licmple_ub          ,/** compare int_128 less than or equal to unsigned type Byte. **/
-    liucmple_ub         ,/** compare unsigned uint_128 less than or equal to unsigned type Byte. **/
-    licmpge_ub          ,/** compare int_128 greater than or equal to unsigned type Byte. **/
-    liucmpge_ub         ,/** compare unsigned uint_128 greater than or equal to unsigned type Byte. **/
-    licmpne_ub          ,/** compare int_128 not equal with unsigned type Byte. **/
-    liucmpne_ub         ,/** compare unsigned uint_128 not equal with unsigned type Byte. **/
-    limod_s             ,/** modulo int_128 with type Short. **/
-    licast_us           ,/** cast int_128 to unsigned type Short. **/
-    liucast_us          ,/** cast unsigned uint_128 to unsigned type Short. **/
-    liadd_us            ,/** add int_128 with unsigned type Short. **/
-    liuadd_us           ,/** add unsigned uint_128 with unsigned type Short. **/
-    lisub_us            ,/** subtract int_128 with unsigned type Short. **/
-    liusub_us           ,/** subtract unsigned uint_128 with unsigned type Short. **/
-    limul_us            ,/** multiply int_128 with unsigned type Short. **/
-    liumul_us           ,/** multiply unsigned uint_128 with unsigned type Short. **/
-    lidiv_us            ,/** divide int_128 with unsigned type Short. **/
-    liudiv_us           ,/** divide unsigned uint_128 with unsigned type Short. **/
-    licmpl_us           ,/** compare int_128 less than unsigned type Short. **/
-    liucmpl_us          ,/** compare unsigned uint_128 less than unsigned type Short. **/
-    licmpg_us           ,/** compare int_128 greater than unsigned type Short. **/
-    liucmpg_us          ,/** compare unsigned uint_128 greater than unsigned type Short. **/
-    licmpe_us           ,/** compare int_128 equal with unsigned type Short. **/
-    liucmpe_us          ,/** compare unsigned uint_128 equal with unsigned type Short. **/
-    licmple_us          ,/** compare int_128 less than or equal to unsigned type Short. **/
-    liucmple_us         ,/** compare unsigned uint_128 less than or equal to unsigned type Short. **/
-    licmpge_us          ,/** compare int_128 greater than or equal to unsigned type Short. **/
-    liucmpge_us         ,/** compare unsigned uint_128 greater than or equal to unsigned type Short. **/
-    licmpne_us          ,/** compare int_128 not equal with unsigned type Short. **/
-    liucmpne_us         ,/** compare unsigned uint_128 not equal with unsigned type Short. **/
-    limod_i             ,/** modulo int_128 with type Int. **/
-    licast_ui           ,/** cast int_128 to unsigned type Int. **/
-    liucast_ui          ,/** cast unsigned uint_128 to unsigned type Int. **/
-    liadd_ui            ,/** add int_128 with unsigned type Int. **/
-    liuadd_ui           ,/** add unsigned uint_128 with unsigned type Int. **/
-    lisub_ui            ,/** subtract int_128 with unsigned type Int. **/
-    liusub_ui           ,/** subtract unsigned uint_128 with unsigned type Int. **/
-    limul_ui            ,/** multiply int_128 with unsigned type Int. **/
-    liumul_ui           ,/** multiply unsigned uint_128 with unsigned type Int. **/
-    lidiv_ui            ,/** divide int_128 with unsigned type Int. **/
-    liudiv_ui           ,/** divide unsigned uint_128 with unsigned type Int. **/
-    licmpl_ui           ,/** compare int_128 less than unsigned type Int. **/
-    liucmpl_ui          ,/** compare unsigned uint_128 less than unsigned type Int. **/
-    licmpg_ui           ,/** compare int_128 greater than unsigned type Int. **/
-    liucmpg_ui          ,/** compare unsigned uint_128 greater than unsigned type Int. **/
-    licmpe_ui           ,/** compare int_128 equal with unsigned type Int. **/
-    liucmpe_ui          ,/** compare unsigned uint_128 equal with unsigned type Int. **/
-    licmple_ui          ,/** compare int_128 less than or equal to unsigned type Int. **/
-    liucmple_ui         ,/** compare unsigned uint_128 less than or equal to unsigned type Int. **/
-    licmpge_ui          ,/** compare int_128 greater than or equal to unsigned type Int. **/
-    liucmpge_ui         ,/** compare unsigned uint_128 greater than or equal to unsigned type Int. **/
-    licmpne_ui          ,/** compare int_128 not equal with unsigned type Int. **/
-    liucmpne_ui         ,/** compare unsigned uint_128 not equal with unsigned type Int. **/
-    limod_l             ,/** modulo int_128 with type Long. **/
-    licast_ul           ,/** cast int_128 to unsigned type Long. **/
-    liucast_ul          ,/** cast unsigned uint_128 to unsigned type Long. **/
-    liadd_ul            ,/** add int_128 with unsigned type Long. **/
-    liuadd_ul           ,/** add unsigned uint_128 with unsigned type Long. **/
-    lisub_ul            ,/** subtract int_128 with unsigned type Long. **/
-    liusub_ul           ,/** subtract unsigned uint_128 with unsigned type Long. **/
-    limul_ul            ,/** multiply int_128 with unsigned type Long. **/
-    liumul_ul           ,/** multiply unsigned uint_128 with unsigned type Long. **/
-    lidiv_ul            ,/** divide int_128 with unsigned type Long. **/
-    liudiv_ul           ,/** divide unsigned uint_128 with unsigned type Long. **/
-    licmpl_ul           ,/** compare int_128 less than unsigned type Long. **/
-    liucmpl_ul          ,/** compare unsigned uint_128 less than unsigned type Long. **/
-    licmpg_ul           ,/** compare int_128 greater than unsigned type Long. **/
-    liucmpg_ul          ,/** compare unsigned uint_128 greater than unsigned type Long. **/
-    licmpe_ul           ,/** compare int_128 equal with unsigned type Long. **/
-    liucmpe_ul          ,/** compare unsigned uint_128 equal with unsigned type Long. **/
-    licmple_ul          ,/** compare int_128 less than or equal to unsigned type Long. **/
-    liucmple_ul         ,/** compare unsigned uint_128 less than or equal to unsigned type Long. **/
-    licmpge_ul          ,/** compare int_128 greater than or equal to unsigned type Long. **/
-    liucmpge_ul         ,/** compare unsigned uint_128 greater than or equal to unsigned type Long. **/
-    licmpne_ul          ,/** compare int_128 not equal with unsigned type Long. **/
-    liucmpne_ul         ,/** compare unsigned uint_128 not equal with unsigned type Long. **/
-    limod_li            ,/** modulo int_128 with type LongInt. **/
-    licast_uli          ,/** cast int_128 to unsigned type LongInt. **/
-    liucast_uli         ,/** cast unsigned uint_128 to unsigned type LongInt. **/
-    liadd_uli           ,/** add int_128 with unsigned type LongInt. **/
-    liuadd_uli          ,/** add unsigned uint_128 with unsigned type LongInt. **/
-    lisub_uli           ,/** subtract int_128 with unsigned type LongInt. **/
-    liusub_uli          ,/** subtract unsigned uint_128 with unsigned type LongInt. **/
-    limul_uli           ,/** multiply int_128 with unsigned type LongInt. **/
-    liumul_uli          ,/** multiply unsigned uint_128 with unsigned type LongInt. **/
-    lidiv_uli           ,/** divide int_128 with unsigned type LongInt. **/
-    liudiv_uli          ,/** divide unsigned uint_128 with unsigned type LongInt. **/
-    licmpl_uli          ,/** compare int_128 less than unsigned type LongInt. **/
-    liucmpl_uli         ,/** compare unsigned uint_128 less than unsigned type LongInt. **/
-    licmpg_uli          ,/** compare int_128 greater than unsigned type LongInt. **/
-    liucmpg_uli         ,/** compare unsigned uint_128 greater than unsigned type LongInt. **/
-    licmpe_uli          ,/** compare int_128 equal with unsigned type LongInt. **/
-    liucmpe_uli         ,/** compare unsigned uint_128 equal with unsigned type LongInt. **/
-    licmple_uli         ,/** compare int_128 less than or equal to unsigned type LongInt. **/
-    liucmple_uli        ,/** compare unsigned uint_128 less than or equal to unsigned type LongInt. **/
-    licmpge_uli         ,/** compare int_128 greater than or equal to unsigned type LongInt. **/
-    liucmpge_uli        ,/** compare unsigned uint_128 greater than or equal to unsigned type LongInt. **/
-    licmpne_uli         ,/** compare int_128 not equal with unsigned type LongInt. **/
-    liucmpne_uli        ,/** compare unsigned uint_128 not equal with unsigned type LongInt. **/
-    limod_ll            ,/** modulo int_128 with type LongLong. **/
-    licast_ull          ,/** cast int_128 to unsigned type LongLong. **/
-    liucast_ull         ,/** cast unsigned uint_128 to unsigned type LongLong. **/
-    liadd_ull           ,/** add int_128 with unsigned type LongLong. **/
-    liuadd_ull          ,/** add unsigned uint_128 with unsigned type LongLong. **/
-    lisub_ull           ,/** subtract int_128 with unsigned type LongLong. **/
-    liusub_ull          ,/** subtract unsigned uint_128 with unsigned type LongLong. **/
-    limul_ull           ,/** multiply int_128 with unsigned type LongLong. **/
-    liumul_ull          ,/** multiply unsigned uint_128 with unsigned type LongLong. **/
-    lidiv_ull           ,/** divide int_128 with unsigned type LongLong. **/
-    liudiv_ull          ,/** divide unsigned uint_128 with unsigned type LongLong. **/
-    licmpl_ull          ,/** compare int_128 less than unsigned type LongLong. **/
-    liucmpl_ull         ,/** compare unsigned uint_128 less than unsigned type LongLong. **/
-    licmpg_ull          ,/** compare int_128 greater than unsigned type LongLong. **/
-    liucmpg_ull         ,/** compare unsigned uint_128 greater than unsigned type LongLong. **/
-    licmpe_ull          ,/** compare int_128 equal with unsigned type LongLong. **/
-    liucmpe_ull         ,/** compare unsigned uint_128 equal with unsigned type LongLong. **/
-    licmple_ull         ,/** compare int_128 less than or equal to unsigned type LongLong. **/
-    liucmple_ull        ,/** compare unsigned uint_128 less than or equal to unsigned type LongLong. **/
-    licmpge_ull         ,/** compare int_128 greater than or equal to unsigned type LongLong. **/
-    liucmpge_ull        ,/** compare unsigned uint_128 greater than or equal to unsigned type LongLong. **/
-    licmpne_ull         ,/** compare int_128 not equal with unsigned type LongLong. **/
-    liucmpne_ull        ,/** compare unsigned uint_128 not equal with unsigned type LongLong. **/
-    liand_b             ,/** bitwise and int_128 with type Byte. **/
-    lior_b              ,/** bitwise or int_128 with type Byte. **/
-    lixor_b             ,/** bitwise xor int_128 with type Byte. **/
-    lishftr_b           ,/** shift right int_128 with type Byte. **/
-    lishftl_b           ,/** shift left xor int_128 with type Byte. **/
-    liand_s             ,/** bitwise and int_128 with type Short. **/
-    lior_s              ,/** bitwise or int_128 with type Short. **/
-    lixor_s             ,/** bitwise xor int_128 with type Short. **/
-    lishftr_s           ,/** shift right int_128 with type Short. **/
-    lishftl_s           ,/** shift left xor int_128 with type Short. **/
-    liand_i             ,/** bitwise and int_128 with type Int. **/
-    lior_i              ,/** bitwise or int_128 with type Int. **/
-    lixor_i             ,/** bitwise xor int_128 with type Int. **/
-    lishftr_i           ,/** shift right int_128 with type Int. **/
-    lishftl_i           ,/** shift left xor int_128 with type Int. **/
-    liand_l             ,/** bitwise and int_128 with type Long. **/
-    lior_l              ,/** bitwise or int_128 with type Long. **/
-    lixor_l             ,/** bitwise xor int_128 with type Long. **/
-    lishftr_l           ,/** shift right int_128 with type Long. **/
-    lishftl_l           ,/** shift left xor int_128 with type Long. **/
-    liand_li            ,/** bitwise and int_128 with type LongInt. **/
-    lior_li             ,/** bitwise or int_128 with type LongInt. **/
-    lixor_li            ,/** bitwise xor int_128 with type LongInt. **/
-    lishftr_li          ,/** shift right int_128 with type LongInt. **/
-    lishftl_li          ,/** shift left xor int_128 with type LongInt. **/
-    liand_ll            ,/** bitwise and int_128 with type LongLong. **/
-    lior_ll             ,/** bitwise or int_128 with type LongLong. **/
-    lixor_ll            ,/** bitwise xor int_128 with type LongLong. **/
-    lishftr_ll          ,/** shift right int_128 with type LongLong. **/
-    lishftl_ll          ,/** shift left xor int_128 with type LongLong. **/
-    lidup               ,/** duplicate a int_128 on the stack. **/
-    lidup2              ,/** duplicate a int_128 2 times on the stack. **/
-    lidup3              ,/** duplicate a int_128 3 times on the stack. **/
-    lidup4              ,/** duplicate a int_128 4 times on the stack. **/
-    lidup5              ,/** duplicate a int_128 5 times on the stack. **/
-    liset               ,/** set a int_128 from stack into a field on base pointer. **/
-    liget               ,/** get a int_128 from a field on base pointer to stack. **/
-    livset              ,/** set a int_128 from value into a field on base pointer. **/
-    lisget              ,/** get a int_128 from a field on base pointer to stack using address from stack. **/
-    lisset              ,/** set a int_128 from stack into a field on base pointer using address from stack. **/
-    lisetl              ,/** set a int_128 from local variable into a field on base pointer. **/
-    liinc_1             ,/** increment int_128 by 1 on stack. **/
-    liinc_2             ,/** increment int_128 by 2 on stack. **/
-    listinc_1           ,/** increment int_128 by 1 on stack. **/
-    listinc_2           ,/** increment int_128 by 2 on stack. **/
-    lireturn            ,/** return a int_128 into the main stack. **/
-    limainst            ,/** store a int_128 from main stack in a local variable.. **/
-    limainst_0          ,/** store a int_128 from main stack in local variable 0. **/
-    limainst_1          ,/** store a int_128 from main stack in local variable 1. **/
-    limainst_2          ,/** store a int_128 from main stack in local variable 2. **/
-    limainst_3          ,/** store a int_128 from main stack in local variable 3. **/
-    liprint             ,/** print a int_128 from stack. **/
-    liuprint            ,/** print a unsigned uint_128 from stack. **/
-    llprintba           ,/** print a byte array. **/
-    llconst             ,/** push a const int_256 into the stack. **/
-    llconst_0           ,/** push a const int_256 into the stack (value = 0). **/
-    llconst_1           ,/** push a const int_256 into the stack (value = 1). **/
-    llconst_2           ,/** push a const int_256 into the stack (value = 2). **/
-    llconst_3           ,/** push a const int_256 into the stack (value = 3). **/
-    llconst_4           ,/** push a const int_256 into the stack (value = 4). **/
-    llconst_5           ,/** push a const int_256 into the stack (value = 5). **/
-    llconst_6           ,/** push a const int_256 into the stack (value = 6). **/
-    llconst_9           ,/** push a const int_256 into the stack (value = 9). **/
-    llconst_10          ,/** push a const int_256 into the stack (value = 10). **/
-    llconst_11          ,/** push a const int_256 into the stack (value = 11). **/
-    llconst_12          ,/** push a const int_256 into the stack (value = 12). **/
-    llload              ,/** load a int_256 into the stack from local variable. **/
-    llload_0            ,/** load a int_256 into the stack from local variable 0. **/
-    llload_1            ,/** load a int_256 into the stack from local variable 1. **/
-    llload_2            ,/** load a int_256 into the stack from local variable 2. **/
-    llload_3            ,/** load a int_256 into the stack from local variable 3. **/
-    llload_4            ,/** load a int_256 into the stack from local variable 4. **/
-    llstore             ,/** store a int_256 from stack into local variable. **/
-    llstore_0           ,/** store a int_256 from stack into local variable 0. **/
-    llstore_1           ,/** store a int_256 from stack into local variable 1. **/
-    llstore_2           ,/** store a int_256 from stack into local variable 2. **/
-    llstore_3           ,/** store a int_256 from stack into local variable 3. **/
-    llstore_4           ,/** store a int_256 from stack into local variable 4. **/
-    llcast_b            ,/** cast int_256 to type Byte. **/
-    llucast_b           ,/** cast unsigned uint_256 to type Byte. **/
-    lladd_b             ,/** add int_256 with type Byte. **/
-    lluadd_b            ,/** add unsigned uint_256 with type Byte. **/
-    llsub_b             ,/** subtract int_256 with type Byte. **/
-    llusub_b            ,/** subtract unsigned uint_256 with type Byte. **/
-    llmul_b             ,/** multiply int_256 with type Byte. **/
-    llumul_b            ,/** multiply unsigned uint_256 with type Byte. **/
-    lldiv_b             ,/** divide int_256 with type Byte. **/
-    lludiv_b            ,/** divide unsigned uint_256 with type Byte. **/
-    llcmpl_b            ,/** compare int_256 less than type Byte. **/
-    llucmpl_b           ,/** compare unsigned uint_256 less than type Byte. **/
-    llcmpg_b            ,/** compare int_256 greater than type Byte. **/
-    llucmpg_b           ,/** compare unsigned uint_256 greater than type Byte. **/
-    llcmpe_b            ,/** compare int_256 equal with type Byte. **/
-    llucmpe_b           ,/** compare unsigned uint_256 equal with type Byte. **/
-    llcmple_b           ,/** compare int_256 less than or equal to type Byte. **/
-    llucmple_b          ,/** compare unsigned uint_256 less than or equal to type Byte. **/
-    llcmpge_b           ,/** compare int_256 greater than or equal to type Byte. **/
-    llucmpge_b          ,/** compare unsigned uint_256 greater than or equal to type Byte. **/
-    llcmpne_b           ,/** compare int_256 not equal with type Byte. **/
-    llucmpne_b          ,/** compare unsigned uint_256 not equal with type Byte. **/
-    llcast_s            ,/** cast int_256 to type Short. **/
-    llucast_s           ,/** cast unsigned uint_256 to type Short. **/
-    lladd_s             ,/** add int_256 with type Short. **/
-    lluadd_s            ,/** add unsigned uint_256 with type Short. **/
-    llsub_s             ,/** subtract int_256 with type Short. **/
-    llusub_s            ,/** subtract unsigned uint_256 with type Short. **/
-    llmul_s             ,/** multiply int_256 with type Short. **/
-    llumul_s            ,/** multiply unsigned uint_256 with type Short. **/
-    lldiv_s             ,/** divide int_256 with type Short. **/
-    lludiv_s            ,/** divide unsigned uint_256 with type Short. **/
-    llcmpl_s            ,/** compare int_256 less than type Short. **/
-    llucmpl_s           ,/** compare unsigned uint_256 less than type Short. **/
-    llcmpg_s            ,/** compare int_256 greater than type Short. **/
-    llucmpg_s           ,/** compare unsigned uint_256 greater than type Short. **/
-    llcmpe_s            ,/** compare int_256 equal with type Short. **/
-    llucmpe_s           ,/** compare unsigned uint_256 equal with type Short. **/
-    llcmple_s           ,/** compare int_256 less than or equal to type Short. **/
-    llucmple_s          ,/** compare unsigned uint_256 less than or equal to type Short. **/
-    llcmpge_s           ,/** compare int_256 greater than or equal to type Short. **/
-    llucmpge_s          ,/** compare unsigned uint_256 greater than or equal to type Short. **/
-    llcmpne_s           ,/** compare int_256 not equal with type Short. **/
-    llucmpne_s          ,/** compare unsigned uint_256 not equal with type Short. **/
-    llcast_i            ,/** cast int_256 to type Int. **/
-    llucast_i           ,/** cast unsigned uint_256 to type Int. **/
-    lladd_i             ,/** add int_256 with type Int. **/
-    lluadd_i            ,/** add unsigned uint_256 with type Int. **/
-    llsub_i             ,/** subtract int_256 with type Int. **/
-    llusub_i            ,/** subtract unsigned uint_256 with type Int. **/
-    llmul_i             ,/** multiply int_256 with type Int. **/
-    llumul_i            ,/** multiply unsigned uint_256 with type Int. **/
-    lldiv_i             ,/** divide int_256 with type Int. **/
-    lludiv_i            ,/** divide unsigned uint_256 with type Int. **/
-    llcmpl_i            ,/** compare int_256 less than type Int. **/
-    llucmpl_i           ,/** compare unsigned uint_256 less than type Int. **/
-    llcmpg_i            ,/** compare int_256 greater than type Int. **/
-    llucmpg_i           ,/** compare unsigned uint_256 greater than type Int. **/
-    llcmpe_i            ,/** compare int_256 equal with type Int. **/
-    llucmpe_i           ,/** compare unsigned uint_256 equal with type Int. **/
-    llcmple_i           ,/** compare int_256 less than or equal to type Int. **/
-    llucmple_i          ,/** compare unsigned uint_256 less than or equal to type Int. **/
-    llcmpge_i           ,/** compare int_256 greater than or equal to type Int. **/
-    llucmpge_i          ,/** compare unsigned uint_256 greater than or equal to type Int. **/
-    llcmpne_i           ,/** compare int_256 not equal with type Int. **/
-    llucmpne_i          ,/** compare unsigned uint_256 not equal with type Int. **/
-    llcast_l            ,/** cast int_256 to type Long. **/
-    llucast_l           ,/** cast unsigned uint_256 to type Long. **/
-    lladd_l             ,/** add int_256 with type Long. **/
-    lluadd_l            ,/** add unsigned uint_256 with type Long. **/
-    llsub_l             ,/** subtract int_256 with type Long. **/
-    llusub_l            ,/** subtract unsigned uint_256 with type Long. **/
-    llmul_l             ,/** multiply int_256 with type Long. **/
-    llumul_l            ,/** multiply unsigned uint_256 with type Long. **/
-    lldiv_l             ,/** divide int_256 with type Long. **/
-    lludiv_l            ,/** divide unsigned uint_256 with type Long. **/
-    llcmpl_l            ,/** compare int_256 less than type Long. **/
-    llucmpl_l           ,/** compare unsigned uint_256 less than type Long. **/
-    llcmpg_l            ,/** compare int_256 greater than type Long. **/
-    llucmpg_l           ,/** compare unsigned uint_256 greater than type Long. **/
-    llcmpe_l            ,/** compare int_256 equal with type Long. **/
-    llucmpe_l           ,/** compare unsigned uint_256 equal with type Long. **/
-    llcmple_l           ,/** compare int_256 less than or equal to type Long. **/
-    llucmple_l          ,/** compare unsigned uint_256 less than or equal to type Long. **/
-    llcmpge_l           ,/** compare int_256 greater than or equal to type Long. **/
-    llucmpge_l          ,/** compare unsigned uint_256 greater than or equal to type Long. **/
-    llcmpne_l           ,/** compare int_256 not equal with type Long. **/
-    llucmpne_l          ,/** compare unsigned uint_256 not equal with type Long. **/
-    llcast_li           ,/** cast int_256 to type LongInt. **/
-    llucast_li          ,/** cast unsigned uint_256 to type LongInt. **/
-    lladd_li            ,/** add int_256 with type LongInt. **/
-    lluadd_li           ,/** add unsigned uint_256 with type LongInt. **/
-    llsub_li            ,/** subtract int_256 with type LongInt. **/
-    llusub_li           ,/** subtract unsigned uint_256 with type LongInt. **/
-    llmul_li            ,/** multiply int_256 with type LongInt. **/
-    llumul_li           ,/** multiply unsigned uint_256 with type LongInt. **/
-    lldiv_li            ,/** divide int_256 with type LongInt. **/
-    lludiv_li           ,/** divide unsigned uint_256 with type LongInt. **/
-    llcmpl_li           ,/** compare int_256 less than type LongInt. **/
-    llucmpl_li          ,/** compare unsigned uint_256 less than type LongInt. **/
-    llcmpg_li           ,/** compare int_256 greater than type LongInt. **/
-    llucmpg_li          ,/** compare unsigned uint_256 greater than type LongInt. **/
-    llcmpe_li           ,/** compare int_256 equal with type LongInt. **/
-    llucmpe_li          ,/** compare unsigned uint_256 equal with type LongInt. **/
-    llcmple_li          ,/** compare int_256 less than or equal to type LongInt. **/
-    llucmple_li         ,/** compare unsigned uint_256 less than or equal to type LongInt. **/
-    llcmpge_li          ,/** compare int_256 greater than or equal to type LongInt. **/
-    llucmpge_li         ,/** compare unsigned uint_256 greater than or equal to type LongInt. **/
-    llcmpne_li          ,/** compare int_256 not equal with type LongInt. **/
-    llucmpne_li         ,/** compare unsigned uint_256 not equal with type LongInt. **/
-    llcast_ll           ,/** cast int_256 to type LongLong. **/
-    llucast_ll          ,/** cast unsigned uint_256 to type LongLong. **/
-    lladd_ll            ,/** add int_256 with type LongLong. **/
-    lluadd_ll           ,/** add unsigned uint_256 with type LongLong. **/
-    llsub_ll            ,/** subtract int_256 with type LongLong. **/
-    llusub_ll           ,/** subtract unsigned uint_256 with type LongLong. **/
-    llmul_ll            ,/** multiply int_256 with type LongLong. **/
-    llumul_ll           ,/** multiply unsigned uint_256 with type LongLong. **/
-    lldiv_ll            ,/** divide int_256 with type LongLong. **/
-    lludiv_ll           ,/** divide unsigned uint_256 with type LongLong. **/
-    llcmpl_ll           ,/** compare int_256 less than type LongLong. **/
-    llucmpl_ll          ,/** compare unsigned uint_256 less than type LongLong. **/
-    llcmpg_ll           ,/** compare int_256 greater than type LongLong. **/
-    llucmpg_ll          ,/** compare unsigned uint_256 greater than type LongLong. **/
-    llcmpe_ll           ,/** compare int_256 equal with type LongLong. **/
-    llucmpe_ll          ,/** compare unsigned uint_256 equal with type LongLong. **/
-    llcmple_ll          ,/** compare int_256 less than or equal to type LongLong. **/
-    llucmple_ll         ,/** compare unsigned uint_256 less than or equal to type LongLong. **/
-    llcmpge_ll          ,/** compare int_256 greater than or equal to type LongLong. **/
-    llucmpge_ll         ,/** compare unsigned uint_256 greater than or equal to type LongLong. **/
-    llcmpne_ll          ,/** compare int_256 not equal with type LongLong. **/
-    llucmpne_ll         ,/** compare unsigned uint_256 not equal with type LongLong. **/
-    llcast_f            ,/** cast int_256 to type Float. **/
-    llucast_f           ,/** cast unsigned uint_256 to type Float. **/
-    lladd_f             ,/** add int_256 with type Float. **/
-    lluadd_f            ,/** add unsigned uint_256 with type Float. **/
-    llsub_f             ,/** subtract int_256 with type Float. **/
-    llusub_f            ,/** subtract unsigned uint_256 with type Float. **/
-    llmul_f             ,/** multiply int_256 with type Float. **/
-    llumul_f            ,/** multiply unsigned uint_256 with type Float. **/
-    lldiv_f             ,/** divide int_256 with type Float. **/
-    lludiv_f            ,/** divide unsigned uint_256 with type Float. **/
-    llcmpl_f            ,/** compare int_256 less than type Float. **/
-    llucmpl_f           ,/** compare unsigned uint_256 less than type Float. **/
-    llcmpg_f            ,/** compare int_256 greater than type Float. **/
-    llucmpg_f           ,/** compare unsigned uint_256 greater than type Float. **/
-    llcmpe_f            ,/** compare int_256 equal with type Float. **/
-    llucmpe_f           ,/** compare unsigned uint_256 equal with type Float. **/
-    llcmple_f           ,/** compare int_256 less than or equal to type Float. **/
-    llucmple_f          ,/** compare unsigned uint_256 less than or equal to type Float. **/
-    llcmpge_f           ,/** compare int_256 greater than or equal to type Float. **/
-    llucmpge_f          ,/** compare unsigned uint_256 greater than or equal to type Float. **/
-    llcmpne_f           ,/** compare int_256 not equal with type Float. **/
-    llucmpne_f          ,/** compare unsigned uint_256 not equal with type Float. **/
-    llcast_d            ,/** cast int_256 to type Double. **/
-    llucast_d           ,/** cast unsigned uint_256 to type Double. **/
-    lladd_d             ,/** add int_256 with type Double. **/
-    lluadd_d            ,/** add unsigned uint_256 with type Double. **/
-    llsub_d             ,/** subtract int_256 with type Double. **/
-    llusub_d            ,/** subtract unsigned uint_256 with type Double. **/
-    llmul_d             ,/** multiply int_256 with type Double. **/
-    llumul_d            ,/** multiply unsigned uint_256 with type Double. **/
-    lldiv_d             ,/** divide int_256 with type Double. **/
-    lludiv_d            ,/** divide unsigned uint_256 with type Double. **/
-    llcmpl_d            ,/** compare int_256 less than type Double. **/
-    llucmpl_d           ,/** compare unsigned uint_256 less than type Double. **/
-    llcmpg_d            ,/** compare int_256 greater than type Double. **/
-    llucmpg_d           ,/** compare unsigned uint_256 greater than type Double. **/
-    llcmpe_d            ,/** compare int_256 equal with type Double. **/
-    llucmpe_d           ,/** compare unsigned uint_256 equal with type Double. **/
-    llcmple_d           ,/** compare int_256 less than or equal to type Double. **/
-    llucmple_d          ,/** compare unsigned uint_256 less than or equal to type Double. **/
-    llcmpge_d           ,/** compare int_256 greater than or equal to type Double. **/
-    llucmpge_d          ,/** compare unsigned uint_256 greater than or equal to type Double. **/
-    llcmpne_d           ,/** compare int_256 not equal with type Double. **/
-    llucmpne_d          ,/** compare unsigned uint_256 not equal with type Double. **/
-    llcast_df           ,/** cast int_256 to type DoubleFloat. **/
-    llucast_df          ,/** cast unsigned uint_256 to type DoubleFloat. **/
-    lladd_df            ,/** add int_256 with type DoubleFloat. **/
-    lluadd_df           ,/** add unsigned uint_256 with type DoubleFloat. **/
-    llsub_df            ,/** subtract int_256 with type DoubleFloat. **/
-    llusub_df           ,/** subtract unsigned uint_256 with type DoubleFloat. **/
-    llmul_df            ,/** multiply int_256 with type DoubleFloat. **/
-    llumul_df           ,/** multiply unsigned uint_256 with type DoubleFloat. **/
-    lldiv_df            ,/** divide int_256 with type DoubleFloat. **/
-    lludiv_df           ,/** divide unsigned uint_256 with type DoubleFloat. **/
-    llcmpl_df           ,/** compare int_256 less than type DoubleFloat. **/
-    llucmpl_df          ,/** compare unsigned uint_256 less than type DoubleFloat. **/
-    llcmpg_df           ,/** compare int_256 greater than type DoubleFloat. **/
-    llucmpg_df          ,/** compare unsigned uint_256 greater than type DoubleFloat. **/
-    llcmpe_df           ,/** compare int_256 equal with type DoubleFloat. **/
-    llucmpe_df          ,/** compare unsigned uint_256 equal with type DoubleFloat. **/
-    llcmple_df          ,/** compare int_256 less than or equal to type DoubleFloat. **/
-    llucmple_df         ,/** compare unsigned uint_256 less than or equal to type DoubleFloat. **/
-    llcmpge_df          ,/** compare int_256 greater than or equal to type DoubleFloat. **/
-    llucmpge_df         ,/** compare unsigned uint_256 greater than or equal to type DoubleFloat. **/
-    llcmpne_df          ,/** compare int_256 not equal with type DoubleFloat. **/
-    llucmpne_df         ,/** compare unsigned uint_256 not equal with type DoubleFloat. **/
-    llcast_dd           ,/** cast int_256 to type DoubleDouble. **/
-    llucast_dd          ,/** cast unsigned uint_256 to type DoubleDouble. **/
-    lladd_dd            ,/** add int_256 with type DoubleDouble. **/
-    lluadd_dd           ,/** add unsigned uint_256 with type DoubleDouble. **/
-    llsub_dd            ,/** subtract int_256 with type DoubleDouble. **/
-    llusub_dd           ,/** subtract unsigned uint_256 with type DoubleDouble. **/
-    llmul_dd            ,/** multiply int_256 with type DoubleDouble. **/
-    llumul_dd           ,/** multiply unsigned uint_256 with type DoubleDouble. **/
-    lldiv_dd            ,/** divide int_256 with type DoubleDouble. **/
-    lludiv_dd           ,/** divide unsigned uint_256 with type DoubleDouble. **/
-    llcmpl_dd           ,/** compare int_256 less than type DoubleDouble. **/
-    llucmpl_dd          ,/** compare unsigned uint_256 less than type DoubleDouble. **/
-    llcmpg_dd           ,/** compare int_256 greater than type DoubleDouble. **/
-    llucmpg_dd          ,/** compare unsigned uint_256 greater than type DoubleDouble. **/
-    llcmpe_dd           ,/** compare int_256 equal with type DoubleDouble. **/
-    llucmpe_dd          ,/** compare unsigned uint_256 equal with type DoubleDouble. **/
-    llcmple_dd          ,/** compare int_256 less than or equal to type DoubleDouble. **/
-    llucmple_dd         ,/** compare unsigned uint_256 less than or equal to type DoubleDouble. **/
-    llcmpge_dd          ,/** compare int_256 greater than or equal to type DoubleDouble. **/
-    llucmpge_dd         ,/** compare unsigned uint_256 greater than or equal to type DoubleDouble. **/
-    llcmpne_dd          ,/** compare int_256 not equal with type DoubleDouble. **/
-    llucmpne_dd         ,/** compare unsigned uint_256 not equal with type DoubleDouble. **/
-    llmod_b             ,/** modulo int_256 with type Byte. **/
-    llcast_ub           ,/** cast int_256 to unsigned type Byte. **/
-    llucast_ub          ,/** cast unsigned uint_256 to unsigned type Byte. **/
-    lladd_ub            ,/** add int_256 with unsigned type Byte. **/
-    lluadd_ub           ,/** add unsigned uint_256 with unsigned type Byte. **/
-    llsub_ub            ,/** subtract int_256 with unsigned type Byte. **/
-    llusub_ub           ,/** subtract unsigned uint_256 with unsigned type Byte. **/
-    llmul_ub            ,/** multiply int_256 with unsigned type Byte. **/
-    llumul_ub           ,/** multiply unsigned uint_256 with unsigned type Byte. **/
-    lldiv_ub            ,/** divide int_256 with unsigned type Byte. **/
-    lludiv_ub           ,/** divide unsigned uint_256 with unsigned type Byte. **/
-    llcmpl_ub           ,/** compare int_256 less than unsigned type Byte. **/
-    llucmpl_ub          ,/** compare unsigned uint_256 less than unsigned type Byte. **/
-    llcmpg_ub           ,/** compare int_256 greater than unsigned type Byte. **/
-    llucmpg_ub          ,/** compare unsigned uint_256 greater than unsigned type Byte. **/
-    llcmpe_ub           ,/** compare int_256 equal with unsigned type Byte. **/
-    llucmpe_ub          ,/** compare unsigned uint_256 equal with unsigned type Byte. **/
-    llcmple_ub          ,/** compare int_256 less than or equal to unsigned type Byte. **/
-    llucmple_ub         ,/** compare unsigned uint_256 less than or equal to unsigned type Byte. **/
-    llcmpge_ub          ,/** compare int_256 greater than or equal to unsigned type Byte. **/
-    llucmpge_ub         ,/** compare unsigned uint_256 greater than or equal to unsigned type Byte. **/
-    llcmpne_ub          ,/** compare int_256 not equal with unsigned type Byte. **/
-    llucmpne_ub         ,/** compare unsigned uint_256 not equal with unsigned type Byte. **/
-    llmod_s             ,/** modulo int_256 with type Short. **/
-    llcast_us           ,/** cast int_256 to unsigned type Short. **/
-    llucast_us          ,/** cast unsigned uint_256 to unsigned type Short. **/
-    lladd_us            ,/** add int_256 with unsigned type Short. **/
-    lluadd_us           ,/** add unsigned uint_256 with unsigned type Short. **/
-    llsub_us            ,/** subtract int_256 with unsigned type Short. **/
-    llusub_us           ,/** subtract unsigned uint_256 with unsigned type Short. **/
-    llmul_us            ,/** multiply int_256 with unsigned type Short. **/
-    llumul_us           ,/** multiply unsigned uint_256 with unsigned type Short. **/
-    lldiv_us            ,/** divide int_256 with unsigned type Short. **/
-    lludiv_us           ,/** divide unsigned uint_256 with unsigned type Short. **/
-    llcmpl_us           ,/** compare int_256 less than unsigned type Short. **/
-    llucmpl_us          ,/** compare unsigned uint_256 less than unsigned type Short. **/
-    llcmpg_us           ,/** compare int_256 greater than unsigned type Short. **/
-    llucmpg_us          ,/** compare unsigned uint_256 greater than unsigned type Short. **/
-    llcmpe_us           ,/** compare int_256 equal with unsigned type Short. **/
-    llucmpe_us          ,/** compare unsigned uint_256 equal with unsigned type Short. **/
-    llcmple_us          ,/** compare int_256 less than or equal to unsigned type Short. **/
-    llucmple_us         ,/** compare unsigned uint_256 less than or equal to unsigned type Short. **/
-    llcmpge_us          ,/** compare int_256 greater than or equal to unsigned type Short. **/
-    llucmpge_us         ,/** compare unsigned uint_256 greater than or equal to unsigned type Short. **/
-    llcmpne_us          ,/** compare int_256 not equal with unsigned type Short. **/
-    llucmpne_us         ,/** compare unsigned uint_256 not equal with unsigned type Short. **/
-    llmod_i             ,/** modulo int_256 with type Int. **/
-    llcast_ui           ,/** cast int_256 to unsigned type Int. **/
-    llucast_ui          ,/** cast unsigned uint_256 to unsigned type Int. **/
-    lladd_ui            ,/** add int_256 with unsigned type Int. **/
-    lluadd_ui           ,/** add unsigned uint_256 with unsigned type Int. **/
-    llsub_ui            ,/** subtract int_256 with unsigned type Int. **/
-    llusub_ui           ,/** subtract unsigned uint_256 with unsigned type Int. **/
-    llmul_ui            ,/** multiply int_256 with unsigned type Int. **/
-    llumul_ui           ,/** multiply unsigned uint_256 with unsigned type Int. **/
-    lldiv_ui            ,/** divide int_256 with unsigned type Int. **/
-    lludiv_ui           ,/** divide unsigned uint_256 with unsigned type Int. **/
-    llcmpl_ui           ,/** compare int_256 less than unsigned type Int. **/
-    llucmpl_ui          ,/** compare unsigned uint_256 less than unsigned type Int. **/
-    llcmpg_ui           ,/** compare int_256 greater than unsigned type Int. **/
-    llucmpg_ui          ,/** compare unsigned uint_256 greater than unsigned type Int. **/
-    llcmpe_ui           ,/** compare int_256 equal with unsigned type Int. **/
-    llucmpe_ui          ,/** compare unsigned uint_256 equal with unsigned type Int. **/
-    llcmple_ui          ,/** compare int_256 less than or equal to unsigned type Int. **/
-    llucmple_ui         ,/** compare unsigned uint_256 less than or equal to unsigned type Int. **/
-    llcmpge_ui          ,/** compare int_256 greater than or equal to unsigned type Int. **/
-    llucmpge_ui         ,/** compare unsigned uint_256 greater than or equal to unsigned type Int. **/
-    llcmpne_ui          ,/** compare int_256 not equal with unsigned type Int. **/
-    llucmpne_ui         ,/** compare unsigned uint_256 not equal with unsigned type Int. **/
-    llmod_l             ,/** modulo int_256 with type Long. **/
-    llcast_ul           ,/** cast int_256 to unsigned type Long. **/
-    llucast_ul          ,/** cast unsigned uint_256 to unsigned type Long. **/
-    lladd_ul            ,/** add int_256 with unsigned type Long. **/
-    lluadd_ul           ,/** add unsigned uint_256 with unsigned type Long. **/
-    llsub_ul            ,/** subtract int_256 with unsigned type Long. **/
-    llusub_ul           ,/** subtract unsigned uint_256 with unsigned type Long. **/
-    llmul_ul            ,/** multiply int_256 with unsigned type Long. **/
-    llumul_ul           ,/** multiply unsigned uint_256 with unsigned type Long. **/
-    lldiv_ul            ,/** divide int_256 with unsigned type Long. **/
-    lludiv_ul           ,/** divide unsigned uint_256 with unsigned type Long. **/
-    llcmpl_ul           ,/** compare int_256 less than unsigned type Long. **/
-    llucmpl_ul          ,/** compare unsigned uint_256 less than unsigned type Long. **/
-    llcmpg_ul           ,/** compare int_256 greater than unsigned type Long. **/
-    llucmpg_ul          ,/** compare unsigned uint_256 greater than unsigned type Long. **/
-    llcmpe_ul           ,/** compare int_256 equal with unsigned type Long. **/
-    llucmpe_ul          ,/** compare unsigned uint_256 equal with unsigned type Long. **/
-    llcmple_ul          ,/** compare int_256 less than or equal to unsigned type Long. **/
-    llucmple_ul         ,/** compare unsigned uint_256 less than or equal to unsigned type Long. **/
-    llcmpge_ul          ,/** compare int_256 greater than or equal to unsigned type Long. **/
-    llucmpge_ul         ,/** compare unsigned uint_256 greater than or equal to unsigned type Long. **/
-    llcmpne_ul          ,/** compare int_256 not equal with unsigned type Long. **/
-    llucmpne_ul         ,/** compare unsigned uint_256 not equal with unsigned type Long. **/
-    llmod_li            ,/** modulo int_256 with type LongInt. **/
-    llcast_uli          ,/** cast int_256 to unsigned type LongInt. **/
-    llucast_uli         ,/** cast unsigned uint_256 to unsigned type LongInt. **/
-    lladd_uli           ,/** add int_256 with unsigned type LongInt. **/
-    lluadd_uli          ,/** add unsigned uint_256 with unsigned type LongInt. **/
-    llsub_uli           ,/** subtract int_256 with unsigned type LongInt. **/
-    llusub_uli          ,/** subtract unsigned uint_256 with unsigned type LongInt. **/
-    llmul_uli           ,/** multiply int_256 with unsigned type LongInt. **/
-    llumul_uli          ,/** multiply unsigned uint_256 with unsigned type LongInt. **/
-    lldiv_uli           ,/** divide int_256 with unsigned type LongInt. **/
-    lludiv_uli          ,/** divide unsigned uint_256 with unsigned type LongInt. **/
-    llcmpl_uli          ,/** compare int_256 less than unsigned type LongInt. **/
-    llucmpl_uli         ,/** compare unsigned uint_256 less than unsigned type LongInt. **/
-    llcmpg_uli          ,/** compare int_256 greater than unsigned type LongInt. **/
-    llucmpg_uli         ,/** compare unsigned uint_256 greater than unsigned type LongInt. **/
-    llcmpe_uli          ,/** compare int_256 equal with unsigned type LongInt. **/
-    llucmpe_uli         ,/** compare unsigned uint_256 equal with unsigned type LongInt. **/
-    llcmple_uli         ,/** compare int_256 less than or equal to unsigned type LongInt. **/
-    llucmple_uli        ,/** compare unsigned uint_256 less than or equal to unsigned type LongInt. **/
-    llcmpge_uli         ,/** compare int_256 greater than or equal to unsigned type LongInt. **/
-    llucmpge_uli        ,/** compare unsigned uint_256 greater than or equal to unsigned type LongInt. **/
-    llcmpne_uli         ,/** compare int_256 not equal with unsigned type LongInt. **/
-    llucmpne_uli        ,/** compare unsigned uint_256 not equal with unsigned type LongInt. **/
-    llmod_ll            ,/** modulo int_256 with type LongLong. **/
-    llcast_ull          ,/** cast int_256 to unsigned type LongLong. **/
-    llucast_ull         ,/** cast unsigned uint_256 to unsigned type LongLong. **/
-    lladd_ull           ,/** add int_256 with unsigned type LongLong. **/
-    lluadd_ull          ,/** add unsigned uint_256 with unsigned type LongLong. **/
-    llsub_ull           ,/** subtract int_256 with unsigned type LongLong. **/
-    llusub_ull          ,/** subtract unsigned uint_256 with unsigned type LongLong. **/
-    llmul_ull           ,/** multiply int_256 with unsigned type LongLong. **/
-    llumul_ull          ,/** multiply unsigned uint_256 with unsigned type LongLong. **/
-    lldiv_ull           ,/** divide int_256 with unsigned type LongLong. **/
-    lludiv_ull          ,/** divide unsigned uint_256 with unsigned type LongLong. **/
-    llcmpl_ull          ,/** compare int_256 less than unsigned type LongLong. **/
-    llucmpl_ull         ,/** compare unsigned uint_256 less than unsigned type LongLong. **/
-    llcmpg_ull          ,/** compare int_256 greater than unsigned type LongLong. **/
-    llucmpg_ull         ,/** compare unsigned uint_256 greater than unsigned type LongLong. **/
-    llcmpe_ull          ,/** compare int_256 equal with unsigned type LongLong. **/
-    llucmpe_ull         ,/** compare unsigned uint_256 equal with unsigned type LongLong. **/
-    llcmple_ull         ,/** compare int_256 less than or equal to unsigned type LongLong. **/
-    llucmple_ull        ,/** compare unsigned uint_256 less than or equal to unsigned type LongLong. **/
-    llcmpge_ull         ,/** compare int_256 greater than or equal to unsigned type LongLong. **/
-    llucmpge_ull        ,/** compare unsigned uint_256 greater than or equal to unsigned type LongLong. **/
-    llcmpne_ull         ,/** compare int_256 not equal with unsigned type LongLong. **/
-    llucmpne_ull        ,/** compare unsigned uint_256 not equal with unsigned type LongLong. **/
-    lland_b             ,/** bitwise and int_256 with type Byte. **/
-    llor_b              ,/** bitwise or int_256 with type Byte. **/
-    llxor_b             ,/** bitwise xor int_256 with type Byte. **/
-    llshftr_b           ,/** shift right int_256 with type Byte. **/
-    llshftl_b           ,/** shift left xor int_256 with type Byte. **/
-    lland_s             ,/** bitwise and int_256 with type Short. **/
-    llor_s              ,/** bitwise or int_256 with type Short. **/
-    llxor_s             ,/** bitwise xor int_256 with type Short. **/
-    llshftr_s           ,/** shift right int_256 with type Short. **/
-    llshftl_s           ,/** shift left xor int_256 with type Short. **/
-    lland_i             ,/** bitwise and int_256 with type Int. **/
-    llor_i              ,/** bitwise or int_256 with type Int. **/
-    llxor_i             ,/** bitwise xor int_256 with type Int. **/
-    llshftr_i           ,/** shift right int_256 with type Int. **/
-    llshftl_i           ,/** shift left xor int_256 with type Int. **/
-    lland_l             ,/** bitwise and int_256 with type Long. **/
-    llor_l              ,/** bitwise or int_256 with type Long. **/
-    llxor_l             ,/** bitwise xor int_256 with type Long. **/
-    llshftr_l           ,/** shift right int_256 with type Long. **/
-    llshftl_l           ,/** shift left xor int_256 with type Long. **/
-    lland_li            ,/** bitwise and int_256 with type LongInt. **/
-    llor_li             ,/** bitwise or int_256 with type LongInt. **/
-    llxor_li            ,/** bitwise xor int_256 with type LongInt. **/
-    llshftr_li          ,/** shift right int_256 with type LongInt. **/
-    llshftl_li          ,/** shift left xor int_256 with type LongInt. **/
-    lland_ll            ,/** bitwise and int_256 with type LongLong. **/
-    llor_ll             ,/** bitwise or int_256 with type LongLong. **/
-    llxor_ll            ,/** bitwise xor int_256 with type LongLong. **/
-    llshftr_ll          ,/** shift right int_256 with type LongLong. **/
-    llshftl_ll          ,/** shift left xor int_256 with type LongLong. **/
-    lldup               ,/** duplicate a int_256 on the stack. **/
-    lldup2              ,/** duplicate a int_256 2 times on the stack. **/
-    lldup3              ,/** duplicate a int_256 3 times on the stack. **/
-    lldup4              ,/** duplicate a int_256 4 times on the stack. **/
-    lldup5              ,/** duplicate a int_256 5 times on the stack. **/
-    llset               ,/** set a int_256 from stack into a field on base pointer. **/
-    llget               ,/** get a int_256 from a field on base pointer to stack. **/
-    llvset              ,/** set a int_256 from value into a field on base pointer. **/
-    llsget              ,/** get a int_256 from a field on base pointer to stack using address from stack. **/
-    llsset              ,/** set a int_256 from stack into a field on base pointer using address from stack. **/
-    llsetl              ,/** set a int_256 from local variable into a field on base pointer. **/
-    llinc_1             ,/** increment int_256 by 1 on stack. **/
-    llinc_2             ,/** increment int_256 by 2 on stack. **/
-    llstinc_1           ,/** increment int_256 by 1 on stack. **/
-    llstinc_2           ,/** increment int_256 by 2 on stack. **/
-    llreturn            ,/** return a int_256 into the main stack. **/
-    llmainst            ,/** store a int_256 from main stack in a local variable.. **/
-    llmainst_0          ,/** store a int_256 from main stack in local variable 0. **/
-    llmainst_1          ,/** store a int_256 from main stack in local variable 1. **/
-    llmainst_2          ,/** store a int_256 from main stack in local variable 2. **/
-    llmainst_3          ,/** store a int_256 from main stack in local variable 3. **/
-    llprint             ,/** print a int_256 from stack. **/
-    lluprint            ,/** print a unsigned uint_256 from stack. **/
-    fprintba            ,/** print a byte array. **/
-    fconst              ,/** push a const flt_32 into the stack. **/
-    fconst_0            ,/** push a const flt_32 into the stack (value = 0). **/
-    fload               ,/** load a flt_32 into the stack from local variable. **/
-    fload_0             ,/** load a flt_32 into the stack from local variable 0. **/
-    fload_1             ,/** load a flt_32 into the stack from local variable 1. **/
-    fload_2             ,/** load a flt_32 into the stack from local variable 2. **/
-    fload_3             ,/** load a flt_32 into the stack from local variable 3. **/
-    fload_4             ,/** load a flt_32 into the stack from local variable 4. **/
-    fstore              ,/** store a flt_32 from stack into local variable. **/
-    fstore_0            ,/** store a flt_32 from stack into local variable 0. **/
-    fstore_1            ,/** store a flt_32 from stack into local variable 1. **/
-    fstore_2            ,/** store a flt_32 from stack into local variable 2. **/
-    fstore_3            ,/** store a flt_32 from stack into local variable 3. **/
-    fstore_4            ,/** store a flt_32 from stack into local variable 4. **/
-    fdup                ,/** duplicate a flt_32 on the stack. **/
-    fdup2               ,/** duplicate a flt_32 2 times on the stack. **/
-    fdup3               ,/** duplicate a flt_32 3 times on the stack. **/
-    fdup4               ,/** duplicate a flt_32 4 times on the stack. **/
-    fdup5               ,/** duplicate a flt_32 5 times on the stack. **/
-    fset                ,/** set a flt_32 from stack into a field on base pointer. **/
-    fget                ,/** get a flt_32 from a field on base pointer to stack. **/
-    fvset               ,/** set a flt_32 from value into a field on base pointer. **/
-    fsget               ,/** get a flt_32 from a field on base pointer to stack using address from stack. **/
-    fsset               ,/** set a flt_32 from stack into a field on base pointer using address from stack. **/
-    fsetl               ,/** set a flt_32 from local variable into a field on base pointer. **/
-    finc_1              ,/** increment flt_32 by 1 on stack. **/
-    finc_2              ,/** increment flt_32 by 2 on stack. **/
-    fstinc_1            ,/** increment flt_32 by 1 on stack. **/
-    fstinc_2            ,/** increment flt_32 by 2 on stack. **/
-    freturn             ,/** return a flt_32 into the main stack. **/
-    fmainst             ,/** store a flt_32 from main stack in a local variable.. **/
-    fmainst_0           ,/** store a flt_32 from main stack in local variable 0. **/
-    fmainst_1           ,/** store a flt_32 from main stack in local variable 1. **/
-    fmainst_2           ,/** store a flt_32 from main stack in local variable 2. **/
-    fmainst_3           ,/** store a flt_32 from main stack in local variable 3. **/
-    dprintba            ,/** print a byte array. **/
-    dconst              ,/** push a const flt_64 into the stack. **/
-    dconst_0            ,/** push a const flt_64 into the stack (value = 0). **/
-    dload               ,/** load a flt_64 into the stack from local variable. **/
-    dload_0             ,/** load a flt_64 into the stack from local variable 0. **/
-    dload_1             ,/** load a flt_64 into the stack from local variable 1. **/
-    dload_2             ,/** load a flt_64 into the stack from local variable 2. **/
-    dload_3             ,/** load a flt_64 into the stack from local variable 3. **/
-    dload_4             ,/** load a flt_64 into the stack from local variable 4. **/
-    dstore              ,/** store a flt_64 from stack into local variable. **/
-    dstore_0            ,/** store a flt_64 from stack into local variable 0. **/
-    dstore_1            ,/** store a flt_64 from stack into local variable 1. **/
-    dstore_2            ,/** store a flt_64 from stack into local variable 2. **/
-    dstore_3            ,/** store a flt_64 from stack into local variable 3. **/
-    dstore_4            ,/** store a flt_64 from stack into local variable 4. **/
-    ddup                ,/** duplicate a flt_64 on the stack. **/
-    ddup2               ,/** duplicate a flt_64 2 times on the stack. **/
-    ddup3               ,/** duplicate a flt_64 3 times on the stack. **/
-    ddup4               ,/** duplicate a flt_64 4 times on the stack. **/
-    ddup5               ,/** duplicate a flt_64 5 times on the stack. **/
-    dset                ,/** set a flt_64 from stack into a field on base pointer. **/
-    dget                ,/** get a flt_64 from a field on base pointer to stack. **/
-    dvset               ,/** set a flt_64 from value into a field on base pointer. **/
-    dsget               ,/** get a flt_64 from a field on base pointer to stack using address from stack. **/
-    dsset               ,/** set a flt_64 from stack into a field on base pointer using address from stack. **/
-    dsetl               ,/** set a flt_64 from local variable into a field on base pointer. **/
-    dinc_1              ,/** increment flt_64 by 1 on stack. **/
-    dinc_2              ,/** increment flt_64 by 2 on stack. **/
-    dstinc_1            ,/** increment flt_64 by 1 on stack. **/
-    dstinc_2            ,/** increment flt_64 by 2 on stack. **/
-    dreturn             ,/** return a flt_64 into the main stack. **/
-    dmainst             ,/** store a flt_64 from main stack in a local variable.. **/
-    dmainst_0           ,/** store a flt_64 from main stack in local variable 0. **/
-    dmainst_1           ,/** store a flt_64 from main stack in local variable 1. **/
-    dmainst_2           ,/** store a flt_64 from main stack in local variable 2. **/
-    dmainst_3           ,/** store a flt_64 from main stack in local variable 3. **/
-    dfprintba           ,/** print a byte array. **/
-    dfconst             ,/** push a const flt_128 into the stack. **/
-    dfconst_0           ,/** push a const flt_128 into the stack (value = 0). **/
-    dfload              ,/** load a flt_128 into the stack from local variable. **/
-    dfload_0            ,/** load a flt_128 into the stack from local variable 0. **/
-    dfload_1            ,/** load a flt_128 into the stack from local variable 1. **/
-    dfload_2            ,/** load a flt_128 into the stack from local variable 2. **/
-    dfload_3            ,/** load a flt_128 into the stack from local variable 3. **/
-    dfload_4            ,/** load a flt_128 into the stack from local variable 4. **/
-    dfstore             ,/** store a flt_128 from stack into local variable. **/
-    dfstore_0           ,/** store a flt_128 from stack into local variable 0. **/
-    dfstore_1           ,/** store a flt_128 from stack into local variable 1. **/
-    dfstore_2           ,/** store a flt_128 from stack into local variable 2. **/
-    dfstore_3           ,/** store a flt_128 from stack into local variable 3. **/
-    dfstore_4           ,/** store a flt_128 from stack into local variable 4. **/
-    dfdup               ,/** duplicate a flt_128 on the stack. **/
-    dfdup2              ,/** duplicate a flt_128 2 times on the stack. **/
-    dfdup3              ,/** duplicate a flt_128 3 times on the stack. **/
-    dfdup4              ,/** duplicate a flt_128 4 times on the stack. **/
-    dfdup5              ,/** duplicate a flt_128 5 times on the stack. **/
-    dfset               ,/** set a flt_128 from stack into a field on base pointer. **/
-    dfget               ,/** get a flt_128 from a field on base pointer to stack. **/
-    dfvset              ,/** set a flt_128 from value into a field on base pointer. **/
-    dfsget              ,/** get a flt_128 from a field on base pointer to stack using address from stack. **/
-    dfsset              ,/** set a flt_128 from stack into a field on base pointer using address from stack. **/
-    dfsetl              ,/** set a flt_128 from local variable into a field on base pointer. **/
-    dfinc_1             ,/** increment flt_128 by 1 on stack. **/
-    dfinc_2             ,/** increment flt_128 by 2 on stack. **/
-    dfstinc_1           ,/** increment flt_128 by 1 on stack. **/
-    dfstinc_2           ,/** increment flt_128 by 2 on stack. **/
-    dfreturn            ,/** return a flt_128 into the main stack. **/
-    dfmainst            ,/** store a flt_128 from main stack in a local variable.. **/
-    dfmainst_0          ,/** store a flt_128 from main stack in local variable 0. **/
-    dfmainst_1          ,/** store a flt_128 from main stack in local variable 1. **/
-    dfmainst_2          ,/** store a flt_128 from main stack in local variable 2. **/
-    dfmainst_3          ,/** store a flt_128 from main stack in local variable 3. **/
-    ddprintba           ,/** print a byte array. **/
-    ddconst             ,/** push a const flt_256 into the stack. **/
-    ddconst_0           ,/** push a const flt_256 into the stack (value = 0). **/
-    ddload              ,/** load a flt_256 into the stack from local variable. **/
-    ddload_0            ,/** load a flt_256 into the stack from local variable 0. **/
-    ddload_1            ,/** load a flt_256 into the stack from local variable 1. **/
-    ddload_2            ,/** load a flt_256 into the stack from local variable 2. **/
-    ddload_3            ,/** load a flt_256 into the stack from local variable 3. **/
-    ddload_4            ,/** load a flt_256 into the stack from local variable 4. **/
-    ddstore             ,/** store a flt_256 from stack into local variable. **/
-    ddstore_0           ,/** store a flt_256 from stack into local variable 0. **/
-    ddstore_1           ,/** store a flt_256 from stack into local variable 1. **/
-    ddstore_2           ,/** store a flt_256 from stack into local variable 2. **/
-    ddstore_3           ,/** store a flt_256 from stack into local variable 3. **/
-    ddstore_4           ,/** store a flt_256 from stack into local variable 4. **/
-    dddup               ,/** duplicate a flt_256 on the stack. **/
-    dddup2              ,/** duplicate a flt_256 2 times on the stack. **/
-    dddup3              ,/** duplicate a flt_256 3 times on the stack. **/
-    dddup4              ,/** duplicate a flt_256 4 times on the stack. **/
-    dddup5              ,/** duplicate a flt_256 5 times on the stack. **/
-    ddset               ,/** set a flt_256 from stack into a field on base pointer. **/
-    ddget               ,/** get a flt_256 from a field on base pointer to stack. **/
-    ddvset              ,/** set a flt_256 from value into a field on base pointer. **/
-    ddsget              ,/** get a flt_256 from a field on base pointer to stack using address from stack. **/
-    ddsset              ,/** set a flt_256 from stack into a field on base pointer using address from stack. **/
-    ddsetl              ,/** set a flt_256 from local variable into a field on base pointer. **/
-    ddinc_1             ,/** increment flt_256 by 1 on stack. **/
-    ddinc_2             ,/** increment flt_256 by 2 on stack. **/
-    ddstinc_1           ,/** increment flt_256 by 1 on stack. **/
-    ddstinc_2           ,/** increment flt_256 by 2 on stack. **/
-    ddreturn            ,/** return a flt_256 into the main stack. **/
-    ddmainst            ,/** store a flt_256 from main stack in a local variable.. **/
-    ddmainst_0          ,/** store a flt_256 from main stack in local variable 0. **/
-    ddmainst_1          ,/** store a flt_256 from main stack in local variable 1. **/
-    ddmainst_2          ,/** store a flt_256 from main stack in local variable 2. **/
-    ddmainst_3          ,/** store a flt_256 from main stack in local variable 3. **/
-    aprintba            ,/** print a byte array. **/
-    aconst              ,/** push a const pointer into the stack. **/
-    aconst_0            ,/** push a const pointer into the stack (value = 0). **/
-    aload               ,/** load a pointer into the stack from local variable. **/
-    aload_0             ,/** load a pointer into the stack from local variable 0. **/
-    aload_1             ,/** load a pointer into the stack from local variable 1. **/
-    aload_2             ,/** load a pointer into the stack from local variable 2. **/
-    aload_3             ,/** load a pointer into the stack from local variable 3. **/
-    aload_4             ,/** load a pointer into the stack from local variable 4. **/
-    astore              ,/** store a pointer from stack into local variable. **/
-    astore_0            ,/** store a pointer from stack into local variable 0. **/
-    astore_1            ,/** store a pointer from stack into local variable 1. **/
-    astore_2            ,/** store a pointer from stack into local variable 2. **/
-    astore_3            ,/** store a pointer from stack into local variable 3. **/
-    astore_4            ,/** store a pointer from stack into local variable 4. **/
-    adup                ,/** duplicate a pointer on the stack. **/
-    adup2               ,/** duplicate a pointer 2 times on the stack. **/
-    adup3               ,/** duplicate a pointer 3 times on the stack. **/
-    adup4               ,/** duplicate a pointer 4 times on the stack. **/
-    adup5               ,/** duplicate a pointer 5 times on the stack. **/
-    aset                ,/** set a pointer from stack into a field on base pointer. **/
-    aget                ,/** get a pointer from a field on base pointer to stack. **/
-    avset               ,/** set a pointer from value into a field on base pointer. **/
-    asget               ,/** get a pointer from a field on base pointer to stack using address from stack. **/
-    asset               ,/** set a pointer from stack into a field on base pointer using address from stack. **/
-    asetl               ,/** set a pointer from local variable into a field on base pointer. **/
-    ainc_1              ,/** increment pointer by 1 on stack. **/
-    ainc_2              ,/** increment pointer by 2 on stack. **/
-    astinc_1            ,/** increment pointer by 1 on stack. **/
-    astinc_2            ,/** increment pointer by 2 on stack. **/
-    areturn             ,/** return a pointer into the main stack. **/
-    amainst             ,/** store a pointer from main stack in a local variable.. **/
-    amainst_0           ,/** store a pointer from main stack in local variable 0. **/
-    amainst_1           ,/** store a pointer from main stack in local variable 1. **/
-    amainst_2           ,/** store a pointer from main stack in local variable 2. **/
-    amainst_3           ,/** store a pointer from main stack in local variable 3. **/
+    bprintba = 43       ,/** print a byte array. **/
+    bconst = 44         ,/** push a const int_8 into the stack. **/
+    bconst_0 = 45       ,/** push a const int_8 into the stack (value = 0). **/
+    bconst_1 = 46       ,/** push a const int_8 into the stack (value = 1). **/
+    bconst_2 = 47       ,/** push a const int_8 into the stack (value = 2). **/
+    bconst_3 = 48       ,/** push a const int_8 into the stack (value = 3). **/
+    bconst_4 = 49       ,/** push a const int_8 into the stack (value = 4). **/
+    bconst_5 = 50       ,/** push a const int_8 into the stack (value = 5). **/
+    bconst_6 = 51       ,/** push a const int_8 into the stack (value = 6). **/
+    bconst_9 = 52       ,/** push a const int_8 into the stack (value = 9). **/
+    bconst_10 = 53      ,/** push a const int_8 into the stack (value = 10). **/
+    bconst_11 = 54      ,/** push a const int_8 into the stack (value = 11). **/
+    bconst_12 = 55      ,/** push a const int_8 into the stack (value = 12). **/
+    bload = 56          ,/** load a int_8 into the stack from local variable. **/
+    bload_0 = 57        ,/** load a int_8 into the stack from local variable 0. **/
+    bload_1 = 58        ,/** load a int_8 into the stack from local variable 1. **/
+    bload_2 = 59        ,/** load a int_8 into the stack from local variable 2. **/
+    bload_3 = 60        ,/** load a int_8 into the stack from local variable 3. **/
+    bload_4 = 61        ,/** load a int_8 into the stack from local variable 4. **/
+    bstore = 62         ,/** store a int_8 from stack into local variable. **/
+    bstore_0 = 63       ,/** store a int_8 from stack into local variable 0. **/
+    bstore_1 = 64       ,/** store a int_8 from stack into local variable 1. **/
+    bstore_2 = 65       ,/** store a int_8 from stack into local variable 2. **/
+    bstore_3 = 66       ,/** store a int_8 from stack into local variable 3. **/
+    bstore_4 = 67       ,/** store a int_8 from stack into local variable 4. **/
+    bcast_b = 68        ,/** cast int_8 to type Byte. **/
+    bucast_b = 69       ,/** cast unsigned uint_8 to type Byte. **/
+    badd_b = 70         ,/** add int_8 with type Byte. **/
+    buadd_b = 71        ,/** add unsigned uint_8 with type Byte. **/
+    bsub_b = 72         ,/** subtract int_8 with type Byte. **/
+    busub_b = 73        ,/** subtract unsigned uint_8 with type Byte. **/
+    bmul_b = 74         ,/** multiply int_8 with type Byte. **/
+    bumul_b = 75        ,/** multiply unsigned uint_8 with type Byte. **/
+    bdiv_b = 76         ,/** divide int_8 with type Byte. **/
+    budiv_b = 77        ,/** divide unsigned uint_8 with type Byte. **/
+    bcmpl_b = 78        ,/** compare int_8 less than type Byte. **/
+    bucmpl_b = 79       ,/** compare unsigned uint_8 less than type Byte. **/
+    bcmpg_b = 80        ,/** compare int_8 greater than type Byte. **/
+    bucmpg_b = 81       ,/** compare unsigned uint_8 greater than type Byte. **/
+    bcmpe_b = 82        ,/** compare int_8 equal with type Byte. **/
+    bucmpe_b = 83       ,/** compare unsigned uint_8 equal with type Byte. **/
+    bcmple_b = 84       ,/** compare int_8 less than or equal to type Byte. **/
+    bucmple_b = 85      ,/** compare unsigned uint_8 less than or equal to type Byte. **/
+    bcmpge_b = 86       ,/** compare int_8 greater than or equal to type Byte. **/
+    bucmpge_b = 87      ,/** compare unsigned uint_8 greater than or equal to type Byte. **/
+    bcmpne_b = 88       ,/** compare int_8 not equal with type Byte. **/
+    bucmpne_b = 89      ,/** compare unsigned uint_8 not equal with type Byte. **/
+    bcast_s = 90        ,/** cast int_8 to type Short. **/
+    bucast_s = 91       ,/** cast unsigned uint_8 to type Short. **/
+    badd_s = 92         ,/** add int_8 with type Short. **/
+    buadd_s = 93        ,/** add unsigned uint_8 with type Short. **/
+    bsub_s = 94         ,/** subtract int_8 with type Short. **/
+    busub_s = 95        ,/** subtract unsigned uint_8 with type Short. **/
+    bmul_s = 96         ,/** multiply int_8 with type Short. **/
+    bumul_s = 97        ,/** multiply unsigned uint_8 with type Short. **/
+    bdiv_s = 98         ,/** divide int_8 with type Short. **/
+    budiv_s = 99        ,/** divide unsigned uint_8 with type Short. **/
+    bcmpl_s = 100       ,/** compare int_8 less than type Short. **/
+    bucmpl_s = 101      ,/** compare unsigned uint_8 less than type Short. **/
+    bcmpg_s = 102       ,/** compare int_8 greater than type Short. **/
+    bucmpg_s = 103      ,/** compare unsigned uint_8 greater than type Short. **/
+    bcmpe_s = 104       ,/** compare int_8 equal with type Short. **/
+    bucmpe_s = 105      ,/** compare unsigned uint_8 equal with type Short. **/
+    bcmple_s = 106      ,/** compare int_8 less than or equal to type Short. **/
+    bucmple_s = 107     ,/** compare unsigned uint_8 less than or equal to type Short. **/
+    bcmpge_s = 108      ,/** compare int_8 greater than or equal to type Short. **/
+    bucmpge_s = 109     ,/** compare unsigned uint_8 greater than or equal to type Short. **/
+    bcmpne_s = 110      ,/** compare int_8 not equal with type Short. **/
+    bucmpne_s = 111     ,/** compare unsigned uint_8 not equal with type Short. **/
+    bcast_i = 112       ,/** cast int_8 to type Int. **/
+    bucast_i = 113      ,/** cast unsigned uint_8 to type Int. **/
+    badd_i = 114        ,/** add int_8 with type Int. **/
+    buadd_i = 115       ,/** add unsigned uint_8 with type Int. **/
+    bsub_i = 116        ,/** subtract int_8 with type Int. **/
+    busub_i = 117       ,/** subtract unsigned uint_8 with type Int. **/
+    bmul_i = 118        ,/** multiply int_8 with type Int. **/
+    bumul_i = 119       ,/** multiply unsigned uint_8 with type Int. **/
+    bdiv_i = 120        ,/** divide int_8 with type Int. **/
+    budiv_i = 121       ,/** divide unsigned uint_8 with type Int. **/
+    bcmpl_i = 122       ,/** compare int_8 less than type Int. **/
+    bucmpl_i = 123      ,/** compare unsigned uint_8 less than type Int. **/
+    bcmpg_i = 124       ,/** compare int_8 greater than type Int. **/
+    bucmpg_i = 125      ,/** compare unsigned uint_8 greater than type Int. **/
+    bcmpe_i = 126       ,/** compare int_8 equal with type Int. **/
+    bucmpe_i = 127      ,/** compare unsigned uint_8 equal with type Int. **/
+    bcmple_i = 128      ,/** compare int_8 less than or equal to type Int. **/
+    bucmple_i = 129     ,/** compare unsigned uint_8 less than or equal to type Int. **/
+    bcmpge_i = 130      ,/** compare int_8 greater than or equal to type Int. **/
+    bucmpge_i = 131     ,/** compare unsigned uint_8 greater than or equal to type Int. **/
+    bcmpne_i = 132      ,/** compare int_8 not equal with type Int. **/
+    bucmpne_i = 133     ,/** compare unsigned uint_8 not equal with type Int. **/
+    bcast_l = 134       ,/** cast int_8 to type Long. **/
+    bucast_l = 135      ,/** cast unsigned uint_8 to type Long. **/
+    badd_l = 136        ,/** add int_8 with type Long. **/
+    buadd_l = 137       ,/** add unsigned uint_8 with type Long. **/
+    bsub_l = 138        ,/** subtract int_8 with type Long. **/
+    busub_l = 139       ,/** subtract unsigned uint_8 with type Long. **/
+    bmul_l = 140        ,/** multiply int_8 with type Long. **/
+    bumul_l = 141       ,/** multiply unsigned uint_8 with type Long. **/
+    bdiv_l = 142        ,/** divide int_8 with type Long. **/
+    budiv_l = 143       ,/** divide unsigned uint_8 with type Long. **/
+    bcmpl_l = 144       ,/** compare int_8 less than type Long. **/
+    bucmpl_l = 145      ,/** compare unsigned uint_8 less than type Long. **/
+    bcmpg_l = 146       ,/** compare int_8 greater than type Long. **/
+    bucmpg_l = 147      ,/** compare unsigned uint_8 greater than type Long. **/
+    bcmpe_l = 148       ,/** compare int_8 equal with type Long. **/
+    bucmpe_l = 149      ,/** compare unsigned uint_8 equal with type Long. **/
+    bcmple_l = 150      ,/** compare int_8 less than or equal to type Long. **/
+    bucmple_l = 151     ,/** compare unsigned uint_8 less than or equal to type Long. **/
+    bcmpge_l = 152      ,/** compare int_8 greater than or equal to type Long. **/
+    bucmpge_l = 153     ,/** compare unsigned uint_8 greater than or equal to type Long. **/
+    bcmpne_l = 154      ,/** compare int_8 not equal with type Long. **/
+    bucmpne_l = 155     ,/** compare unsigned uint_8 not equal with type Long. **/
+    bcast_li = 156      ,/** cast int_8 to type LongInt. **/
+    bucast_li = 157     ,/** cast unsigned uint_8 to type LongInt. **/
+    badd_li = 158       ,/** add int_8 with type LongInt. **/
+    buadd_li = 159      ,/** add unsigned uint_8 with type LongInt. **/
+    bsub_li = 160       ,/** subtract int_8 with type LongInt. **/
+    busub_li = 161      ,/** subtract unsigned uint_8 with type LongInt. **/
+    bmul_li = 162       ,/** multiply int_8 with type LongInt. **/
+    bumul_li = 163      ,/** multiply unsigned uint_8 with type LongInt. **/
+    bdiv_li = 164       ,/** divide int_8 with type LongInt. **/
+    budiv_li = 165      ,/** divide unsigned uint_8 with type LongInt. **/
+    bcmpl_li = 166      ,/** compare int_8 less than type LongInt. **/
+    bucmpl_li = 167     ,/** compare unsigned uint_8 less than type LongInt. **/
+    bcmpg_li = 168      ,/** compare int_8 greater than type LongInt. **/
+    bucmpg_li = 169     ,/** compare unsigned uint_8 greater than type LongInt. **/
+    bcmpe_li = 170      ,/** compare int_8 equal with type LongInt. **/
+    bucmpe_li = 171     ,/** compare unsigned uint_8 equal with type LongInt. **/
+    bcmple_li = 172     ,/** compare int_8 less than or equal to type LongInt. **/
+    bucmple_li = 173    ,/** compare unsigned uint_8 less than or equal to type LongInt. **/
+    bcmpge_li = 174     ,/** compare int_8 greater than or equal to type LongInt. **/
+    bucmpge_li = 175    ,/** compare unsigned uint_8 greater than or equal to type LongInt. **/
+    bcmpne_li = 176     ,/** compare int_8 not equal with type LongInt. **/
+    bucmpne_li = 177    ,/** compare unsigned uint_8 not equal with type LongInt. **/
+    bcast_ll = 178      ,/** cast int_8 to type LongLong. **/
+    bucast_ll = 179     ,/** cast unsigned uint_8 to type LongLong. **/
+    badd_ll = 180       ,/** add int_8 with type LongLong. **/
+    buadd_ll = 181      ,/** add unsigned uint_8 with type LongLong. **/
+    bsub_ll = 182       ,/** subtract int_8 with type LongLong. **/
+    busub_ll = 183      ,/** subtract unsigned uint_8 with type LongLong. **/
+    bmul_ll = 184       ,/** multiply int_8 with type LongLong. **/
+    bumul_ll = 185      ,/** multiply unsigned uint_8 with type LongLong. **/
+    bdiv_ll = 186       ,/** divide int_8 with type LongLong. **/
+    budiv_ll = 187      ,/** divide unsigned uint_8 with type LongLong. **/
+    bcmpl_ll = 188      ,/** compare int_8 less than type LongLong. **/
+    bucmpl_ll = 189     ,/** compare unsigned uint_8 less than type LongLong. **/
+    bcmpg_ll = 190      ,/** compare int_8 greater than type LongLong. **/
+    bucmpg_ll = 191     ,/** compare unsigned uint_8 greater than type LongLong. **/
+    bcmpe_ll = 192      ,/** compare int_8 equal with type LongLong. **/
+    bucmpe_ll = 193     ,/** compare unsigned uint_8 equal with type LongLong. **/
+    bcmple_ll = 194     ,/** compare int_8 less than or equal to type LongLong. **/
+    bucmple_ll = 195    ,/** compare unsigned uint_8 less than or equal to type LongLong. **/
+    bcmpge_ll = 196     ,/** compare int_8 greater than or equal to type LongLong. **/
+    bucmpge_ll = 197    ,/** compare unsigned uint_8 greater than or equal to type LongLong. **/
+    bcmpne_ll = 198     ,/** compare int_8 not equal with type LongLong. **/
+    bucmpne_ll = 199    ,/** compare unsigned uint_8 not equal with type LongLong. **/
+    bcast_f = 200       ,/** cast int_8 to type Float. **/
+    bucast_f = 201      ,/** cast unsigned uint_8 to type Float. **/
+    badd_f = 202        ,/** add int_8 with type Float. **/
+    buadd_f = 203       ,/** add unsigned uint_8 with type Float. **/
+    bsub_f = 204        ,/** subtract int_8 with type Float. **/
+    busub_f = 205       ,/** subtract unsigned uint_8 with type Float. **/
+    bmul_f = 206        ,/** multiply int_8 with type Float. **/
+    bumul_f = 207       ,/** multiply unsigned uint_8 with type Float. **/
+    bdiv_f = 208        ,/** divide int_8 with type Float. **/
+    budiv_f = 209       ,/** divide unsigned uint_8 with type Float. **/
+    bcmpl_f = 210       ,/** compare int_8 less than type Float. **/
+    bucmpl_f = 211      ,/** compare unsigned uint_8 less than type Float. **/
+    bcmpg_f = 212       ,/** compare int_8 greater than type Float. **/
+    bucmpg_f = 213      ,/** compare unsigned uint_8 greater than type Float. **/
+    bcmpe_f = 214       ,/** compare int_8 equal with type Float. **/
+    bucmpe_f = 215      ,/** compare unsigned uint_8 equal with type Float. **/
+    bcmple_f = 216      ,/** compare int_8 less than or equal to type Float. **/
+    bucmple_f = 217     ,/** compare unsigned uint_8 less than or equal to type Float. **/
+    bcmpge_f = 218      ,/** compare int_8 greater than or equal to type Float. **/
+    bucmpge_f = 219     ,/** compare unsigned uint_8 greater than or equal to type Float. **/
+    bcmpne_f = 220      ,/** compare int_8 not equal with type Float. **/
+    bucmpne_f = 221     ,/** compare unsigned uint_8 not equal with type Float. **/
+    bcast_d = 222       ,/** cast int_8 to type Double. **/
+    bucast_d = 223      ,/** cast unsigned uint_8 to type Double. **/
+    badd_d = 224        ,/** add int_8 with type Double. **/
+    buadd_d = 225       ,/** add unsigned uint_8 with type Double. **/
+    bsub_d = 226        ,/** subtract int_8 with type Double. **/
+    busub_d = 227       ,/** subtract unsigned uint_8 with type Double. **/
+    bmul_d = 228        ,/** multiply int_8 with type Double. **/
+    bumul_d = 229       ,/** multiply unsigned uint_8 with type Double. **/
+    bdiv_d = 230        ,/** divide int_8 with type Double. **/
+    budiv_d = 231       ,/** divide unsigned uint_8 with type Double. **/
+    bcmpl_d = 232       ,/** compare int_8 less than type Double. **/
+    bucmpl_d = 233      ,/** compare unsigned uint_8 less than type Double. **/
+    bcmpg_d = 234       ,/** compare int_8 greater than type Double. **/
+    bucmpg_d = 235      ,/** compare unsigned uint_8 greater than type Double. **/
+    bcmpe_d = 236       ,/** compare int_8 equal with type Double. **/
+    bucmpe_d = 237      ,/** compare unsigned uint_8 equal with type Double. **/
+    bcmple_d = 238      ,/** compare int_8 less than or equal to type Double. **/
+    bucmple_d = 239     ,/** compare unsigned uint_8 less than or equal to type Double. **/
+    bcmpge_d = 240      ,/** compare int_8 greater than or equal to type Double. **/
+    bucmpge_d = 241     ,/** compare unsigned uint_8 greater than or equal to type Double. **/
+    bcmpne_d = 242      ,/** compare int_8 not equal with type Double. **/
+    bucmpne_d = 243     ,/** compare unsigned uint_8 not equal with type Double. **/
+    bcast_df = 244      ,/** cast int_8 to type DoubleFloat. **/
+    bucast_df = 245     ,/** cast unsigned uint_8 to type DoubleFloat. **/
+    badd_df = 246       ,/** add int_8 with type DoubleFloat. **/
+    buadd_df = 247      ,/** add unsigned uint_8 with type DoubleFloat. **/
+    bsub_df = 248       ,/** subtract int_8 with type DoubleFloat. **/
+    busub_df = 249      ,/** subtract unsigned uint_8 with type DoubleFloat. **/
+    bmul_df = 250       ,/** multiply int_8 with type DoubleFloat. **/
+    bumul_df = 251      ,/** multiply unsigned uint_8 with type DoubleFloat. **/
+    bdiv_df = 252       ,/** divide int_8 with type DoubleFloat. **/
+    budiv_df = 253      ,/** divide unsigned uint_8 with type DoubleFloat. **/
+    bcmpl_df = 254      ,/** compare int_8 less than type DoubleFloat. **/
+    bucmpl_df = 255     ,/** compare unsigned uint_8 less than type DoubleFloat. **/
+    bcmpg_df = 256      ,/** compare int_8 greater than type DoubleFloat. **/
+    bucmpg_df = 257     ,/** compare unsigned uint_8 greater than type DoubleFloat. **/
+    bcmpe_df = 258      ,/** compare int_8 equal with type DoubleFloat. **/
+    bucmpe_df = 259     ,/** compare unsigned uint_8 equal with type DoubleFloat. **/
+    bcmple_df = 260     ,/** compare int_8 less than or equal to type DoubleFloat. **/
+    bucmple_df = 261    ,/** compare unsigned uint_8 less than or equal to type DoubleFloat. **/
+    bcmpge_df = 262     ,/** compare int_8 greater than or equal to type DoubleFloat. **/
+    bucmpge_df = 263    ,/** compare unsigned uint_8 greater than or equal to type DoubleFloat. **/
+    bcmpne_df = 264     ,/** compare int_8 not equal with type DoubleFloat. **/
+    bucmpne_df = 265    ,/** compare unsigned uint_8 not equal with type DoubleFloat. **/
+    bcast_dd = 266      ,/** cast int_8 to type DoubleDouble. **/
+    bucast_dd = 267     ,/** cast unsigned uint_8 to type DoubleDouble. **/
+    badd_dd = 268       ,/** add int_8 with type DoubleDouble. **/
+    buadd_dd = 269      ,/** add unsigned uint_8 with type DoubleDouble. **/
+    bsub_dd = 270       ,/** subtract int_8 with type DoubleDouble. **/
+    busub_dd = 271      ,/** subtract unsigned uint_8 with type DoubleDouble. **/
+    bmul_dd = 272       ,/** multiply int_8 with type DoubleDouble. **/
+    bumul_dd = 273      ,/** multiply unsigned uint_8 with type DoubleDouble. **/
+    bdiv_dd = 274       ,/** divide int_8 with type DoubleDouble. **/
+    budiv_dd = 275      ,/** divide unsigned uint_8 with type DoubleDouble. **/
+    bcmpl_dd = 276      ,/** compare int_8 less than type DoubleDouble. **/
+    bucmpl_dd = 277     ,/** compare unsigned uint_8 less than type DoubleDouble. **/
+    bcmpg_dd = 278      ,/** compare int_8 greater than type DoubleDouble. **/
+    bucmpg_dd = 279     ,/** compare unsigned uint_8 greater than type DoubleDouble. **/
+    bcmpe_dd = 280      ,/** compare int_8 equal with type DoubleDouble. **/
+    bucmpe_dd = 281     ,/** compare unsigned uint_8 equal with type DoubleDouble. **/
+    bcmple_dd = 282     ,/** compare int_8 less than or equal to type DoubleDouble. **/
+    bucmple_dd = 283    ,/** compare unsigned uint_8 less than or equal to type DoubleDouble. **/
+    bcmpge_dd = 284     ,/** compare int_8 greater than or equal to type DoubleDouble. **/
+    bucmpge_dd = 285    ,/** compare unsigned uint_8 greater than or equal to type DoubleDouble. **/
+    bcmpne_dd = 286     ,/** compare int_8 not equal with type DoubleDouble. **/
+    bucmpne_dd = 287    ,/** compare unsigned uint_8 not equal with type DoubleDouble. **/
+    bmod_b = 288        ,/** modulo int_8 with type Byte. **/
+    bcast_ub = 289      ,/** cast int_8 to unsigned type Byte. **/
+    bucast_ub = 290     ,/** cast unsigned uint_8 to unsigned type Byte. **/
+    badd_ub = 291       ,/** add int_8 with unsigned type Byte. **/
+    buadd_ub = 292      ,/** add unsigned uint_8 with unsigned type Byte. **/
+    bsub_ub = 293       ,/** subtract int_8 with unsigned type Byte. **/
+    busub_ub = 294      ,/** subtract unsigned uint_8 with unsigned type Byte. **/
+    bmul_ub = 295       ,/** multiply int_8 with unsigned type Byte. **/
+    bumul_ub = 296      ,/** multiply unsigned uint_8 with unsigned type Byte. **/
+    bdiv_ub = 297       ,/** divide int_8 with unsigned type Byte. **/
+    budiv_ub = 298      ,/** divide unsigned uint_8 with unsigned type Byte. **/
+    bcmpl_ub = 299      ,/** compare int_8 less than unsigned type Byte. **/
+    bucmpl_ub = 300     ,/** compare unsigned uint_8 less than unsigned type Byte. **/
+    bcmpg_ub = 301      ,/** compare int_8 greater than unsigned type Byte. **/
+    bucmpg_ub = 302     ,/** compare unsigned uint_8 greater than unsigned type Byte. **/
+    bcmpe_ub = 303      ,/** compare int_8 equal with unsigned type Byte. **/
+    bucmpe_ub = 304     ,/** compare unsigned uint_8 equal with unsigned type Byte. **/
+    bcmple_ub = 305     ,/** compare int_8 less than or equal to unsigned type Byte. **/
+    bucmple_ub = 306    ,/** compare unsigned uint_8 less than or equal to unsigned type Byte. **/
+    bcmpge_ub = 307     ,/** compare int_8 greater than or equal to unsigned type Byte. **/
+    bucmpge_ub = 308    ,/** compare unsigned uint_8 greater than or equal to unsigned type Byte. **/
+    bcmpne_ub = 309     ,/** compare int_8 not equal with unsigned type Byte. **/
+    bucmpne_ub = 310    ,/** compare unsigned uint_8 not equal with unsigned type Byte. **/
+    bmod_s = 311        ,/** modulo int_8 with type Short. **/
+    bcast_us = 312      ,/** cast int_8 to unsigned type Short. **/
+    bucast_us = 313     ,/** cast unsigned uint_8 to unsigned type Short. **/
+    badd_us = 314       ,/** add int_8 with unsigned type Short. **/
+    buadd_us = 315      ,/** add unsigned uint_8 with unsigned type Short. **/
+    bsub_us = 316       ,/** subtract int_8 with unsigned type Short. **/
+    busub_us = 317      ,/** subtract unsigned uint_8 with unsigned type Short. **/
+    bmul_us = 318       ,/** multiply int_8 with unsigned type Short. **/
+    bumul_us = 319      ,/** multiply unsigned uint_8 with unsigned type Short. **/
+    bdiv_us = 320       ,/** divide int_8 with unsigned type Short. **/
+    budiv_us = 321      ,/** divide unsigned uint_8 with unsigned type Short. **/
+    bcmpl_us = 322      ,/** compare int_8 less than unsigned type Short. **/
+    bucmpl_us = 323     ,/** compare unsigned uint_8 less than unsigned type Short. **/
+    bcmpg_us = 324      ,/** compare int_8 greater than unsigned type Short. **/
+    bucmpg_us = 325     ,/** compare unsigned uint_8 greater than unsigned type Short. **/
+    bcmpe_us = 326      ,/** compare int_8 equal with unsigned type Short. **/
+    bucmpe_us = 327     ,/** compare unsigned uint_8 equal with unsigned type Short. **/
+    bcmple_us = 328     ,/** compare int_8 less than or equal to unsigned type Short. **/
+    bucmple_us = 329    ,/** compare unsigned uint_8 less than or equal to unsigned type Short. **/
+    bcmpge_us = 330     ,/** compare int_8 greater than or equal to unsigned type Short. **/
+    bucmpge_us = 331    ,/** compare unsigned uint_8 greater than or equal to unsigned type Short. **/
+    bcmpne_us = 332     ,/** compare int_8 not equal with unsigned type Short. **/
+    bucmpne_us = 333    ,/** compare unsigned uint_8 not equal with unsigned type Short. **/
+    bmod_i = 334        ,/** modulo int_8 with type Int. **/
+    bcast_ui = 335      ,/** cast int_8 to unsigned type Int. **/
+    bucast_ui = 336     ,/** cast unsigned uint_8 to unsigned type Int. **/
+    badd_ui = 337       ,/** add int_8 with unsigned type Int. **/
+    buadd_ui = 338      ,/** add unsigned uint_8 with unsigned type Int. **/
+    bsub_ui = 339       ,/** subtract int_8 with unsigned type Int. **/
+    busub_ui = 340      ,/** subtract unsigned uint_8 with unsigned type Int. **/
+    bmul_ui = 341       ,/** multiply int_8 with unsigned type Int. **/
+    bumul_ui = 342      ,/** multiply unsigned uint_8 with unsigned type Int. **/
+    bdiv_ui = 343       ,/** divide int_8 with unsigned type Int. **/
+    budiv_ui = 344      ,/** divide unsigned uint_8 with unsigned type Int. **/
+    bcmpl_ui = 345      ,/** compare int_8 less than unsigned type Int. **/
+    bucmpl_ui = 346     ,/** compare unsigned uint_8 less than unsigned type Int. **/
+    bcmpg_ui = 347      ,/** compare int_8 greater than unsigned type Int. **/
+    bucmpg_ui = 348     ,/** compare unsigned uint_8 greater than unsigned type Int. **/
+    bcmpe_ui = 349      ,/** compare int_8 equal with unsigned type Int. **/
+    bucmpe_ui = 350     ,/** compare unsigned uint_8 equal with unsigned type Int. **/
+    bcmple_ui = 351     ,/** compare int_8 less than or equal to unsigned type Int. **/
+    bucmple_ui = 352    ,/** compare unsigned uint_8 less than or equal to unsigned type Int. **/
+    bcmpge_ui = 353     ,/** compare int_8 greater than or equal to unsigned type Int. **/
+    bucmpge_ui = 354    ,/** compare unsigned uint_8 greater than or equal to unsigned type Int. **/
+    bcmpne_ui = 355     ,/** compare int_8 not equal with unsigned type Int. **/
+    bucmpne_ui = 356    ,/** compare unsigned uint_8 not equal with unsigned type Int. **/
+    bmod_l = 357        ,/** modulo int_8 with type Long. **/
+    bcast_ul = 358      ,/** cast int_8 to unsigned type Long. **/
+    bucast_ul = 359     ,/** cast unsigned uint_8 to unsigned type Long. **/
+    badd_ul = 360       ,/** add int_8 with unsigned type Long. **/
+    buadd_ul = 361      ,/** add unsigned uint_8 with unsigned type Long. **/
+    bsub_ul = 362       ,/** subtract int_8 with unsigned type Long. **/
+    busub_ul = 363      ,/** subtract unsigned uint_8 with unsigned type Long. **/
+    bmul_ul = 364       ,/** multiply int_8 with unsigned type Long. **/
+    bumul_ul = 365      ,/** multiply unsigned uint_8 with unsigned type Long. **/
+    bdiv_ul = 366       ,/** divide int_8 with unsigned type Long. **/
+    budiv_ul = 367      ,/** divide unsigned uint_8 with unsigned type Long. **/
+    bcmpl_ul = 368      ,/** compare int_8 less than unsigned type Long. **/
+    bucmpl_ul = 369     ,/** compare unsigned uint_8 less than unsigned type Long. **/
+    bcmpg_ul = 370      ,/** compare int_8 greater than unsigned type Long. **/
+    bucmpg_ul = 371     ,/** compare unsigned uint_8 greater than unsigned type Long. **/
+    bcmpe_ul = 372      ,/** compare int_8 equal with unsigned type Long. **/
+    bucmpe_ul = 373     ,/** compare unsigned uint_8 equal with unsigned type Long. **/
+    bcmple_ul = 374     ,/** compare int_8 less than or equal to unsigned type Long. **/
+    bucmple_ul = 375    ,/** compare unsigned uint_8 less than or equal to unsigned type Long. **/
+    bcmpge_ul = 376     ,/** compare int_8 greater than or equal to unsigned type Long. **/
+    bucmpge_ul = 377    ,/** compare unsigned uint_8 greater than or equal to unsigned type Long. **/
+    bcmpne_ul = 378     ,/** compare int_8 not equal with unsigned type Long. **/
+    bucmpne_ul = 379    ,/** compare unsigned uint_8 not equal with unsigned type Long. **/
+    bmod_li = 380       ,/** modulo int_8 with type LongInt. **/
+    bcast_uli = 381     ,/** cast int_8 to unsigned type LongInt. **/
+    bucast_uli = 382    ,/** cast unsigned uint_8 to unsigned type LongInt. **/
+    badd_uli = 383      ,/** add int_8 with unsigned type LongInt. **/
+    buadd_uli = 384     ,/** add unsigned uint_8 with unsigned type LongInt. **/
+    bsub_uli = 385      ,/** subtract int_8 with unsigned type LongInt. **/
+    busub_uli = 386     ,/** subtract unsigned uint_8 with unsigned type LongInt. **/
+    bmul_uli = 387      ,/** multiply int_8 with unsigned type LongInt. **/
+    bumul_uli = 388     ,/** multiply unsigned uint_8 with unsigned type LongInt. **/
+    bdiv_uli = 389      ,/** divide int_8 with unsigned type LongInt. **/
+    budiv_uli = 390     ,/** divide unsigned uint_8 with unsigned type LongInt. **/
+    bcmpl_uli = 391     ,/** compare int_8 less than unsigned type LongInt. **/
+    bucmpl_uli = 392    ,/** compare unsigned uint_8 less than unsigned type LongInt. **/
+    bcmpg_uli = 393     ,/** compare int_8 greater than unsigned type LongInt. **/
+    bucmpg_uli = 394    ,/** compare unsigned uint_8 greater than unsigned type LongInt. **/
+    bcmpe_uli = 395     ,/** compare int_8 equal with unsigned type LongInt. **/
+    bucmpe_uli = 396    ,/** compare unsigned uint_8 equal with unsigned type LongInt. **/
+    bcmple_uli = 397    ,/** compare int_8 less than or equal to unsigned type LongInt. **/
+    bucmple_uli = 398   ,/** compare unsigned uint_8 less than or equal to unsigned type LongInt. **/
+    bcmpge_uli = 399    ,/** compare int_8 greater than or equal to unsigned type LongInt. **/
+    bucmpge_uli = 400   ,/** compare unsigned uint_8 greater than or equal to unsigned type LongInt. **/
+    bcmpne_uli = 401    ,/** compare int_8 not equal with unsigned type LongInt. **/
+    bucmpne_uli = 402   ,/** compare unsigned uint_8 not equal with unsigned type LongInt. **/
+    bmod_ll = 403       ,/** modulo int_8 with type LongLong. **/
+    bcast_ull = 404     ,/** cast int_8 to unsigned type LongLong. **/
+    bucast_ull = 405    ,/** cast unsigned uint_8 to unsigned type LongLong. **/
+    badd_ull = 406      ,/** add int_8 with unsigned type LongLong. **/
+    buadd_ull = 407     ,/** add unsigned uint_8 with unsigned type LongLong. **/
+    bsub_ull = 408      ,/** subtract int_8 with unsigned type LongLong. **/
+    busub_ull = 409     ,/** subtract unsigned uint_8 with unsigned type LongLong. **/
+    bmul_ull = 410      ,/** multiply int_8 with unsigned type LongLong. **/
+    bumul_ull = 411     ,/** multiply unsigned uint_8 with unsigned type LongLong. **/
+    bdiv_ull = 412      ,/** divide int_8 with unsigned type LongLong. **/
+    budiv_ull = 413     ,/** divide unsigned uint_8 with unsigned type LongLong. **/
+    bcmpl_ull = 414     ,/** compare int_8 less than unsigned type LongLong. **/
+    bucmpl_ull = 415    ,/** compare unsigned uint_8 less than unsigned type LongLong. **/
+    bcmpg_ull = 416     ,/** compare int_8 greater than unsigned type LongLong. **/
+    bucmpg_ull = 417    ,/** compare unsigned uint_8 greater than unsigned type LongLong. **/
+    bcmpe_ull = 418     ,/** compare int_8 equal with unsigned type LongLong. **/
+    bucmpe_ull = 419    ,/** compare unsigned uint_8 equal with unsigned type LongLong. **/
+    bcmple_ull = 420    ,/** compare int_8 less than or equal to unsigned type LongLong. **/
+    bucmple_ull = 421   ,/** compare unsigned uint_8 less than or equal to unsigned type LongLong. **/
+    bcmpge_ull = 422    ,/** compare int_8 greater than or equal to unsigned type LongLong. **/
+    bucmpge_ull = 423   ,/** compare unsigned uint_8 greater than or equal to unsigned type LongLong. **/
+    bcmpne_ull = 424    ,/** compare int_8 not equal with unsigned type LongLong. **/
+    bucmpne_ull = 425   ,/** compare unsigned uint_8 not equal with unsigned type LongLong. **/
+    band_b = 426        ,/** bitwise and int_8 with type Byte. **/
+    bor_b = 427         ,/** bitwise or int_8 with type Byte. **/
+    bxor_b = 428        ,/** bitwise xor int_8 with type Byte. **/
+    bshftr_b = 429      ,/** shift right int_8 with type Byte. **/
+    bshftl_b = 430      ,/** shift left xor int_8 with type Byte. **/
+    band_s = 431        ,/** bitwise and int_8 with type Short. **/
+    bor_s = 432         ,/** bitwise or int_8 with type Short. **/
+    bxor_s = 433        ,/** bitwise xor int_8 with type Short. **/
+    bshftr_s = 434      ,/** shift right int_8 with type Short. **/
+    bshftl_s = 435      ,/** shift left xor int_8 with type Short. **/
+    band_i = 436        ,/** bitwise and int_8 with type Int. **/
+    bor_i = 437         ,/** bitwise or int_8 with type Int. **/
+    bxor_i = 438        ,/** bitwise xor int_8 with type Int. **/
+    bshftr_i = 439      ,/** shift right int_8 with type Int. **/
+    bshftl_i = 440      ,/** shift left xor int_8 with type Int. **/
+    band_l = 441        ,/** bitwise and int_8 with type Long. **/
+    bor_l = 442         ,/** bitwise or int_8 with type Long. **/
+    bxor_l = 443        ,/** bitwise xor int_8 with type Long. **/
+    bshftr_l = 444      ,/** shift right int_8 with type Long. **/
+    bshftl_l = 445      ,/** shift left xor int_8 with type Long. **/
+    band_li = 446       ,/** bitwise and int_8 with type LongInt. **/
+    bor_li = 447        ,/** bitwise or int_8 with type LongInt. **/
+    bxor_li = 448       ,/** bitwise xor int_8 with type LongInt. **/
+    bshftr_li = 449     ,/** shift right int_8 with type LongInt. **/
+    bshftl_li = 450     ,/** shift left xor int_8 with type LongInt. **/
+    band_ll = 451       ,/** bitwise and int_8 with type LongLong. **/
+    bor_ll = 452        ,/** bitwise or int_8 with type LongLong. **/
+    bxor_ll = 453       ,/** bitwise xor int_8 with type LongLong. **/
+    bshftr_ll = 454     ,/** shift right int_8 with type LongLong. **/
+    bshftl_ll = 455     ,/** shift left xor int_8 with type LongLong. **/
+    bdup = 456          ,/** duplicate a int_8 on the stack. **/
+    bdup2 = 457         ,/** duplicate a int_8 2 times on the stack. **/
+    bdup3 = 458         ,/** duplicate a int_8 3 times on the stack. **/
+    bdup4 = 459         ,/** duplicate a int_8 4 times on the stack. **/
+    bdup5 = 460         ,/** duplicate a int_8 5 times on the stack. **/
+    bset = 461          ,/** set a int_8 from stack into a field on base pointer. **/
+    bget = 462          ,/** get a int_8 from a field on base pointer to stack. **/
+    bvset = 463         ,/** set a int_8 from value into a field on base pointer. **/
+    bsget = 464         ,/** get a int_8 from a field on base pointer to stack using address from stack. **/
+    bsset = 465         ,/** set a int_8 from stack into a field on base pointer using address from stack. **/
+    bsetl = 466         ,/** set a int_8 from local variable into a field on base pointer. **/
+    binc_1 = 467        ,/** increment int_8 by 1 on stack. **/
+    binc_2 = 468        ,/** increment int_8 by 2 on stack. **/
+    bstinc_1 = 469      ,/** increment int_8 by 1 on stack. **/
+    bstinc_2 = 470      ,/** increment int_8 by 2 on stack. **/
+    breturn = 471       ,/** return a int_8 into the main stack. **/
+    bmainst = 472       ,/** store a int_8 from main stack in a local variable.. **/
+    bmainst_0 = 473     ,/** store a int_8 from main stack in local variable 0. **/
+    bmainst_1 = 474     ,/** store a int_8 from main stack in local variable 1. **/
+    bmainst_2 = 475     ,/** store a int_8 from main stack in local variable 2. **/
+    bmainst_3 = 476     ,/** store a int_8 from main stack in local variable 3. **/
+    bprint = 477        ,/** print a int_8 from stack. **/
+    buprint = 478       ,/** print a unsigned uint_8 from stack. **/
+    sprintba = 479      ,/** print a byte array. **/
+    sconst = 480        ,/** push a const int_16 into the stack. **/
+    sconst_0 = 481      ,/** push a const int_16 into the stack (value = 0). **/
+    sconst_1 = 482      ,/** push a const int_16 into the stack (value = 1). **/
+    sconst_2 = 483      ,/** push a const int_16 into the stack (value = 2). **/
+    sconst_3 = 484      ,/** push a const int_16 into the stack (value = 3). **/
+    sconst_4 = 485      ,/** push a const int_16 into the stack (value = 4). **/
+    sconst_5 = 486      ,/** push a const int_16 into the stack (value = 5). **/
+    sconst_6 = 487      ,/** push a const int_16 into the stack (value = 6). **/
+    sconst_9 = 488      ,/** push a const int_16 into the stack (value = 9). **/
+    sconst_10 = 489     ,/** push a const int_16 into the stack (value = 10). **/
+    sconst_11 = 490     ,/** push a const int_16 into the stack (value = 11). **/
+    sconst_12 = 491     ,/** push a const int_16 into the stack (value = 12). **/
+    sload = 492         ,/** load a int_16 into the stack from local variable. **/
+    sload_0 = 493       ,/** load a int_16 into the stack from local variable 0. **/
+    sload_1 = 494       ,/** load a int_16 into the stack from local variable 1. **/
+    sload_2 = 495       ,/** load a int_16 into the stack from local variable 2. **/
+    sload_3 = 496       ,/** load a int_16 into the stack from local variable 3. **/
+    sload_4 = 497       ,/** load a int_16 into the stack from local variable 4. **/
+    sstore = 498        ,/** store a int_16 from stack into local variable. **/
+    sstore_0 = 499      ,/** store a int_16 from stack into local variable 0. **/
+    sstore_1 = 500      ,/** store a int_16 from stack into local variable 1. **/
+    sstore_2 = 501      ,/** store a int_16 from stack into local variable 2. **/
+    sstore_3 = 502      ,/** store a int_16 from stack into local variable 3. **/
+    sstore_4 = 503      ,/** store a int_16 from stack into local variable 4. **/
+    scast_b = 504       ,/** cast int_16 to type Byte. **/
+    sucast_b = 505      ,/** cast unsigned uint_16 to type Byte. **/
+    sadd_b = 506        ,/** add int_16 with type Byte. **/
+    suadd_b = 507       ,/** add unsigned uint_16 with type Byte. **/
+    ssub_b = 508        ,/** subtract int_16 with type Byte. **/
+    susub_b = 509       ,/** subtract unsigned uint_16 with type Byte. **/
+    smul_b = 510        ,/** multiply int_16 with type Byte. **/
+    sumul_b = 511       ,/** multiply unsigned uint_16 with type Byte. **/
+    sdiv_b = 512        ,/** divide int_16 with type Byte. **/
+    sudiv_b = 513       ,/** divide unsigned uint_16 with type Byte. **/
+    scmpl_b = 514       ,/** compare int_16 less than type Byte. **/
+    sucmpl_b = 515      ,/** compare unsigned uint_16 less than type Byte. **/
+    scmpg_b = 516       ,/** compare int_16 greater than type Byte. **/
+    sucmpg_b = 517      ,/** compare unsigned uint_16 greater than type Byte. **/
+    scmpe_b = 518       ,/** compare int_16 equal with type Byte. **/
+    sucmpe_b = 519      ,/** compare unsigned uint_16 equal with type Byte. **/
+    scmple_b = 520      ,/** compare int_16 less than or equal to type Byte. **/
+    sucmple_b = 521     ,/** compare unsigned uint_16 less than or equal to type Byte. **/
+    scmpge_b = 522      ,/** compare int_16 greater than or equal to type Byte. **/
+    sucmpge_b = 523     ,/** compare unsigned uint_16 greater than or equal to type Byte. **/
+    scmpne_b = 524      ,/** compare int_16 not equal with type Byte. **/
+    sucmpne_b = 525     ,/** compare unsigned uint_16 not equal with type Byte. **/
+    scast_s = 526       ,/** cast int_16 to type Short. **/
+    sucast_s = 527      ,/** cast unsigned uint_16 to type Short. **/
+    sadd_s = 528        ,/** add int_16 with type Short. **/
+    suadd_s = 529       ,/** add unsigned uint_16 with type Short. **/
+    ssub_s = 530        ,/** subtract int_16 with type Short. **/
+    susub_s = 531       ,/** subtract unsigned uint_16 with type Short. **/
+    smul_s = 532        ,/** multiply int_16 with type Short. **/
+    sumul_s = 533       ,/** multiply unsigned uint_16 with type Short. **/
+    sdiv_s = 534        ,/** divide int_16 with type Short. **/
+    sudiv_s = 535       ,/** divide unsigned uint_16 with type Short. **/
+    scmpl_s = 536       ,/** compare int_16 less than type Short. **/
+    sucmpl_s = 537      ,/** compare unsigned uint_16 less than type Short. **/
+    scmpg_s = 538       ,/** compare int_16 greater than type Short. **/
+    sucmpg_s = 539      ,/** compare unsigned uint_16 greater than type Short. **/
+    scmpe_s = 540       ,/** compare int_16 equal with type Short. **/
+    sucmpe_s = 541      ,/** compare unsigned uint_16 equal with type Short. **/
+    scmple_s = 542      ,/** compare int_16 less than or equal to type Short. **/
+    sucmple_s = 543     ,/** compare unsigned uint_16 less than or equal to type Short. **/
+    scmpge_s = 544      ,/** compare int_16 greater than or equal to type Short. **/
+    sucmpge_s = 545     ,/** compare unsigned uint_16 greater than or equal to type Short. **/
+    scmpne_s = 546      ,/** compare int_16 not equal with type Short. **/
+    sucmpne_s = 547     ,/** compare unsigned uint_16 not equal with type Short. **/
+    scast_i = 548       ,/** cast int_16 to type Int. **/
+    sucast_i = 549      ,/** cast unsigned uint_16 to type Int. **/
+    sadd_i = 550        ,/** add int_16 with type Int. **/
+    suadd_i = 551       ,/** add unsigned uint_16 with type Int. **/
+    ssub_i = 552        ,/** subtract int_16 with type Int. **/
+    susub_i = 553       ,/** subtract unsigned uint_16 with type Int. **/
+    smul_i = 554        ,/** multiply int_16 with type Int. **/
+    sumul_i = 555       ,/** multiply unsigned uint_16 with type Int. **/
+    sdiv_i = 556        ,/** divide int_16 with type Int. **/
+    sudiv_i = 557       ,/** divide unsigned uint_16 with type Int. **/
+    scmpl_i = 558       ,/** compare int_16 less than type Int. **/
+    sucmpl_i = 559      ,/** compare unsigned uint_16 less than type Int. **/
+    scmpg_i = 560       ,/** compare int_16 greater than type Int. **/
+    sucmpg_i = 561      ,/** compare unsigned uint_16 greater than type Int. **/
+    scmpe_i = 562       ,/** compare int_16 equal with type Int. **/
+    sucmpe_i = 563      ,/** compare unsigned uint_16 equal with type Int. **/
+    scmple_i = 564      ,/** compare int_16 less than or equal to type Int. **/
+    sucmple_i = 565     ,/** compare unsigned uint_16 less than or equal to type Int. **/
+    scmpge_i = 566      ,/** compare int_16 greater than or equal to type Int. **/
+    sucmpge_i = 567     ,/** compare unsigned uint_16 greater than or equal to type Int. **/
+    scmpne_i = 568      ,/** compare int_16 not equal with type Int. **/
+    sucmpne_i = 569     ,/** compare unsigned uint_16 not equal with type Int. **/
+    scast_l = 570       ,/** cast int_16 to type Long. **/
+    sucast_l = 571      ,/** cast unsigned uint_16 to type Long. **/
+    sadd_l = 572        ,/** add int_16 with type Long. **/
+    suadd_l = 573       ,/** add unsigned uint_16 with type Long. **/
+    ssub_l = 574        ,/** subtract int_16 with type Long. **/
+    susub_l = 575       ,/** subtract unsigned uint_16 with type Long. **/
+    smul_l = 576        ,/** multiply int_16 with type Long. **/
+    sumul_l = 577       ,/** multiply unsigned uint_16 with type Long. **/
+    sdiv_l = 578        ,/** divide int_16 with type Long. **/
+    sudiv_l = 579       ,/** divide unsigned uint_16 with type Long. **/
+    scmpl_l = 580       ,/** compare int_16 less than type Long. **/
+    sucmpl_l = 581      ,/** compare unsigned uint_16 less than type Long. **/
+    scmpg_l = 582       ,/** compare int_16 greater than type Long. **/
+    sucmpg_l = 583      ,/** compare unsigned uint_16 greater than type Long. **/
+    scmpe_l = 584       ,/** compare int_16 equal with type Long. **/
+    sucmpe_l = 585      ,/** compare unsigned uint_16 equal with type Long. **/
+    scmple_l = 586      ,/** compare int_16 less than or equal to type Long. **/
+    sucmple_l = 587     ,/** compare unsigned uint_16 less than or equal to type Long. **/
+    scmpge_l = 588      ,/** compare int_16 greater than or equal to type Long. **/
+    sucmpge_l = 589     ,/** compare unsigned uint_16 greater than or equal to type Long. **/
+    scmpne_l = 590      ,/** compare int_16 not equal with type Long. **/
+    sucmpne_l = 591     ,/** compare unsigned uint_16 not equal with type Long. **/
+    scast_li = 592      ,/** cast int_16 to type LongInt. **/
+    sucast_li = 593     ,/** cast unsigned uint_16 to type LongInt. **/
+    sadd_li = 594       ,/** add int_16 with type LongInt. **/
+    suadd_li = 595      ,/** add unsigned uint_16 with type LongInt. **/
+    ssub_li = 596       ,/** subtract int_16 with type LongInt. **/
+    susub_li = 597      ,/** subtract unsigned uint_16 with type LongInt. **/
+    smul_li = 598       ,/** multiply int_16 with type LongInt. **/
+    sumul_li = 599      ,/** multiply unsigned uint_16 with type LongInt. **/
+    sdiv_li = 600       ,/** divide int_16 with type LongInt. **/
+    sudiv_li = 601      ,/** divide unsigned uint_16 with type LongInt. **/
+    scmpl_li = 602      ,/** compare int_16 less than type LongInt. **/
+    sucmpl_li = 603     ,/** compare unsigned uint_16 less than type LongInt. **/
+    scmpg_li = 604      ,/** compare int_16 greater than type LongInt. **/
+    sucmpg_li = 605     ,/** compare unsigned uint_16 greater than type LongInt. **/
+    scmpe_li = 606      ,/** compare int_16 equal with type LongInt. **/
+    sucmpe_li = 607     ,/** compare unsigned uint_16 equal with type LongInt. **/
+    scmple_li = 608     ,/** compare int_16 less than or equal to type LongInt. **/
+    sucmple_li = 609    ,/** compare unsigned uint_16 less than or equal to type LongInt. **/
+    scmpge_li = 610     ,/** compare int_16 greater than or equal to type LongInt. **/
+    sucmpge_li = 611    ,/** compare unsigned uint_16 greater than or equal to type LongInt. **/
+    scmpne_li = 612     ,/** compare int_16 not equal with type LongInt. **/
+    sucmpne_li = 613    ,/** compare unsigned uint_16 not equal with type LongInt. **/
+    scast_ll = 614      ,/** cast int_16 to type LongLong. **/
+    sucast_ll = 615     ,/** cast unsigned uint_16 to type LongLong. **/
+    sadd_ll = 616       ,/** add int_16 with type LongLong. **/
+    suadd_ll = 617      ,/** add unsigned uint_16 with type LongLong. **/
+    ssub_ll = 618       ,/** subtract int_16 with type LongLong. **/
+    susub_ll = 619      ,/** subtract unsigned uint_16 with type LongLong. **/
+    smul_ll = 620       ,/** multiply int_16 with type LongLong. **/
+    sumul_ll = 621      ,/** multiply unsigned uint_16 with type LongLong. **/
+    sdiv_ll = 622       ,/** divide int_16 with type LongLong. **/
+    sudiv_ll = 623      ,/** divide unsigned uint_16 with type LongLong. **/
+    scmpl_ll = 624      ,/** compare int_16 less than type LongLong. **/
+    sucmpl_ll = 625     ,/** compare unsigned uint_16 less than type LongLong. **/
+    scmpg_ll = 626      ,/** compare int_16 greater than type LongLong. **/
+    sucmpg_ll = 627     ,/** compare unsigned uint_16 greater than type LongLong. **/
+    scmpe_ll = 628      ,/** compare int_16 equal with type LongLong. **/
+    sucmpe_ll = 629     ,/** compare unsigned uint_16 equal with type LongLong. **/
+    scmple_ll = 630     ,/** compare int_16 less than or equal to type LongLong. **/
+    sucmple_ll = 631    ,/** compare unsigned uint_16 less than or equal to type LongLong. **/
+    scmpge_ll = 632     ,/** compare int_16 greater than or equal to type LongLong. **/
+    sucmpge_ll = 633    ,/** compare unsigned uint_16 greater than or equal to type LongLong. **/
+    scmpne_ll = 634     ,/** compare int_16 not equal with type LongLong. **/
+    sucmpne_ll = 635    ,/** compare unsigned uint_16 not equal with type LongLong. **/
+    scast_f = 636       ,/** cast int_16 to type Float. **/
+    sucast_f = 637      ,/** cast unsigned uint_16 to type Float. **/
+    sadd_f = 638        ,/** add int_16 with type Float. **/
+    suadd_f = 639       ,/** add unsigned uint_16 with type Float. **/
+    ssub_f = 640        ,/** subtract int_16 with type Float. **/
+    susub_f = 641       ,/** subtract unsigned uint_16 with type Float. **/
+    smul_f = 642        ,/** multiply int_16 with type Float. **/
+    sumul_f = 643       ,/** multiply unsigned uint_16 with type Float. **/
+    sdiv_f = 644        ,/** divide int_16 with type Float. **/
+    sudiv_f = 645       ,/** divide unsigned uint_16 with type Float. **/
+    scmpl_f = 646       ,/** compare int_16 less than type Float. **/
+    sucmpl_f = 647      ,/** compare unsigned uint_16 less than type Float. **/
+    scmpg_f = 648       ,/** compare int_16 greater than type Float. **/
+    sucmpg_f = 649      ,/** compare unsigned uint_16 greater than type Float. **/
+    scmpe_f = 650       ,/** compare int_16 equal with type Float. **/
+    sucmpe_f = 651      ,/** compare unsigned uint_16 equal with type Float. **/
+    scmple_f = 652      ,/** compare int_16 less than or equal to type Float. **/
+    sucmple_f = 653     ,/** compare unsigned uint_16 less than or equal to type Float. **/
+    scmpge_f = 654      ,/** compare int_16 greater than or equal to type Float. **/
+    sucmpge_f = 655     ,/** compare unsigned uint_16 greater than or equal to type Float. **/
+    scmpne_f = 656      ,/** compare int_16 not equal with type Float. **/
+    sucmpne_f = 657     ,/** compare unsigned uint_16 not equal with type Float. **/
+    scast_d = 658       ,/** cast int_16 to type Double. **/
+    sucast_d = 659      ,/** cast unsigned uint_16 to type Double. **/
+    sadd_d = 660        ,/** add int_16 with type Double. **/
+    suadd_d = 661       ,/** add unsigned uint_16 with type Double. **/
+    ssub_d = 662        ,/** subtract int_16 with type Double. **/
+    susub_d = 663       ,/** subtract unsigned uint_16 with type Double. **/
+    smul_d = 664        ,/** multiply int_16 with type Double. **/
+    sumul_d = 665       ,/** multiply unsigned uint_16 with type Double. **/
+    sdiv_d = 666        ,/** divide int_16 with type Double. **/
+    sudiv_d = 667       ,/** divide unsigned uint_16 with type Double. **/
+    scmpl_d = 668       ,/** compare int_16 less than type Double. **/
+    sucmpl_d = 669      ,/** compare unsigned uint_16 less than type Double. **/
+    scmpg_d = 670       ,/** compare int_16 greater than type Double. **/
+    sucmpg_d = 671      ,/** compare unsigned uint_16 greater than type Double. **/
+    scmpe_d = 672       ,/** compare int_16 equal with type Double. **/
+    sucmpe_d = 673      ,/** compare unsigned uint_16 equal with type Double. **/
+    scmple_d = 674      ,/** compare int_16 less than or equal to type Double. **/
+    sucmple_d = 675     ,/** compare unsigned uint_16 less than or equal to type Double. **/
+    scmpge_d = 676      ,/** compare int_16 greater than or equal to type Double. **/
+    sucmpge_d = 677     ,/** compare unsigned uint_16 greater than or equal to type Double. **/
+    scmpne_d = 678      ,/** compare int_16 not equal with type Double. **/
+    sucmpne_d = 679     ,/** compare unsigned uint_16 not equal with type Double. **/
+    scast_df = 680      ,/** cast int_16 to type DoubleFloat. **/
+    sucast_df = 681     ,/** cast unsigned uint_16 to type DoubleFloat. **/
+    sadd_df = 682       ,/** add int_16 with type DoubleFloat. **/
+    suadd_df = 683      ,/** add unsigned uint_16 with type DoubleFloat. **/
+    ssub_df = 684       ,/** subtract int_16 with type DoubleFloat. **/
+    susub_df = 685      ,/** subtract unsigned uint_16 with type DoubleFloat. **/
+    smul_df = 686       ,/** multiply int_16 with type DoubleFloat. **/
+    sumul_df = 687      ,/** multiply unsigned uint_16 with type DoubleFloat. **/
+    sdiv_df = 688       ,/** divide int_16 with type DoubleFloat. **/
+    sudiv_df = 689      ,/** divide unsigned uint_16 with type DoubleFloat. **/
+    scmpl_df = 690      ,/** compare int_16 less than type DoubleFloat. **/
+    sucmpl_df = 691     ,/** compare unsigned uint_16 less than type DoubleFloat. **/
+    scmpg_df = 692      ,/** compare int_16 greater than type DoubleFloat. **/
+    sucmpg_df = 693     ,/** compare unsigned uint_16 greater than type DoubleFloat. **/
+    scmpe_df = 694      ,/** compare int_16 equal with type DoubleFloat. **/
+    sucmpe_df = 695     ,/** compare unsigned uint_16 equal with type DoubleFloat. **/
+    scmple_df = 696     ,/** compare int_16 less than or equal to type DoubleFloat. **/
+    sucmple_df = 697    ,/** compare unsigned uint_16 less than or equal to type DoubleFloat. **/
+    scmpge_df = 698     ,/** compare int_16 greater than or equal to type DoubleFloat. **/
+    sucmpge_df = 699    ,/** compare unsigned uint_16 greater than or equal to type DoubleFloat. **/
+    scmpne_df = 700     ,/** compare int_16 not equal with type DoubleFloat. **/
+    sucmpne_df = 701    ,/** compare unsigned uint_16 not equal with type DoubleFloat. **/
+    scast_dd = 702      ,/** cast int_16 to type DoubleDouble. **/
+    sucast_dd = 703     ,/** cast unsigned uint_16 to type DoubleDouble. **/
+    sadd_dd = 704       ,/** add int_16 with type DoubleDouble. **/
+    suadd_dd = 705      ,/** add unsigned uint_16 with type DoubleDouble. **/
+    ssub_dd = 706       ,/** subtract int_16 with type DoubleDouble. **/
+    susub_dd = 707      ,/** subtract unsigned uint_16 with type DoubleDouble. **/
+    smul_dd = 708       ,/** multiply int_16 with type DoubleDouble. **/
+    sumul_dd = 709      ,/** multiply unsigned uint_16 with type DoubleDouble. **/
+    sdiv_dd = 710       ,/** divide int_16 with type DoubleDouble. **/
+    sudiv_dd = 711      ,/** divide unsigned uint_16 with type DoubleDouble. **/
+    scmpl_dd = 712      ,/** compare int_16 less than type DoubleDouble. **/
+    sucmpl_dd = 713     ,/** compare unsigned uint_16 less than type DoubleDouble. **/
+    scmpg_dd = 714      ,/** compare int_16 greater than type DoubleDouble. **/
+    sucmpg_dd = 715     ,/** compare unsigned uint_16 greater than type DoubleDouble. **/
+    scmpe_dd = 716      ,/** compare int_16 equal with type DoubleDouble. **/
+    sucmpe_dd = 717     ,/** compare unsigned uint_16 equal with type DoubleDouble. **/
+    scmple_dd = 718     ,/** compare int_16 less than or equal to type DoubleDouble. **/
+    sucmple_dd = 719    ,/** compare unsigned uint_16 less than or equal to type DoubleDouble. **/
+    scmpge_dd = 720     ,/** compare int_16 greater than or equal to type DoubleDouble. **/
+    sucmpge_dd = 721    ,/** compare unsigned uint_16 greater than or equal to type DoubleDouble. **/
+    scmpne_dd = 722     ,/** compare int_16 not equal with type DoubleDouble. **/
+    sucmpne_dd = 723    ,/** compare unsigned uint_16 not equal with type DoubleDouble. **/
+    smod_b = 724        ,/** modulo int_16 with type Byte. **/
+    scast_ub = 725      ,/** cast int_16 to unsigned type Byte. **/
+    sucast_ub = 726     ,/** cast unsigned uint_16 to unsigned type Byte. **/
+    sadd_ub = 727       ,/** add int_16 with unsigned type Byte. **/
+    suadd_ub = 728      ,/** add unsigned uint_16 with unsigned type Byte. **/
+    ssub_ub = 729       ,/** subtract int_16 with unsigned type Byte. **/
+    susub_ub = 730      ,/** subtract unsigned uint_16 with unsigned type Byte. **/
+    smul_ub = 731       ,/** multiply int_16 with unsigned type Byte. **/
+    sumul_ub = 732      ,/** multiply unsigned uint_16 with unsigned type Byte. **/
+    sdiv_ub = 733       ,/** divide int_16 with unsigned type Byte. **/
+    sudiv_ub = 734      ,/** divide unsigned uint_16 with unsigned type Byte. **/
+    scmpl_ub = 735      ,/** compare int_16 less than unsigned type Byte. **/
+    sucmpl_ub = 736     ,/** compare unsigned uint_16 less than unsigned type Byte. **/
+    scmpg_ub = 737      ,/** compare int_16 greater than unsigned type Byte. **/
+    sucmpg_ub = 738     ,/** compare unsigned uint_16 greater than unsigned type Byte. **/
+    scmpe_ub = 739      ,/** compare int_16 equal with unsigned type Byte. **/
+    sucmpe_ub = 740     ,/** compare unsigned uint_16 equal with unsigned type Byte. **/
+    scmple_ub = 741     ,/** compare int_16 less than or equal to unsigned type Byte. **/
+    sucmple_ub = 742    ,/** compare unsigned uint_16 less than or equal to unsigned type Byte. **/
+    scmpge_ub = 743     ,/** compare int_16 greater than or equal to unsigned type Byte. **/
+    sucmpge_ub = 744    ,/** compare unsigned uint_16 greater than or equal to unsigned type Byte. **/
+    scmpne_ub = 745     ,/** compare int_16 not equal with unsigned type Byte. **/
+    sucmpne_ub = 746    ,/** compare unsigned uint_16 not equal with unsigned type Byte. **/
+    smod_s = 747        ,/** modulo int_16 with type Short. **/
+    scast_us = 748      ,/** cast int_16 to unsigned type Short. **/
+    sucast_us = 749     ,/** cast unsigned uint_16 to unsigned type Short. **/
+    sadd_us = 750       ,/** add int_16 with unsigned type Short. **/
+    suadd_us = 751      ,/** add unsigned uint_16 with unsigned type Short. **/
+    ssub_us = 752       ,/** subtract int_16 with unsigned type Short. **/
+    susub_us = 753      ,/** subtract unsigned uint_16 with unsigned type Short. **/
+    smul_us = 754       ,/** multiply int_16 with unsigned type Short. **/
+    sumul_us = 755      ,/** multiply unsigned uint_16 with unsigned type Short. **/
+    sdiv_us = 756       ,/** divide int_16 with unsigned type Short. **/
+    sudiv_us = 757      ,/** divide unsigned uint_16 with unsigned type Short. **/
+    scmpl_us = 758      ,/** compare int_16 less than unsigned type Short. **/
+    sucmpl_us = 759     ,/** compare unsigned uint_16 less than unsigned type Short. **/
+    scmpg_us = 760      ,/** compare int_16 greater than unsigned type Short. **/
+    sucmpg_us = 761     ,/** compare unsigned uint_16 greater than unsigned type Short. **/
+    scmpe_us = 762      ,/** compare int_16 equal with unsigned type Short. **/
+    sucmpe_us = 763     ,/** compare unsigned uint_16 equal with unsigned type Short. **/
+    scmple_us = 764     ,/** compare int_16 less than or equal to unsigned type Short. **/
+    sucmple_us = 765    ,/** compare unsigned uint_16 less than or equal to unsigned type Short. **/
+    scmpge_us = 766     ,/** compare int_16 greater than or equal to unsigned type Short. **/
+    sucmpge_us = 767    ,/** compare unsigned uint_16 greater than or equal to unsigned type Short. **/
+    scmpne_us = 768     ,/** compare int_16 not equal with unsigned type Short. **/
+    sucmpne_us = 769    ,/** compare unsigned uint_16 not equal with unsigned type Short. **/
+    smod_i = 770        ,/** modulo int_16 with type Int. **/
+    scast_ui = 771      ,/** cast int_16 to unsigned type Int. **/
+    sucast_ui = 772     ,/** cast unsigned uint_16 to unsigned type Int. **/
+    sadd_ui = 773       ,/** add int_16 with unsigned type Int. **/
+    suadd_ui = 774      ,/** add unsigned uint_16 with unsigned type Int. **/
+    ssub_ui = 775       ,/** subtract int_16 with unsigned type Int. **/
+    susub_ui = 776      ,/** subtract unsigned uint_16 with unsigned type Int. **/
+    smul_ui = 777       ,/** multiply int_16 with unsigned type Int. **/
+    sumul_ui = 778      ,/** multiply unsigned uint_16 with unsigned type Int. **/
+    sdiv_ui = 779       ,/** divide int_16 with unsigned type Int. **/
+    sudiv_ui = 780      ,/** divide unsigned uint_16 with unsigned type Int. **/
+    scmpl_ui = 781      ,/** compare int_16 less than unsigned type Int. **/
+    sucmpl_ui = 782     ,/** compare unsigned uint_16 less than unsigned type Int. **/
+    scmpg_ui = 783      ,/** compare int_16 greater than unsigned type Int. **/
+    sucmpg_ui = 784     ,/** compare unsigned uint_16 greater than unsigned type Int. **/
+    scmpe_ui = 785      ,/** compare int_16 equal with unsigned type Int. **/
+    sucmpe_ui = 786     ,/** compare unsigned uint_16 equal with unsigned type Int. **/
+    scmple_ui = 787     ,/** compare int_16 less than or equal to unsigned type Int. **/
+    sucmple_ui = 788    ,/** compare unsigned uint_16 less than or equal to unsigned type Int. **/
+    scmpge_ui = 789     ,/** compare int_16 greater than or equal to unsigned type Int. **/
+    sucmpge_ui = 790    ,/** compare unsigned uint_16 greater than or equal to unsigned type Int. **/
+    scmpne_ui = 791     ,/** compare int_16 not equal with unsigned type Int. **/
+    sucmpne_ui = 792    ,/** compare unsigned uint_16 not equal with unsigned type Int. **/
+    smod_l = 793        ,/** modulo int_16 with type Long. **/
+    scast_ul = 794      ,/** cast int_16 to unsigned type Long. **/
+    sucast_ul = 795     ,/** cast unsigned uint_16 to unsigned type Long. **/
+    sadd_ul = 796       ,/** add int_16 with unsigned type Long. **/
+    suadd_ul = 797      ,/** add unsigned uint_16 with unsigned type Long. **/
+    ssub_ul = 798       ,/** subtract int_16 with unsigned type Long. **/
+    susub_ul = 799      ,/** subtract unsigned uint_16 with unsigned type Long. **/
+    smul_ul = 800       ,/** multiply int_16 with unsigned type Long. **/
+    sumul_ul = 801      ,/** multiply unsigned uint_16 with unsigned type Long. **/
+    sdiv_ul = 802       ,/** divide int_16 with unsigned type Long. **/
+    sudiv_ul = 803      ,/** divide unsigned uint_16 with unsigned type Long. **/
+    scmpl_ul = 804      ,/** compare int_16 less than unsigned type Long. **/
+    sucmpl_ul = 805     ,/** compare unsigned uint_16 less than unsigned type Long. **/
+    scmpg_ul = 806      ,/** compare int_16 greater than unsigned type Long. **/
+    sucmpg_ul = 807     ,/** compare unsigned uint_16 greater than unsigned type Long. **/
+    scmpe_ul = 808      ,/** compare int_16 equal with unsigned type Long. **/
+    sucmpe_ul = 809     ,/** compare unsigned uint_16 equal with unsigned type Long. **/
+    scmple_ul = 810     ,/** compare int_16 less than or equal to unsigned type Long. **/
+    sucmple_ul = 811    ,/** compare unsigned uint_16 less than or equal to unsigned type Long. **/
+    scmpge_ul = 812     ,/** compare int_16 greater than or equal to unsigned type Long. **/
+    sucmpge_ul = 813    ,/** compare unsigned uint_16 greater than or equal to unsigned type Long. **/
+    scmpne_ul = 814     ,/** compare int_16 not equal with unsigned type Long. **/
+    sucmpne_ul = 815    ,/** compare unsigned uint_16 not equal with unsigned type Long. **/
+    smod_li = 816       ,/** modulo int_16 with type LongInt. **/
+    scast_uli = 817     ,/** cast int_16 to unsigned type LongInt. **/
+    sucast_uli = 818    ,/** cast unsigned uint_16 to unsigned type LongInt. **/
+    sadd_uli = 819      ,/** add int_16 with unsigned type LongInt. **/
+    suadd_uli = 820     ,/** add unsigned uint_16 with unsigned type LongInt. **/
+    ssub_uli = 821      ,/** subtract int_16 with unsigned type LongInt. **/
+    susub_uli = 822     ,/** subtract unsigned uint_16 with unsigned type LongInt. **/
+    smul_uli = 823      ,/** multiply int_16 with unsigned type LongInt. **/
+    sumul_uli = 824     ,/** multiply unsigned uint_16 with unsigned type LongInt. **/
+    sdiv_uli = 825      ,/** divide int_16 with unsigned type LongInt. **/
+    sudiv_uli = 826     ,/** divide unsigned uint_16 with unsigned type LongInt. **/
+    scmpl_uli = 827     ,/** compare int_16 less than unsigned type LongInt. **/
+    sucmpl_uli = 828    ,/** compare unsigned uint_16 less than unsigned type LongInt. **/
+    scmpg_uli = 829     ,/** compare int_16 greater than unsigned type LongInt. **/
+    sucmpg_uli = 830    ,/** compare unsigned uint_16 greater than unsigned type LongInt. **/
+    scmpe_uli = 831     ,/** compare int_16 equal with unsigned type LongInt. **/
+    sucmpe_uli = 832    ,/** compare unsigned uint_16 equal with unsigned type LongInt. **/
+    scmple_uli = 833    ,/** compare int_16 less than or equal to unsigned type LongInt. **/
+    sucmple_uli = 834   ,/** compare unsigned uint_16 less than or equal to unsigned type LongInt. **/
+    scmpge_uli = 835    ,/** compare int_16 greater than or equal to unsigned type LongInt. **/
+    sucmpge_uli = 836   ,/** compare unsigned uint_16 greater than or equal to unsigned type LongInt. **/
+    scmpne_uli = 837    ,/** compare int_16 not equal with unsigned type LongInt. **/
+    sucmpne_uli = 838   ,/** compare unsigned uint_16 not equal with unsigned type LongInt. **/
+    smod_ll = 839       ,/** modulo int_16 with type LongLong. **/
+    scast_ull = 840     ,/** cast int_16 to unsigned type LongLong. **/
+    sucast_ull = 841    ,/** cast unsigned uint_16 to unsigned type LongLong. **/
+    sadd_ull = 842      ,/** add int_16 with unsigned type LongLong. **/
+    suadd_ull = 843     ,/** add unsigned uint_16 with unsigned type LongLong. **/
+    ssub_ull = 844      ,/** subtract int_16 with unsigned type LongLong. **/
+    susub_ull = 845     ,/** subtract unsigned uint_16 with unsigned type LongLong. **/
+    smul_ull = 846      ,/** multiply int_16 with unsigned type LongLong. **/
+    sumul_ull = 847     ,/** multiply unsigned uint_16 with unsigned type LongLong. **/
+    sdiv_ull = 848      ,/** divide int_16 with unsigned type LongLong. **/
+    sudiv_ull = 849     ,/** divide unsigned uint_16 with unsigned type LongLong. **/
+    scmpl_ull = 850     ,/** compare int_16 less than unsigned type LongLong. **/
+    sucmpl_ull = 851    ,/** compare unsigned uint_16 less than unsigned type LongLong. **/
+    scmpg_ull = 852     ,/** compare int_16 greater than unsigned type LongLong. **/
+    sucmpg_ull = 853    ,/** compare unsigned uint_16 greater than unsigned type LongLong. **/
+    scmpe_ull = 854     ,/** compare int_16 equal with unsigned type LongLong. **/
+    sucmpe_ull = 855    ,/** compare unsigned uint_16 equal with unsigned type LongLong. **/
+    scmple_ull = 856    ,/** compare int_16 less than or equal to unsigned type LongLong. **/
+    sucmple_ull = 857   ,/** compare unsigned uint_16 less than or equal to unsigned type LongLong. **/
+    scmpge_ull = 858    ,/** compare int_16 greater than or equal to unsigned type LongLong. **/
+    sucmpge_ull = 859   ,/** compare unsigned uint_16 greater than or equal to unsigned type LongLong. **/
+    scmpne_ull = 860    ,/** compare int_16 not equal with unsigned type LongLong. **/
+    sucmpne_ull = 861   ,/** compare unsigned uint_16 not equal with unsigned type LongLong. **/
+    sand_b = 862        ,/** bitwise and int_16 with type Byte. **/
+    sor_b = 863         ,/** bitwise or int_16 with type Byte. **/
+    sxor_b = 864        ,/** bitwise xor int_16 with type Byte. **/
+    sshftr_b = 865      ,/** shift right int_16 with type Byte. **/
+    sshftl_b = 866      ,/** shift left xor int_16 with type Byte. **/
+    sand_s = 867        ,/** bitwise and int_16 with type Short. **/
+    sor_s = 868         ,/** bitwise or int_16 with type Short. **/
+    sxor_s = 869        ,/** bitwise xor int_16 with type Short. **/
+    sshftr_s = 870      ,/** shift right int_16 with type Short. **/
+    sshftl_s = 871      ,/** shift left xor int_16 with type Short. **/
+    sand_i = 872        ,/** bitwise and int_16 with type Int. **/
+    sor_i = 873         ,/** bitwise or int_16 with type Int. **/
+    sxor_i = 874        ,/** bitwise xor int_16 with type Int. **/
+    sshftr_i = 875      ,/** shift right int_16 with type Int. **/
+    sshftl_i = 876      ,/** shift left xor int_16 with type Int. **/
+    sand_l = 877        ,/** bitwise and int_16 with type Long. **/
+    sor_l = 878         ,/** bitwise or int_16 with type Long. **/
+    sxor_l = 879        ,/** bitwise xor int_16 with type Long. **/
+    sshftr_l = 880      ,/** shift right int_16 with type Long. **/
+    sshftl_l = 881      ,/** shift left xor int_16 with type Long. **/
+    sand_li = 882       ,/** bitwise and int_16 with type LongInt. **/
+    sor_li = 883        ,/** bitwise or int_16 with type LongInt. **/
+    sxor_li = 884       ,/** bitwise xor int_16 with type LongInt. **/
+    sshftr_li = 885     ,/** shift right int_16 with type LongInt. **/
+    sshftl_li = 886     ,/** shift left xor int_16 with type LongInt. **/
+    sand_ll = 887       ,/** bitwise and int_16 with type LongLong. **/
+    sor_ll = 888        ,/** bitwise or int_16 with type LongLong. **/
+    sxor_ll = 889       ,/** bitwise xor int_16 with type LongLong. **/
+    sshftr_ll = 890     ,/** shift right int_16 with type LongLong. **/
+    sshftl_ll = 891     ,/** shift left xor int_16 with type LongLong. **/
+    sdup = 892          ,/** duplicate a int_16 on the stack. **/
+    sdup2 = 893         ,/** duplicate a int_16 2 times on the stack. **/
+    sdup3 = 894         ,/** duplicate a int_16 3 times on the stack. **/
+    sdup4 = 895         ,/** duplicate a int_16 4 times on the stack. **/
+    sdup5 = 896         ,/** duplicate a int_16 5 times on the stack. **/
+    sset = 897          ,/** set a int_16 from stack into a field on base pointer. **/
+    sget = 898          ,/** get a int_16 from a field on base pointer to stack. **/
+    svset = 899         ,/** set a int_16 from value into a field on base pointer. **/
+    ssget = 900         ,/** get a int_16 from a field on base pointer to stack using address from stack. **/
+    ssset = 901         ,/** set a int_16 from stack into a field on base pointer using address from stack. **/
+    ssetl = 902         ,/** set a int_16 from local variable into a field on base pointer. **/
+    sinc_1 = 903        ,/** increment int_16 by 1 on stack. **/
+    sinc_2 = 904        ,/** increment int_16 by 2 on stack. **/
+    sstinc_1 = 905      ,/** increment int_16 by 1 on stack. **/
+    sstinc_2 = 906      ,/** increment int_16 by 2 on stack. **/
+    sreturn = 907       ,/** return a int_16 into the main stack. **/
+    smainst = 908       ,/** store a int_16 from main stack in a local variable.. **/
+    smainst_0 = 909     ,/** store a int_16 from main stack in local variable 0. **/
+    smainst_1 = 910     ,/** store a int_16 from main stack in local variable 1. **/
+    smainst_2 = 911     ,/** store a int_16 from main stack in local variable 2. **/
+    smainst_3 = 912     ,/** store a int_16 from main stack in local variable 3. **/
+    sprint = 913        ,/** print a int_16 from stack. **/
+    suprint = 914       ,/** print a unsigned uint_16 from stack. **/
+    iprintba = 915      ,/** print a byte array. **/
+    iconst = 916        ,/** push a const int_32 into the stack. **/
+    iconst_0 = 917      ,/** push a const int_32 into the stack (value = 0). **/
+    iconst_1 = 918      ,/** push a const int_32 into the stack (value = 1). **/
+    iconst_2 = 919      ,/** push a const int_32 into the stack (value = 2). **/
+    iconst_3 = 920      ,/** push a const int_32 into the stack (value = 3). **/
+    iconst_4 = 921      ,/** push a const int_32 into the stack (value = 4). **/
+    iconst_5 = 922      ,/** push a const int_32 into the stack (value = 5). **/
+    iconst_6 = 923      ,/** push a const int_32 into the stack (value = 6). **/
+    iconst_9 = 924      ,/** push a const int_32 into the stack (value = 9). **/
+    iconst_10 = 925     ,/** push a const int_32 into the stack (value = 10). **/
+    iconst_11 = 926     ,/** push a const int_32 into the stack (value = 11). **/
+    iconst_12 = 927     ,/** push a const int_32 into the stack (value = 12). **/
+    iload = 928         ,/** load a int_32 into the stack from local variable. **/
+    iload_0 = 929       ,/** load a int_32 into the stack from local variable 0. **/
+    iload_1 = 930       ,/** load a int_32 into the stack from local variable 1. **/
+    iload_2 = 931       ,/** load a int_32 into the stack from local variable 2. **/
+    iload_3 = 932       ,/** load a int_32 into the stack from local variable 3. **/
+    iload_4 = 933       ,/** load a int_32 into the stack from local variable 4. **/
+    istore = 934        ,/** store a int_32 from stack into local variable. **/
+    istore_0 = 935      ,/** store a int_32 from stack into local variable 0. **/
+    istore_1 = 936      ,/** store a int_32 from stack into local variable 1. **/
+    istore_2 = 937      ,/** store a int_32 from stack into local variable 2. **/
+    istore_3 = 938      ,/** store a int_32 from stack into local variable 3. **/
+    istore_4 = 939      ,/** store a int_32 from stack into local variable 4. **/
+    icast_b = 940       ,/** cast int_32 to type Byte. **/
+    iucast_b = 941      ,/** cast unsigned uint_32 to type Byte. **/
+    iadd_b = 942        ,/** add int_32 with type Byte. **/
+    iuadd_b = 943       ,/** add unsigned uint_32 with type Byte. **/
+    isub_b = 944        ,/** subtract int_32 with type Byte. **/
+    iusub_b = 945       ,/** subtract unsigned uint_32 with type Byte. **/
+    imul_b = 946        ,/** multiply int_32 with type Byte. **/
+    iumul_b = 947       ,/** multiply unsigned uint_32 with type Byte. **/
+    idiv_b = 948        ,/** divide int_32 with type Byte. **/
+    iudiv_b = 949       ,/** divide unsigned uint_32 with type Byte. **/
+    icmpl_b = 950       ,/** compare int_32 less than type Byte. **/
+    iucmpl_b = 951      ,/** compare unsigned uint_32 less than type Byte. **/
+    icmpg_b = 952       ,/** compare int_32 greater than type Byte. **/
+    iucmpg_b = 953      ,/** compare unsigned uint_32 greater than type Byte. **/
+    icmpe_b = 954       ,/** compare int_32 equal with type Byte. **/
+    iucmpe_b = 955      ,/** compare unsigned uint_32 equal with type Byte. **/
+    icmple_b = 956      ,/** compare int_32 less than or equal to type Byte. **/
+    iucmple_b = 957     ,/** compare unsigned uint_32 less than or equal to type Byte. **/
+    icmpge_b = 958      ,/** compare int_32 greater than or equal to type Byte. **/
+    iucmpge_b = 959     ,/** compare unsigned uint_32 greater than or equal to type Byte. **/
+    icmpne_b = 960      ,/** compare int_32 not equal with type Byte. **/
+    iucmpne_b = 961     ,/** compare unsigned uint_32 not equal with type Byte. **/
+    icast_s = 962       ,/** cast int_32 to type Short. **/
+    iucast_s = 963      ,/** cast unsigned uint_32 to type Short. **/
+    iadd_s = 964        ,/** add int_32 with type Short. **/
+    iuadd_s = 965       ,/** add unsigned uint_32 with type Short. **/
+    isub_s = 966        ,/** subtract int_32 with type Short. **/
+    iusub_s = 967       ,/** subtract unsigned uint_32 with type Short. **/
+    imul_s = 968        ,/** multiply int_32 with type Short. **/
+    iumul_s = 969       ,/** multiply unsigned uint_32 with type Short. **/
+    idiv_s = 970        ,/** divide int_32 with type Short. **/
+    iudiv_s = 971       ,/** divide unsigned uint_32 with type Short. **/
+    icmpl_s = 972       ,/** compare int_32 less than type Short. **/
+    iucmpl_s = 973      ,/** compare unsigned uint_32 less than type Short. **/
+    icmpg_s = 974       ,/** compare int_32 greater than type Short. **/
+    iucmpg_s = 975      ,/** compare unsigned uint_32 greater than type Short. **/
+    icmpe_s = 976       ,/** compare int_32 equal with type Short. **/
+    iucmpe_s = 977      ,/** compare unsigned uint_32 equal with type Short. **/
+    icmple_s = 978      ,/** compare int_32 less than or equal to type Short. **/
+    iucmple_s = 979     ,/** compare unsigned uint_32 less than or equal to type Short. **/
+    icmpge_s = 980      ,/** compare int_32 greater than or equal to type Short. **/
+    iucmpge_s = 981     ,/** compare unsigned uint_32 greater than or equal to type Short. **/
+    icmpne_s = 982      ,/** compare int_32 not equal with type Short. **/
+    iucmpne_s = 983     ,/** compare unsigned uint_32 not equal with type Short. **/
+    icast_i = 984       ,/** cast int_32 to type Int. **/
+    iucast_i = 985      ,/** cast unsigned uint_32 to type Int. **/
+    iadd_i = 986        ,/** add int_32 with type Int. **/
+    iuadd_i = 987       ,/** add unsigned uint_32 with type Int. **/
+    isub_i = 988        ,/** subtract int_32 with type Int. **/
+    iusub_i = 989       ,/** subtract unsigned uint_32 with type Int. **/
+    imul_i = 990        ,/** multiply int_32 with type Int. **/
+    iumul_i = 991       ,/** multiply unsigned uint_32 with type Int. **/
+    idiv_i = 992        ,/** divide int_32 with type Int. **/
+    iudiv_i = 993       ,/** divide unsigned uint_32 with type Int. **/
+    icmpl_i = 994       ,/** compare int_32 less than type Int. **/
+    iucmpl_i = 995      ,/** compare unsigned uint_32 less than type Int. **/
+    icmpg_i = 996       ,/** compare int_32 greater than type Int. **/
+    iucmpg_i = 997      ,/** compare unsigned uint_32 greater than type Int. **/
+    icmpe_i = 998       ,/** compare int_32 equal with type Int. **/
+    iucmpe_i = 999      ,/** compare unsigned uint_32 equal with type Int. **/
+    icmple_i = 1000     ,/** compare int_32 less than or equal to type Int. **/
+    iucmple_i = 1001    ,/** compare unsigned uint_32 less than or equal to type Int. **/
+    icmpge_i = 1002     ,/** compare int_32 greater than or equal to type Int. **/
+    iucmpge_i = 1003    ,/** compare unsigned uint_32 greater than or equal to type Int. **/
+    icmpne_i = 1004     ,/** compare int_32 not equal with type Int. **/
+    iucmpne_i = 1005    ,/** compare unsigned uint_32 not equal with type Int. **/
+    icast_l = 1006      ,/** cast int_32 to type Long. **/
+    iucast_l = 1007     ,/** cast unsigned uint_32 to type Long. **/
+    iadd_l = 1008       ,/** add int_32 with type Long. **/
+    iuadd_l = 1009      ,/** add unsigned uint_32 with type Long. **/
+    isub_l = 1010       ,/** subtract int_32 with type Long. **/
+    iusub_l = 1011      ,/** subtract unsigned uint_32 with type Long. **/
+    imul_l = 1012       ,/** multiply int_32 with type Long. **/
+    iumul_l = 1013      ,/** multiply unsigned uint_32 with type Long. **/
+    idiv_l = 1014       ,/** divide int_32 with type Long. **/
+    iudiv_l = 1015      ,/** divide unsigned uint_32 with type Long. **/
+    icmpl_l = 1016      ,/** compare int_32 less than type Long. **/
+    iucmpl_l = 1017     ,/** compare unsigned uint_32 less than type Long. **/
+    icmpg_l = 1018      ,/** compare int_32 greater than type Long. **/
+    iucmpg_l = 1019     ,/** compare unsigned uint_32 greater than type Long. **/
+    icmpe_l = 1020      ,/** compare int_32 equal with type Long. **/
+    iucmpe_l = 1021     ,/** compare unsigned uint_32 equal with type Long. **/
+    icmple_l = 1022     ,/** compare int_32 less than or equal to type Long. **/
+    iucmple_l = 1023    ,/** compare unsigned uint_32 less than or equal to type Long. **/
+    icmpge_l = 1024     ,/** compare int_32 greater than or equal to type Long. **/
+    iucmpge_l = 1025    ,/** compare unsigned uint_32 greater than or equal to type Long. **/
+    icmpne_l = 1026     ,/** compare int_32 not equal with type Long. **/
+    iucmpne_l = 1027    ,/** compare unsigned uint_32 not equal with type Long. **/
+    icast_li = 1028     ,/** cast int_32 to type LongInt. **/
+    iucast_li = 1029    ,/** cast unsigned uint_32 to type LongInt. **/
+    iadd_li = 1030      ,/** add int_32 with type LongInt. **/
+    iuadd_li = 1031     ,/** add unsigned uint_32 with type LongInt. **/
+    isub_li = 1032      ,/** subtract int_32 with type LongInt. **/
+    iusub_li = 1033     ,/** subtract unsigned uint_32 with type LongInt. **/
+    imul_li = 1034      ,/** multiply int_32 with type LongInt. **/
+    iumul_li = 1035     ,/** multiply unsigned uint_32 with type LongInt. **/
+    idiv_li = 1036      ,/** divide int_32 with type LongInt. **/
+    iudiv_li = 1037     ,/** divide unsigned uint_32 with type LongInt. **/
+    icmpl_li = 1038     ,/** compare int_32 less than type LongInt. **/
+    iucmpl_li = 1039    ,/** compare unsigned uint_32 less than type LongInt. **/
+    icmpg_li = 1040     ,/** compare int_32 greater than type LongInt. **/
+    iucmpg_li = 1041    ,/** compare unsigned uint_32 greater than type LongInt. **/
+    icmpe_li = 1042     ,/** compare int_32 equal with type LongInt. **/
+    iucmpe_li = 1043    ,/** compare unsigned uint_32 equal with type LongInt. **/
+    icmple_li = 1044    ,/** compare int_32 less than or equal to type LongInt. **/
+    iucmple_li = 1045   ,/** compare unsigned uint_32 less than or equal to type LongInt. **/
+    icmpge_li = 1046    ,/** compare int_32 greater than or equal to type LongInt. **/
+    iucmpge_li = 1047   ,/** compare unsigned uint_32 greater than or equal to type LongInt. **/
+    icmpne_li = 1048    ,/** compare int_32 not equal with type LongInt. **/
+    iucmpne_li = 1049   ,/** compare unsigned uint_32 not equal with type LongInt. **/
+    icast_ll = 1050     ,/** cast int_32 to type LongLong. **/
+    iucast_ll = 1051    ,/** cast unsigned uint_32 to type LongLong. **/
+    iadd_ll = 1052      ,/** add int_32 with type LongLong. **/
+    iuadd_ll = 1053     ,/** add unsigned uint_32 with type LongLong. **/
+    isub_ll = 1054      ,/** subtract int_32 with type LongLong. **/
+    iusub_ll = 1055     ,/** subtract unsigned uint_32 with type LongLong. **/
+    imul_ll = 1056      ,/** multiply int_32 with type LongLong. **/
+    iumul_ll = 1057     ,/** multiply unsigned uint_32 with type LongLong. **/
+    idiv_ll = 1058      ,/** divide int_32 with type LongLong. **/
+    iudiv_ll = 1059     ,/** divide unsigned uint_32 with type LongLong. **/
+    icmpl_ll = 1060     ,/** compare int_32 less than type LongLong. **/
+    iucmpl_ll = 1061    ,/** compare unsigned uint_32 less than type LongLong. **/
+    icmpg_ll = 1062     ,/** compare int_32 greater than type LongLong. **/
+    iucmpg_ll = 1063    ,/** compare unsigned uint_32 greater than type LongLong. **/
+    icmpe_ll = 1064     ,/** compare int_32 equal with type LongLong. **/
+    iucmpe_ll = 1065    ,/** compare unsigned uint_32 equal with type LongLong. **/
+    icmple_ll = 1066    ,/** compare int_32 less than or equal to type LongLong. **/
+    iucmple_ll = 1067   ,/** compare unsigned uint_32 less than or equal to type LongLong. **/
+    icmpge_ll = 1068    ,/** compare int_32 greater than or equal to type LongLong. **/
+    iucmpge_ll = 1069   ,/** compare unsigned uint_32 greater than or equal to type LongLong. **/
+    icmpne_ll = 1070    ,/** compare int_32 not equal with type LongLong. **/
+    iucmpne_ll = 1071   ,/** compare unsigned uint_32 not equal with type LongLong. **/
+    icast_f = 1072      ,/** cast int_32 to type Float. **/
+    iucast_f = 1073     ,/** cast unsigned uint_32 to type Float. **/
+    iadd_f = 1074       ,/** add int_32 with type Float. **/
+    iuadd_f = 1075      ,/** add unsigned uint_32 with type Float. **/
+    isub_f = 1076       ,/** subtract int_32 with type Float. **/
+    iusub_f = 1077      ,/** subtract unsigned uint_32 with type Float. **/
+    imul_f = 1078       ,/** multiply int_32 with type Float. **/
+    iumul_f = 1079      ,/** multiply unsigned uint_32 with type Float. **/
+    idiv_f = 1080       ,/** divide int_32 with type Float. **/
+    iudiv_f = 1081      ,/** divide unsigned uint_32 with type Float. **/
+    icmpl_f = 1082      ,/** compare int_32 less than type Float. **/
+    iucmpl_f = 1083     ,/** compare unsigned uint_32 less than type Float. **/
+    icmpg_f = 1084      ,/** compare int_32 greater than type Float. **/
+    iucmpg_f = 1085     ,/** compare unsigned uint_32 greater than type Float. **/
+    icmpe_f = 1086      ,/** compare int_32 equal with type Float. **/
+    iucmpe_f = 1087     ,/** compare unsigned uint_32 equal with type Float. **/
+    icmple_f = 1088     ,/** compare int_32 less than or equal to type Float. **/
+    iucmple_f = 1089    ,/** compare unsigned uint_32 less than or equal to type Float. **/
+    icmpge_f = 1090     ,/** compare int_32 greater than or equal to type Float. **/
+    iucmpge_f = 1091    ,/** compare unsigned uint_32 greater than or equal to type Float. **/
+    icmpne_f = 1092     ,/** compare int_32 not equal with type Float. **/
+    iucmpne_f = 1093    ,/** compare unsigned uint_32 not equal with type Float. **/
+    icast_d = 1094      ,/** cast int_32 to type Double. **/
+    iucast_d = 1095     ,/** cast unsigned uint_32 to type Double. **/
+    iadd_d = 1096       ,/** add int_32 with type Double. **/
+    iuadd_d = 1097      ,/** add unsigned uint_32 with type Double. **/
+    isub_d = 1098       ,/** subtract int_32 with type Double. **/
+    iusub_d = 1099      ,/** subtract unsigned uint_32 with type Double. **/
+    imul_d = 1100       ,/** multiply int_32 with type Double. **/
+    iumul_d = 1101      ,/** multiply unsigned uint_32 with type Double. **/
+    idiv_d = 1102       ,/** divide int_32 with type Double. **/
+    iudiv_d = 1103      ,/** divide unsigned uint_32 with type Double. **/
+    icmpl_d = 1104      ,/** compare int_32 less than type Double. **/
+    iucmpl_d = 1105     ,/** compare unsigned uint_32 less than type Double. **/
+    icmpg_d = 1106      ,/** compare int_32 greater than type Double. **/
+    iucmpg_d = 1107     ,/** compare unsigned uint_32 greater than type Double. **/
+    icmpe_d = 1108      ,/** compare int_32 equal with type Double. **/
+    iucmpe_d = 1109     ,/** compare unsigned uint_32 equal with type Double. **/
+    icmple_d = 1110     ,/** compare int_32 less than or equal to type Double. **/
+    iucmple_d = 1111    ,/** compare unsigned uint_32 less than or equal to type Double. **/
+    icmpge_d = 1112     ,/** compare int_32 greater than or equal to type Double. **/
+    iucmpge_d = 1113    ,/** compare unsigned uint_32 greater than or equal to type Double. **/
+    icmpne_d = 1114     ,/** compare int_32 not equal with type Double. **/
+    iucmpne_d = 1115    ,/** compare unsigned uint_32 not equal with type Double. **/
+    icast_df = 1116     ,/** cast int_32 to type DoubleFloat. **/
+    iucast_df = 1117    ,/** cast unsigned uint_32 to type DoubleFloat. **/
+    iadd_df = 1118      ,/** add int_32 with type DoubleFloat. **/
+    iuadd_df = 1119     ,/** add unsigned uint_32 with type DoubleFloat. **/
+    isub_df = 1120      ,/** subtract int_32 with type DoubleFloat. **/
+    iusub_df = 1121     ,/** subtract unsigned uint_32 with type DoubleFloat. **/
+    imul_df = 1122      ,/** multiply int_32 with type DoubleFloat. **/
+    iumul_df = 1123     ,/** multiply unsigned uint_32 with type DoubleFloat. **/
+    idiv_df = 1124      ,/** divide int_32 with type DoubleFloat. **/
+    iudiv_df = 1125     ,/** divide unsigned uint_32 with type DoubleFloat. **/
+    icmpl_df = 1126     ,/** compare int_32 less than type DoubleFloat. **/
+    iucmpl_df = 1127    ,/** compare unsigned uint_32 less than type DoubleFloat. **/
+    icmpg_df = 1128     ,/** compare int_32 greater than type DoubleFloat. **/
+    iucmpg_df = 1129    ,/** compare unsigned uint_32 greater than type DoubleFloat. **/
+    icmpe_df = 1130     ,/** compare int_32 equal with type DoubleFloat. **/
+    iucmpe_df = 1131    ,/** compare unsigned uint_32 equal with type DoubleFloat. **/
+    icmple_df = 1132    ,/** compare int_32 less than or equal to type DoubleFloat. **/
+    iucmple_df = 1133   ,/** compare unsigned uint_32 less than or equal to type DoubleFloat. **/
+    icmpge_df = 1134    ,/** compare int_32 greater than or equal to type DoubleFloat. **/
+    iucmpge_df = 1135   ,/** compare unsigned uint_32 greater than or equal to type DoubleFloat. **/
+    icmpne_df = 1136    ,/** compare int_32 not equal with type DoubleFloat. **/
+    iucmpne_df = 1137   ,/** compare unsigned uint_32 not equal with type DoubleFloat. **/
+    icast_dd = 1138     ,/** cast int_32 to type DoubleDouble. **/
+    iucast_dd = 1139    ,/** cast unsigned uint_32 to type DoubleDouble. **/
+    iadd_dd = 1140      ,/** add int_32 with type DoubleDouble. **/
+    iuadd_dd = 1141     ,/** add unsigned uint_32 with type DoubleDouble. **/
+    isub_dd = 1142      ,/** subtract int_32 with type DoubleDouble. **/
+    iusub_dd = 1143     ,/** subtract unsigned uint_32 with type DoubleDouble. **/
+    imul_dd = 1144      ,/** multiply int_32 with type DoubleDouble. **/
+    iumul_dd = 1145     ,/** multiply unsigned uint_32 with type DoubleDouble. **/
+    idiv_dd = 1146      ,/** divide int_32 with type DoubleDouble. **/
+    iudiv_dd = 1147     ,/** divide unsigned uint_32 with type DoubleDouble. **/
+    icmpl_dd = 1148     ,/** compare int_32 less than type DoubleDouble. **/
+    iucmpl_dd = 1149    ,/** compare unsigned uint_32 less than type DoubleDouble. **/
+    icmpg_dd = 1150     ,/** compare int_32 greater than type DoubleDouble. **/
+    iucmpg_dd = 1151    ,/** compare unsigned uint_32 greater than type DoubleDouble. **/
+    icmpe_dd = 1152     ,/** compare int_32 equal with type DoubleDouble. **/
+    iucmpe_dd = 1153    ,/** compare unsigned uint_32 equal with type DoubleDouble. **/
+    icmple_dd = 1154    ,/** compare int_32 less than or equal to type DoubleDouble. **/
+    iucmple_dd = 1155   ,/** compare unsigned uint_32 less than or equal to type DoubleDouble. **/
+    icmpge_dd = 1156    ,/** compare int_32 greater than or equal to type DoubleDouble. **/
+    iucmpge_dd = 1157   ,/** compare unsigned uint_32 greater than or equal to type DoubleDouble. **/
+    icmpne_dd = 1158    ,/** compare int_32 not equal with type DoubleDouble. **/
+    iucmpne_dd = 1159   ,/** compare unsigned uint_32 not equal with type DoubleDouble. **/
+    imod_b = 1160       ,/** modulo int_32 with type Byte. **/
+    icast_ub = 1161     ,/** cast int_32 to unsigned type Byte. **/
+    iucast_ub = 1162    ,/** cast unsigned uint_32 to unsigned type Byte. **/
+    iadd_ub = 1163      ,/** add int_32 with unsigned type Byte. **/
+    iuadd_ub = 1164     ,/** add unsigned uint_32 with unsigned type Byte. **/
+    isub_ub = 1165      ,/** subtract int_32 with unsigned type Byte. **/
+    iusub_ub = 1166     ,/** subtract unsigned uint_32 with unsigned type Byte. **/
+    imul_ub = 1167      ,/** multiply int_32 with unsigned type Byte. **/
+    iumul_ub = 1168     ,/** multiply unsigned uint_32 with unsigned type Byte. **/
+    idiv_ub = 1169      ,/** divide int_32 with unsigned type Byte. **/
+    iudiv_ub = 1170     ,/** divide unsigned uint_32 with unsigned type Byte. **/
+    icmpl_ub = 1171     ,/** compare int_32 less than unsigned type Byte. **/
+    iucmpl_ub = 1172    ,/** compare unsigned uint_32 less than unsigned type Byte. **/
+    icmpg_ub = 1173     ,/** compare int_32 greater than unsigned type Byte. **/
+    iucmpg_ub = 1174    ,/** compare unsigned uint_32 greater than unsigned type Byte. **/
+    icmpe_ub = 1175     ,/** compare int_32 equal with unsigned type Byte. **/
+    iucmpe_ub = 1176    ,/** compare unsigned uint_32 equal with unsigned type Byte. **/
+    icmple_ub = 1177    ,/** compare int_32 less than or equal to unsigned type Byte. **/
+    iucmple_ub = 1178   ,/** compare unsigned uint_32 less than or equal to unsigned type Byte. **/
+    icmpge_ub = 1179    ,/** compare int_32 greater than or equal to unsigned type Byte. **/
+    iucmpge_ub = 1180   ,/** compare unsigned uint_32 greater than or equal to unsigned type Byte. **/
+    icmpne_ub = 1181    ,/** compare int_32 not equal with unsigned type Byte. **/
+    iucmpne_ub = 1182   ,/** compare unsigned uint_32 not equal with unsigned type Byte. **/
+    imod_s = 1183       ,/** modulo int_32 with type Short. **/
+    icast_us = 1184     ,/** cast int_32 to unsigned type Short. **/
+    iucast_us = 1185    ,/** cast unsigned uint_32 to unsigned type Short. **/
+    iadd_us = 1186      ,/** add int_32 with unsigned type Short. **/
+    iuadd_us = 1187     ,/** add unsigned uint_32 with unsigned type Short. **/
+    isub_us = 1188      ,/** subtract int_32 with unsigned type Short. **/
+    iusub_us = 1189     ,/** subtract unsigned uint_32 with unsigned type Short. **/
+    imul_us = 1190      ,/** multiply int_32 with unsigned type Short. **/
+    iumul_us = 1191     ,/** multiply unsigned uint_32 with unsigned type Short. **/
+    idiv_us = 1192      ,/** divide int_32 with unsigned type Short. **/
+    iudiv_us = 1193     ,/** divide unsigned uint_32 with unsigned type Short. **/
+    icmpl_us = 1194     ,/** compare int_32 less than unsigned type Short. **/
+    iucmpl_us = 1195    ,/** compare unsigned uint_32 less than unsigned type Short. **/
+    icmpg_us = 1196     ,/** compare int_32 greater than unsigned type Short. **/
+    iucmpg_us = 1197    ,/** compare unsigned uint_32 greater than unsigned type Short. **/
+    icmpe_us = 1198     ,/** compare int_32 equal with unsigned type Short. **/
+    iucmpe_us = 1199    ,/** compare unsigned uint_32 equal with unsigned type Short. **/
+    icmple_us = 1200    ,/** compare int_32 less than or equal to unsigned type Short. **/
+    iucmple_us = 1201   ,/** compare unsigned uint_32 less than or equal to unsigned type Short. **/
+    icmpge_us = 1202    ,/** compare int_32 greater than or equal to unsigned type Short. **/
+    iucmpge_us = 1203   ,/** compare unsigned uint_32 greater than or equal to unsigned type Short. **/
+    icmpne_us = 1204    ,/** compare int_32 not equal with unsigned type Short. **/
+    iucmpne_us = 1205   ,/** compare unsigned uint_32 not equal with unsigned type Short. **/
+    imod_i = 1206       ,/** modulo int_32 with type Int. **/
+    icast_ui = 1207     ,/** cast int_32 to unsigned type Int. **/
+    iucast_ui = 1208    ,/** cast unsigned uint_32 to unsigned type Int. **/
+    iadd_ui = 1209      ,/** add int_32 with unsigned type Int. **/
+    iuadd_ui = 1210     ,/** add unsigned uint_32 with unsigned type Int. **/
+    isub_ui = 1211      ,/** subtract int_32 with unsigned type Int. **/
+    iusub_ui = 1212     ,/** subtract unsigned uint_32 with unsigned type Int. **/
+    imul_ui = 1213      ,/** multiply int_32 with unsigned type Int. **/
+    iumul_ui = 1214     ,/** multiply unsigned uint_32 with unsigned type Int. **/
+    idiv_ui = 1215      ,/** divide int_32 with unsigned type Int. **/
+    iudiv_ui = 1216     ,/** divide unsigned uint_32 with unsigned type Int. **/
+    icmpl_ui = 1217     ,/** compare int_32 less than unsigned type Int. **/
+    iucmpl_ui = 1218    ,/** compare unsigned uint_32 less than unsigned type Int. **/
+    icmpg_ui = 1219     ,/** compare int_32 greater than unsigned type Int. **/
+    iucmpg_ui = 1220    ,/** compare unsigned uint_32 greater than unsigned type Int. **/
+    icmpe_ui = 1221     ,/** compare int_32 equal with unsigned type Int. **/
+    iucmpe_ui = 1222    ,/** compare unsigned uint_32 equal with unsigned type Int. **/
+    icmple_ui = 1223    ,/** compare int_32 less than or equal to unsigned type Int. **/
+    iucmple_ui = 1224   ,/** compare unsigned uint_32 less than or equal to unsigned type Int. **/
+    icmpge_ui = 1225    ,/** compare int_32 greater than or equal to unsigned type Int. **/
+    iucmpge_ui = 1226   ,/** compare unsigned uint_32 greater than or equal to unsigned type Int. **/
+    icmpne_ui = 1227    ,/** compare int_32 not equal with unsigned type Int. **/
+    iucmpne_ui = 1228   ,/** compare unsigned uint_32 not equal with unsigned type Int. **/
+    imod_l = 1229       ,/** modulo int_32 with type Long. **/
+    icast_ul = 1230     ,/** cast int_32 to unsigned type Long. **/
+    iucast_ul = 1231    ,/** cast unsigned uint_32 to unsigned type Long. **/
+    iadd_ul = 1232      ,/** add int_32 with unsigned type Long. **/
+    iuadd_ul = 1233     ,/** add unsigned uint_32 with unsigned type Long. **/
+    isub_ul = 1234      ,/** subtract int_32 with unsigned type Long. **/
+    iusub_ul = 1235     ,/** subtract unsigned uint_32 with unsigned type Long. **/
+    imul_ul = 1236      ,/** multiply int_32 with unsigned type Long. **/
+    iumul_ul = 1237     ,/** multiply unsigned uint_32 with unsigned type Long. **/
+    idiv_ul = 1238      ,/** divide int_32 with unsigned type Long. **/
+    iudiv_ul = 1239     ,/** divide unsigned uint_32 with unsigned type Long. **/
+    icmpl_ul = 1240     ,/** compare int_32 less than unsigned type Long. **/
+    iucmpl_ul = 1241    ,/** compare unsigned uint_32 less than unsigned type Long. **/
+    icmpg_ul = 1242     ,/** compare int_32 greater than unsigned type Long. **/
+    iucmpg_ul = 1243    ,/** compare unsigned uint_32 greater than unsigned type Long. **/
+    icmpe_ul = 1244     ,/** compare int_32 equal with unsigned type Long. **/
+    iucmpe_ul = 1245    ,/** compare unsigned uint_32 equal with unsigned type Long. **/
+    icmple_ul = 1246    ,/** compare int_32 less than or equal to unsigned type Long. **/
+    iucmple_ul = 1247   ,/** compare unsigned uint_32 less than or equal to unsigned type Long. **/
+    icmpge_ul = 1248    ,/** compare int_32 greater than or equal to unsigned type Long. **/
+    iucmpge_ul = 1249   ,/** compare unsigned uint_32 greater than or equal to unsigned type Long. **/
+    icmpne_ul = 1250    ,/** compare int_32 not equal with unsigned type Long. **/
+    iucmpne_ul = 1251   ,/** compare unsigned uint_32 not equal with unsigned type Long. **/
+    imod_li = 1252      ,/** modulo int_32 with type LongInt. **/
+    icast_uli = 1253    ,/** cast int_32 to unsigned type LongInt. **/
+    iucast_uli = 1254   ,/** cast unsigned uint_32 to unsigned type LongInt. **/
+    iadd_uli = 1255     ,/** add int_32 with unsigned type LongInt. **/
+    iuadd_uli = 1256    ,/** add unsigned uint_32 with unsigned type LongInt. **/
+    isub_uli = 1257     ,/** subtract int_32 with unsigned type LongInt. **/
+    iusub_uli = 1258    ,/** subtract unsigned uint_32 with unsigned type LongInt. **/
+    imul_uli = 1259     ,/** multiply int_32 with unsigned type LongInt. **/
+    iumul_uli = 1260    ,/** multiply unsigned uint_32 with unsigned type LongInt. **/
+    idiv_uli = 1261     ,/** divide int_32 with unsigned type LongInt. **/
+    iudiv_uli = 1262    ,/** divide unsigned uint_32 with unsigned type LongInt. **/
+    icmpl_uli = 1263    ,/** compare int_32 less than unsigned type LongInt. **/
+    iucmpl_uli = 1264   ,/** compare unsigned uint_32 less than unsigned type LongInt. **/
+    icmpg_uli = 1265    ,/** compare int_32 greater than unsigned type LongInt. **/
+    iucmpg_uli = 1266   ,/** compare unsigned uint_32 greater than unsigned type LongInt. **/
+    icmpe_uli = 1267    ,/** compare int_32 equal with unsigned type LongInt. **/
+    iucmpe_uli = 1268   ,/** compare unsigned uint_32 equal with unsigned type LongInt. **/
+    icmple_uli = 1269   ,/** compare int_32 less than or equal to unsigned type LongInt. **/
+    iucmple_uli = 1270  ,/** compare unsigned uint_32 less than or equal to unsigned type LongInt. **/
+    icmpge_uli = 1271   ,/** compare int_32 greater than or equal to unsigned type LongInt. **/
+    iucmpge_uli = 1272  ,/** compare unsigned uint_32 greater than or equal to unsigned type LongInt. **/
+    icmpne_uli = 1273   ,/** compare int_32 not equal with unsigned type LongInt. **/
+    iucmpne_uli = 1274  ,/** compare unsigned uint_32 not equal with unsigned type LongInt. **/
+    imod_ll = 1275      ,/** modulo int_32 with type LongLong. **/
+    icast_ull = 1276    ,/** cast int_32 to unsigned type LongLong. **/
+    iucast_ull = 1277   ,/** cast unsigned uint_32 to unsigned type LongLong. **/
+    iadd_ull = 1278     ,/** add int_32 with unsigned type LongLong. **/
+    iuadd_ull = 1279    ,/** add unsigned uint_32 with unsigned type LongLong. **/
+    isub_ull = 1280     ,/** subtract int_32 with unsigned type LongLong. **/
+    iusub_ull = 1281    ,/** subtract unsigned uint_32 with unsigned type LongLong. **/
+    imul_ull = 1282     ,/** multiply int_32 with unsigned type LongLong. **/
+    iumul_ull = 1283    ,/** multiply unsigned uint_32 with unsigned type LongLong. **/
+    idiv_ull = 1284     ,/** divide int_32 with unsigned type LongLong. **/
+    iudiv_ull = 1285    ,/** divide unsigned uint_32 with unsigned type LongLong. **/
+    icmpl_ull = 1286    ,/** compare int_32 less than unsigned type LongLong. **/
+    iucmpl_ull = 1287   ,/** compare unsigned uint_32 less than unsigned type LongLong. **/
+    icmpg_ull = 1288    ,/** compare int_32 greater than unsigned type LongLong. **/
+    iucmpg_ull = 1289   ,/** compare unsigned uint_32 greater than unsigned type LongLong. **/
+    icmpe_ull = 1290    ,/** compare int_32 equal with unsigned type LongLong. **/
+    iucmpe_ull = 1291   ,/** compare unsigned uint_32 equal with unsigned type LongLong. **/
+    icmple_ull = 1292   ,/** compare int_32 less than or equal to unsigned type LongLong. **/
+    iucmple_ull = 1293  ,/** compare unsigned uint_32 less than or equal to unsigned type LongLong. **/
+    icmpge_ull = 1294   ,/** compare int_32 greater than or equal to unsigned type LongLong. **/
+    iucmpge_ull = 1295  ,/** compare unsigned uint_32 greater than or equal to unsigned type LongLong. **/
+    icmpne_ull = 1296   ,/** compare int_32 not equal with unsigned type LongLong. **/
+    iucmpne_ull = 1297  ,/** compare unsigned uint_32 not equal with unsigned type LongLong. **/
+    iand_b = 1298       ,/** bitwise and int_32 with type Byte. **/
+    ior_b = 1299        ,/** bitwise or int_32 with type Byte. **/
+    ixor_b = 1300       ,/** bitwise xor int_32 with type Byte. **/
+    ishftr_b = 1301     ,/** shift right int_32 with type Byte. **/
+    ishftl_b = 1302     ,/** shift left xor int_32 with type Byte. **/
+    iand_s = 1303       ,/** bitwise and int_32 with type Short. **/
+    ior_s = 1304        ,/** bitwise or int_32 with type Short. **/
+    ixor_s = 1305       ,/** bitwise xor int_32 with type Short. **/
+    ishftr_s = 1306     ,/** shift right int_32 with type Short. **/
+    ishftl_s = 1307     ,/** shift left xor int_32 with type Short. **/
+    iand_i = 1308       ,/** bitwise and int_32 with type Int. **/
+    ior_i = 1309        ,/** bitwise or int_32 with type Int. **/
+    ixor_i = 1310       ,/** bitwise xor int_32 with type Int. **/
+    ishftr_i = 1311     ,/** shift right int_32 with type Int. **/
+    ishftl_i = 1312     ,/** shift left xor int_32 with type Int. **/
+    iand_l = 1313       ,/** bitwise and int_32 with type Long. **/
+    ior_l = 1314        ,/** bitwise or int_32 with type Long. **/
+    ixor_l = 1315       ,/** bitwise xor int_32 with type Long. **/
+    ishftr_l = 1316     ,/** shift right int_32 with type Long. **/
+    ishftl_l = 1317     ,/** shift left xor int_32 with type Long. **/
+    iand_li = 1318      ,/** bitwise and int_32 with type LongInt. **/
+    ior_li = 1319       ,/** bitwise or int_32 with type LongInt. **/
+    ixor_li = 1320      ,/** bitwise xor int_32 with type LongInt. **/
+    ishftr_li = 1321    ,/** shift right int_32 with type LongInt. **/
+    ishftl_li = 1322    ,/** shift left xor int_32 with type LongInt. **/
+    iand_ll = 1323      ,/** bitwise and int_32 with type LongLong. **/
+    ior_ll = 1324       ,/** bitwise or int_32 with type LongLong. **/
+    ixor_ll = 1325      ,/** bitwise xor int_32 with type LongLong. **/
+    ishftr_ll = 1326    ,/** shift right int_32 with type LongLong. **/
+    ishftl_ll = 1327    ,/** shift left xor int_32 with type LongLong. **/
+    idup = 1328         ,/** duplicate a int_32 on the stack. **/
+    idup2 = 1329        ,/** duplicate a int_32 2 times on the stack. **/
+    idup3 = 1330        ,/** duplicate a int_32 3 times on the stack. **/
+    idup4 = 1331        ,/** duplicate a int_32 4 times on the stack. **/
+    idup5 = 1332        ,/** duplicate a int_32 5 times on the stack. **/
+    iset = 1333         ,/** set a int_32 from stack into a field on base pointer. **/
+    iget = 1334         ,/** get a int_32 from a field on base pointer to stack. **/
+    ivset = 1335        ,/** set a int_32 from value into a field on base pointer. **/
+    isget = 1336        ,/** get a int_32 from a field on base pointer to stack using address from stack. **/
+    isset = 1337        ,/** set a int_32 from stack into a field on base pointer using address from stack. **/
+    isetl = 1338        ,/** set a int_32 from local variable into a field on base pointer. **/
+    iinc_1 = 1339       ,/** increment int_32 by 1 on stack. **/
+    iinc_2 = 1340       ,/** increment int_32 by 2 on stack. **/
+    istinc_1 = 1341     ,/** increment int_32 by 1 on stack. **/
+    istinc_2 = 1342     ,/** increment int_32 by 2 on stack. **/
+    ireturn = 1343      ,/** return a int_32 into the main stack. **/
+    imainst = 1344      ,/** store a int_32 from main stack in a local variable.. **/
+    imainst_0 = 1345    ,/** store a int_32 from main stack in local variable 0. **/
+    imainst_1 = 1346    ,/** store a int_32 from main stack in local variable 1. **/
+    imainst_2 = 1347    ,/** store a int_32 from main stack in local variable 2. **/
+    imainst_3 = 1348    ,/** store a int_32 from main stack in local variable 3. **/
+    iprint = 1349       ,/** print a int_32 from stack. **/
+    iuprint = 1350      ,/** print a unsigned uint_32 from stack. **/
+    lprintba = 1351     ,/** print a byte array. **/
+    lconst = 1352       ,/** push a const int_64 into the stack. **/
+    lconst_0 = 1353     ,/** push a const int_64 into the stack (value = 0). **/
+    lconst_1 = 1354     ,/** push a const int_64 into the stack (value = 1). **/
+    lconst_2 = 1355     ,/** push a const int_64 into the stack (value = 2). **/
+    lconst_3 = 1356     ,/** push a const int_64 into the stack (value = 3). **/
+    lconst_4 = 1357     ,/** push a const int_64 into the stack (value = 4). **/
+    lconst_5 = 1358     ,/** push a const int_64 into the stack (value = 5). **/
+    lconst_6 = 1359     ,/** push a const int_64 into the stack (value = 6). **/
+    lconst_9 = 1360     ,/** push a const int_64 into the stack (value = 9). **/
+    lconst_10 = 1361    ,/** push a const int_64 into the stack (value = 10). **/
+    lconst_11 = 1362    ,/** push a const int_64 into the stack (value = 11). **/
+    lconst_12 = 1363    ,/** push a const int_64 into the stack (value = 12). **/
+    lload = 1364        ,/** load a int_64 into the stack from local variable. **/
+    lload_0 = 1365      ,/** load a int_64 into the stack from local variable 0. **/
+    lload_1 = 1366      ,/** load a int_64 into the stack from local variable 1. **/
+    lload_2 = 1367      ,/** load a int_64 into the stack from local variable 2. **/
+    lload_3 = 1368      ,/** load a int_64 into the stack from local variable 3. **/
+    lload_4 = 1369      ,/** load a int_64 into the stack from local variable 4. **/
+    lstore = 1370       ,/** store a int_64 from stack into local variable. **/
+    lstore_0 = 1371     ,/** store a int_64 from stack into local variable 0. **/
+    lstore_1 = 1372     ,/** store a int_64 from stack into local variable 1. **/
+    lstore_2 = 1373     ,/** store a int_64 from stack into local variable 2. **/
+    lstore_3 = 1374     ,/** store a int_64 from stack into local variable 3. **/
+    lstore_4 = 1375     ,/** store a int_64 from stack into local variable 4. **/
+    lcast_b = 1376      ,/** cast int_64 to type Byte. **/
+    lucast_b = 1377     ,/** cast unsigned uint_64 to type Byte. **/
+    ladd_b = 1378       ,/** add int_64 with type Byte. **/
+    luadd_b = 1379      ,/** add unsigned uint_64 with type Byte. **/
+    lsub_b = 1380       ,/** subtract int_64 with type Byte. **/
+    lusub_b = 1381      ,/** subtract unsigned uint_64 with type Byte. **/
+    lmul_b = 1382       ,/** multiply int_64 with type Byte. **/
+    lumul_b = 1383      ,/** multiply unsigned uint_64 with type Byte. **/
+    ldiv_b = 1384       ,/** divide int_64 with type Byte. **/
+    ludiv_b = 1385      ,/** divide unsigned uint_64 with type Byte. **/
+    lcmpl_b = 1386      ,/** compare int_64 less than type Byte. **/
+    lucmpl_b = 1387     ,/** compare unsigned uint_64 less than type Byte. **/
+    lcmpg_b = 1388      ,/** compare int_64 greater than type Byte. **/
+    lucmpg_b = 1389     ,/** compare unsigned uint_64 greater than type Byte. **/
+    lcmpe_b = 1390      ,/** compare int_64 equal with type Byte. **/
+    lucmpe_b = 1391     ,/** compare unsigned uint_64 equal with type Byte. **/
+    lcmple_b = 1392     ,/** compare int_64 less than or equal to type Byte. **/
+    lucmple_b = 1393    ,/** compare unsigned uint_64 less than or equal to type Byte. **/
+    lcmpge_b = 1394     ,/** compare int_64 greater than or equal to type Byte. **/
+    lucmpge_b = 1395    ,/** compare unsigned uint_64 greater than or equal to type Byte. **/
+    lcmpne_b = 1396     ,/** compare int_64 not equal with type Byte. **/
+    lucmpne_b = 1397    ,/** compare unsigned uint_64 not equal with type Byte. **/
+    lcast_s = 1398      ,/** cast int_64 to type Short. **/
+    lucast_s = 1399     ,/** cast unsigned uint_64 to type Short. **/
+    ladd_s = 1400       ,/** add int_64 with type Short. **/
+    luadd_s = 1401      ,/** add unsigned uint_64 with type Short. **/
+    lsub_s = 1402       ,/** subtract int_64 with type Short. **/
+    lusub_s = 1403      ,/** subtract unsigned uint_64 with type Short. **/
+    lmul_s = 1404       ,/** multiply int_64 with type Short. **/
+    lumul_s = 1405      ,/** multiply unsigned uint_64 with type Short. **/
+    ldiv_s = 1406       ,/** divide int_64 with type Short. **/
+    ludiv_s = 1407      ,/** divide unsigned uint_64 with type Short. **/
+    lcmpl_s = 1408      ,/** compare int_64 less than type Short. **/
+    lucmpl_s = 1409     ,/** compare unsigned uint_64 less than type Short. **/
+    lcmpg_s = 1410      ,/** compare int_64 greater than type Short. **/
+    lucmpg_s = 1411     ,/** compare unsigned uint_64 greater than type Short. **/
+    lcmpe_s = 1412      ,/** compare int_64 equal with type Short. **/
+    lucmpe_s = 1413     ,/** compare unsigned uint_64 equal with type Short. **/
+    lcmple_s = 1414     ,/** compare int_64 less than or equal to type Short. **/
+    lucmple_s = 1415    ,/** compare unsigned uint_64 less than or equal to type Short. **/
+    lcmpge_s = 1416     ,/** compare int_64 greater than or equal to type Short. **/
+    lucmpge_s = 1417    ,/** compare unsigned uint_64 greater than or equal to type Short. **/
+    lcmpne_s = 1418     ,/** compare int_64 not equal with type Short. **/
+    lucmpne_s = 1419    ,/** compare unsigned uint_64 not equal with type Short. **/
+    lcast_i = 1420      ,/** cast int_64 to type Int. **/
+    lucast_i = 1421     ,/** cast unsigned uint_64 to type Int. **/
+    ladd_i = 1422       ,/** add int_64 with type Int. **/
+    luadd_i = 1423      ,/** add unsigned uint_64 with type Int. **/
+    lsub_i = 1424       ,/** subtract int_64 with type Int. **/
+    lusub_i = 1425      ,/** subtract unsigned uint_64 with type Int. **/
+    lmul_i = 1426       ,/** multiply int_64 with type Int. **/
+    lumul_i = 1427      ,/** multiply unsigned uint_64 with type Int. **/
+    ldiv_i = 1428       ,/** divide int_64 with type Int. **/
+    ludiv_i = 1429      ,/** divide unsigned uint_64 with type Int. **/
+    lcmpl_i = 1430      ,/** compare int_64 less than type Int. **/
+    lucmpl_i = 1431     ,/** compare unsigned uint_64 less than type Int. **/
+    lcmpg_i = 1432      ,/** compare int_64 greater than type Int. **/
+    lucmpg_i = 1433     ,/** compare unsigned uint_64 greater than type Int. **/
+    lcmpe_i = 1434      ,/** compare int_64 equal with type Int. **/
+    lucmpe_i = 1435     ,/** compare unsigned uint_64 equal with type Int. **/
+    lcmple_i = 1436     ,/** compare int_64 less than or equal to type Int. **/
+    lucmple_i = 1437    ,/** compare unsigned uint_64 less than or equal to type Int. **/
+    lcmpge_i = 1438     ,/** compare int_64 greater than or equal to type Int. **/
+    lucmpge_i = 1439    ,/** compare unsigned uint_64 greater than or equal to type Int. **/
+    lcmpne_i = 1440     ,/** compare int_64 not equal with type Int. **/
+    lucmpne_i = 1441    ,/** compare unsigned uint_64 not equal with type Int. **/
+    lcast_l = 1442      ,/** cast int_64 to type Long. **/
+    lucast_l = 1443     ,/** cast unsigned uint_64 to type Long. **/
+    ladd_l = 1444       ,/** add int_64 with type Long. **/
+    luadd_l = 1445      ,/** add unsigned uint_64 with type Long. **/
+    lsub_l = 1446       ,/** subtract int_64 with type Long. **/
+    lusub_l = 1447      ,/** subtract unsigned uint_64 with type Long. **/
+    lmul_l = 1448       ,/** multiply int_64 with type Long. **/
+    lumul_l = 1449      ,/** multiply unsigned uint_64 with type Long. **/
+    ldiv_l = 1450       ,/** divide int_64 with type Long. **/
+    ludiv_l = 1451      ,/** divide unsigned uint_64 with type Long. **/
+    lcmpl_l = 1452      ,/** compare int_64 less than type Long. **/
+    lucmpl_l = 1453     ,/** compare unsigned uint_64 less than type Long. **/
+    lcmpg_l = 1454      ,/** compare int_64 greater than type Long. **/
+    lucmpg_l = 1455     ,/** compare unsigned uint_64 greater than type Long. **/
+    lcmpe_l = 1456      ,/** compare int_64 equal with type Long. **/
+    lucmpe_l = 1457     ,/** compare unsigned uint_64 equal with type Long. **/
+    lcmple_l = 1458     ,/** compare int_64 less than or equal to type Long. **/
+    lucmple_l = 1459    ,/** compare unsigned uint_64 less than or equal to type Long. **/
+    lcmpge_l = 1460     ,/** compare int_64 greater than or equal to type Long. **/
+    lucmpge_l = 1461    ,/** compare unsigned uint_64 greater than or equal to type Long. **/
+    lcmpne_l = 1462     ,/** compare int_64 not equal with type Long. **/
+    lucmpne_l = 1463    ,/** compare unsigned uint_64 not equal with type Long. **/
+    lcast_li = 1464     ,/** cast int_64 to type LongInt. **/
+    lucast_li = 1465    ,/** cast unsigned uint_64 to type LongInt. **/
+    ladd_li = 1466      ,/** add int_64 with type LongInt. **/
+    luadd_li = 1467     ,/** add unsigned uint_64 with type LongInt. **/
+    lsub_li = 1468      ,/** subtract int_64 with type LongInt. **/
+    lusub_li = 1469     ,/** subtract unsigned uint_64 with type LongInt. **/
+    lmul_li = 1470      ,/** multiply int_64 with type LongInt. **/
+    lumul_li = 1471     ,/** multiply unsigned uint_64 with type LongInt. **/
+    ldiv_li = 1472      ,/** divide int_64 with type LongInt. **/
+    ludiv_li = 1473     ,/** divide unsigned uint_64 with type LongInt. **/
+    lcmpl_li = 1474     ,/** compare int_64 less than type LongInt. **/
+    lucmpl_li = 1475    ,/** compare unsigned uint_64 less than type LongInt. **/
+    lcmpg_li = 1476     ,/** compare int_64 greater than type LongInt. **/
+    lucmpg_li = 1477    ,/** compare unsigned uint_64 greater than type LongInt. **/
+    lcmpe_li = 1478     ,/** compare int_64 equal with type LongInt. **/
+    lucmpe_li = 1479    ,/** compare unsigned uint_64 equal with type LongInt. **/
+    lcmple_li = 1480    ,/** compare int_64 less than or equal to type LongInt. **/
+    lucmple_li = 1481   ,/** compare unsigned uint_64 less than or equal to type LongInt. **/
+    lcmpge_li = 1482    ,/** compare int_64 greater than or equal to type LongInt. **/
+    lucmpge_li = 1483   ,/** compare unsigned uint_64 greater than or equal to type LongInt. **/
+    lcmpne_li = 1484    ,/** compare int_64 not equal with type LongInt. **/
+    lucmpne_li = 1485   ,/** compare unsigned uint_64 not equal with type LongInt. **/
+    lcast_ll = 1486     ,/** cast int_64 to type LongLong. **/
+    lucast_ll = 1487    ,/** cast unsigned uint_64 to type LongLong. **/
+    ladd_ll = 1488      ,/** add int_64 with type LongLong. **/
+    luadd_ll = 1489     ,/** add unsigned uint_64 with type LongLong. **/
+    lsub_ll = 1490      ,/** subtract int_64 with type LongLong. **/
+    lusub_ll = 1491     ,/** subtract unsigned uint_64 with type LongLong. **/
+    lmul_ll = 1492      ,/** multiply int_64 with type LongLong. **/
+    lumul_ll = 1493     ,/** multiply unsigned uint_64 with type LongLong. **/
+    ldiv_ll = 1494      ,/** divide int_64 with type LongLong. **/
+    ludiv_ll = 1495     ,/** divide unsigned uint_64 with type LongLong. **/
+    lcmpl_ll = 1496     ,/** compare int_64 less than type LongLong. **/
+    lucmpl_ll = 1497    ,/** compare unsigned uint_64 less than type LongLong. **/
+    lcmpg_ll = 1498     ,/** compare int_64 greater than type LongLong. **/
+    lucmpg_ll = 1499    ,/** compare unsigned uint_64 greater than type LongLong. **/
+    lcmpe_ll = 1500     ,/** compare int_64 equal with type LongLong. **/
+    lucmpe_ll = 1501    ,/** compare unsigned uint_64 equal with type LongLong. **/
+    lcmple_ll = 1502    ,/** compare int_64 less than or equal to type LongLong. **/
+    lucmple_ll = 1503   ,/** compare unsigned uint_64 less than or equal to type LongLong. **/
+    lcmpge_ll = 1504    ,/** compare int_64 greater than or equal to type LongLong. **/
+    lucmpge_ll = 1505   ,/** compare unsigned uint_64 greater than or equal to type LongLong. **/
+    lcmpne_ll = 1506    ,/** compare int_64 not equal with type LongLong. **/
+    lucmpne_ll = 1507   ,/** compare unsigned uint_64 not equal with type LongLong. **/
+    lcast_f = 1508      ,/** cast int_64 to type Float. **/
+    lucast_f = 1509     ,/** cast unsigned uint_64 to type Float. **/
+    ladd_f = 1510       ,/** add int_64 with type Float. **/
+    luadd_f = 1511      ,/** add unsigned uint_64 with type Float. **/
+    lsub_f = 1512       ,/** subtract int_64 with type Float. **/
+    lusub_f = 1513      ,/** subtract unsigned uint_64 with type Float. **/
+    lmul_f = 1514       ,/** multiply int_64 with type Float. **/
+    lumul_f = 1515      ,/** multiply unsigned uint_64 with type Float. **/
+    ldiv_f = 1516       ,/** divide int_64 with type Float. **/
+    ludiv_f = 1517      ,/** divide unsigned uint_64 with type Float. **/
+    lcmpl_f = 1518      ,/** compare int_64 less than type Float. **/
+    lucmpl_f = 1519     ,/** compare unsigned uint_64 less than type Float. **/
+    lcmpg_f = 1520      ,/** compare int_64 greater than type Float. **/
+    lucmpg_f = 1521     ,/** compare unsigned uint_64 greater than type Float. **/
+    lcmpe_f = 1522      ,/** compare int_64 equal with type Float. **/
+    lucmpe_f = 1523     ,/** compare unsigned uint_64 equal with type Float. **/
+    lcmple_f = 1524     ,/** compare int_64 less than or equal to type Float. **/
+    lucmple_f = 1525    ,/** compare unsigned uint_64 less than or equal to type Float. **/
+    lcmpge_f = 1526     ,/** compare int_64 greater than or equal to type Float. **/
+    lucmpge_f = 1527    ,/** compare unsigned uint_64 greater than or equal to type Float. **/
+    lcmpne_f = 1528     ,/** compare int_64 not equal with type Float. **/
+    lucmpne_f = 1529    ,/** compare unsigned uint_64 not equal with type Float. **/
+    lcast_d = 1530      ,/** cast int_64 to type Double. **/
+    lucast_d = 1531     ,/** cast unsigned uint_64 to type Double. **/
+    ladd_d = 1532       ,/** add int_64 with type Double. **/
+    luadd_d = 1533      ,/** add unsigned uint_64 with type Double. **/
+    lsub_d = 1534       ,/** subtract int_64 with type Double. **/
+    lusub_d = 1535      ,/** subtract unsigned uint_64 with type Double. **/
+    lmul_d = 1536       ,/** multiply int_64 with type Double. **/
+    lumul_d = 1537      ,/** multiply unsigned uint_64 with type Double. **/
+    ldiv_d = 1538       ,/** divide int_64 with type Double. **/
+    ludiv_d = 1539      ,/** divide unsigned uint_64 with type Double. **/
+    lcmpl_d = 1540      ,/** compare int_64 less than type Double. **/
+    lucmpl_d = 1541     ,/** compare unsigned uint_64 less than type Double. **/
+    lcmpg_d = 1542      ,/** compare int_64 greater than type Double. **/
+    lucmpg_d = 1543     ,/** compare unsigned uint_64 greater than type Double. **/
+    lcmpe_d = 1544      ,/** compare int_64 equal with type Double. **/
+    lucmpe_d = 1545     ,/** compare unsigned uint_64 equal with type Double. **/
+    lcmple_d = 1546     ,/** compare int_64 less than or equal to type Double. **/
+    lucmple_d = 1547    ,/** compare unsigned uint_64 less than or equal to type Double. **/
+    lcmpge_d = 1548     ,/** compare int_64 greater than or equal to type Double. **/
+    lucmpge_d = 1549    ,/** compare unsigned uint_64 greater than or equal to type Double. **/
+    lcmpne_d = 1550     ,/** compare int_64 not equal with type Double. **/
+    lucmpne_d = 1551    ,/** compare unsigned uint_64 not equal with type Double. **/
+    lcast_df = 1552     ,/** cast int_64 to type DoubleFloat. **/
+    lucast_df = 1553    ,/** cast unsigned uint_64 to type DoubleFloat. **/
+    ladd_df = 1554      ,/** add int_64 with type DoubleFloat. **/
+    luadd_df = 1555     ,/** add unsigned uint_64 with type DoubleFloat. **/
+    lsub_df = 1556      ,/** subtract int_64 with type DoubleFloat. **/
+    lusub_df = 1557     ,/** subtract unsigned uint_64 with type DoubleFloat. **/
+    lmul_df = 1558      ,/** multiply int_64 with type DoubleFloat. **/
+    lumul_df = 1559     ,/** multiply unsigned uint_64 with type DoubleFloat. **/
+    ldiv_df = 1560      ,/** divide int_64 with type DoubleFloat. **/
+    ludiv_df = 1561     ,/** divide unsigned uint_64 with type DoubleFloat. **/
+    lcmpl_df = 1562     ,/** compare int_64 less than type DoubleFloat. **/
+    lucmpl_df = 1563    ,/** compare unsigned uint_64 less than type DoubleFloat. **/
+    lcmpg_df = 1564     ,/** compare int_64 greater than type DoubleFloat. **/
+    lucmpg_df = 1565    ,/** compare unsigned uint_64 greater than type DoubleFloat. **/
+    lcmpe_df = 1566     ,/** compare int_64 equal with type DoubleFloat. **/
+    lucmpe_df = 1567    ,/** compare unsigned uint_64 equal with type DoubleFloat. **/
+    lcmple_df = 1568    ,/** compare int_64 less than or equal to type DoubleFloat. **/
+    lucmple_df = 1569   ,/** compare unsigned uint_64 less than or equal to type DoubleFloat. **/
+    lcmpge_df = 1570    ,/** compare int_64 greater than or equal to type DoubleFloat. **/
+    lucmpge_df = 1571   ,/** compare unsigned uint_64 greater than or equal to type DoubleFloat. **/
+    lcmpne_df = 1572    ,/** compare int_64 not equal with type DoubleFloat. **/
+    lucmpne_df = 1573   ,/** compare unsigned uint_64 not equal with type DoubleFloat. **/
+    lcast_dd = 1574     ,/** cast int_64 to type DoubleDouble. **/
+    lucast_dd = 1575    ,/** cast unsigned uint_64 to type DoubleDouble. **/
+    ladd_dd = 1576      ,/** add int_64 with type DoubleDouble. **/
+    luadd_dd = 1577     ,/** add unsigned uint_64 with type DoubleDouble. **/
+    lsub_dd = 1578      ,/** subtract int_64 with type DoubleDouble. **/
+    lusub_dd = 1579     ,/** subtract unsigned uint_64 with type DoubleDouble. **/
+    lmul_dd = 1580      ,/** multiply int_64 with type DoubleDouble. **/
+    lumul_dd = 1581     ,/** multiply unsigned uint_64 with type DoubleDouble. **/
+    ldiv_dd = 1582      ,/** divide int_64 with type DoubleDouble. **/
+    ludiv_dd = 1583     ,/** divide unsigned uint_64 with type DoubleDouble. **/
+    lcmpl_dd = 1584     ,/** compare int_64 less than type DoubleDouble. **/
+    lucmpl_dd = 1585    ,/** compare unsigned uint_64 less than type DoubleDouble. **/
+    lcmpg_dd = 1586     ,/** compare int_64 greater than type DoubleDouble. **/
+    lucmpg_dd = 1587    ,/** compare unsigned uint_64 greater than type DoubleDouble. **/
+    lcmpe_dd = 1588     ,/** compare int_64 equal with type DoubleDouble. **/
+    lucmpe_dd = 1589    ,/** compare unsigned uint_64 equal with type DoubleDouble. **/
+    lcmple_dd = 1590    ,/** compare int_64 less than or equal to type DoubleDouble. **/
+    lucmple_dd = 1591   ,/** compare unsigned uint_64 less than or equal to type DoubleDouble. **/
+    lcmpge_dd = 1592    ,/** compare int_64 greater than or equal to type DoubleDouble. **/
+    lucmpge_dd = 1593   ,/** compare unsigned uint_64 greater than or equal to type DoubleDouble. **/
+    lcmpne_dd = 1594    ,/** compare int_64 not equal with type DoubleDouble. **/
+    lucmpne_dd = 1595   ,/** compare unsigned uint_64 not equal with type DoubleDouble. **/
+    lmod_b = 1596       ,/** modulo int_64 with type Byte. **/
+    lcast_ub = 1597     ,/** cast int_64 to unsigned type Byte. **/
+    lucast_ub = 1598    ,/** cast unsigned uint_64 to unsigned type Byte. **/
+    ladd_ub = 1599      ,/** add int_64 with unsigned type Byte. **/
+    luadd_ub = 1600     ,/** add unsigned uint_64 with unsigned type Byte. **/
+    lsub_ub = 1601      ,/** subtract int_64 with unsigned type Byte. **/
+    lusub_ub = 1602     ,/** subtract unsigned uint_64 with unsigned type Byte. **/
+    lmul_ub = 1603      ,/** multiply int_64 with unsigned type Byte. **/
+    lumul_ub = 1604     ,/** multiply unsigned uint_64 with unsigned type Byte. **/
+    ldiv_ub = 1605      ,/** divide int_64 with unsigned type Byte. **/
+    ludiv_ub = 1606     ,/** divide unsigned uint_64 with unsigned type Byte. **/
+    lcmpl_ub = 1607     ,/** compare int_64 less than unsigned type Byte. **/
+    lucmpl_ub = 1608    ,/** compare unsigned uint_64 less than unsigned type Byte. **/
+    lcmpg_ub = 1609     ,/** compare int_64 greater than unsigned type Byte. **/
+    lucmpg_ub = 1610    ,/** compare unsigned uint_64 greater than unsigned type Byte. **/
+    lcmpe_ub = 1611     ,/** compare int_64 equal with unsigned type Byte. **/
+    lucmpe_ub = 1612    ,/** compare unsigned uint_64 equal with unsigned type Byte. **/
+    lcmple_ub = 1613    ,/** compare int_64 less than or equal to unsigned type Byte. **/
+    lucmple_ub = 1614   ,/** compare unsigned uint_64 less than or equal to unsigned type Byte. **/
+    lcmpge_ub = 1615    ,/** compare int_64 greater than or equal to unsigned type Byte. **/
+    lucmpge_ub = 1616   ,/** compare unsigned uint_64 greater than or equal to unsigned type Byte. **/
+    lcmpne_ub = 1617    ,/** compare int_64 not equal with unsigned type Byte. **/
+    lucmpne_ub = 1618   ,/** compare unsigned uint_64 not equal with unsigned type Byte. **/
+    lmod_s = 1619       ,/** modulo int_64 with type Short. **/
+    lcast_us = 1620     ,/** cast int_64 to unsigned type Short. **/
+    lucast_us = 1621    ,/** cast unsigned uint_64 to unsigned type Short. **/
+    ladd_us = 1622      ,/** add int_64 with unsigned type Short. **/
+    luadd_us = 1623     ,/** add unsigned uint_64 with unsigned type Short. **/
+    lsub_us = 1624      ,/** subtract int_64 with unsigned type Short. **/
+    lusub_us = 1625     ,/** subtract unsigned uint_64 with unsigned type Short. **/
+    lmul_us = 1626      ,/** multiply int_64 with unsigned type Short. **/
+    lumul_us = 1627     ,/** multiply unsigned uint_64 with unsigned type Short. **/
+    ldiv_us = 1628      ,/** divide int_64 with unsigned type Short. **/
+    ludiv_us = 1629     ,/** divide unsigned uint_64 with unsigned type Short. **/
+    lcmpl_us = 1630     ,/** compare int_64 less than unsigned type Short. **/
+    lucmpl_us = 1631    ,/** compare unsigned uint_64 less than unsigned type Short. **/
+    lcmpg_us = 1632     ,/** compare int_64 greater than unsigned type Short. **/
+    lucmpg_us = 1633    ,/** compare unsigned uint_64 greater than unsigned type Short. **/
+    lcmpe_us = 1634     ,/** compare int_64 equal with unsigned type Short. **/
+    lucmpe_us = 1635    ,/** compare unsigned uint_64 equal with unsigned type Short. **/
+    lcmple_us = 1636    ,/** compare int_64 less than or equal to unsigned type Short. **/
+    lucmple_us = 1637   ,/** compare unsigned uint_64 less than or equal to unsigned type Short. **/
+    lcmpge_us = 1638    ,/** compare int_64 greater than or equal to unsigned type Short. **/
+    lucmpge_us = 1639   ,/** compare unsigned uint_64 greater than or equal to unsigned type Short. **/
+    lcmpne_us = 1640    ,/** compare int_64 not equal with unsigned type Short. **/
+    lucmpne_us = 1641   ,/** compare unsigned uint_64 not equal with unsigned type Short. **/
+    lmod_i = 1642       ,/** modulo int_64 with type Int. **/
+    lcast_ui = 1643     ,/** cast int_64 to unsigned type Int. **/
+    lucast_ui = 1644    ,/** cast unsigned uint_64 to unsigned type Int. **/
+    ladd_ui = 1645      ,/** add int_64 with unsigned type Int. **/
+    luadd_ui = 1646     ,/** add unsigned uint_64 with unsigned type Int. **/
+    lsub_ui = 1647      ,/** subtract int_64 with unsigned type Int. **/
+    lusub_ui = 1648     ,/** subtract unsigned uint_64 with unsigned type Int. **/
+    lmul_ui = 1649      ,/** multiply int_64 with unsigned type Int. **/
+    lumul_ui = 1650     ,/** multiply unsigned uint_64 with unsigned type Int. **/
+    ldiv_ui = 1651      ,/** divide int_64 with unsigned type Int. **/
+    ludiv_ui = 1652     ,/** divide unsigned uint_64 with unsigned type Int. **/
+    lcmpl_ui = 1653     ,/** compare int_64 less than unsigned type Int. **/
+    lucmpl_ui = 1654    ,/** compare unsigned uint_64 less than unsigned type Int. **/
+    lcmpg_ui = 1655     ,/** compare int_64 greater than unsigned type Int. **/
+    lucmpg_ui = 1656    ,/** compare unsigned uint_64 greater than unsigned type Int. **/
+    lcmpe_ui = 1657     ,/** compare int_64 equal with unsigned type Int. **/
+    lucmpe_ui = 1658    ,/** compare unsigned uint_64 equal with unsigned type Int. **/
+    lcmple_ui = 1659    ,/** compare int_64 less than or equal to unsigned type Int. **/
+    lucmple_ui = 1660   ,/** compare unsigned uint_64 less than or equal to unsigned type Int. **/
+    lcmpge_ui = 1661    ,/** compare int_64 greater than or equal to unsigned type Int. **/
+    lucmpge_ui = 1662   ,/** compare unsigned uint_64 greater than or equal to unsigned type Int. **/
+    lcmpne_ui = 1663    ,/** compare int_64 not equal with unsigned type Int. **/
+    lucmpne_ui = 1664   ,/** compare unsigned uint_64 not equal with unsigned type Int. **/
+    lmod_l = 1665       ,/** modulo int_64 with type Long. **/
+    lcast_ul = 1666     ,/** cast int_64 to unsigned type Long. **/
+    lucast_ul = 1667    ,/** cast unsigned uint_64 to unsigned type Long. **/
+    ladd_ul = 1668      ,/** add int_64 with unsigned type Long. **/
+    luadd_ul = 1669     ,/** add unsigned uint_64 with unsigned type Long. **/
+    lsub_ul = 1670      ,/** subtract int_64 with unsigned type Long. **/
+    lusub_ul = 1671     ,/** subtract unsigned uint_64 with unsigned type Long. **/
+    lmul_ul = 1672      ,/** multiply int_64 with unsigned type Long. **/
+    lumul_ul = 1673     ,/** multiply unsigned uint_64 with unsigned type Long. **/
+    ldiv_ul = 1674      ,/** divide int_64 with unsigned type Long. **/
+    ludiv_ul = 1675     ,/** divide unsigned uint_64 with unsigned type Long. **/
+    lcmpl_ul = 1676     ,/** compare int_64 less than unsigned type Long. **/
+    lucmpl_ul = 1677    ,/** compare unsigned uint_64 less than unsigned type Long. **/
+    lcmpg_ul = 1678     ,/** compare int_64 greater than unsigned type Long. **/
+    lucmpg_ul = 1679    ,/** compare unsigned uint_64 greater than unsigned type Long. **/
+    lcmpe_ul = 1680     ,/** compare int_64 equal with unsigned type Long. **/
+    lucmpe_ul = 1681    ,/** compare unsigned uint_64 equal with unsigned type Long. **/
+    lcmple_ul = 1682    ,/** compare int_64 less than or equal to unsigned type Long. **/
+    lucmple_ul = 1683   ,/** compare unsigned uint_64 less than or equal to unsigned type Long. **/
+    lcmpge_ul = 1684    ,/** compare int_64 greater than or equal to unsigned type Long. **/
+    lucmpge_ul = 1685   ,/** compare unsigned uint_64 greater than or equal to unsigned type Long. **/
+    lcmpne_ul = 1686    ,/** compare int_64 not equal with unsigned type Long. **/
+    lucmpne_ul = 1687   ,/** compare unsigned uint_64 not equal with unsigned type Long. **/
+    lmod_li = 1688      ,/** modulo int_64 with type LongInt. **/
+    lcast_uli = 1689    ,/** cast int_64 to unsigned type LongInt. **/
+    lucast_uli = 1690   ,/** cast unsigned uint_64 to unsigned type LongInt. **/
+    ladd_uli = 1691     ,/** add int_64 with unsigned type LongInt. **/
+    luadd_uli = 1692    ,/** add unsigned uint_64 with unsigned type LongInt. **/
+    lsub_uli = 1693     ,/** subtract int_64 with unsigned type LongInt. **/
+    lusub_uli = 1694    ,/** subtract unsigned uint_64 with unsigned type LongInt. **/
+    lmul_uli = 1695     ,/** multiply int_64 with unsigned type LongInt. **/
+    lumul_uli = 1696    ,/** multiply unsigned uint_64 with unsigned type LongInt. **/
+    ldiv_uli = 1697     ,/** divide int_64 with unsigned type LongInt. **/
+    ludiv_uli = 1698    ,/** divide unsigned uint_64 with unsigned type LongInt. **/
+    lcmpl_uli = 1699    ,/** compare int_64 less than unsigned type LongInt. **/
+    lucmpl_uli = 1700   ,/** compare unsigned uint_64 less than unsigned type LongInt. **/
+    lcmpg_uli = 1701    ,/** compare int_64 greater than unsigned type LongInt. **/
+    lucmpg_uli = 1702   ,/** compare unsigned uint_64 greater than unsigned type LongInt. **/
+    lcmpe_uli = 1703    ,/** compare int_64 equal with unsigned type LongInt. **/
+    lucmpe_uli = 1704   ,/** compare unsigned uint_64 equal with unsigned type LongInt. **/
+    lcmple_uli = 1705   ,/** compare int_64 less than or equal to unsigned type LongInt. **/
+    lucmple_uli = 1706  ,/** compare unsigned uint_64 less than or equal to unsigned type LongInt. **/
+    lcmpge_uli = 1707   ,/** compare int_64 greater than or equal to unsigned type LongInt. **/
+    lucmpge_uli = 1708  ,/** compare unsigned uint_64 greater than or equal to unsigned type LongInt. **/
+    lcmpne_uli = 1709   ,/** compare int_64 not equal with unsigned type LongInt. **/
+    lucmpne_uli = 1710  ,/** compare unsigned uint_64 not equal with unsigned type LongInt. **/
+    lmod_ll = 1711      ,/** modulo int_64 with type LongLong. **/
+    lcast_ull = 1712    ,/** cast int_64 to unsigned type LongLong. **/
+    lucast_ull = 1713   ,/** cast unsigned uint_64 to unsigned type LongLong. **/
+    ladd_ull = 1714     ,/** add int_64 with unsigned type LongLong. **/
+    luadd_ull = 1715    ,/** add unsigned uint_64 with unsigned type LongLong. **/
+    lsub_ull = 1716     ,/** subtract int_64 with unsigned type LongLong. **/
+    lusub_ull = 1717    ,/** subtract unsigned uint_64 with unsigned type LongLong. **/
+    lmul_ull = 1718     ,/** multiply int_64 with unsigned type LongLong. **/
+    lumul_ull = 1719    ,/** multiply unsigned uint_64 with unsigned type LongLong. **/
+    ldiv_ull = 1720     ,/** divide int_64 with unsigned type LongLong. **/
+    ludiv_ull = 1721    ,/** divide unsigned uint_64 with unsigned type LongLong. **/
+    lcmpl_ull = 1722    ,/** compare int_64 less than unsigned type LongLong. **/
+    lucmpl_ull = 1723   ,/** compare unsigned uint_64 less than unsigned type LongLong. **/
+    lcmpg_ull = 1724    ,/** compare int_64 greater than unsigned type LongLong. **/
+    lucmpg_ull = 1725   ,/** compare unsigned uint_64 greater than unsigned type LongLong. **/
+    lcmpe_ull = 1726    ,/** compare int_64 equal with unsigned type LongLong. **/
+    lucmpe_ull = 1727   ,/** compare unsigned uint_64 equal with unsigned type LongLong. **/
+    lcmple_ull = 1728   ,/** compare int_64 less than or equal to unsigned type LongLong. **/
+    lucmple_ull = 1729  ,/** compare unsigned uint_64 less than or equal to unsigned type LongLong. **/
+    lcmpge_ull = 1730   ,/** compare int_64 greater than or equal to unsigned type LongLong. **/
+    lucmpge_ull = 1731  ,/** compare unsigned uint_64 greater than or equal to unsigned type LongLong. **/
+    lcmpne_ull = 1732   ,/** compare int_64 not equal with unsigned type LongLong. **/
+    lucmpne_ull = 1733  ,/** compare unsigned uint_64 not equal with unsigned type LongLong. **/
+    land_b = 1734       ,/** bitwise and int_64 with type Byte. **/
+    lor_b = 1735        ,/** bitwise or int_64 with type Byte. **/
+    lxor_b = 1736       ,/** bitwise xor int_64 with type Byte. **/
+    lshftr_b = 1737     ,/** shift right int_64 with type Byte. **/
+    lshftl_b = 1738     ,/** shift left xor int_64 with type Byte. **/
+    land_s = 1739       ,/** bitwise and int_64 with type Short. **/
+    lor_s = 1740        ,/** bitwise or int_64 with type Short. **/
+    lxor_s = 1741       ,/** bitwise xor int_64 with type Short. **/
+    lshftr_s = 1742     ,/** shift right int_64 with type Short. **/
+    lshftl_s = 1743     ,/** shift left xor int_64 with type Short. **/
+    land_i = 1744       ,/** bitwise and int_64 with type Int. **/
+    lor_i = 1745        ,/** bitwise or int_64 with type Int. **/
+    lxor_i = 1746       ,/** bitwise xor int_64 with type Int. **/
+    lshftr_i = 1747     ,/** shift right int_64 with type Int. **/
+    lshftl_i = 1748     ,/** shift left xor int_64 with type Int. **/
+    land_l = 1749       ,/** bitwise and int_64 with type Long. **/
+    lor_l = 1750        ,/** bitwise or int_64 with type Long. **/
+    lxor_l = 1751       ,/** bitwise xor int_64 with type Long. **/
+    lshftr_l = 1752     ,/** shift right int_64 with type Long. **/
+    lshftl_l = 1753     ,/** shift left xor int_64 with type Long. **/
+    land_li = 1754      ,/** bitwise and int_64 with type LongInt. **/
+    lor_li = 1755       ,/** bitwise or int_64 with type LongInt. **/
+    lxor_li = 1756      ,/** bitwise xor int_64 with type LongInt. **/
+    lshftr_li = 1757    ,/** shift right int_64 with type LongInt. **/
+    lshftl_li = 1758    ,/** shift left xor int_64 with type LongInt. **/
+    land_ll = 1759      ,/** bitwise and int_64 with type LongLong. **/
+    lor_ll = 1760       ,/** bitwise or int_64 with type LongLong. **/
+    lxor_ll = 1761      ,/** bitwise xor int_64 with type LongLong. **/
+    lshftr_ll = 1762    ,/** shift right int_64 with type LongLong. **/
+    lshftl_ll = 1763    ,/** shift left xor int_64 with type LongLong. **/
+    ldup = 1764         ,/** duplicate a int_64 on the stack. **/
+    ldup2 = 1765        ,/** duplicate a int_64 2 times on the stack. **/
+    ldup3 = 1766        ,/** duplicate a int_64 3 times on the stack. **/
+    ldup4 = 1767        ,/** duplicate a int_64 4 times on the stack. **/
+    ldup5 = 1768        ,/** duplicate a int_64 5 times on the stack. **/
+    lset = 1769         ,/** set a int_64 from stack into a field on base pointer. **/
+    lget = 1770         ,/** get a int_64 from a field on base pointer to stack. **/
+    lvset = 1771        ,/** set a int_64 from value into a field on base pointer. **/
+    lsget = 1772        ,/** get a int_64 from a field on base pointer to stack using address from stack. **/
+    lsset = 1773        ,/** set a int_64 from stack into a field on base pointer using address from stack. **/
+    lsetl = 1774        ,/** set a int_64 from local variable into a field on base pointer. **/
+    linc_1 = 1775       ,/** increment int_64 by 1 on stack. **/
+    linc_2 = 1776       ,/** increment int_64 by 2 on stack. **/
+    lstinc_1 = 1777     ,/** increment int_64 by 1 on stack. **/
+    lstinc_2 = 1778     ,/** increment int_64 by 2 on stack. **/
+    lreturn = 1779      ,/** return a int_64 into the main stack. **/
+    lmainst = 1780      ,/** store a int_64 from main stack in a local variable.. **/
+    lmainst_0 = 1781    ,/** store a int_64 from main stack in local variable 0. **/
+    lmainst_1 = 1782    ,/** store a int_64 from main stack in local variable 1. **/
+    lmainst_2 = 1783    ,/** store a int_64 from main stack in local variable 2. **/
+    lmainst_3 = 1784    ,/** store a int_64 from main stack in local variable 3. **/
+    lprint = 1785       ,/** print a int_64 from stack. **/
+    luprint = 1786      ,/** print a unsigned uint_64 from stack. **/
+    liprintba = 1787    ,/** print a byte array. **/
+    liconst = 1788      ,/** push a const int_128 into the stack. **/
+    liconst_0 = 1789    ,/** push a const int_128 into the stack (value = 0). **/
+    liconst_1 = 1790    ,/** push a const int_128 into the stack (value = 1). **/
+    liconst_2 = 1791    ,/** push a const int_128 into the stack (value = 2). **/
+    liconst_3 = 1792    ,/** push a const int_128 into the stack (value = 3). **/
+    liconst_4 = 1793    ,/** push a const int_128 into the stack (value = 4). **/
+    liconst_5 = 1794    ,/** push a const int_128 into the stack (value = 5). **/
+    liconst_6 = 1795    ,/** push a const int_128 into the stack (value = 6). **/
+    liconst_9 = 1796    ,/** push a const int_128 into the stack (value = 9). **/
+    liconst_10 = 1797   ,/** push a const int_128 into the stack (value = 10). **/
+    liconst_11 = 1798   ,/** push a const int_128 into the stack (value = 11). **/
+    liconst_12 = 1799   ,/** push a const int_128 into the stack (value = 12). **/
+    liload = 1800       ,/** load a int_128 into the stack from local variable. **/
+    liload_0 = 1801     ,/** load a int_128 into the stack from local variable 0. **/
+    liload_1 = 1802     ,/** load a int_128 into the stack from local variable 1. **/
+    liload_2 = 1803     ,/** load a int_128 into the stack from local variable 2. **/
+    liload_3 = 1804     ,/** load a int_128 into the stack from local variable 3. **/
+    liload_4 = 1805     ,/** load a int_128 into the stack from local variable 4. **/
+    listore = 1806      ,/** store a int_128 from stack into local variable. **/
+    listore_0 = 1807    ,/** store a int_128 from stack into local variable 0. **/
+    listore_1 = 1808    ,/** store a int_128 from stack into local variable 1. **/
+    listore_2 = 1809    ,/** store a int_128 from stack into local variable 2. **/
+    listore_3 = 1810    ,/** store a int_128 from stack into local variable 3. **/
+    listore_4 = 1811    ,/** store a int_128 from stack into local variable 4. **/
+    licast_b = 1812     ,/** cast int_128 to type Byte. **/
+    liucast_b = 1813    ,/** cast unsigned uint_128 to type Byte. **/
+    liadd_b = 1814      ,/** add int_128 with type Byte. **/
+    liuadd_b = 1815     ,/** add unsigned uint_128 with type Byte. **/
+    lisub_b = 1816      ,/** subtract int_128 with type Byte. **/
+    liusub_b = 1817     ,/** subtract unsigned uint_128 with type Byte. **/
+    limul_b = 1818      ,/** multiply int_128 with type Byte. **/
+    liumul_b = 1819     ,/** multiply unsigned uint_128 with type Byte. **/
+    lidiv_b = 1820      ,/** divide int_128 with type Byte. **/
+    liudiv_b = 1821     ,/** divide unsigned uint_128 with type Byte. **/
+    licmpl_b = 1822     ,/** compare int_128 less than type Byte. **/
+    liucmpl_b = 1823    ,/** compare unsigned uint_128 less than type Byte. **/
+    licmpg_b = 1824     ,/** compare int_128 greater than type Byte. **/
+    liucmpg_b = 1825    ,/** compare unsigned uint_128 greater than type Byte. **/
+    licmpe_b = 1826     ,/** compare int_128 equal with type Byte. **/
+    liucmpe_b = 1827    ,/** compare unsigned uint_128 equal with type Byte. **/
+    licmple_b = 1828    ,/** compare int_128 less than or equal to type Byte. **/
+    liucmple_b = 1829   ,/** compare unsigned uint_128 less than or equal to type Byte. **/
+    licmpge_b = 1830    ,/** compare int_128 greater than or equal to type Byte. **/
+    liucmpge_b = 1831   ,/** compare unsigned uint_128 greater than or equal to type Byte. **/
+    licmpne_b = 1832    ,/** compare int_128 not equal with type Byte. **/
+    liucmpne_b = 1833   ,/** compare unsigned uint_128 not equal with type Byte. **/
+    licast_s = 1834     ,/** cast int_128 to type Short. **/
+    liucast_s = 1835    ,/** cast unsigned uint_128 to type Short. **/
+    liadd_s = 1836      ,/** add int_128 with type Short. **/
+    liuadd_s = 1837     ,/** add unsigned uint_128 with type Short. **/
+    lisub_s = 1838      ,/** subtract int_128 with type Short. **/
+    liusub_s = 1839     ,/** subtract unsigned uint_128 with type Short. **/
+    limul_s = 1840      ,/** multiply int_128 with type Short. **/
+    liumul_s = 1841     ,/** multiply unsigned uint_128 with type Short. **/
+    lidiv_s = 1842      ,/** divide int_128 with type Short. **/
+    liudiv_s = 1843     ,/** divide unsigned uint_128 with type Short. **/
+    licmpl_s = 1844     ,/** compare int_128 less than type Short. **/
+    liucmpl_s = 1845    ,/** compare unsigned uint_128 less than type Short. **/
+    licmpg_s = 1846     ,/** compare int_128 greater than type Short. **/
+    liucmpg_s = 1847    ,/** compare unsigned uint_128 greater than type Short. **/
+    licmpe_s = 1848     ,/** compare int_128 equal with type Short. **/
+    liucmpe_s = 1849    ,/** compare unsigned uint_128 equal with type Short. **/
+    licmple_s = 1850    ,/** compare int_128 less than or equal to type Short. **/
+    liucmple_s = 1851   ,/** compare unsigned uint_128 less than or equal to type Short. **/
+    licmpge_s = 1852    ,/** compare int_128 greater than or equal to type Short. **/
+    liucmpge_s = 1853   ,/** compare unsigned uint_128 greater than or equal to type Short. **/
+    licmpne_s = 1854    ,/** compare int_128 not equal with type Short. **/
+    liucmpne_s = 1855   ,/** compare unsigned uint_128 not equal with type Short. **/
+    licast_i = 1856     ,/** cast int_128 to type Int. **/
+    liucast_i = 1857    ,/** cast unsigned uint_128 to type Int. **/
+    liadd_i = 1858      ,/** add int_128 with type Int. **/
+    liuadd_i = 1859     ,/** add unsigned uint_128 with type Int. **/
+    lisub_i = 1860      ,/** subtract int_128 with type Int. **/
+    liusub_i = 1861     ,/** subtract unsigned uint_128 with type Int. **/
+    limul_i = 1862      ,/** multiply int_128 with type Int. **/
+    liumul_i = 1863     ,/** multiply unsigned uint_128 with type Int. **/
+    lidiv_i = 1864      ,/** divide int_128 with type Int. **/
+    liudiv_i = 1865     ,/** divide unsigned uint_128 with type Int. **/
+    licmpl_i = 1866     ,/** compare int_128 less than type Int. **/
+    liucmpl_i = 1867    ,/** compare unsigned uint_128 less than type Int. **/
+    licmpg_i = 1868     ,/** compare int_128 greater than type Int. **/
+    liucmpg_i = 1869    ,/** compare unsigned uint_128 greater than type Int. **/
+    licmpe_i = 1870     ,/** compare int_128 equal with type Int. **/
+    liucmpe_i = 1871    ,/** compare unsigned uint_128 equal with type Int. **/
+    licmple_i = 1872    ,/** compare int_128 less than or equal to type Int. **/
+    liucmple_i = 1873   ,/** compare unsigned uint_128 less than or equal to type Int. **/
+    licmpge_i = 1874    ,/** compare int_128 greater than or equal to type Int. **/
+    liucmpge_i = 1875   ,/** compare unsigned uint_128 greater than or equal to type Int. **/
+    licmpne_i = 1876    ,/** compare int_128 not equal with type Int. **/
+    liucmpne_i = 1877   ,/** compare unsigned uint_128 not equal with type Int. **/
+    licast_l = 1878     ,/** cast int_128 to type Long. **/
+    liucast_l = 1879    ,/** cast unsigned uint_128 to type Long. **/
+    liadd_l = 1880      ,/** add int_128 with type Long. **/
+    liuadd_l = 1881     ,/** add unsigned uint_128 with type Long. **/
+    lisub_l = 1882      ,/** subtract int_128 with type Long. **/
+    liusub_l = 1883     ,/** subtract unsigned uint_128 with type Long. **/
+    limul_l = 1884      ,/** multiply int_128 with type Long. **/
+    liumul_l = 1885     ,/** multiply unsigned uint_128 with type Long. **/
+    lidiv_l = 1886      ,/** divide int_128 with type Long. **/
+    liudiv_l = 1887     ,/** divide unsigned uint_128 with type Long. **/
+    licmpl_l = 1888     ,/** compare int_128 less than type Long. **/
+    liucmpl_l = 1889    ,/** compare unsigned uint_128 less than type Long. **/
+    licmpg_l = 1890     ,/** compare int_128 greater than type Long. **/
+    liucmpg_l = 1891    ,/** compare unsigned uint_128 greater than type Long. **/
+    licmpe_l = 1892     ,/** compare int_128 equal with type Long. **/
+    liucmpe_l = 1893    ,/** compare unsigned uint_128 equal with type Long. **/
+    licmple_l = 1894    ,/** compare int_128 less than or equal to type Long. **/
+    liucmple_l = 1895   ,/** compare unsigned uint_128 less than or equal to type Long. **/
+    licmpge_l = 1896    ,/** compare int_128 greater than or equal to type Long. **/
+    liucmpge_l = 1897   ,/** compare unsigned uint_128 greater than or equal to type Long. **/
+    licmpne_l = 1898    ,/** compare int_128 not equal with type Long. **/
+    liucmpne_l = 1899   ,/** compare unsigned uint_128 not equal with type Long. **/
+    licast_li = 1900    ,/** cast int_128 to type LongInt. **/
+    liucast_li = 1901   ,/** cast unsigned uint_128 to type LongInt. **/
+    liadd_li = 1902     ,/** add int_128 with type LongInt. **/
+    liuadd_li = 1903    ,/** add unsigned uint_128 with type LongInt. **/
+    lisub_li = 1904     ,/** subtract int_128 with type LongInt. **/
+    liusub_li = 1905    ,/** subtract unsigned uint_128 with type LongInt. **/
+    limul_li = 1906     ,/** multiply int_128 with type LongInt. **/
+    liumul_li = 1907    ,/** multiply unsigned uint_128 with type LongInt. **/
+    lidiv_li = 1908     ,/** divide int_128 with type LongInt. **/
+    liudiv_li = 1909    ,/** divide unsigned uint_128 with type LongInt. **/
+    licmpl_li = 1910    ,/** compare int_128 less than type LongInt. **/
+    liucmpl_li = 1911   ,/** compare unsigned uint_128 less than type LongInt. **/
+    licmpg_li = 1912    ,/** compare int_128 greater than type LongInt. **/
+    liucmpg_li = 1913   ,/** compare unsigned uint_128 greater than type LongInt. **/
+    licmpe_li = 1914    ,/** compare int_128 equal with type LongInt. **/
+    liucmpe_li = 1915   ,/** compare unsigned uint_128 equal with type LongInt. **/
+    licmple_li = 1916   ,/** compare int_128 less than or equal to type LongInt. **/
+    liucmple_li = 1917  ,/** compare unsigned uint_128 less than or equal to type LongInt. **/
+    licmpge_li = 1918   ,/** compare int_128 greater than or equal to type LongInt. **/
+    liucmpge_li = 1919  ,/** compare unsigned uint_128 greater than or equal to type LongInt. **/
+    licmpne_li = 1920   ,/** compare int_128 not equal with type LongInt. **/
+    liucmpne_li = 1921  ,/** compare unsigned uint_128 not equal with type LongInt. **/
+    licast_ll = 1922    ,/** cast int_128 to type LongLong. **/
+    liucast_ll = 1923   ,/** cast unsigned uint_128 to type LongLong. **/
+    liadd_ll = 1924     ,/** add int_128 with type LongLong. **/
+    liuadd_ll = 1925    ,/** add unsigned uint_128 with type LongLong. **/
+    lisub_ll = 1926     ,/** subtract int_128 with type LongLong. **/
+    liusub_ll = 1927    ,/** subtract unsigned uint_128 with type LongLong. **/
+    limul_ll = 1928     ,/** multiply int_128 with type LongLong. **/
+    liumul_ll = 1929    ,/** multiply unsigned uint_128 with type LongLong. **/
+    lidiv_ll = 1930     ,/** divide int_128 with type LongLong. **/
+    liudiv_ll = 1931    ,/** divide unsigned uint_128 with type LongLong. **/
+    licmpl_ll = 1932    ,/** compare int_128 less than type LongLong. **/
+    liucmpl_ll = 1933   ,/** compare unsigned uint_128 less than type LongLong. **/
+    licmpg_ll = 1934    ,/** compare int_128 greater than type LongLong. **/
+    liucmpg_ll = 1935   ,/** compare unsigned uint_128 greater than type LongLong. **/
+    licmpe_ll = 1936    ,/** compare int_128 equal with type LongLong. **/
+    liucmpe_ll = 1937   ,/** compare unsigned uint_128 equal with type LongLong. **/
+    licmple_ll = 1938   ,/** compare int_128 less than or equal to type LongLong. **/
+    liucmple_ll = 1939  ,/** compare unsigned uint_128 less than or equal to type LongLong. **/
+    licmpge_ll = 1940   ,/** compare int_128 greater than or equal to type LongLong. **/
+    liucmpge_ll = 1941  ,/** compare unsigned uint_128 greater than or equal to type LongLong. **/
+    licmpne_ll = 1942   ,/** compare int_128 not equal with type LongLong. **/
+    liucmpne_ll = 1943  ,/** compare unsigned uint_128 not equal with type LongLong. **/
+    licast_f = 1944     ,/** cast int_128 to type Float. **/
+    liucast_f = 1945    ,/** cast unsigned uint_128 to type Float. **/
+    liadd_f = 1946      ,/** add int_128 with type Float. **/
+    liuadd_f = 1947     ,/** add unsigned uint_128 with type Float. **/
+    lisub_f = 1948      ,/** subtract int_128 with type Float. **/
+    liusub_f = 1949     ,/** subtract unsigned uint_128 with type Float. **/
+    limul_f = 1950      ,/** multiply int_128 with type Float. **/
+    liumul_f = 1951     ,/** multiply unsigned uint_128 with type Float. **/
+    lidiv_f = 1952      ,/** divide int_128 with type Float. **/
+    liudiv_f = 1953     ,/** divide unsigned uint_128 with type Float. **/
+    licmpl_f = 1954     ,/** compare int_128 less than type Float. **/
+    liucmpl_f = 1955    ,/** compare unsigned uint_128 less than type Float. **/
+    licmpg_f = 1956     ,/** compare int_128 greater than type Float. **/
+    liucmpg_f = 1957    ,/** compare unsigned uint_128 greater than type Float. **/
+    licmpe_f = 1958     ,/** compare int_128 equal with type Float. **/
+    liucmpe_f = 1959    ,/** compare unsigned uint_128 equal with type Float. **/
+    licmple_f = 1960    ,/** compare int_128 less than or equal to type Float. **/
+    liucmple_f = 1961   ,/** compare unsigned uint_128 less than or equal to type Float. **/
+    licmpge_f = 1962    ,/** compare int_128 greater than or equal to type Float. **/
+    liucmpge_f = 1963   ,/** compare unsigned uint_128 greater than or equal to type Float. **/
+    licmpne_f = 1964    ,/** compare int_128 not equal with type Float. **/
+    liucmpne_f = 1965   ,/** compare unsigned uint_128 not equal with type Float. **/
+    licast_d = 1966     ,/** cast int_128 to type Double. **/
+    liucast_d = 1967    ,/** cast unsigned uint_128 to type Double. **/
+    liadd_d = 1968      ,/** add int_128 with type Double. **/
+    liuadd_d = 1969     ,/** add unsigned uint_128 with type Double. **/
+    lisub_d = 1970      ,/** subtract int_128 with type Double. **/
+    liusub_d = 1971     ,/** subtract unsigned uint_128 with type Double. **/
+    limul_d = 1972      ,/** multiply int_128 with type Double. **/
+    liumul_d = 1973     ,/** multiply unsigned uint_128 with type Double. **/
+    lidiv_d = 1974      ,/** divide int_128 with type Double. **/
+    liudiv_d = 1975     ,/** divide unsigned uint_128 with type Double. **/
+    licmpl_d = 1976     ,/** compare int_128 less than type Double. **/
+    liucmpl_d = 1977    ,/** compare unsigned uint_128 less than type Double. **/
+    licmpg_d = 1978     ,/** compare int_128 greater than type Double. **/
+    liucmpg_d = 1979    ,/** compare unsigned uint_128 greater than type Double. **/
+    licmpe_d = 1980     ,/** compare int_128 equal with type Double. **/
+    liucmpe_d = 1981    ,/** compare unsigned uint_128 equal with type Double. **/
+    licmple_d = 1982    ,/** compare int_128 less than or equal to type Double. **/
+    liucmple_d = 1983   ,/** compare unsigned uint_128 less than or equal to type Double. **/
+    licmpge_d = 1984    ,/** compare int_128 greater than or equal to type Double. **/
+    liucmpge_d = 1985   ,/** compare unsigned uint_128 greater than or equal to type Double. **/
+    licmpne_d = 1986    ,/** compare int_128 not equal with type Double. **/
+    liucmpne_d = 1987   ,/** compare unsigned uint_128 not equal with type Double. **/
+    licast_df = 1988    ,/** cast int_128 to type DoubleFloat. **/
+    liucast_df = 1989   ,/** cast unsigned uint_128 to type DoubleFloat. **/
+    liadd_df = 1990     ,/** add int_128 with type DoubleFloat. **/
+    liuadd_df = 1991    ,/** add unsigned uint_128 with type DoubleFloat. **/
+    lisub_df = 1992     ,/** subtract int_128 with type DoubleFloat. **/
+    liusub_df = 1993    ,/** subtract unsigned uint_128 with type DoubleFloat. **/
+    limul_df = 1994     ,/** multiply int_128 with type DoubleFloat. **/
+    liumul_df = 1995    ,/** multiply unsigned uint_128 with type DoubleFloat. **/
+    lidiv_df = 1996     ,/** divide int_128 with type DoubleFloat. **/
+    liudiv_df = 1997    ,/** divide unsigned uint_128 with type DoubleFloat. **/
+    licmpl_df = 1998    ,/** compare int_128 less than type DoubleFloat. **/
+    liucmpl_df = 1999   ,/** compare unsigned uint_128 less than type DoubleFloat. **/
+    licmpg_df = 2000    ,/** compare int_128 greater than type DoubleFloat. **/
+    liucmpg_df = 2001   ,/** compare unsigned uint_128 greater than type DoubleFloat. **/
+    licmpe_df = 2002    ,/** compare int_128 equal with type DoubleFloat. **/
+    liucmpe_df = 2003   ,/** compare unsigned uint_128 equal with type DoubleFloat. **/
+    licmple_df = 2004   ,/** compare int_128 less than or equal to type DoubleFloat. **/
+    liucmple_df = 2005  ,/** compare unsigned uint_128 less than or equal to type DoubleFloat. **/
+    licmpge_df = 2006   ,/** compare int_128 greater than or equal to type DoubleFloat. **/
+    liucmpge_df = 2007  ,/** compare unsigned uint_128 greater than or equal to type DoubleFloat. **/
+    licmpne_df = 2008   ,/** compare int_128 not equal with type DoubleFloat. **/
+    liucmpne_df = 2009  ,/** compare unsigned uint_128 not equal with type DoubleFloat. **/
+    licast_dd = 2010    ,/** cast int_128 to type DoubleDouble. **/
+    liucast_dd = 2011   ,/** cast unsigned uint_128 to type DoubleDouble. **/
+    liadd_dd = 2012     ,/** add int_128 with type DoubleDouble. **/
+    liuadd_dd = 2013    ,/** add unsigned uint_128 with type DoubleDouble. **/
+    lisub_dd = 2014     ,/** subtract int_128 with type DoubleDouble. **/
+    liusub_dd = 2015    ,/** subtract unsigned uint_128 with type DoubleDouble. **/
+    limul_dd = 2016     ,/** multiply int_128 with type DoubleDouble. **/
+    liumul_dd = 2017    ,/** multiply unsigned uint_128 with type DoubleDouble. **/
+    lidiv_dd = 2018     ,/** divide int_128 with type DoubleDouble. **/
+    liudiv_dd = 2019    ,/** divide unsigned uint_128 with type DoubleDouble. **/
+    licmpl_dd = 2020    ,/** compare int_128 less than type DoubleDouble. **/
+    liucmpl_dd = 2021   ,/** compare unsigned uint_128 less than type DoubleDouble. **/
+    licmpg_dd = 2022    ,/** compare int_128 greater than type DoubleDouble. **/
+    liucmpg_dd = 2023   ,/** compare unsigned uint_128 greater than type DoubleDouble. **/
+    licmpe_dd = 2024    ,/** compare int_128 equal with type DoubleDouble. **/
+    liucmpe_dd = 2025   ,/** compare unsigned uint_128 equal with type DoubleDouble. **/
+    licmple_dd = 2026   ,/** compare int_128 less than or equal to type DoubleDouble. **/
+    liucmple_dd = 2027  ,/** compare unsigned uint_128 less than or equal to type DoubleDouble. **/
+    licmpge_dd = 2028   ,/** compare int_128 greater than or equal to type DoubleDouble. **/
+    liucmpge_dd = 2029  ,/** compare unsigned uint_128 greater than or equal to type DoubleDouble. **/
+    licmpne_dd = 2030   ,/** compare int_128 not equal with type DoubleDouble. **/
+    liucmpne_dd = 2031  ,/** compare unsigned uint_128 not equal with type DoubleDouble. **/
+    limod_b = 2032      ,/** modulo int_128 with type Byte. **/
+    licast_ub = 2033    ,/** cast int_128 to unsigned type Byte. **/
+    liucast_ub = 2034   ,/** cast unsigned uint_128 to unsigned type Byte. **/
+    liadd_ub = 2035     ,/** add int_128 with unsigned type Byte. **/
+    liuadd_ub = 2036    ,/** add unsigned uint_128 with unsigned type Byte. **/
+    lisub_ub = 2037     ,/** subtract int_128 with unsigned type Byte. **/
+    liusub_ub = 2038    ,/** subtract unsigned uint_128 with unsigned type Byte. **/
+    limul_ub = 2039     ,/** multiply int_128 with unsigned type Byte. **/
+    liumul_ub = 2040    ,/** multiply unsigned uint_128 with unsigned type Byte. **/
+    lidiv_ub = 2041     ,/** divide int_128 with unsigned type Byte. **/
+    liudiv_ub = 2042    ,/** divide unsigned uint_128 with unsigned type Byte. **/
+    licmpl_ub = 2043    ,/** compare int_128 less than unsigned type Byte. **/
+    liucmpl_ub = 2044   ,/** compare unsigned uint_128 less than unsigned type Byte. **/
+    licmpg_ub = 2045    ,/** compare int_128 greater than unsigned type Byte. **/
+    liucmpg_ub = 2046   ,/** compare unsigned uint_128 greater than unsigned type Byte. **/
+    licmpe_ub = 2047    ,/** compare int_128 equal with unsigned type Byte. **/
+    liucmpe_ub = 2048   ,/** compare unsigned uint_128 equal with unsigned type Byte. **/
+    licmple_ub = 2049   ,/** compare int_128 less than or equal to unsigned type Byte. **/
+    liucmple_ub = 2050  ,/** compare unsigned uint_128 less than or equal to unsigned type Byte. **/
+    licmpge_ub = 2051   ,/** compare int_128 greater than or equal to unsigned type Byte. **/
+    liucmpge_ub = 2052  ,/** compare unsigned uint_128 greater than or equal to unsigned type Byte. **/
+    licmpne_ub = 2053   ,/** compare int_128 not equal with unsigned type Byte. **/
+    liucmpne_ub = 2054  ,/** compare unsigned uint_128 not equal with unsigned type Byte. **/
+    limod_s = 2055      ,/** modulo int_128 with type Short. **/
+    licast_us = 2056    ,/** cast int_128 to unsigned type Short. **/
+    liucast_us = 2057   ,/** cast unsigned uint_128 to unsigned type Short. **/
+    liadd_us = 2058     ,/** add int_128 with unsigned type Short. **/
+    liuadd_us = 2059    ,/** add unsigned uint_128 with unsigned type Short. **/
+    lisub_us = 2060     ,/** subtract int_128 with unsigned type Short. **/
+    liusub_us = 2061    ,/** subtract unsigned uint_128 with unsigned type Short. **/
+    limul_us = 2062     ,/** multiply int_128 with unsigned type Short. **/
+    liumul_us = 2063    ,/** multiply unsigned uint_128 with unsigned type Short. **/
+    lidiv_us = 2064     ,/** divide int_128 with unsigned type Short. **/
+    liudiv_us = 2065    ,/** divide unsigned uint_128 with unsigned type Short. **/
+    licmpl_us = 2066    ,/** compare int_128 less than unsigned type Short. **/
+    liucmpl_us = 2067   ,/** compare unsigned uint_128 less than unsigned type Short. **/
+    licmpg_us = 2068    ,/** compare int_128 greater than unsigned type Short. **/
+    liucmpg_us = 2069   ,/** compare unsigned uint_128 greater than unsigned type Short. **/
+    licmpe_us = 2070    ,/** compare int_128 equal with unsigned type Short. **/
+    liucmpe_us = 2071   ,/** compare unsigned uint_128 equal with unsigned type Short. **/
+    licmple_us = 2072   ,/** compare int_128 less than or equal to unsigned type Short. **/
+    liucmple_us = 2073  ,/** compare unsigned uint_128 less than or equal to unsigned type Short. **/
+    licmpge_us = 2074   ,/** compare int_128 greater than or equal to unsigned type Short. **/
+    liucmpge_us = 2075  ,/** compare unsigned uint_128 greater than or equal to unsigned type Short. **/
+    licmpne_us = 2076   ,/** compare int_128 not equal with unsigned type Short. **/
+    liucmpne_us = 2077  ,/** compare unsigned uint_128 not equal with unsigned type Short. **/
+    limod_i = 2078      ,/** modulo int_128 with type Int. **/
+    licast_ui = 2079    ,/** cast int_128 to unsigned type Int. **/
+    liucast_ui = 2080   ,/** cast unsigned uint_128 to unsigned type Int. **/
+    liadd_ui = 2081     ,/** add int_128 with unsigned type Int. **/
+    liuadd_ui = 2082    ,/** add unsigned uint_128 with unsigned type Int. **/
+    lisub_ui = 2083     ,/** subtract int_128 with unsigned type Int. **/
+    liusub_ui = 2084    ,/** subtract unsigned uint_128 with unsigned type Int. **/
+    limul_ui = 2085     ,/** multiply int_128 with unsigned type Int. **/
+    liumul_ui = 2086    ,/** multiply unsigned uint_128 with unsigned type Int. **/
+    lidiv_ui = 2087     ,/** divide int_128 with unsigned type Int. **/
+    liudiv_ui = 2088    ,/** divide unsigned uint_128 with unsigned type Int. **/
+    licmpl_ui = 2089    ,/** compare int_128 less than unsigned type Int. **/
+    liucmpl_ui = 2090   ,/** compare unsigned uint_128 less than unsigned type Int. **/
+    licmpg_ui = 2091    ,/** compare int_128 greater than unsigned type Int. **/
+    liucmpg_ui = 2092   ,/** compare unsigned uint_128 greater than unsigned type Int. **/
+    licmpe_ui = 2093    ,/** compare int_128 equal with unsigned type Int. **/
+    liucmpe_ui = 2094   ,/** compare unsigned uint_128 equal with unsigned type Int. **/
+    licmple_ui = 2095   ,/** compare int_128 less than or equal to unsigned type Int. **/
+    liucmple_ui = 2096  ,/** compare unsigned uint_128 less than or equal to unsigned type Int. **/
+    licmpge_ui = 2097   ,/** compare int_128 greater than or equal to unsigned type Int. **/
+    liucmpge_ui = 2098  ,/** compare unsigned uint_128 greater than or equal to unsigned type Int. **/
+    licmpne_ui = 2099   ,/** compare int_128 not equal with unsigned type Int. **/
+    liucmpne_ui = 2100  ,/** compare unsigned uint_128 not equal with unsigned type Int. **/
+    limod_l = 2101      ,/** modulo int_128 with type Long. **/
+    licast_ul = 2102    ,/** cast int_128 to unsigned type Long. **/
+    liucast_ul = 2103   ,/** cast unsigned uint_128 to unsigned type Long. **/
+    liadd_ul = 2104     ,/** add int_128 with unsigned type Long. **/
+    liuadd_ul = 2105    ,/** add unsigned uint_128 with unsigned type Long. **/
+    lisub_ul = 2106     ,/** subtract int_128 with unsigned type Long. **/
+    liusub_ul = 2107    ,/** subtract unsigned uint_128 with unsigned type Long. **/
+    limul_ul = 2108     ,/** multiply int_128 with unsigned type Long. **/
+    liumul_ul = 2109    ,/** multiply unsigned uint_128 with unsigned type Long. **/
+    lidiv_ul = 2110     ,/** divide int_128 with unsigned type Long. **/
+    liudiv_ul = 2111    ,/** divide unsigned uint_128 with unsigned type Long. **/
+    licmpl_ul = 2112    ,/** compare int_128 less than unsigned type Long. **/
+    liucmpl_ul = 2113   ,/** compare unsigned uint_128 less than unsigned type Long. **/
+    licmpg_ul = 2114    ,/** compare int_128 greater than unsigned type Long. **/
+    liucmpg_ul = 2115   ,/** compare unsigned uint_128 greater than unsigned type Long. **/
+    licmpe_ul = 2116    ,/** compare int_128 equal with unsigned type Long. **/
+    liucmpe_ul = 2117   ,/** compare unsigned uint_128 equal with unsigned type Long. **/
+    licmple_ul = 2118   ,/** compare int_128 less than or equal to unsigned type Long. **/
+    liucmple_ul = 2119  ,/** compare unsigned uint_128 less than or equal to unsigned type Long. **/
+    licmpge_ul = 2120   ,/** compare int_128 greater than or equal to unsigned type Long. **/
+    liucmpge_ul = 2121  ,/** compare unsigned uint_128 greater than or equal to unsigned type Long. **/
+    licmpne_ul = 2122   ,/** compare int_128 not equal with unsigned type Long. **/
+    liucmpne_ul = 2123  ,/** compare unsigned uint_128 not equal with unsigned type Long. **/
+    limod_li = 2124     ,/** modulo int_128 with type LongInt. **/
+    licast_uli = 2125   ,/** cast int_128 to unsigned type LongInt. **/
+    liucast_uli = 2126  ,/** cast unsigned uint_128 to unsigned type LongInt. **/
+    liadd_uli = 2127    ,/** add int_128 with unsigned type LongInt. **/
+    liuadd_uli = 2128   ,/** add unsigned uint_128 with unsigned type LongInt. **/
+    lisub_uli = 2129    ,/** subtract int_128 with unsigned type LongInt. **/
+    liusub_uli = 2130   ,/** subtract unsigned uint_128 with unsigned type LongInt. **/
+    limul_uli = 2131    ,/** multiply int_128 with unsigned type LongInt. **/
+    liumul_uli = 2132   ,/** multiply unsigned uint_128 with unsigned type LongInt. **/
+    lidiv_uli = 2133    ,/** divide int_128 with unsigned type LongInt. **/
+    liudiv_uli = 2134   ,/** divide unsigned uint_128 with unsigned type LongInt. **/
+    licmpl_uli = 2135   ,/** compare int_128 less than unsigned type LongInt. **/
+    liucmpl_uli = 2136  ,/** compare unsigned uint_128 less than unsigned type LongInt. **/
+    licmpg_uli = 2137   ,/** compare int_128 greater than unsigned type LongInt. **/
+    liucmpg_uli = 2138  ,/** compare unsigned uint_128 greater than unsigned type LongInt. **/
+    licmpe_uli = 2139   ,/** compare int_128 equal with unsigned type LongInt. **/
+    liucmpe_uli = 2140  ,/** compare unsigned uint_128 equal with unsigned type LongInt. **/
+    licmple_uli = 2141  ,/** compare int_128 less than or equal to unsigned type LongInt. **/
+    liucmple_uli = 2142 ,/** compare unsigned uint_128 less than or equal to unsigned type LongInt. **/
+    licmpge_uli = 2143  ,/** compare int_128 greater than or equal to unsigned type LongInt. **/
+    liucmpge_uli = 2144 ,/** compare unsigned uint_128 greater than or equal to unsigned type LongInt. **/
+    licmpne_uli = 2145  ,/** compare int_128 not equal with unsigned type LongInt. **/
+    liucmpne_uli = 2146 ,/** compare unsigned uint_128 not equal with unsigned type LongInt. **/
+    limod_ll = 2147     ,/** modulo int_128 with type LongLong. **/
+    licast_ull = 2148   ,/** cast int_128 to unsigned type LongLong. **/
+    liucast_ull = 2149  ,/** cast unsigned uint_128 to unsigned type LongLong. **/
+    liadd_ull = 2150    ,/** add int_128 with unsigned type LongLong. **/
+    liuadd_ull = 2151   ,/** add unsigned uint_128 with unsigned type LongLong. **/
+    lisub_ull = 2152    ,/** subtract int_128 with unsigned type LongLong. **/
+    liusub_ull = 2153   ,/** subtract unsigned uint_128 with unsigned type LongLong. **/
+    limul_ull = 2154    ,/** multiply int_128 with unsigned type LongLong. **/
+    liumul_ull = 2155   ,/** multiply unsigned uint_128 with unsigned type LongLong. **/
+    lidiv_ull = 2156    ,/** divide int_128 with unsigned type LongLong. **/
+    liudiv_ull = 2157   ,/** divide unsigned uint_128 with unsigned type LongLong. **/
+    licmpl_ull = 2158   ,/** compare int_128 less than unsigned type LongLong. **/
+    liucmpl_ull = 2159  ,/** compare unsigned uint_128 less than unsigned type LongLong. **/
+    licmpg_ull = 2160   ,/** compare int_128 greater than unsigned type LongLong. **/
+    liucmpg_ull = 2161  ,/** compare unsigned uint_128 greater than unsigned type LongLong. **/
+    licmpe_ull = 2162   ,/** compare int_128 equal with unsigned type LongLong. **/
+    liucmpe_ull = 2163  ,/** compare unsigned uint_128 equal with unsigned type LongLong. **/
+    licmple_ull = 2164  ,/** compare int_128 less than or equal to unsigned type LongLong. **/
+    liucmple_ull = 2165 ,/** compare unsigned uint_128 less than or equal to unsigned type LongLong. **/
+    licmpge_ull = 2166  ,/** compare int_128 greater than or equal to unsigned type LongLong. **/
+    liucmpge_ull = 2167 ,/** compare unsigned uint_128 greater than or equal to unsigned type LongLong. **/
+    licmpne_ull = 2168  ,/** compare int_128 not equal with unsigned type LongLong. **/
+    liucmpne_ull = 2169 ,/** compare unsigned uint_128 not equal with unsigned type LongLong. **/
+    liand_b = 2170      ,/** bitwise and int_128 with type Byte. **/
+    lior_b = 2171       ,/** bitwise or int_128 with type Byte. **/
+    lixor_b = 2172      ,/** bitwise xor int_128 with type Byte. **/
+    lishftr_b = 2173    ,/** shift right int_128 with type Byte. **/
+    lishftl_b = 2174    ,/** shift left xor int_128 with type Byte. **/
+    liand_s = 2175      ,/** bitwise and int_128 with type Short. **/
+    lior_s = 2176       ,/** bitwise or int_128 with type Short. **/
+    lixor_s = 2177      ,/** bitwise xor int_128 with type Short. **/
+    lishftr_s = 2178    ,/** shift right int_128 with type Short. **/
+    lishftl_s = 2179    ,/** shift left xor int_128 with type Short. **/
+    liand_i = 2180      ,/** bitwise and int_128 with type Int. **/
+    lior_i = 2181       ,/** bitwise or int_128 with type Int. **/
+    lixor_i = 2182      ,/** bitwise xor int_128 with type Int. **/
+    lishftr_i = 2183    ,/** shift right int_128 with type Int. **/
+    lishftl_i = 2184    ,/** shift left xor int_128 with type Int. **/
+    liand_l = 2185      ,/** bitwise and int_128 with type Long. **/
+    lior_l = 2186       ,/** bitwise or int_128 with type Long. **/
+    lixor_l = 2187      ,/** bitwise xor int_128 with type Long. **/
+    lishftr_l = 2188    ,/** shift right int_128 with type Long. **/
+    lishftl_l = 2189    ,/** shift left xor int_128 with type Long. **/
+    liand_li = 2190     ,/** bitwise and int_128 with type LongInt. **/
+    lior_li = 2191      ,/** bitwise or int_128 with type LongInt. **/
+    lixor_li = 2192     ,/** bitwise xor int_128 with type LongInt. **/
+    lishftr_li = 2193   ,/** shift right int_128 with type LongInt. **/
+    lishftl_li = 2194   ,/** shift left xor int_128 with type LongInt. **/
+    liand_ll = 2195     ,/** bitwise and int_128 with type LongLong. **/
+    lior_ll = 2196      ,/** bitwise or int_128 with type LongLong. **/
+    lixor_ll = 2197     ,/** bitwise xor int_128 with type LongLong. **/
+    lishftr_ll = 2198   ,/** shift right int_128 with type LongLong. **/
+    lishftl_ll = 2199   ,/** shift left xor int_128 with type LongLong. **/
+    lidup = 2200        ,/** duplicate a int_128 on the stack. **/
+    lidup2 = 2201       ,/** duplicate a int_128 2 times on the stack. **/
+    lidup3 = 2202       ,/** duplicate a int_128 3 times on the stack. **/
+    lidup4 = 2203       ,/** duplicate a int_128 4 times on the stack. **/
+    lidup5 = 2204       ,/** duplicate a int_128 5 times on the stack. **/
+    liset = 2205        ,/** set a int_128 from stack into a field on base pointer. **/
+    liget = 2206        ,/** get a int_128 from a field on base pointer to stack. **/
+    livset = 2207       ,/** set a int_128 from value into a field on base pointer. **/
+    lisget = 2208       ,/** get a int_128 from a field on base pointer to stack using address from stack. **/
+    lisset = 2209       ,/** set a int_128 from stack into a field on base pointer using address from stack. **/
+    lisetl = 2210       ,/** set a int_128 from local variable into a field on base pointer. **/
+    liinc_1 = 2211      ,/** increment int_128 by 1 on stack. **/
+    liinc_2 = 2212      ,/** increment int_128 by 2 on stack. **/
+    listinc_1 = 2213    ,/** increment int_128 by 1 on stack. **/
+    listinc_2 = 2214    ,/** increment int_128 by 2 on stack. **/
+    lireturn = 2215     ,/** return a int_128 into the main stack. **/
+    limainst = 2216     ,/** store a int_128 from main stack in a local variable.. **/
+    limainst_0 = 2217   ,/** store a int_128 from main stack in local variable 0. **/
+    limainst_1 = 2218   ,/** store a int_128 from main stack in local variable 1. **/
+    limainst_2 = 2219   ,/** store a int_128 from main stack in local variable 2. **/
+    limainst_3 = 2220   ,/** store a int_128 from main stack in local variable 3. **/
+    liprint = 2221      ,/** print a int_128 from stack. **/
+    liuprint = 2222     ,/** print a unsigned uint_128 from stack. **/
+    llprintba = 2223    ,/** print a byte array. **/
+    llconst = 2224      ,/** push a const int_256 into the stack. **/
+    llconst_0 = 2225    ,/** push a const int_256 into the stack (value = 0). **/
+    llconst_1 = 2226    ,/** push a const int_256 into the stack (value = 1). **/
+    llconst_2 = 2227    ,/** push a const int_256 into the stack (value = 2). **/
+    llconst_3 = 2228    ,/** push a const int_256 into the stack (value = 3). **/
+    llconst_4 = 2229    ,/** push a const int_256 into the stack (value = 4). **/
+    llconst_5 = 2230    ,/** push a const int_256 into the stack (value = 5). **/
+    llconst_6 = 2231    ,/** push a const int_256 into the stack (value = 6). **/
+    llconst_9 = 2232    ,/** push a const int_256 into the stack (value = 9). **/
+    llconst_10 = 2233   ,/** push a const int_256 into the stack (value = 10). **/
+    llconst_11 = 2234   ,/** push a const int_256 into the stack (value = 11). **/
+    llconst_12 = 2235   ,/** push a const int_256 into the stack (value = 12). **/
+    llload = 2236       ,/** load a int_256 into the stack from local variable. **/
+    llload_0 = 2237     ,/** load a int_256 into the stack from local variable 0. **/
+    llload_1 = 2238     ,/** load a int_256 into the stack from local variable 1. **/
+    llload_2 = 2239     ,/** load a int_256 into the stack from local variable 2. **/
+    llload_3 = 2240     ,/** load a int_256 into the stack from local variable 3. **/
+    llload_4 = 2241     ,/** load a int_256 into the stack from local variable 4. **/
+    llstore = 2242      ,/** store a int_256 from stack into local variable. **/
+    llstore_0 = 2243    ,/** store a int_256 from stack into local variable 0. **/
+    llstore_1 = 2244    ,/** store a int_256 from stack into local variable 1. **/
+    llstore_2 = 2245    ,/** store a int_256 from stack into local variable 2. **/
+    llstore_3 = 2246    ,/** store a int_256 from stack into local variable 3. **/
+    llstore_4 = 2247    ,/** store a int_256 from stack into local variable 4. **/
+    llcast_b = 2248     ,/** cast int_256 to type Byte. **/
+    llucast_b = 2249    ,/** cast unsigned uint_256 to type Byte. **/
+    lladd_b = 2250      ,/** add int_256 with type Byte. **/
+    lluadd_b = 2251     ,/** add unsigned uint_256 with type Byte. **/
+    llsub_b = 2252      ,/** subtract int_256 with type Byte. **/
+    llusub_b = 2253     ,/** subtract unsigned uint_256 with type Byte. **/
+    llmul_b = 2254      ,/** multiply int_256 with type Byte. **/
+    llumul_b = 2255     ,/** multiply unsigned uint_256 with type Byte. **/
+    lldiv_b = 2256      ,/** divide int_256 with type Byte. **/
+    lludiv_b = 2257     ,/** divide unsigned uint_256 with type Byte. **/
+    llcmpl_b = 2258     ,/** compare int_256 less than type Byte. **/
+    llucmpl_b = 2259    ,/** compare unsigned uint_256 less than type Byte. **/
+    llcmpg_b = 2260     ,/** compare int_256 greater than type Byte. **/
+    llucmpg_b = 2261    ,/** compare unsigned uint_256 greater than type Byte. **/
+    llcmpe_b = 2262     ,/** compare int_256 equal with type Byte. **/
+    llucmpe_b = 2263    ,/** compare unsigned uint_256 equal with type Byte. **/
+    llcmple_b = 2264    ,/** compare int_256 less than or equal to type Byte. **/
+    llucmple_b = 2265   ,/** compare unsigned uint_256 less than or equal to type Byte. **/
+    llcmpge_b = 2266    ,/** compare int_256 greater than or equal to type Byte. **/
+    llucmpge_b = 2267   ,/** compare unsigned uint_256 greater than or equal to type Byte. **/
+    llcmpne_b = 2268    ,/** compare int_256 not equal with type Byte. **/
+    llucmpne_b = 2269   ,/** compare unsigned uint_256 not equal with type Byte. **/
+    llcast_s = 2270     ,/** cast int_256 to type Short. **/
+    llucast_s = 2271    ,/** cast unsigned uint_256 to type Short. **/
+    lladd_s = 2272      ,/** add int_256 with type Short. **/
+    lluadd_s = 2273     ,/** add unsigned uint_256 with type Short. **/
+    llsub_s = 2274      ,/** subtract int_256 with type Short. **/
+    llusub_s = 2275     ,/** subtract unsigned uint_256 with type Short. **/
+    llmul_s = 2276      ,/** multiply int_256 with type Short. **/
+    llumul_s = 2277     ,/** multiply unsigned uint_256 with type Short. **/
+    lldiv_s = 2278      ,/** divide int_256 with type Short. **/
+    lludiv_s = 2279     ,/** divide unsigned uint_256 with type Short. **/
+    llcmpl_s = 2280     ,/** compare int_256 less than type Short. **/
+    llucmpl_s = 2281    ,/** compare unsigned uint_256 less than type Short. **/
+    llcmpg_s = 2282     ,/** compare int_256 greater than type Short. **/
+    llucmpg_s = 2283    ,/** compare unsigned uint_256 greater than type Short. **/
+    llcmpe_s = 2284     ,/** compare int_256 equal with type Short. **/
+    llucmpe_s = 2285    ,/** compare unsigned uint_256 equal with type Short. **/
+    llcmple_s = 2286    ,/** compare int_256 less than or equal to type Short. **/
+    llucmple_s = 2287   ,/** compare unsigned uint_256 less than or equal to type Short. **/
+    llcmpge_s = 2288    ,/** compare int_256 greater than or equal to type Short. **/
+    llucmpge_s = 2289   ,/** compare unsigned uint_256 greater than or equal to type Short. **/
+    llcmpne_s = 2290    ,/** compare int_256 not equal with type Short. **/
+    llucmpne_s = 2291   ,/** compare unsigned uint_256 not equal with type Short. **/
+    llcast_i = 2292     ,/** cast int_256 to type Int. **/
+    llucast_i = 2293    ,/** cast unsigned uint_256 to type Int. **/
+    lladd_i = 2294      ,/** add int_256 with type Int. **/
+    lluadd_i = 2295     ,/** add unsigned uint_256 with type Int. **/
+    llsub_i = 2296      ,/** subtract int_256 with type Int. **/
+    llusub_i = 2297     ,/** subtract unsigned uint_256 with type Int. **/
+    llmul_i = 2298      ,/** multiply int_256 with type Int. **/
+    llumul_i = 2299     ,/** multiply unsigned uint_256 with type Int. **/
+    lldiv_i = 2300      ,/** divide int_256 with type Int. **/
+    lludiv_i = 2301     ,/** divide unsigned uint_256 with type Int. **/
+    llcmpl_i = 2302     ,/** compare int_256 less than type Int. **/
+    llucmpl_i = 2303    ,/** compare unsigned uint_256 less than type Int. **/
+    llcmpg_i = 2304     ,/** compare int_256 greater than type Int. **/
+    llucmpg_i = 2305    ,/** compare unsigned uint_256 greater than type Int. **/
+    llcmpe_i = 2306     ,/** compare int_256 equal with type Int. **/
+    llucmpe_i = 2307    ,/** compare unsigned uint_256 equal with type Int. **/
+    llcmple_i = 2308    ,/** compare int_256 less than or equal to type Int. **/
+    llucmple_i = 2309   ,/** compare unsigned uint_256 less than or equal to type Int. **/
+    llcmpge_i = 2310    ,/** compare int_256 greater than or equal to type Int. **/
+    llucmpge_i = 2311   ,/** compare unsigned uint_256 greater than or equal to type Int. **/
+    llcmpne_i = 2312    ,/** compare int_256 not equal with type Int. **/
+    llucmpne_i = 2313   ,/** compare unsigned uint_256 not equal with type Int. **/
+    llcast_l = 2314     ,/** cast int_256 to type Long. **/
+    llucast_l = 2315    ,/** cast unsigned uint_256 to type Long. **/
+    lladd_l = 2316      ,/** add int_256 with type Long. **/
+    lluadd_l = 2317     ,/** add unsigned uint_256 with type Long. **/
+    llsub_l = 2318      ,/** subtract int_256 with type Long. **/
+    llusub_l = 2319     ,/** subtract unsigned uint_256 with type Long. **/
+    llmul_l = 2320      ,/** multiply int_256 with type Long. **/
+    llumul_l = 2321     ,/** multiply unsigned uint_256 with type Long. **/
+    lldiv_l = 2322      ,/** divide int_256 with type Long. **/
+    lludiv_l = 2323     ,/** divide unsigned uint_256 with type Long. **/
+    llcmpl_l = 2324     ,/** compare int_256 less than type Long. **/
+    llucmpl_l = 2325    ,/** compare unsigned uint_256 less than type Long. **/
+    llcmpg_l = 2326     ,/** compare int_256 greater than type Long. **/
+    llucmpg_l = 2327    ,/** compare unsigned uint_256 greater than type Long. **/
+    llcmpe_l = 2328     ,/** compare int_256 equal with type Long. **/
+    llucmpe_l = 2329    ,/** compare unsigned uint_256 equal with type Long. **/
+    llcmple_l = 2330    ,/** compare int_256 less than or equal to type Long. **/
+    llucmple_l = 2331   ,/** compare unsigned uint_256 less than or equal to type Long. **/
+    llcmpge_l = 2332    ,/** compare int_256 greater than or equal to type Long. **/
+    llucmpge_l = 2333   ,/** compare unsigned uint_256 greater than or equal to type Long. **/
+    llcmpne_l = 2334    ,/** compare int_256 not equal with type Long. **/
+    llucmpne_l = 2335   ,/** compare unsigned uint_256 not equal with type Long. **/
+    llcast_li = 2336    ,/** cast int_256 to type LongInt. **/
+    llucast_li = 2337   ,/** cast unsigned uint_256 to type LongInt. **/
+    lladd_li = 2338     ,/** add int_256 with type LongInt. **/
+    lluadd_li = 2339    ,/** add unsigned uint_256 with type LongInt. **/
+    llsub_li = 2340     ,/** subtract int_256 with type LongInt. **/
+    llusub_li = 2341    ,/** subtract unsigned uint_256 with type LongInt. **/
+    llmul_li = 2342     ,/** multiply int_256 with type LongInt. **/
+    llumul_li = 2343    ,/** multiply unsigned uint_256 with type LongInt. **/
+    lldiv_li = 2344     ,/** divide int_256 with type LongInt. **/
+    lludiv_li = 2345    ,/** divide unsigned uint_256 with type LongInt. **/
+    llcmpl_li = 2346    ,/** compare int_256 less than type LongInt. **/
+    llucmpl_li = 2347   ,/** compare unsigned uint_256 less than type LongInt. **/
+    llcmpg_li = 2348    ,/** compare int_256 greater than type LongInt. **/
+    llucmpg_li = 2349   ,/** compare unsigned uint_256 greater than type LongInt. **/
+    llcmpe_li = 2350    ,/** compare int_256 equal with type LongInt. **/
+    llucmpe_li = 2351   ,/** compare unsigned uint_256 equal with type LongInt. **/
+    llcmple_li = 2352   ,/** compare int_256 less than or equal to type LongInt. **/
+    llucmple_li = 2353  ,/** compare unsigned uint_256 less than or equal to type LongInt. **/
+    llcmpge_li = 2354   ,/** compare int_256 greater than or equal to type LongInt. **/
+    llucmpge_li = 2355  ,/** compare unsigned uint_256 greater than or equal to type LongInt. **/
+    llcmpne_li = 2356   ,/** compare int_256 not equal with type LongInt. **/
+    llucmpne_li = 2357  ,/** compare unsigned uint_256 not equal with type LongInt. **/
+    llcast_ll = 2358    ,/** cast int_256 to type LongLong. **/
+    llucast_ll = 2359   ,/** cast unsigned uint_256 to type LongLong. **/
+    lladd_ll = 2360     ,/** add int_256 with type LongLong. **/
+    lluadd_ll = 2361    ,/** add unsigned uint_256 with type LongLong. **/
+    llsub_ll = 2362     ,/** subtract int_256 with type LongLong. **/
+    llusub_ll = 2363    ,/** subtract unsigned uint_256 with type LongLong. **/
+    llmul_ll = 2364     ,/** multiply int_256 with type LongLong. **/
+    llumul_ll = 2365    ,/** multiply unsigned uint_256 with type LongLong. **/
+    lldiv_ll = 2366     ,/** divide int_256 with type LongLong. **/
+    lludiv_ll = 2367    ,/** divide unsigned uint_256 with type LongLong. **/
+    llcmpl_ll = 2368    ,/** compare int_256 less than type LongLong. **/
+    llucmpl_ll = 2369   ,/** compare unsigned uint_256 less than type LongLong. **/
+    llcmpg_ll = 2370    ,/** compare int_256 greater than type LongLong. **/
+    llucmpg_ll = 2371   ,/** compare unsigned uint_256 greater than type LongLong. **/
+    llcmpe_ll = 2372    ,/** compare int_256 equal with type LongLong. **/
+    llucmpe_ll = 2373   ,/** compare unsigned uint_256 equal with type LongLong. **/
+    llcmple_ll = 2374   ,/** compare int_256 less than or equal to type LongLong. **/
+    llucmple_ll = 2375  ,/** compare unsigned uint_256 less than or equal to type LongLong. **/
+    llcmpge_ll = 2376   ,/** compare int_256 greater than or equal to type LongLong. **/
+    llucmpge_ll = 2377  ,/** compare unsigned uint_256 greater than or equal to type LongLong. **/
+    llcmpne_ll = 2378   ,/** compare int_256 not equal with type LongLong. **/
+    llucmpne_ll = 2379  ,/** compare unsigned uint_256 not equal with type LongLong. **/
+    llcast_f = 2380     ,/** cast int_256 to type Float. **/
+    llucast_f = 2381    ,/** cast unsigned uint_256 to type Float. **/
+    lladd_f = 2382      ,/** add int_256 with type Float. **/
+    lluadd_f = 2383     ,/** add unsigned uint_256 with type Float. **/
+    llsub_f = 2384      ,/** subtract int_256 with type Float. **/
+    llusub_f = 2385     ,/** subtract unsigned uint_256 with type Float. **/
+    llmul_f = 2386      ,/** multiply int_256 with type Float. **/
+    llumul_f = 2387     ,/** multiply unsigned uint_256 with type Float. **/
+    lldiv_f = 2388      ,/** divide int_256 with type Float. **/
+    lludiv_f = 2389     ,/** divide unsigned uint_256 with type Float. **/
+    llcmpl_f = 2390     ,/** compare int_256 less than type Float. **/
+    llucmpl_f = 2391    ,/** compare unsigned uint_256 less than type Float. **/
+    llcmpg_f = 2392     ,/** compare int_256 greater than type Float. **/
+    llucmpg_f = 2393    ,/** compare unsigned uint_256 greater than type Float. **/
+    llcmpe_f = 2394     ,/** compare int_256 equal with type Float. **/
+    llucmpe_f = 2395    ,/** compare unsigned uint_256 equal with type Float. **/
+    llcmple_f = 2396    ,/** compare int_256 less than or equal to type Float. **/
+    llucmple_f = 2397   ,/** compare unsigned uint_256 less than or equal to type Float. **/
+    llcmpge_f = 2398    ,/** compare int_256 greater than or equal to type Float. **/
+    llucmpge_f = 2399   ,/** compare unsigned uint_256 greater than or equal to type Float. **/
+    llcmpne_f = 2400    ,/** compare int_256 not equal with type Float. **/
+    llucmpne_f = 2401   ,/** compare unsigned uint_256 not equal with type Float. **/
+    llcast_d = 2402     ,/** cast int_256 to type Double. **/
+    llucast_d = 2403    ,/** cast unsigned uint_256 to type Double. **/
+    lladd_d = 2404      ,/** add int_256 with type Double. **/
+    lluadd_d = 2405     ,/** add unsigned uint_256 with type Double. **/
+    llsub_d = 2406      ,/** subtract int_256 with type Double. **/
+    llusub_d = 2407     ,/** subtract unsigned uint_256 with type Double. **/
+    llmul_d = 2408      ,/** multiply int_256 with type Double. **/
+    llumul_d = 2409     ,/** multiply unsigned uint_256 with type Double. **/
+    lldiv_d = 2410      ,/** divide int_256 with type Double. **/
+    lludiv_d = 2411     ,/** divide unsigned uint_256 with type Double. **/
+    llcmpl_d = 2412     ,/** compare int_256 less than type Double. **/
+    llucmpl_d = 2413    ,/** compare unsigned uint_256 less than type Double. **/
+    llcmpg_d = 2414     ,/** compare int_256 greater than type Double. **/
+    llucmpg_d = 2415    ,/** compare unsigned uint_256 greater than type Double. **/
+    llcmpe_d = 2416     ,/** compare int_256 equal with type Double. **/
+    llucmpe_d = 2417    ,/** compare unsigned uint_256 equal with type Double. **/
+    llcmple_d = 2418    ,/** compare int_256 less than or equal to type Double. **/
+    llucmple_d = 2419   ,/** compare unsigned uint_256 less than or equal to type Double. **/
+    llcmpge_d = 2420    ,/** compare int_256 greater than or equal to type Double. **/
+    llucmpge_d = 2421   ,/** compare unsigned uint_256 greater than or equal to type Double. **/
+    llcmpne_d = 2422    ,/** compare int_256 not equal with type Double. **/
+    llucmpne_d = 2423   ,/** compare unsigned uint_256 not equal with type Double. **/
+    llcast_df = 2424    ,/** cast int_256 to type DoubleFloat. **/
+    llucast_df = 2425   ,/** cast unsigned uint_256 to type DoubleFloat. **/
+    lladd_df = 2426     ,/** add int_256 with type DoubleFloat. **/
+    lluadd_df = 2427    ,/** add unsigned uint_256 with type DoubleFloat. **/
+    llsub_df = 2428     ,/** subtract int_256 with type DoubleFloat. **/
+    llusub_df = 2429    ,/** subtract unsigned uint_256 with type DoubleFloat. **/
+    llmul_df = 2430     ,/** multiply int_256 with type DoubleFloat. **/
+    llumul_df = 2431    ,/** multiply unsigned uint_256 with type DoubleFloat. **/
+    lldiv_df = 2432     ,/** divide int_256 with type DoubleFloat. **/
+    lludiv_df = 2433    ,/** divide unsigned uint_256 with type DoubleFloat. **/
+    llcmpl_df = 2434    ,/** compare int_256 less than type DoubleFloat. **/
+    llucmpl_df = 2435   ,/** compare unsigned uint_256 less than type DoubleFloat. **/
+    llcmpg_df = 2436    ,/** compare int_256 greater than type DoubleFloat. **/
+    llucmpg_df = 2437   ,/** compare unsigned uint_256 greater than type DoubleFloat. **/
+    llcmpe_df = 2438    ,/** compare int_256 equal with type DoubleFloat. **/
+    llucmpe_df = 2439   ,/** compare unsigned uint_256 equal with type DoubleFloat. **/
+    llcmple_df = 2440   ,/** compare int_256 less than or equal to type DoubleFloat. **/
+    llucmple_df = 2441  ,/** compare unsigned uint_256 less than or equal to type DoubleFloat. **/
+    llcmpge_df = 2442   ,/** compare int_256 greater than or equal to type DoubleFloat. **/
+    llucmpge_df = 2443  ,/** compare unsigned uint_256 greater than or equal to type DoubleFloat. **/
+    llcmpne_df = 2444   ,/** compare int_256 not equal with type DoubleFloat. **/
+    llucmpne_df = 2445  ,/** compare unsigned uint_256 not equal with type DoubleFloat. **/
+    llcast_dd = 2446    ,/** cast int_256 to type DoubleDouble. **/
+    llucast_dd = 2447   ,/** cast unsigned uint_256 to type DoubleDouble. **/
+    lladd_dd = 2448     ,/** add int_256 with type DoubleDouble. **/
+    lluadd_dd = 2449    ,/** add unsigned uint_256 with type DoubleDouble. **/
+    llsub_dd = 2450     ,/** subtract int_256 with type DoubleDouble. **/
+    llusub_dd = 2451    ,/** subtract unsigned uint_256 with type DoubleDouble. **/
+    llmul_dd = 2452     ,/** multiply int_256 with type DoubleDouble. **/
+    llumul_dd = 2453    ,/** multiply unsigned uint_256 with type DoubleDouble. **/
+    lldiv_dd = 2454     ,/** divide int_256 with type DoubleDouble. **/
+    lludiv_dd = 2455    ,/** divide unsigned uint_256 with type DoubleDouble. **/
+    llcmpl_dd = 2456    ,/** compare int_256 less than type DoubleDouble. **/
+    llucmpl_dd = 2457   ,/** compare unsigned uint_256 less than type DoubleDouble. **/
+    llcmpg_dd = 2458    ,/** compare int_256 greater than type DoubleDouble. **/
+    llucmpg_dd = 2459   ,/** compare unsigned uint_256 greater than type DoubleDouble. **/
+    llcmpe_dd = 2460    ,/** compare int_256 equal with type DoubleDouble. **/
+    llucmpe_dd = 2461   ,/** compare unsigned uint_256 equal with type DoubleDouble. **/
+    llcmple_dd = 2462   ,/** compare int_256 less than or equal to type DoubleDouble. **/
+    llucmple_dd = 2463  ,/** compare unsigned uint_256 less than or equal to type DoubleDouble. **/
+    llcmpge_dd = 2464   ,/** compare int_256 greater than or equal to type DoubleDouble. **/
+    llucmpge_dd = 2465  ,/** compare unsigned uint_256 greater than or equal to type DoubleDouble. **/
+    llcmpne_dd = 2466   ,/** compare int_256 not equal with type DoubleDouble. **/
+    llucmpne_dd = 2467  ,/** compare unsigned uint_256 not equal with type DoubleDouble. **/
+    llmod_b = 2468      ,/** modulo int_256 with type Byte. **/
+    llcast_ub = 2469    ,/** cast int_256 to unsigned type Byte. **/
+    llucast_ub = 2470   ,/** cast unsigned uint_256 to unsigned type Byte. **/
+    lladd_ub = 2471     ,/** add int_256 with unsigned type Byte. **/
+    lluadd_ub = 2472    ,/** add unsigned uint_256 with unsigned type Byte. **/
+    llsub_ub = 2473     ,/** subtract int_256 with unsigned type Byte. **/
+    llusub_ub = 2474    ,/** subtract unsigned uint_256 with unsigned type Byte. **/
+    llmul_ub = 2475     ,/** multiply int_256 with unsigned type Byte. **/
+    llumul_ub = 2476    ,/** multiply unsigned uint_256 with unsigned type Byte. **/
+    lldiv_ub = 2477     ,/** divide int_256 with unsigned type Byte. **/
+    lludiv_ub = 2478    ,/** divide unsigned uint_256 with unsigned type Byte. **/
+    llcmpl_ub = 2479    ,/** compare int_256 less than unsigned type Byte. **/
+    llucmpl_ub = 2480   ,/** compare unsigned uint_256 less than unsigned type Byte. **/
+    llcmpg_ub = 2481    ,/** compare int_256 greater than unsigned type Byte. **/
+    llucmpg_ub = 2482   ,/** compare unsigned uint_256 greater than unsigned type Byte. **/
+    llcmpe_ub = 2483    ,/** compare int_256 equal with unsigned type Byte. **/
+    llucmpe_ub = 2484   ,/** compare unsigned uint_256 equal with unsigned type Byte. **/
+    llcmple_ub = 2485   ,/** compare int_256 less than or equal to unsigned type Byte. **/
+    llucmple_ub = 2486  ,/** compare unsigned uint_256 less than or equal to unsigned type Byte. **/
+    llcmpge_ub = 2487   ,/** compare int_256 greater than or equal to unsigned type Byte. **/
+    llucmpge_ub = 2488  ,/** compare unsigned uint_256 greater than or equal to unsigned type Byte. **/
+    llcmpne_ub = 2489   ,/** compare int_256 not equal with unsigned type Byte. **/
+    llucmpne_ub = 2490  ,/** compare unsigned uint_256 not equal with unsigned type Byte. **/
+    llmod_s = 2491      ,/** modulo int_256 with type Short. **/
+    llcast_us = 2492    ,/** cast int_256 to unsigned type Short. **/
+    llucast_us = 2493   ,/** cast unsigned uint_256 to unsigned type Short. **/
+    lladd_us = 2494     ,/** add int_256 with unsigned type Short. **/
+    lluadd_us = 2495    ,/** add unsigned uint_256 with unsigned type Short. **/
+    llsub_us = 2496     ,/** subtract int_256 with unsigned type Short. **/
+    llusub_us = 2497    ,/** subtract unsigned uint_256 with unsigned type Short. **/
+    llmul_us = 2498     ,/** multiply int_256 with unsigned type Short. **/
+    llumul_us = 2499    ,/** multiply unsigned uint_256 with unsigned type Short. **/
+    lldiv_us = 2500     ,/** divide int_256 with unsigned type Short. **/
+    lludiv_us = 2501    ,/** divide unsigned uint_256 with unsigned type Short. **/
+    llcmpl_us = 2502    ,/** compare int_256 less than unsigned type Short. **/
+    llucmpl_us = 2503   ,/** compare unsigned uint_256 less than unsigned type Short. **/
+    llcmpg_us = 2504    ,/** compare int_256 greater than unsigned type Short. **/
+    llucmpg_us = 2505   ,/** compare unsigned uint_256 greater than unsigned type Short. **/
+    llcmpe_us = 2506    ,/** compare int_256 equal with unsigned type Short. **/
+    llucmpe_us = 2507   ,/** compare unsigned uint_256 equal with unsigned type Short. **/
+    llcmple_us = 2508   ,/** compare int_256 less than or equal to unsigned type Short. **/
+    llucmple_us = 2509  ,/** compare unsigned uint_256 less than or equal to unsigned type Short. **/
+    llcmpge_us = 2510   ,/** compare int_256 greater than or equal to unsigned type Short. **/
+    llucmpge_us = 2511  ,/** compare unsigned uint_256 greater than or equal to unsigned type Short. **/
+    llcmpne_us = 2512   ,/** compare int_256 not equal with unsigned type Short. **/
+    llucmpne_us = 2513  ,/** compare unsigned uint_256 not equal with unsigned type Short. **/
+    llmod_i = 2514      ,/** modulo int_256 with type Int. **/
+    llcast_ui = 2515    ,/** cast int_256 to unsigned type Int. **/
+    llucast_ui = 2516   ,/** cast unsigned uint_256 to unsigned type Int. **/
+    lladd_ui = 2517     ,/** add int_256 with unsigned type Int. **/
+    lluadd_ui = 2518    ,/** add unsigned uint_256 with unsigned type Int. **/
+    llsub_ui = 2519     ,/** subtract int_256 with unsigned type Int. **/
+    llusub_ui = 2520    ,/** subtract unsigned uint_256 with unsigned type Int. **/
+    llmul_ui = 2521     ,/** multiply int_256 with unsigned type Int. **/
+    llumul_ui = 2522    ,/** multiply unsigned uint_256 with unsigned type Int. **/
+    lldiv_ui = 2523     ,/** divide int_256 with unsigned type Int. **/
+    lludiv_ui = 2524    ,/** divide unsigned uint_256 with unsigned type Int. **/
+    llcmpl_ui = 2525    ,/** compare int_256 less than unsigned type Int. **/
+    llucmpl_ui = 2526   ,/** compare unsigned uint_256 less than unsigned type Int. **/
+    llcmpg_ui = 2527    ,/** compare int_256 greater than unsigned type Int. **/
+    llucmpg_ui = 2528   ,/** compare unsigned uint_256 greater than unsigned type Int. **/
+    llcmpe_ui = 2529    ,/** compare int_256 equal with unsigned type Int. **/
+    llucmpe_ui = 2530   ,/** compare unsigned uint_256 equal with unsigned type Int. **/
+    llcmple_ui = 2531   ,/** compare int_256 less than or equal to unsigned type Int. **/
+    llucmple_ui = 2532  ,/** compare unsigned uint_256 less than or equal to unsigned type Int. **/
+    llcmpge_ui = 2533   ,/** compare int_256 greater than or equal to unsigned type Int. **/
+    llucmpge_ui = 2534  ,/** compare unsigned uint_256 greater than or equal to unsigned type Int. **/
+    llcmpne_ui = 2535   ,/** compare int_256 not equal with unsigned type Int. **/
+    llucmpne_ui = 2536  ,/** compare unsigned uint_256 not equal with unsigned type Int. **/
+    llmod_l = 2537      ,/** modulo int_256 with type Long. **/
+    llcast_ul = 2538    ,/** cast int_256 to unsigned type Long. **/
+    llucast_ul = 2539   ,/** cast unsigned uint_256 to unsigned type Long. **/
+    lladd_ul = 2540     ,/** add int_256 with unsigned type Long. **/
+    lluadd_ul = 2541    ,/** add unsigned uint_256 with unsigned type Long. **/
+    llsub_ul = 2542     ,/** subtract int_256 with unsigned type Long. **/
+    llusub_ul = 2543    ,/** subtract unsigned uint_256 with unsigned type Long. **/
+    llmul_ul = 2544     ,/** multiply int_256 with unsigned type Long. **/
+    llumul_ul = 2545    ,/** multiply unsigned uint_256 with unsigned type Long. **/
+    lldiv_ul = 2546     ,/** divide int_256 with unsigned type Long. **/
+    lludiv_ul = 2547    ,/** divide unsigned uint_256 with unsigned type Long. **/
+    llcmpl_ul = 2548    ,/** compare int_256 less than unsigned type Long. **/
+    llucmpl_ul = 2549   ,/** compare unsigned uint_256 less than unsigned type Long. **/
+    llcmpg_ul = 2550    ,/** compare int_256 greater than unsigned type Long. **/
+    llucmpg_ul = 2551   ,/** compare unsigned uint_256 greater than unsigned type Long. **/
+    llcmpe_ul = 2552    ,/** compare int_256 equal with unsigned type Long. **/
+    llucmpe_ul = 2553   ,/** compare unsigned uint_256 equal with unsigned type Long. **/
+    llcmple_ul = 2554   ,/** compare int_256 less than or equal to unsigned type Long. **/
+    llucmple_ul = 2555  ,/** compare unsigned uint_256 less than or equal to unsigned type Long. **/
+    llcmpge_ul = 2556   ,/** compare int_256 greater than or equal to unsigned type Long. **/
+    llucmpge_ul = 2557  ,/** compare unsigned uint_256 greater than or equal to unsigned type Long. **/
+    llcmpne_ul = 2558   ,/** compare int_256 not equal with unsigned type Long. **/
+    llucmpne_ul = 2559  ,/** compare unsigned uint_256 not equal with unsigned type Long. **/
+    llmod_li = 2560     ,/** modulo int_256 with type LongInt. **/
+    llcast_uli = 2561   ,/** cast int_256 to unsigned type LongInt. **/
+    llucast_uli = 2562  ,/** cast unsigned uint_256 to unsigned type LongInt. **/
+    lladd_uli = 2563    ,/** add int_256 with unsigned type LongInt. **/
+    lluadd_uli = 2564   ,/** add unsigned uint_256 with unsigned type LongInt. **/
+    llsub_uli = 2565    ,/** subtract int_256 with unsigned type LongInt. **/
+    llusub_uli = 2566   ,/** subtract unsigned uint_256 with unsigned type LongInt. **/
+    llmul_uli = 2567    ,/** multiply int_256 with unsigned type LongInt. **/
+    llumul_uli = 2568   ,/** multiply unsigned uint_256 with unsigned type LongInt. **/
+    lldiv_uli = 2569    ,/** divide int_256 with unsigned type LongInt. **/
+    lludiv_uli = 2570   ,/** divide unsigned uint_256 with unsigned type LongInt. **/
+    llcmpl_uli = 2571   ,/** compare int_256 less than unsigned type LongInt. **/
+    llucmpl_uli = 2572  ,/** compare unsigned uint_256 less than unsigned type LongInt. **/
+    llcmpg_uli = 2573   ,/** compare int_256 greater than unsigned type LongInt. **/
+    llucmpg_uli = 2574  ,/** compare unsigned uint_256 greater than unsigned type LongInt. **/
+    llcmpe_uli = 2575   ,/** compare int_256 equal with unsigned type LongInt. **/
+    llucmpe_uli = 2576  ,/** compare unsigned uint_256 equal with unsigned type LongInt. **/
+    llcmple_uli = 2577  ,/** compare int_256 less than or equal to unsigned type LongInt. **/
+    llucmple_uli = 2578 ,/** compare unsigned uint_256 less than or equal to unsigned type LongInt. **/
+    llcmpge_uli = 2579  ,/** compare int_256 greater than or equal to unsigned type LongInt. **/
+    llucmpge_uli = 2580 ,/** compare unsigned uint_256 greater than or equal to unsigned type LongInt. **/
+    llcmpne_uli = 2581  ,/** compare int_256 not equal with unsigned type LongInt. **/
+    llucmpne_uli = 2582 ,/** compare unsigned uint_256 not equal with unsigned type LongInt. **/
+    llmod_ll = 2583     ,/** modulo int_256 with type LongLong. **/
+    llcast_ull = 2584   ,/** cast int_256 to unsigned type LongLong. **/
+    llucast_ull = 2585  ,/** cast unsigned uint_256 to unsigned type LongLong. **/
+    lladd_ull = 2586    ,/** add int_256 with unsigned type LongLong. **/
+    lluadd_ull = 2587   ,/** add unsigned uint_256 with unsigned type LongLong. **/
+    llsub_ull = 2588    ,/** subtract int_256 with unsigned type LongLong. **/
+    llusub_ull = 2589   ,/** subtract unsigned uint_256 with unsigned type LongLong. **/
+    llmul_ull = 2590    ,/** multiply int_256 with unsigned type LongLong. **/
+    llumul_ull = 2591   ,/** multiply unsigned uint_256 with unsigned type LongLong. **/
+    lldiv_ull = 2592    ,/** divide int_256 with unsigned type LongLong. **/
+    lludiv_ull = 2593   ,/** divide unsigned uint_256 with unsigned type LongLong. **/
+    llcmpl_ull = 2594   ,/** compare int_256 less than unsigned type LongLong. **/
+    llucmpl_ull = 2595  ,/** compare unsigned uint_256 less than unsigned type LongLong. **/
+    llcmpg_ull = 2596   ,/** compare int_256 greater than unsigned type LongLong. **/
+    llucmpg_ull = 2597  ,/** compare unsigned uint_256 greater than unsigned type LongLong. **/
+    llcmpe_ull = 2598   ,/** compare int_256 equal with unsigned type LongLong. **/
+    llucmpe_ull = 2599  ,/** compare unsigned uint_256 equal with unsigned type LongLong. **/
+    llcmple_ull = 2600  ,/** compare int_256 less than or equal to unsigned type LongLong. **/
+    llucmple_ull = 2601 ,/** compare unsigned uint_256 less than or equal to unsigned type LongLong. **/
+    llcmpge_ull = 2602  ,/** compare int_256 greater than or equal to unsigned type LongLong. **/
+    llucmpge_ull = 2603 ,/** compare unsigned uint_256 greater than or equal to unsigned type LongLong. **/
+    llcmpne_ull = 2604  ,/** compare int_256 not equal with unsigned type LongLong. **/
+    llucmpne_ull = 2605 ,/** compare unsigned uint_256 not equal with unsigned type LongLong. **/
+    lland_b = 2606      ,/** bitwise and int_256 with type Byte. **/
+    llor_b = 2607       ,/** bitwise or int_256 with type Byte. **/
+    llxor_b = 2608      ,/** bitwise xor int_256 with type Byte. **/
+    llshftr_b = 2609    ,/** shift right int_256 with type Byte. **/
+    llshftl_b = 2610    ,/** shift left xor int_256 with type Byte. **/
+    lland_s = 2611      ,/** bitwise and int_256 with type Short. **/
+    llor_s = 2612       ,/** bitwise or int_256 with type Short. **/
+    llxor_s = 2613      ,/** bitwise xor int_256 with type Short. **/
+    llshftr_s = 2614    ,/** shift right int_256 with type Short. **/
+    llshftl_s = 2615    ,/** shift left xor int_256 with type Short. **/
+    lland_i = 2616      ,/** bitwise and int_256 with type Int. **/
+    llor_i = 2617       ,/** bitwise or int_256 with type Int. **/
+    llxor_i = 2618      ,/** bitwise xor int_256 with type Int. **/
+    llshftr_i = 2619    ,/** shift right int_256 with type Int. **/
+    llshftl_i = 2620    ,/** shift left xor int_256 with type Int. **/
+    lland_l = 2621      ,/** bitwise and int_256 with type Long. **/
+    llor_l = 2622       ,/** bitwise or int_256 with type Long. **/
+    llxor_l = 2623      ,/** bitwise xor int_256 with type Long. **/
+    llshftr_l = 2624    ,/** shift right int_256 with type Long. **/
+    llshftl_l = 2625    ,/** shift left xor int_256 with type Long. **/
+    lland_li = 2626     ,/** bitwise and int_256 with type LongInt. **/
+    llor_li = 2627      ,/** bitwise or int_256 with type LongInt. **/
+    llxor_li = 2628     ,/** bitwise xor int_256 with type LongInt. **/
+    llshftr_li = 2629   ,/** shift right int_256 with type LongInt. **/
+    llshftl_li = 2630   ,/** shift left xor int_256 with type LongInt. **/
+    lland_ll = 2631     ,/** bitwise and int_256 with type LongLong. **/
+    llor_ll = 2632      ,/** bitwise or int_256 with type LongLong. **/
+    llxor_ll = 2633     ,/** bitwise xor int_256 with type LongLong. **/
+    llshftr_ll = 2634   ,/** shift right int_256 with type LongLong. **/
+    llshftl_ll = 2635   ,/** shift left xor int_256 with type LongLong. **/
+    lldup = 2636        ,/** duplicate a int_256 on the stack. **/
+    lldup2 = 2637       ,/** duplicate a int_256 2 times on the stack. **/
+    lldup3 = 2638       ,/** duplicate a int_256 3 times on the stack. **/
+    lldup4 = 2639       ,/** duplicate a int_256 4 times on the stack. **/
+    lldup5 = 2640       ,/** duplicate a int_256 5 times on the stack. **/
+    llset = 2641        ,/** set a int_256 from stack into a field on base pointer. **/
+    llget = 2642        ,/** get a int_256 from a field on base pointer to stack. **/
+    llvset = 2643       ,/** set a int_256 from value into a field on base pointer. **/
+    llsget = 2644       ,/** get a int_256 from a field on base pointer to stack using address from stack. **/
+    llsset = 2645       ,/** set a int_256 from stack into a field on base pointer using address from stack. **/
+    llsetl = 2646       ,/** set a int_256 from local variable into a field on base pointer. **/
+    llinc_1 = 2647      ,/** increment int_256 by 1 on stack. **/
+    llinc_2 = 2648      ,/** increment int_256 by 2 on stack. **/
+    llstinc_1 = 2649    ,/** increment int_256 by 1 on stack. **/
+    llstinc_2 = 2650    ,/** increment int_256 by 2 on stack. **/
+    llreturn = 2651     ,/** return a int_256 into the main stack. **/
+    llmainst = 2652     ,/** store a int_256 from main stack in a local variable.. **/
+    llmainst_0 = 2653   ,/** store a int_256 from main stack in local variable 0. **/
+    llmainst_1 = 2654   ,/** store a int_256 from main stack in local variable 1. **/
+    llmainst_2 = 2655   ,/** store a int_256 from main stack in local variable 2. **/
+    llmainst_3 = 2656   ,/** store a int_256 from main stack in local variable 3. **/
+    llprint = 2657      ,/** print a int_256 from stack. **/
+    lluprint = 2658     ,/** print a unsigned uint_256 from stack. **/
+    fprintba = 2659     ,/** print a byte array. **/
+    fconst = 2660       ,/** push a const flt_32 into the stack. **/
+    fconst_0 = 2661     ,/** push a const flt_32 into the stack (value = 0). **/
+    fload = 2662        ,/** load a flt_32 into the stack from local variable. **/
+    fload_0 = 2663      ,/** load a flt_32 into the stack from local variable 0. **/
+    fload_1 = 2664      ,/** load a flt_32 into the stack from local variable 1. **/
+    fload_2 = 2665      ,/** load a flt_32 into the stack from local variable 2. **/
+    fload_3 = 2666      ,/** load a flt_32 into the stack from local variable 3. **/
+    fload_4 = 2667      ,/** load a flt_32 into the stack from local variable 4. **/
+    fstore = 2668       ,/** store a flt_32 from stack into local variable. **/
+    fstore_0 = 2669     ,/** store a flt_32 from stack into local variable 0. **/
+    fstore_1 = 2670     ,/** store a flt_32 from stack into local variable 1. **/
+    fstore_2 = 2671     ,/** store a flt_32 from stack into local variable 2. **/
+    fstore_3 = 2672     ,/** store a flt_32 from stack into local variable 3. **/
+    fstore_4 = 2673     ,/** store a flt_32 from stack into local variable 4. **/
+    fdup = 2674         ,/** duplicate a flt_32 on the stack. **/
+    fdup2 = 2675        ,/** duplicate a flt_32 2 times on the stack. **/
+    fdup3 = 2676        ,/** duplicate a flt_32 3 times on the stack. **/
+    fdup4 = 2677        ,/** duplicate a flt_32 4 times on the stack. **/
+    fdup5 = 2678        ,/** duplicate a flt_32 5 times on the stack. **/
+    fset = 2679         ,/** set a flt_32 from stack into a field on base pointer. **/
+    fget = 2680         ,/** get a flt_32 from a field on base pointer to stack. **/
+    fvset = 2681        ,/** set a flt_32 from value into a field on base pointer. **/
+    fsget = 2682        ,/** get a flt_32 from a field on base pointer to stack using address from stack. **/
+    fsset = 2683        ,/** set a flt_32 from stack into a field on base pointer using address from stack. **/
+    fsetl = 2684        ,/** set a flt_32 from local variable into a field on base pointer. **/
+    finc_1 = 2685       ,/** increment flt_32 by 1 on stack. **/
+    finc_2 = 2686       ,/** increment flt_32 by 2 on stack. **/
+    fstinc_1 = 2687     ,/** increment flt_32 by 1 on stack. **/
+    fstinc_2 = 2688     ,/** increment flt_32 by 2 on stack. **/
+    freturn = 2689      ,/** return a flt_32 into the main stack. **/
+    fmainst = 2690      ,/** store a flt_32 from main stack in a local variable.. **/
+    fmainst_0 = 2691    ,/** store a flt_32 from main stack in local variable 0. **/
+    fmainst_1 = 2692    ,/** store a flt_32 from main stack in local variable 1. **/
+    fmainst_2 = 2693    ,/** store a flt_32 from main stack in local variable 2. **/
+    fmainst_3 = 2694    ,/** store a flt_32 from main stack in local variable 3. **/
+    dprintba = 2695     ,/** print a byte array. **/
+    dconst = 2696       ,/** push a const flt_64 into the stack. **/
+    dconst_0 = 2697     ,/** push a const flt_64 into the stack (value = 0). **/
+    dload = 2698        ,/** load a flt_64 into the stack from local variable. **/
+    dload_0 = 2699      ,/** load a flt_64 into the stack from local variable 0. **/
+    dload_1 = 2700      ,/** load a flt_64 into the stack from local variable 1. **/
+    dload_2 = 2701      ,/** load a flt_64 into the stack from local variable 2. **/
+    dload_3 = 2702      ,/** load a flt_64 into the stack from local variable 3. **/
+    dload_4 = 2703      ,/** load a flt_64 into the stack from local variable 4. **/
+    dstore = 2704       ,/** store a flt_64 from stack into local variable. **/
+    dstore_0 = 2705     ,/** store a flt_64 from stack into local variable 0. **/
+    dstore_1 = 2706     ,/** store a flt_64 from stack into local variable 1. **/
+    dstore_2 = 2707     ,/** store a flt_64 from stack into local variable 2. **/
+    dstore_3 = 2708     ,/** store a flt_64 from stack into local variable 3. **/
+    dstore_4 = 2709     ,/** store a flt_64 from stack into local variable 4. **/
+    ddup = 2710         ,/** duplicate a flt_64 on the stack. **/
+    ddup2 = 2711        ,/** duplicate a flt_64 2 times on the stack. **/
+    ddup3 = 2712        ,/** duplicate a flt_64 3 times on the stack. **/
+    ddup4 = 2713        ,/** duplicate a flt_64 4 times on the stack. **/
+    ddup5 = 2714        ,/** duplicate a flt_64 5 times on the stack. **/
+    dset = 2715         ,/** set a flt_64 from stack into a field on base pointer. **/
+    dget = 2716         ,/** get a flt_64 from a field on base pointer to stack. **/
+    dvset = 2717        ,/** set a flt_64 from value into a field on base pointer. **/
+    dsget = 2718        ,/** get a flt_64 from a field on base pointer to stack using address from stack. **/
+    dsset = 2719        ,/** set a flt_64 from stack into a field on base pointer using address from stack. **/
+    dsetl = 2720        ,/** set a flt_64 from local variable into a field on base pointer. **/
+    dinc_1 = 2721       ,/** increment flt_64 by 1 on stack. **/
+    dinc_2 = 2722       ,/** increment flt_64 by 2 on stack. **/
+    dstinc_1 = 2723     ,/** increment flt_64 by 1 on stack. **/
+    dstinc_2 = 2724     ,/** increment flt_64 by 2 on stack. **/
+    dreturn = 2725      ,/** return a flt_64 into the main stack. **/
+    dmainst = 2726      ,/** store a flt_64 from main stack in a local variable.. **/
+    dmainst_0 = 2727    ,/** store a flt_64 from main stack in local variable 0. **/
+    dmainst_1 = 2728    ,/** store a flt_64 from main stack in local variable 1. **/
+    dmainst_2 = 2729    ,/** store a flt_64 from main stack in local variable 2. **/
+    dmainst_3 = 2730    ,/** store a flt_64 from main stack in local variable 3. **/
+    dfprintba = 2731    ,/** print a byte array. **/
+    dfconst = 2732      ,/** push a const flt_128 into the stack. **/
+    dfconst_0 = 2733    ,/** push a const flt_128 into the stack (value = 0). **/
+    dfload = 2734       ,/** load a flt_128 into the stack from local variable. **/
+    dfload_0 = 2735     ,/** load a flt_128 into the stack from local variable 0. **/
+    dfload_1 = 2736     ,/** load a flt_128 into the stack from local variable 1. **/
+    dfload_2 = 2737     ,/** load a flt_128 into the stack from local variable 2. **/
+    dfload_3 = 2738     ,/** load a flt_128 into the stack from local variable 3. **/
+    dfload_4 = 2739     ,/** load a flt_128 into the stack from local variable 4. **/
+    dfstore = 2740      ,/** store a flt_128 from stack into local variable. **/
+    dfstore_0 = 2741    ,/** store a flt_128 from stack into local variable 0. **/
+    dfstore_1 = 2742    ,/** store a flt_128 from stack into local variable 1. **/
+    dfstore_2 = 2743    ,/** store a flt_128 from stack into local variable 2. **/
+    dfstore_3 = 2744    ,/** store a flt_128 from stack into local variable 3. **/
+    dfstore_4 = 2745    ,/** store a flt_128 from stack into local variable 4. **/
+    dfdup = 2746        ,/** duplicate a flt_128 on the stack. **/
+    dfdup2 = 2747       ,/** duplicate a flt_128 2 times on the stack. **/
+    dfdup3 = 2748       ,/** duplicate a flt_128 3 times on the stack. **/
+    dfdup4 = 2749       ,/** duplicate a flt_128 4 times on the stack. **/
+    dfdup5 = 2750       ,/** duplicate a flt_128 5 times on the stack. **/
+    dfset = 2751        ,/** set a flt_128 from stack into a field on base pointer. **/
+    dfget = 2752        ,/** get a flt_128 from a field on base pointer to stack. **/
+    dfvset = 2753       ,/** set a flt_128 from value into a field on base pointer. **/
+    dfsget = 2754       ,/** get a flt_128 from a field on base pointer to stack using address from stack. **/
+    dfsset = 2755       ,/** set a flt_128 from stack into a field on base pointer using address from stack. **/
+    dfsetl = 2756       ,/** set a flt_128 from local variable into a field on base pointer. **/
+    dfinc_1 = 2757      ,/** increment flt_128 by 1 on stack. **/
+    dfinc_2 = 2758      ,/** increment flt_128 by 2 on stack. **/
+    dfstinc_1 = 2759    ,/** increment flt_128 by 1 on stack. **/
+    dfstinc_2 = 2760    ,/** increment flt_128 by 2 on stack. **/
+    dfreturn = 2761     ,/** return a flt_128 into the main stack. **/
+    dfmainst = 2762     ,/** store a flt_128 from main stack in a local variable.. **/
+    dfmainst_0 = 2763   ,/** store a flt_128 from main stack in local variable 0. **/
+    dfmainst_1 = 2764   ,/** store a flt_128 from main stack in local variable 1. **/
+    dfmainst_2 = 2765   ,/** store a flt_128 from main stack in local variable 2. **/
+    dfmainst_3 = 2766   ,/** store a flt_128 from main stack in local variable 3. **/
+    ddprintba = 2767    ,/** print a byte array. **/
+    ddconst = 2768      ,/** push a const flt_256 into the stack. **/
+    ddconst_0 = 2769    ,/** push a const flt_256 into the stack (value = 0). **/
+    ddload = 2770       ,/** load a flt_256 into the stack from local variable. **/
+    ddload_0 = 2771     ,/** load a flt_256 into the stack from local variable 0. **/
+    ddload_1 = 2772     ,/** load a flt_256 into the stack from local variable 1. **/
+    ddload_2 = 2773     ,/** load a flt_256 into the stack from local variable 2. **/
+    ddload_3 = 2774     ,/** load a flt_256 into the stack from local variable 3. **/
+    ddload_4 = 2775     ,/** load a flt_256 into the stack from local variable 4. **/
+    ddstore = 2776      ,/** store a flt_256 from stack into local variable. **/
+    ddstore_0 = 2777    ,/** store a flt_256 from stack into local variable 0. **/
+    ddstore_1 = 2778    ,/** store a flt_256 from stack into local variable 1. **/
+    ddstore_2 = 2779    ,/** store a flt_256 from stack into local variable 2. **/
+    ddstore_3 = 2780    ,/** store a flt_256 from stack into local variable 3. **/
+    ddstore_4 = 2781    ,/** store a flt_256 from stack into local variable 4. **/
+    dddup = 2782        ,/** duplicate a flt_256 on the stack. **/
+    dddup2 = 2783       ,/** duplicate a flt_256 2 times on the stack. **/
+    dddup3 = 2784       ,/** duplicate a flt_256 3 times on the stack. **/
+    dddup4 = 2785       ,/** duplicate a flt_256 4 times on the stack. **/
+    dddup5 = 2786       ,/** duplicate a flt_256 5 times on the stack. **/
+    ddset = 2787        ,/** set a flt_256 from stack into a field on base pointer. **/
+    ddget = 2788        ,/** get a flt_256 from a field on base pointer to stack. **/
+    ddvset = 2789       ,/** set a flt_256 from value into a field on base pointer. **/
+    ddsget = 2790       ,/** get a flt_256 from a field on base pointer to stack using address from stack. **/
+    ddsset = 2791       ,/** set a flt_256 from stack into a field on base pointer using address from stack. **/
+    ddsetl = 2792       ,/** set a flt_256 from local variable into a field on base pointer. **/
+    ddinc_1 = 2793      ,/** increment flt_256 by 1 on stack. **/
+    ddinc_2 = 2794      ,/** increment flt_256 by 2 on stack. **/
+    ddstinc_1 = 2795    ,/** increment flt_256 by 1 on stack. **/
+    ddstinc_2 = 2796    ,/** increment flt_256 by 2 on stack. **/
+    ddreturn = 2797     ,/** return a flt_256 into the main stack. **/
+    ddmainst = 2798     ,/** store a flt_256 from main stack in a local variable.. **/
+    ddmainst_0 = 2799   ,/** store a flt_256 from main stack in local variable 0. **/
+    ddmainst_1 = 2800   ,/** store a flt_256 from main stack in local variable 1. **/
+    ddmainst_2 = 2801   ,/** store a flt_256 from main stack in local variable 2. **/
+    ddmainst_3 = 2802   ,/** store a flt_256 from main stack in local variable 3. **/
+    aprintba = 2803     ,/** print a byte array. **/
+    aconst = 2804       ,/** push a const pointer into the stack. **/
+    aconst_0 = 2805     ,/** push a const pointer into the stack (value = 0). **/
+    aload = 2806        ,/** load a pointer into the stack from local variable. **/
+    aload_0 = 2807      ,/** load a pointer into the stack from local variable 0. **/
+    aload_1 = 2808      ,/** load a pointer into the stack from local variable 1. **/
+    aload_2 = 2809      ,/** load a pointer into the stack from local variable 2. **/
+    aload_3 = 2810      ,/** load a pointer into the stack from local variable 3. **/
+    aload_4 = 2811      ,/** load a pointer into the stack from local variable 4. **/
+    astore = 2812       ,/** store a pointer from stack into local variable. **/
+    astore_0 = 2813     ,/** store a pointer from stack into local variable 0. **/
+    astore_1 = 2814     ,/** store a pointer from stack into local variable 1. **/
+    astore_2 = 2815     ,/** store a pointer from stack into local variable 2. **/
+    astore_3 = 2816     ,/** store a pointer from stack into local variable 3. **/
+    astore_4 = 2817     ,/** store a pointer from stack into local variable 4. **/
+    adup = 2818         ,/** duplicate a pointer on the stack. **/
+    adup2 = 2819        ,/** duplicate a pointer 2 times on the stack. **/
+    adup3 = 2820        ,/** duplicate a pointer 3 times on the stack. **/
+    adup4 = 2821        ,/** duplicate a pointer 4 times on the stack. **/
+    adup5 = 2822        ,/** duplicate a pointer 5 times on the stack. **/
+    aset = 2823         ,/** set a pointer from stack into a field on base pointer. **/
+    aget = 2824         ,/** get a pointer from a field on base pointer to stack. **/
+    avset = 2825        ,/** set a pointer from value into a field on base pointer. **/
+    asget = 2826        ,/** get a pointer from a field on base pointer to stack using address from stack. **/
+    asset = 2827        ,/** set a pointer from stack into a field on base pointer using address from stack. **/
+    asetl = 2828        ,/** set a pointer from local variable into a field on base pointer. **/
+    ainc_1 = 2829       ,/** increment pointer by 1 on stack. **/
+    ainc_2 = 2830       ,/** increment pointer by 2 on stack. **/
+    astinc_1 = 2831     ,/** increment pointer by 1 on stack. **/
+    astinc_2 = 2832     ,/** increment pointer by 2 on stack. **/
+    areturn = 2833      ,/** return a pointer into the main stack. **/
+    amainst = 2834      ,/** store a pointer from main stack in a local variable.. **/
+    amainst_0 = 2835    ,/** store a pointer from main stack in local variable 0. **/
+    amainst_1 = 2836    ,/** store a pointer from main stack in local variable 1. **/
+    amainst_2 = 2837    ,/** store a pointer from main stack in local variable 2. **/
+    amainst_3 = 2838    ,/** store a pointer from main stack in local variable 3. **/
 };
 
 #endif //MVM_OPCODES_H

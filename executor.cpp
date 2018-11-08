@@ -21,7 +21,7 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
     while (ops.getRemaining() > 0)
     {
         Op op_undefinedcurrent = ops.getOp();
-    //    std::cout << op_undefinedcurrent << " " << ops.address << std::endl;
+        std::cout << op_undefinedcurrent << " " << ops.address << std::endl;
 
         switch (op_undefinedcurrent)
         {
