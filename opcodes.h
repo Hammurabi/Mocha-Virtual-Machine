@@ -22,51 +22,50 @@ enum Op{
 //    ripemd160,
 //    keccak256,
 
-
-    mark,/** mark a specific location. **/
-    jump,/** jump to a specific location. **/
-    jumptomark,/** jump to a specific marked location. **/
-    newline,/** print a \n character into the console. **/
-    invokestatic,/** invoke a static method. **/
-    invokedynamic,/** dynamically invoke a method using function pointers. **/
-    invokenative,/** invoke a native method using function pointers. **/
-    if_t,/** if true. **/
-    if_f,/** if not true. **/
-    amemcpy,/** copy memory to destination from source. **/
-    bspmemcpy,/** copy memory to destination from base pointer. **/
-    amemcpybsp,/** copy memory to pointer from source. **/
-    amalloc,/** push a const pointer to the stack. **/
-    acalloc,/** push a const pointer to the stack. **/
-    amallocs,/** push a const pointer to the stack from size_int16_t. **/
-    acallocs,/** push a const pointer to the stack from size_int16_t. **/
-    abload,/** load an int_8 from a pointer. **/
-    asload,/** load an int_16 from a pointer. **/
-    aiload,/** load an int_32 from a pointer. **/
-    alload,/** load an int_64 from a pointer. **/
-    aliload,/** load an int_128 from a pointer. **/
-    allload,/** load an int_256 from a pointer. **/
-    afload,/** load an flt_32 from a pointer. **/
-    adload,/** load an flt_64 from a pointer. **/
-    adfload,/** load an flt_128 from a pointer. **/
-    addload,/** load an flt_256 from a pointer. **/
-    aaload,/** load a pointer from a pointer. **/
-    abstore,/** store an int_8 in a pointer. **/
-    asstore,/** store an int_16 in a pointer. **/
-    aistore,/** store an int_32 in a pointer. **/
-    alstore,/** store an int_64 in a pointer. **/
-    alistore,/** store an int_128 in a pointer. **/
-    allstore,/** store an int_256 in a pointer. **/
-    afstore,/** store an flt_32 in a pointer. **/
-    adstore,/** store an flt_64 in a pointer. **/
-    adfstore,/** store an flt_128 in a pointer. **/
-    addstore,/** store an flt_256 in a pointer. **/
-    aastore,/** store a pointer in a pointer. **/
-    baconst,/** push a byte array. **/
-    baconsts,/** push a byte array using size_int16_t **/
-    baconsti,/** push a byte array using size_int32_t **/
-    bacast_a,/** cast a byte array into a pointer **/
-    basizeof,/** push the size of a byte array to stack **/
-    printba,/** print a byte array. **/
+    mark = 0            ,/** mark a specific location. **/
+    jump = 1            ,/** jump to a specific location. **/
+    jumptomark = 2      ,/** jump to a specific marked location. **/
+    newline = 3         ,/** print a \n character into the console. **/
+    invokestatic = 4    ,/** invoke a static method. **/
+    invokedynamic = 5   ,/** dynamically invoke a method using function pointers. **/
+    invokenative = 6    ,/** invoke a native method using function pointers. **/
+    if_t = 7            ,/** if true. **/
+    if_f = 8            ,/** if not true. **/
+    amemcpy = 9         ,/** copy memory to destination from source. **/
+    bspmemcpy = 10      ,/** copy memory to destination from base pointer. **/
+    amemcpybsp = 11     ,/** copy memory to pointer from source. **/
+    amalloc = 12        ,/** push a const pointer to the stack. **/
+    acalloc = 13        ,/** push a const pointer to the stack. **/
+    amallocs = 14       ,/** push a const pointer to the stack from size_int16_t. **/
+    acallocs = 15       ,/** push a const pointer to the stack from size_int16_t. **/
+    abload = 16         ,/** load an int_8 from a pointer. **/
+    asload = 17         ,/** load an int_16 from a pointer. **/
+    aiload = 18         ,/** load an int_32 from a pointer. **/
+    alload = 19         ,/** load an int_64 from a pointer. **/
+    aliload = 20        ,/** load an int_128 from a pointer. **/
+    allload = 21        ,/** load an int_256 from a pointer. **/
+    afload = 22         ,/** load an flt_32 from a pointer. **/
+    adload = 23         ,/** load an flt_64 from a pointer. **/
+    adfload = 24        ,/** load an flt_128 from a pointer. **/
+    addload = 25        ,/** load an flt_256 from a pointer. **/
+    aaload = 26         ,/** load a pointer from a pointer. **/
+    abstore = 27        ,/** store an int_8 in a pointer. **/
+    asstore = 28        ,/** store an int_16 in a pointer. **/
+    aistore = 29        ,/** store an int_32 in a pointer. **/
+    alstore = 30        ,/** store an int_64 in a pointer. **/
+    alistore = 31       ,/** store an int_128 in a pointer. **/
+    allstore = 32       ,/** store an int_256 in a pointer. **/
+    afstore = 33        ,/** store an flt_32 in a pointer. **/
+    adstore = 34        ,/** store an flt_64 in a pointer. **/
+    adfstore = 35       ,/** store an flt_128 in a pointer. **/
+    addstore = 36       ,/** store an flt_256 in a pointer. **/
+    aastore = 37        ,/** store a pointer in a pointer. **/
+    baconst = 38        ,/** push a byte array. **/
+    baconsts = 39       ,/** push a byte array using size_int16_t **/
+    baconsti = 40       ,/** push a byte array using size_int32_t **/
+    bacast_a = 41       ,/** cast a byte array into a pointer **/
+    basizeof = 42       ,/** push the size of a byte array to stack **/
+    printba = 43        ,/** print a byte array. **/
     bconst = 44         ,/** push a const int_8 into the stack. **/
     bconst_0 = 45       ,/** push a const int_8 into the stack (value = 0). **/
     bconst_1 = 46       ,/** push a const int_8 into the stack (value = 1). **/
@@ -2852,7 +2851,6 @@ enum Op{
     amainst_1 = 2826    ,/** store a pointer from main stack in local variable 1. **/
     amainst_2 = 2827    ,/** store a pointer from main stack in local variable 2. **/
     amainst_3 = 2828    ,/** store a pointer from main stack in local variable 3. **/
-
 };
 
 #endif //MVM_OPCODES_H
