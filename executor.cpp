@@ -53,13 +53,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  *invoke a static method.
  */
             case invokestatic:
-                execute(globalTable, globalPointer, globalPointer, stack, globalTable[ops.getUnsignedLong()]);
+                execute(globalTable, nativeTable, globalPointer, globalPointer, stack, globalTable[ops.getUnsignedLong()]);
                 break;
 /**
  *dynamically invoke a method using function pointers.
  */
             case invokedynamic:
-                execute(globalTable, globalPointer, globalPointer, stack, globalTable[stack.popUnsignedLong()]);
+                execute(globalTable, nativeTable, globalPointer, globalPointer, stack, globalTable[stack.popUnsignedLong()]);
                 break;
 /**
  *invoke a native method using function pointers.
