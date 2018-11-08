@@ -34,7 +34,7 @@ int main() {
 //            op(iprint)
 //    };
 
-    uint_16 ops[] = {op(bconst_6), op(iprint)};
+    uint_16 ops[] = {op(bconst_6), op(bprint)};
     uint_64 length = sizeof(ops);
 
     pointer base = new unsigned char[4];

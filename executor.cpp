@@ -284,9 +284,9 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             { stack.pushUnsignedLong(static_cast<uint_64> (accessMemoryAndGetLong(stack.popPointer(), 0))); }
                 break;
 /**
- * print a byte array.
+ *print a byte array.
  */
-            case bprintba:
+            case printba:
             { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
                 break;
 /**
@@ -4315,19 +4315,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * print a int_8 from stack.
  */
             case bprint:
-                log(std::to_string(stack_main.popByte()));
+                log(std::to_string(stack.popByte()));
                 break;
 /**
  * print a unsigned uint_8 from stack.
  */
             case buprint:
-                log(std::to_string(stack_main.popUnsignedByte()));
-                break;
-/**
- * print a byte array.
- */
-            case sprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
+                log(std::to_string(stack.popUnsignedByte()));
                 break;
 /**
  * push a const int_16 into the stack.
@@ -8355,19 +8349,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * print a int_16 from stack.
  */
             case sprint:
-                log(std::to_string(stack_main.popShort()));
+                log(std::to_string(stack.popShort()));
                 break;
 /**
  * print a unsigned uint_16 from stack.
  */
             case suprint:
-                log(std::to_string(stack_main.popUnsignedShort()));
-                break;
-/**
- * print a byte array.
- */
-            case iprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
+                log(std::to_string(stack.popUnsignedShort()));
                 break;
 /**
  * push a const int_32 into the stack.
@@ -12395,19 +12383,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * print a int_32 from stack.
  */
             case iprint:
-                log(std::to_string(stack_main.popInt()));
+                log(std::to_string(stack.popInt()));
                 break;
 /**
  * print a unsigned uint_32 from stack.
  */
             case iuprint:
-                log(std::to_string(stack_main.popUnsignedInt()));
-                break;
-/**
- * print a byte array.
- */
-            case lprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
+                log(std::to_string(stack.popUnsignedInt()));
                 break;
 /**
  * push a const int_64 into the stack.
@@ -16435,19 +16417,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * print a int_64 from stack.
  */
             case lprint:
-                log(std::to_string(stack_main.popLong()));
+                log(std::to_string(stack.popLong()));
                 break;
 /**
  * print a unsigned uint_64 from stack.
  */
             case luprint:
-                log(std::to_string(stack_main.popUnsignedLong()));
-                break;
-/**
- * print a byte array.
- */
-            case liprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
+                log(std::to_string(stack.popUnsignedLong()));
                 break;
 /**
  * push a const int_128 into the stack.
@@ -20475,19 +20451,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * print a int_128 from stack.
  */
             case liprint:
-                log(std::to_string(stack_main.popLongInt()));
+                log(std::to_string(stack.popLongInt()));
                 break;
 /**
  * print a unsigned uint_128 from stack.
  */
             case liuprint:
-                log(std::to_string(stack_main.popUnsignedLongInt()));
-                break;
-/**
- * print a byte array.
- */
-            case llprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
+                log(std::to_string(stack.popUnsignedLongInt()));
                 break;
 /**
  * push a const int_256 into the stack.
@@ -24515,19 +24485,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * print a int_256 from stack.
  */
             case llprint:
-                log(std::to_string(stack_main.popLongLong()));
+                log(std::to_string(stack.popLongLong()));
                 break;
 /**
  * print a unsigned uint_256 from stack.
  */
             case lluprint:
-                log(std::to_string(stack_main.popUnsignedLongLong()));
-                break;
-/**
- * print a byte array.
- */
-            case fprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
+                log(std::to_string(stack.popUnsignedLongLong()));
                 break;
 /**
  * push a const flt_32 into the stack.
@@ -24740,12 +24704,6 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
                 lvt[3].Float = stack_main.popFloat();;
                 break;
 /**
- * print a byte array.
- */
-            case dprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
-                break;
-/**
  * push a const flt_64 into the stack.
  */
             case dconst:
@@ -24954,12 +24912,6 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  */
             case dmainst_3:
                 lvt[3].Double = stack_main.popDouble();;
-                break;
-/**
- * print a byte array.
- */
-            case dfprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
                 break;
 /**
  * push a const flt_128 into the stack.
@@ -25172,12 +25124,6 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
                 lvt[3].DoubleFloat = stack_main.popDoubleFloat();;
                 break;
 /**
- * print a byte array.
- */
-            case ddprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
-                break;
-/**
  * push a const flt_256 into the stack.
  */
             case ddconst:
@@ -25386,12 +25332,6 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  */
             case ddmainst_3:
                 lvt[3].DoubleDouble = stack_main.popDoubleDouble();;
-                break;
-/**
- * print a byte array.
- */
-            case aprintba:
-            { pointer bytearray = stack.popPointer(); uint_64 bytearraysize   = static_cast<uint_64> (accessMemoryAndGetLong(bytearray, 0)); std::string data = "["; for (uint_64 i = 0; i < bytearraysize; i ++) data += std::to_string(accessMemoryAndGetByte(bytearray + 8, i)) + ((i < bytearraysize - 1) ? ", " : "]"); log(data); }
                 break;
 /**
  * push a const pointer into the stack.
