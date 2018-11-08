@@ -313,6 +313,11 @@ struct Stack{
 
     uint_8 pop()
     {
+        if (stack.size() <= 0)
+        {
+            std::cerr << "stack underflow" << std::endl;
+            exit(0);
+        }
         uint_8 c = stack.top();
         stack.pop();
         return c;

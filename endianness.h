@@ -68,6 +68,7 @@ public:
     flt_256 DoubleDoubleFromBytes(uint_8 a, uint_8 b, uint_8 c, uint_8 d, uint_8 e, uint_8 f, uint_8 g, uint_8 h, uint_8 i, uint_8 j, uint_8 k, uint_8 l, uint_8 m, uint_8 n, uint_8 o, uint_8 p);
 
     uint_40 UnsignedInt40FromBytes(uint_8 a, uint_8 b, uint_8 c, uint_8 d, uint_8 e);
+    bool isBigEndian();
 };
 
 

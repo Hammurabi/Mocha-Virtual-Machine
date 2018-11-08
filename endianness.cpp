@@ -317,3 +317,8 @@ uint_40 EndianMachine::UnsignedInt40FromBytes(uint_8 d, uint_8 e, uint_8 f, uint
     if (bigEndian) return uint_40(((uint_64*) ((uint_8[8]) {0, 0, 0, d, e, f, g, h}))[0]);
     return uint_40(((uint_64*) ((uint_8[8]) {h, g, f, e, d, 0, 0, 0}))[0]);
 }
+
+bool EndianMachine::isBigEndian()
+{
+    return bigEndian;
+}

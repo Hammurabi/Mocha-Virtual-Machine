@@ -21,7 +21,7 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
     while (ops.getRemaining() > 0)
     {
         Op op_undefinedcurrent = ops.getOp();
-//        std::cout << op_undefinedcurrent << " " << ops.address << std::endl;
+        std::cout << op_undefinedcurrent << " " << ops.address << std::endl;
 
         switch (op_undefinedcurrent)
         {
@@ -29,7 +29,7 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  *mark a specific location.
  */
             case mark:
-                CHECK_POINTS[ops.getUnsignedShort()] = ops.address;
+                CHECK_POINTS[ops.getUnsignedShort()] = ops.address + 2;
                 break;
 /**
  *jump to a specific location.
@@ -71,13 +71,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  *if true.
  */
             case if_t:
-            { uint_32 jump = ops.getUnsignedInt(); if (stack.popByte() == 0) ops.address += ops.getUnsignedInt(); }
+            { uint_32 jump = ops.getUnsignedInt(); if (stack.popByte() == 0) ops.address += jump; }
                 break;
 /**
  *if not true.
  */
             case if_f:
-            { uint_32 jump = ops.getUnsignedInt(); if (stack.popByte() > 0) ops.address += ops.getUnsignedInt(); }
+            { uint_32 jump = ops.getUnsignedInt(); if (stack.popByte() > 0) ops.address += jump; }
                 break;
 /**
  *copy memory to destination from source.
@@ -4255,13 +4255,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment int_8 by 1 on stack.
  */
             case binc_1:
-                lvt[ops.getUnsignedShort()].Byte = lvt[ops.getUnsignedShort()].Byte + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Byte = lvt[point].Byte + 1; }
                 break;
 /**
  * increment int_8 by 2 on stack.
  */
             case binc_2:
-                lvt[ops.getUnsignedShort()].Byte = lvt[ops.getUnsignedShort()].Byte + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Byte = lvt[point].Byte + 2; }
                 break;
 /**
  * increment int_8 by 1 on stack.
@@ -8289,13 +8289,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment int_16 by 1 on stack.
  */
             case sinc_1:
-                lvt[ops.getUnsignedShort()].Short = lvt[ops.getUnsignedShort()].Short + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Short = lvt[point].Short + 1; }
                 break;
 /**
  * increment int_16 by 2 on stack.
  */
             case sinc_2:
-                lvt[ops.getUnsignedShort()].Short = lvt[ops.getUnsignedShort()].Short + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Short = lvt[point].Short + 2; }
                 break;
 /**
  * increment int_16 by 1 on stack.
@@ -12323,13 +12323,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment int_32 by 1 on stack.
  */
             case iinc_1:
-                lvt[ops.getUnsignedShort()].Int = lvt[ops.getUnsignedShort()].Int + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Int = lvt[point].Int + 1; }
                 break;
 /**
  * increment int_32 by 2 on stack.
  */
             case iinc_2:
-                lvt[ops.getUnsignedShort()].Int = lvt[ops.getUnsignedShort()].Int + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Int = lvt[point].Int + 2; }
                 break;
 /**
  * increment int_32 by 1 on stack.
@@ -16357,13 +16357,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment int_64 by 1 on stack.
  */
             case linc_1:
-                lvt[ops.getUnsignedShort()].Long = lvt[ops.getUnsignedShort()].Long + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Long = lvt[point].Long + 1; }
                 break;
 /**
  * increment int_64 by 2 on stack.
  */
             case linc_2:
-                lvt[ops.getUnsignedShort()].Long = lvt[ops.getUnsignedShort()].Long + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Long = lvt[point].Long + 2; }
                 break;
 /**
  * increment int_64 by 1 on stack.
@@ -20391,13 +20391,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment int_128 by 1 on stack.
  */
             case liinc_1:
-                lvt[ops.getUnsignedShort()].LongInt = lvt[ops.getUnsignedShort()].LongInt + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].LongInt = lvt[point].LongInt + 1; }
                 break;
 /**
  * increment int_128 by 2 on stack.
  */
             case liinc_2:
-                lvt[ops.getUnsignedShort()].LongInt = lvt[ops.getUnsignedShort()].LongInt + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].LongInt = lvt[point].LongInt + 2; }
                 break;
 /**
  * increment int_128 by 1 on stack.
@@ -24425,13 +24425,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment int_256 by 1 on stack.
  */
             case llinc_1:
-                lvt[ops.getUnsignedShort()].LongLong = lvt[ops.getUnsignedShort()].LongLong + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].LongLong = lvt[point].LongLong + 1; }
                 break;
 /**
  * increment int_256 by 2 on stack.
  */
             case llinc_2:
-                lvt[ops.getUnsignedShort()].LongLong = lvt[ops.getUnsignedShort()].LongLong + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].LongLong = lvt[point].LongLong + 2; }
                 break;
 /**
  * increment int_256 by 1 on stack.
@@ -24647,13 +24647,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment flt_32 by 1 on stack.
  */
             case finc_1:
-                lvt[ops.getUnsignedShort()].Float = lvt[ops.getUnsignedShort()].Float + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Float = lvt[point].Float + 1; }
                 break;
 /**
  * increment flt_32 by 2 on stack.
  */
             case finc_2:
-                lvt[ops.getUnsignedShort()].Float = lvt[ops.getUnsignedShort()].Float + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Float = lvt[point].Float + 2; }
                 break;
 /**
  * increment flt_32 by 1 on stack.
@@ -24857,13 +24857,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment flt_64 by 1 on stack.
  */
             case dinc_1:
-                lvt[ops.getUnsignedShort()].Double = lvt[ops.getUnsignedShort()].Double + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Double = lvt[point].Double + 1; }
                 break;
 /**
  * increment flt_64 by 2 on stack.
  */
             case dinc_2:
-                lvt[ops.getUnsignedShort()].Double = lvt[ops.getUnsignedShort()].Double + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Double = lvt[point].Double + 2; }
                 break;
 /**
  * increment flt_64 by 1 on stack.
@@ -25067,13 +25067,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment flt_128 by 1 on stack.
  */
             case dfinc_1:
-                lvt[ops.getUnsignedShort()].DoubleFloat = lvt[ops.getUnsignedShort()].DoubleFloat + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].DoubleFloat = lvt[point].DoubleFloat + 1; }
                 break;
 /**
  * increment flt_128 by 2 on stack.
  */
             case dfinc_2:
-                lvt[ops.getUnsignedShort()].DoubleFloat = lvt[ops.getUnsignedShort()].DoubleFloat + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].DoubleFloat = lvt[point].DoubleFloat + 2; }
                 break;
 /**
  * increment flt_128 by 1 on stack.
@@ -25277,13 +25277,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment flt_256 by 1 on stack.
  */
             case ddinc_1:
-                lvt[ops.getUnsignedShort()].DoubleDouble = lvt[ops.getUnsignedShort()].DoubleDouble + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].DoubleDouble = lvt[point].DoubleDouble + 1; }
                 break;
 /**
  * increment flt_256 by 2 on stack.
  */
             case ddinc_2:
-                lvt[ops.getUnsignedShort()].DoubleDouble = lvt[ops.getUnsignedShort()].DoubleDouble + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].DoubleDouble = lvt[point].DoubleDouble + 2; }
                 break;
 /**
  * increment flt_256 by 1 on stack.
@@ -25487,13 +25487,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
  * increment pointer by 1 on stack.
  */
             case ainc_1:
-                lvt[ops.getUnsignedShort()].Pointer = lvt[ops.getUnsignedShort()].Pointer + 1;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Pointer = lvt[point].Pointer + 1; }
                 break;
 /**
  * increment pointer by 2 on stack.
  */
             case ainc_2:
-                lvt[ops.getUnsignedShort()].Pointer = lvt[ops.getUnsignedShort()].Pointer + 2;
+            { uint_16 point = ops.getUnsignedShort(); lvt[point].Pointer = lvt[point].Pointer + 2; }
                 break;
 /**
  * increment pointer by 1 on stack.
