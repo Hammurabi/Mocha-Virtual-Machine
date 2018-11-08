@@ -24,14 +24,14 @@ int main() {
             op(iconst_6),
             op(iload_0),
             op(imul_i),
-            op(printi),
+            op(iprint),
             op(newline),
 
             op(iinc_1), 0, 0,
 
             op(jumptomark), 0,
             op(iconst_0),
-            op(printi)
+            op(iprint)
     };
 
 //    uint_16 ops[] = {op(bconst_6), op(printb)};
