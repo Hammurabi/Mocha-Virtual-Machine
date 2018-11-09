@@ -120,6 +120,9 @@ struct OP_STACK {
     }
 };
 
+/**
+ * A modified stack with a subscript operator.
+ */
 struct std_stack : public std::stack<uint_8>
 {
     using std::stack<unsigned char>::c;
@@ -130,12 +133,10 @@ struct std_stack : public std::stack<uint_8>
     }
 };
 
+/**
+ * A higher level stack to peek/pop/push all native mocha types.
+ */
 struct Stack{
-//    unsigned char* stack;
-//    unsigned long  size;
-//    unsigned long  address;
-//
-//    Stack(unsigned long max_size) : stack()
     std_stack stack;
 
     void swapBytes()
@@ -597,57 +598,57 @@ struct Stack{
     int_128 peekLongInt()
     {
         /** stack[int[a, b, c, d, e, f, g, h]] **/
-//        uint_8 h = peek();
-//        uint_8 g = peek();
-//        uint_8 f = peek();
-//        uint_8 e = peek();
-//        uint_8 d = peek();
-//        uint_8 c = peek();
-//        uint_8 b = peek();
-//        uint_8 a = peek();
-        return int_128();//*((uint_64 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
+        uint_8 h = peek();
+        uint_8 g = stack[stack.size() - 2];
+        uint_8 f = stack[stack.size() - 3];
+        uint_8 e = stack[stack.size() - 4];
+        uint_8 d = stack[stack.size() - 5];
+        uint_8 c = stack[stack.size() - 6];
+        uint_8 b = stack[stack.size() - 7];
+        uint_8 a = stack[stack.size() - 8];
+        return *((int_128 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
     }
 
     uint_128 peekUnsignedLongInt()
     {
         /** stack[int[a, b, c, d, e, f, g, h]] **/
-//        uint_8 h = peek();
-//        uint_8 g = peek();
-//        uint_8 f = peek();
-//        uint_8 e = peek();
-//        uint_8 d = peek();
-//        uint_8 c = peek();
-//        uint_8 b = peek();
-//        uint_8 a = peek();
-        return uint_128();//*((uint_64 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
+        uint_8 h = peek();
+        uint_8 g = stack[stack.size() - 2];
+        uint_8 f = stack[stack.size() - 3];
+        uint_8 e = stack[stack.size() - 4];
+        uint_8 d = stack[stack.size() - 5];
+        uint_8 c = stack[stack.size() - 6];
+        uint_8 b = stack[stack.size() - 7];
+        uint_8 a = stack[stack.size() - 8];
+        return *((uint_128 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
     }
 
     int_256 peekLongLong()
     {
         /** stack[int[a, b, c, d, e, f, g, h]] **/
-//        uint_8 h = peek();
-//        uint_8 g = peek();
-//        uint_8 f = peek();
-//        uint_8 e = peek();
-//        uint_8 d = peek();
-//        uint_8 c = peek();
-//        uint_8 b = peek();
-//        uint_8 a = peek();
-        return int_256();//*((uint_64 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
+        uint_8 h = peek();
+        uint_8 g = stack[stack.size() - 2];
+        uint_8 f = stack[stack.size() - 3];
+        uint_8 e = stack[stack.size() - 4];
+        uint_8 d = stack[stack.size() - 5];
+        uint_8 c = stack[stack.size() - 6];
+        uint_8 b = stack[stack.size() - 7];
+        uint_8 a = stack[stack.size() - 8];
+        return *((int_256 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
     }
 
     uint_256 peekUnsignedLongLong()
     {
         /** stack[int[a, b, c, d, e, f, g, h]] **/
-//        uint_8 h = peek();
-//        uint_8 g = peek();
-//        uint_8 f = peek();
-//        uint_8 e = peek();
-//        uint_8 d = peek();
-//        uint_8 c = peek();
-//        uint_8 b = peek();
-//        uint_8 a = peek();
-        return uint_256();//*((uint_64 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
+        uint_8 h = peek();
+        uint_8 g = stack[stack.size() - 2];
+        uint_8 f = stack[stack.size() - 3];
+        uint_8 e = stack[stack.size() - 4];
+        uint_8 d = stack[stack.size() - 5];
+        uint_8 c = stack[stack.size() - 6];
+        uint_8 b = stack[stack.size() - 7];
+        uint_8 a = stack[stack.size() - 8];
+        return *((uint_256 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
     }
 
     flt_32 peekFloat()
@@ -909,8 +910,19 @@ namespace MvM{
 
     void log(const std::string msg);
     void log_err(const std::string msg);
+    void printString(const pointer string);
+    long long int gtimens();
+    long long int gtimems();
 
-    void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack stack_main, OP_STACK ops);
+    /**
+     * @param globalTable a global table containing all non-native functions.
+     * @param nativeTable a global table containing all native functions.
+     * @param globalPointer the global pointer containing any global variables.
+     * @param basePointer the base pointer of this function (self), if it's static, pass the globalpointer.
+     * @param stack_main the stack of the previous scope.
+     * @param ops the opcodes; all opcodes must be passed in bigendian order, other-wise errors will occur, use "EndianMachine" to fix endianness.
+     */
+    void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main, OP_STACK ops);
 }
 
 #endif //MVM_EXECUTOR_H
