@@ -1,6 +1,5 @@
 #include <iostream>
 #include "executor.h"
-#include "executorfuncs.h"
 
 #include <fstream>
 #include <iterator>
@@ -104,15 +103,6 @@ int main(int count, const char** in) {
 
     for (uint_64 i = 0; i < ops.size(); i ++)
         opStack[i] = OP_STACK(ops[i].data(), ops[i].size());
-
-//    uint_16 tests[] = {op(bconst_6), op(bprint)};
-//    OP_STACK o;
-
-std::cout << ops.size() << " programs found.\n";
-
-    uint_64 index = 0;
-
-    funcs::getAllImplementations(index);
 
     MvM::execute(opStack, new MochaNativeInterface*[2], base, base, stack, opStack[entryPoint]);
 

@@ -11,12 +11,9 @@ struct OP_STACK;
 struct Stack;
 struct MochaNativeInterface;
 
-typedef void(*implptr_t[2994])(OP_STACK*, MochaNativeInterface**, pointer, pointer, Stack&, Stack&, OP_STACK&, std::map<uint_32, localvarelement>&, std::map<uint_32, uint_64>&, pointer);
+typedef void(*implptr_t)(OP_STACK*, MochaNativeInterface**, pointer, pointer, Stack&, Stack&, OP_STACK&, std::map<uint_32, localvarelement>&, std::map<uint_32, uint_64>&, pointer);
 
-class impl{
-public:
-    static implptr_t impl_funcs;
-};
+extern implptr_t* impl_funcs;
 
 namespace funcs{
     void getAllImplementations(uint_64& index);
