@@ -1,5 +1,6 @@
 
 #include "executor.h"
+#include "executorfuncs.h"
 
 bool Endianness;
 
@@ -14,15 +15,14 @@ bool Endianness;
 void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main, OP_STACK ops)
 {
     Stack stack;
-    std::map<unsigned int, localvarelement> lvt;
-    std::map<unsigned int, unsigned long long> CHECK_POINTS;
+    std::map<uint_32, localvarelement> lvt;
+    std::map<uint_32, uint_64> CHECK_POINTS;
     pointer base = basePointer;
 
     while (ops.getRemaining() > 0)
     {
         Op op_undefinedcurrent = ops.getOp();
 //        std::cout <<std::endl<< op_undefinedcurrent << " " << ops.address << std::endl;
-
 
     }
 }
