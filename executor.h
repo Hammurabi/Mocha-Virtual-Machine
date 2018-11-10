@@ -120,10 +120,10 @@ struct OP_STACK {
         return length;
     }
 };
-
 /**
  * A modified stack with a subscript operator.
  */
+#ifdef MACRO_STACK_DEF
 struct std_stack : public std::stack<uint_8>
 {
     using std::stack<unsigned char>::c;
@@ -133,10 +133,22 @@ struct std_stack : public std::stack<uint_8>
         return c[index];
     }
 };
+#else
+struct std_stack : public std::stack<uint_64>
+{
+    using std::stack<uint_64>::c;
+
+    uint_64& operator[] (const unsigned int index)
+    {
+        return c[index];
+    }
+};
+#endif
 
 /**
  * A higher level stack to peek/pop/push all native mocha types.
  */
+#ifdef MACRO_STACK_DEF
 struct Stack{
     std_stack stack;
 
@@ -706,6 +718,301 @@ struct Stack{
 
     pointer peekPointer();
 };
+#else
+struct Stack{
+    std_stack stack;
+
+    void swapBytes()
+    {
+        uint_64 b = popUnsignedLong();
+        uint_64 a = popUnsignedLong();
+
+        push(b);
+        push(a);
+    }
+
+    void push(uint_8 c)
+    {
+        pushUnsignedLong(c);
+    }
+
+    void pushByte(int_8 c)
+    {
+        pushUnsignedLong(c);
+    }
+
+    void pushUnsignedByte(uint_8 c)
+    {
+        pushUnsignedLong(c);
+    }
+
+    void pushUnsignedShort(uint_16 s)
+    {
+        pushUnsignedLong(s);
+    }
+
+    void pushUnsignedInt(uint_32 s)
+    {
+        pushUnsignedLong(s);
+    }
+
+    void pushUnsignedLong(uint_64 s)
+    {
+        stack.push(s);
+    }
+
+    void pushUnsignedLongInt(uint_128 s)
+    {
+    }
+
+    void pushUnsignedLongLong(uint_256 s)
+    {
+    }
+
+    void pushShort(int_16 s)
+    {
+        pushUnsignedLong(s);
+    }
+
+    void pushInt(int_32 s)
+    {
+        pushUnsignedLong(s);
+    }
+
+    void pushLong(int_64 s)
+    {
+        pushUnsignedLong(s);
+    }
+
+    void pushLongInt(int_128 s)
+    {
+    }
+
+    void pushLongLong(int_256 s)
+    {
+    }
+
+    void pushFloat(flt_32 s)
+    {
+        pointer p = (pointer) &s;
+        pushUnsignedLong(*((uint_64 *) ((uint_8[8]) {p[0], p[1], p[2], p[3], 0, 0, 0, 0})));
+    }
+
+    void pushDouble(flt_64 s)
+    {
+        pointer p = (pointer) &s;
+        pushUnsignedLong(*((uint_64 *) ((uint_8[8]) {p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]})));
+    }
+
+    void pushDoubleFloat(flt_64 s)
+    {
+    }
+
+    void pushDoubleDouble(flt_64 s)
+    {
+    }
+
+    void pushPointer(pointer p)
+    {
+        pushUnsignedLong((uint_64)(intptr_t)p);
+    }
+
+    uint_8 pop()
+    {
+        if (stack.size() <= 0)
+        {
+            std::cerr << "stack underflow" << std::endl;
+            exit(0);
+        }
+        uint_8 c = stack.top();
+        stack.pop();
+        return c;
+    }
+
+    uint_8 popUnsignedByte()
+    {
+        return (uint_8)popUnsignedLong();
+    }
+
+    uint_16 popUnsignedShort()
+    {
+        return (uint_16)popUnsignedLong();
+    }
+
+    uint_32 popUnsignedInt()
+    {
+        return (uint_32)popUnsignedLong();
+    }
+
+    uint_64 popUnsignedLong()
+    {
+        uint_64 l = stack.top();
+        stack.pop();
+        return l;
+    }
+
+    uint_128 popUnsignedLongInt()
+    {
+        return popUnsignedLong();
+    }
+
+    uint_256 popUnsignedLongLong()
+    {
+        return popUnsignedLong();
+    }
+
+
+    int_8 popByte()
+    {
+        return (int_8)popUnsignedLong();
+    }
+
+    int_16 popShort()
+    {
+        return (int_16)popUnsignedLong();
+    }
+
+    int_32 popInt()
+    {
+        return (int_32)popUnsignedLong();
+    }
+
+    int_64 popLong()
+    {
+        return popUnsignedLong();
+    }
+
+    int_128 popLongInt()
+    {
+        return popUnsignedLong();
+    }
+
+    int_256 popLongLong()
+    {
+        return popUnsignedLong();
+    }
+
+    flt_32 popFloat()
+    {
+        uint_64 l = popUnsignedLong();
+        pointer p = (pointer) &l;
+        return *((flt_32 *) ((uint_8[8]) {p[0], p[1], p[2], p[3]}));
+    }
+
+    flt_64 popDouble()
+    {
+        uint_64 l = popUnsignedLong();
+        pointer p = (pointer) &l;
+        return *((flt_64 *) ((uint_8[8]) {p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]}));
+    }
+
+    flt_128 popDoubleFloat()
+    {
+        return flt_128();//*((flt_64 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
+    }
+
+    flt_256 popDoubleDouble()
+    {
+        return flt_256();//*((flt_64 *) ((uint_8[8]) {a, b, c, d, e, f, g, h}));
+    }
+
+    pointer popPointer()
+    {
+        return (pointer) (intptr_t) popUnsignedLong();
+    }
+
+    uint_8 peek()
+    {
+        return (uint_8) peekUnsignedLong();
+    }
+
+    int_8 peekByte()
+    {
+        return (int_8) stack.top();
+    }
+
+    uint_8 peekUnsignedByte()
+    {
+        return (uint_8)stack.top();
+    }
+
+    int_16 peekShort()
+    {
+        return (int_16)stack.top();
+    }
+
+    uint_16 peekUnsignedShort()
+    {
+        return (uint_16)stack.top();
+    }
+
+    int_32 peekInt()
+    {
+        return (int_32)stack.top();
+    }
+
+    uint_32 peekUnsignedInt()
+    {
+        return (uint_32)stack.top();
+    }
+
+    int_64 peekLong()
+    {
+        return stack.top();
+    }
+
+    uint_64 peekUnsignedLong()
+    {
+        return stack.top();
+    }
+
+    int_128 peekLongInt()
+    {
+        return popUnsignedLong();
+    }
+
+    uint_128 peekUnsignedLongInt()
+    {
+        return popUnsignedLong();
+    }
+
+    int_256 peekLongLong()
+    {
+        return popUnsignedLong();
+    }
+
+    uint_256 peekUnsignedLongLong()
+    {
+        return popUnsignedLong();
+    }
+
+    flt_32 peekFloat()
+    {
+        uint_64 l = peekUnsignedLong();
+        pointer p = (pointer) &l;
+        return *((flt_32 *) ((uint_8[8]) {p[0], p[1], p[2], p[3]}));
+    }
+
+    flt_64 peekDouble()
+    {
+        uint_64 l = peekUnsignedLong();
+        pointer p = (pointer) &l;
+        return *((flt_64 *) ((uint_8[8]) {p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]}));
+    }
+
+    flt_128 peekDoubleFloat()
+    {
+        return *((flt_64 *) ((uint_8[8]) {0, 0, 0, 0, 0, 0, 0, 0}));
+    }
+
+    flt_256 peekDoubleDouble()
+    {
+        return *((flt_64 *) ((uint_8[8]) {0, 0, 0, 0, 0, 0, 0, 0}));
+    }
+
+    pointer peekPointer();
+};
+#endif
 
 struct MochaNativeInterface{
     virtual void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack stack_main, OP_STACK ops)
