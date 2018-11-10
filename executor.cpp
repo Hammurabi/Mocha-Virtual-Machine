@@ -18,13 +18,17 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
     std::map<uint_32, localvarelement> lvt;
     std::map<uint_32, uint_64> CHECK_POINTS;
     pointer base = basePointer;
+    std::cout << ops.address << std::endl;
 
     while (ops.getRemaining() > 0)
     {
-        Op op_undefinedcurrent = ops.getOp();//ops.getOp();
-        std::cout <<std::endl<< op_undefinedcurrent << " " << ops.address << std::endl;
-//        implptr_t[op_undefinedcurrent]();
-        impl_funcs[op_undefinedcurrent](globalTable, nativeTable, globalPointer, basePointer, stack_main, stack, ops, lvt, CHECK_POINTS, base);
+        Op op_undefinedcurrent = ops.getOp();
+
+        std::cout << op_undefinedcurrent <<  " "  << ops.address  << " " << std::endl;
+
+        (impl::impl_funcs[op_undefinedcurrent])
+                (globalTable, nativeTable, globalPointer, basePointer, stack_main, stack, ops,
+                        lvt, CHECK_POINTS, base);
     }
 }
 
