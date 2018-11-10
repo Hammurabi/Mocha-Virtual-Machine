@@ -110,6 +110,8 @@ int main(int count, const char** in) {
 
 //std::cout << ops.size() << " programs found.\n";
 
+    Stack stack_;
+
     uint_64 index = 0;
 
     funcs::getAllImplementations(index);
