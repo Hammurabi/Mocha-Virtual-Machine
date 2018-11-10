@@ -883,7 +883,7 @@ namespace MvM{
      * @param stack_main the stack of the previous scope.
      * @param ops the opcodes; all opcodes must be passed in bigendian order, other-wise errors will occur, use "EndianMachine" to fix endianness.
      */
-    void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main, OP_STACK& ops);
+    void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main, OP_STACK ops);
 }
 
 #endif //MVM_EXECUTOR_H

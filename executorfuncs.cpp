@@ -111,7 +111,7 @@ void funcs::strreturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeT
  * return a string from scope.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushUnsignedLong(stack.popUnsignedLong()); return;
 
 
@@ -157,7 +157,7 @@ void funcs::ret_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTable, 
  * return from this scope.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     return;
 
 
@@ -5735,7 +5735,7 @@ void funcs::breturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTab
  * return a int_8 into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushByte(stack.popByte()); return;
 
 
@@ -11015,7 +11015,7 @@ void funcs::sreturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTab
  * return a int_16 into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushShort(stack.popShort()); return;
 
 
@@ -16295,7 +16295,7 @@ void funcs::ireturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTab
  * return a int_32 into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushInt(stack.popInt()); return;
 
 
@@ -21575,7 +21575,7 @@ void funcs::lreturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTab
  * return a int_64 into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushLong(stack.popLong()); return;
 
 
@@ -26854,7 +26854,7 @@ void funcs::lireturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTa
 {	/**
  * return a int_128 into the main stack.
  */
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushLongInt(stack.popLongInt()); return;
 
 
@@ -32133,7 +32133,7 @@ void funcs::llreturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTa
 {	/**
  * return a int_256 into the main stack.
  */
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushLongLong(stack.popLongLong()); return;
 
 
@@ -32583,7 +32583,7 @@ void funcs::freturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTab
  * return a flt_32 into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushFloat(stack.popFloat()); return;
 
 
@@ -33016,7 +33016,7 @@ void funcs::dreturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTab
  * return a flt_64 into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushDouble(stack.popDouble()); return;
 
 
@@ -33449,7 +33449,7 @@ void funcs::dfreturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTa
  * return a flt_128 into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushDoubleFloat(stack.popDoubleFloat()); return;
 
 
@@ -33882,7 +33882,7 @@ void funcs::ddreturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTa
  * return a flt_256 into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushDoubleDouble(stack.popDoubleDouble()); return;
 
 
@@ -34315,7 +34315,7 @@ void funcs::areturn_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTab
  * return a pointer into the main stack.
  */
 
-    ops.address = ops.length + 1;
+    ops.address = ops.length;;
     stack_main.pushPointer(stack.popPointer()); return;
 
 

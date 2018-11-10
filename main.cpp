@@ -108,7 +108,7 @@ int main(int count, const char** in) {
 //    uint_16 tests[] = {op(bconst_6), op(bprint)};
 //    OP_STACK o;
 
-std::cout << ops.size() << " programs found.\n";
+//std::cout << ops.size() << " programs found.\n";
 
     uint_64 index = 0;
 
