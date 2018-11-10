@@ -5,13 +5,18 @@
 #ifndef MOCHA_VIRTUAL_MACHINE_EXECUTORFUNCS_H
 #define MOCHA_VIRTUAL_MACHINE_EXECUTORFUNCS_H
 
-#include "executor.h"
+#include "types.h";
+#include <map>;
+struct OP_STACK;
+struct Stack;
+struct MochaNativeInterface;
 
 typedef void(*implptr_t)(OP_STACK*, MochaNativeInterface**, pointer, pointer, Stack&, Stack&, OP_STACK&, std::map<uint_32, localvarelement>&, std::map<uint_32, uint_64>&, pointer);
 
-namespace funcs{
-    void getAllImplementations(implptr_t* funcs);
+extern implptr_t* impl_funcs;
 
+namespace funcs{
+    void getAllImplementations(uint_64& index);
     void func_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main, Stack& stack, OP_STACK& ops, std::map<uint_32, localvarelement>& lvt, std::map<uint_32, uint_64>& CHECK_POINTS, pointer base);
     void hash_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main, Stack& stack, OP_STACK& ops, std::map<uint_32, localvarelement>& lvt, std::map<uint_32, uint_64>& CHECK_POINTS, pointer base);
     void timens_impl(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main, Stack& stack, OP_STACK& ops, std::map<uint_32, localvarelement>& lvt, std::map<uint_32, uint_64>& CHECK_POINTS, pointer base);

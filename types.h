@@ -58,4 +58,44 @@ public:
     }
 };
 
+union localvarelement{
+    uint_8  UnsignedByte;
+    uint_16 UnsignedShort;
+    uint_32 UnsignedInt;
+    uint_40 UnsignedInt40;
+    uint_64 UnsignedLong;
+
+    flt_32  Float;
+    flt_64  Double;
+    int_128 LongInt;
+    int_256 LongLong;
+    uint_128 UnsignedLongInt;
+    uint_256 UnsignedLongLong;
+    flt_128  DoubleFloat;
+    flt_256  DoubleDouble;
+
+    int_8  Byte;
+    int_16 Short;
+    int_32 Int;
+    int_64 Long;
+    pointer Pointer;
+
+    uint_8 maximumSize[32];
+
+public:
+    localvarelement()
+    {
+    }
+
+    localvarelement(const localvarelement& o)
+    {
+        memcpy(maximumSize, o.maximumSize, 32);
+    }
+
+    void operator = (const localvarelement& o)
+    {
+        memcpy(maximumSize, o.maximumSize, 32);
+    }
+};
+
 #endif //MOCHAVM_TYPES_H
