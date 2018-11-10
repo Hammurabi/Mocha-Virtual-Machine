@@ -5,7 +5,7 @@
 bool Endianness;
 
 // struct bytearray{
-    // uint_64 length;
+    // uint_64 length;d
     // pointer array;
 // };
 
