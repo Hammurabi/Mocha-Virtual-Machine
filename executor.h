@@ -10,6 +10,8 @@
 #include "opcodes.h"
 #include <iostream>
 #include <string>
+#include <set>
+#include <vector>
 
 /**
  * All MochaXX types
@@ -1063,8 +1065,139 @@ struct GCObject{
     }
 };
 
-extern bool Endianness;
+/**
+ * The method's "scope"/
+ */
+struct Scope{
+//    /**
+//     * All operations
+//     */
+//    OP_STACK ops;
+    /**
+     * A stack that contains all objects within the scope.
+     */
+    Stack stack;
+    /**
+     * A local variable table that contains all objects and fields created inside a method (including arguments).
+     */
+    std::map<uint_32, localvarelement> lvt;
+    /**
+     * A local checkpoint table for easy jump instructions.
+     */
+    std::map<uint_32, uint_64> CHECK_POINTS;
 
+    /** at the end of each round, the scope ptrs gets popped out of the stack and the shared_ptr references get released **/
+    /**
+     * Thus, all memory related instructions will check with scope_ptrs for safety,
+     * whenever a pointer is returned and or set into a field, it will be removed from scope_ptrs
+     * so it does not get deleted, however the usage of pointers in object fields will automatically
+     * stop the automatic collection of pointers, and leave the rest to the programmer.
+     *
+     *
+     * struct {
+     * int * colours;
+     * }
+     *
+     * void set()
+     * {
+     *          //This is unsafe.
+     *  colours = getPointer();
+     * }
+     *
+     * void set()
+     * {
+     *              //This is safe because the GC will handle the pointer when it goes out of scope.
+     *  int * colours = getPointer();
+     * }
+     */
+    #define scope_ptr_map std::map<uint_64, std::shared_ptr<uint_8>>
+    #define ptr_touint(x) (uint_64) (intptr_t) x
+    scope_ptr_map scope_ptrs;
+
+public:
+    Scope() {}
+    Scope(const Scope& o) : stack(o.stack), lvt(o.lvt), CHECK_POINTS(o.CHECK_POINTS), scope_ptrs(o.scope_ptrs) {}
+    void erasepointer(pointer p)
+    {
+        scope_ptr_map::iterator ptr = scope_ptrs.find(ptr_touint(p));
+        if (ptr != scope_ptrs.end())
+            scope_ptrs.erase(ptr);
+    }
+    void amalloc(uint_64 s)
+    {
+        pointer p = (pointer) malloc(s);
+        stack.pushPointer(p);
+        scope_ptrs[(uint_64) (intptr_t) p] = (std::shared_ptr<uint_8 >(p));
+    }
+    void acalloc(uint_64 s, uint_64 l)
+    {
+        pointer p = (pointer) calloc(s, l);
+        stack.pushPointer(p);
+        scope_ptrs[(uint_64) (intptr_t) p] = (std::shared_ptr<uint_8 >(p));
+    }
+    void adelete(uint_64 s, uint_64 l)
+    {
+        pointer p = stack.popPointer();
+        erasepointer(p);
+
+        delete (p);
+    }
+    pointer returnPointer()
+    {
+        pointer p = stack.popPointer();
+        erasepointer(p);
+
+        return p;
+    }
+
+
+    void storeByte(int_8 byte, uint_16 index) { localvarelement lve;            lve.Byte = byte; lvt[index] = lve; }
+    void storeUnsignedByte(uint_8 byte, uint_16 index) { localvarelement lve;   lve.UnsignedByte = byte; lvt[index] = lve; }
+
+    void storeShort(int_16 byte, uint_16 index) { localvarelement lve;          lve.Short = byte; lvt[index] = lve; }
+    void storeUnsignedShort(uint_16 byte, uint_16 index) { localvarelement lve; lve.UnsignedShort = byte; lvt[index] = lve; }
+
+    void storeInt(int_32 byte, uint_16 index) { localvarelement lve;            lve.Int = byte; lvt[index] = lve; }
+    void storeUnsignedInt(uint_32 byte, uint_16 index) { localvarelement lve;   lve.UnsignedInt = byte; lvt[index] = lve; }
+
+    void storeLong(int_64 byte, uint_16 index) { localvarelement lve;           lve.Long = byte; lvt[index] = lve; }
+    void storeUnsignedLong(uint_64 byte, uint_16 index) { localvarelement lve;  lve.UnsignedLong = byte; lvt[index] = lve; }
+
+    void storeLongInt(int_128 byte, uint_16 index) { localvarelement lve;       lve.LongInt = byte; lvt[index] = lve; }
+    void storeUnsignedLongInt(uint_128 byte, uint_16 index) { localvarelement lve; lve.UnsignedLongInt = byte; lvt[index] = lve; }
+
+    void storeLongLong(int_256 byte, uint_16 index) { localvarelement lve;      lve.LongLong = byte; lvt[index] = lve; }
+    void storeUnsignedLongLong(uint_256 byte, uint_16 index) { localvarelement  lve; lve.UnsignedLongLong = byte; lvt[index] = lve; }
+
+    void storeFloat(flt_32 byte, uint_16 index) { localvarelement lve;           lve.Float = byte; lvt[index] = lve; }
+    void storeDouble(flt_64 byte, uint_16 index) { localvarelement lve;          lve.Double = byte; lvt[index] = lve; }
+    void storeDoubleFloat(flt_128 byte, uint_16 index) { localvarelement lve;    lve.DoubleFloat = byte; lvt[index] = lve; }
+    void storeDoubleDouble(flt_256 byte, uint_16 index) { localvarelement lve;   lve.DoubleDouble = byte; lvt[index] = lve; }
+
+    void storePointer(pointer byte, uint_16 index) { localvarelement lve;        lve.Pointer = byte; lvt[index] = lve; }
+
+    int_8 loadByte(uint_16 index) { return lvt[index].Byte; }
+    uint_8 loadUnsignedByte(uint_16 index) { return lvt[index].UnsignedByte; }
+
+    int_16 loadShort(uint_16 index) { return lvt[index].Short; }
+    uint_16 loadUnsignedShort(uint_16 index) { return lvt[index].UnsignedShort; }
+
+    int_32 loadInt(uint_16 index) { return lvt[index].Int; }
+    uint_32 loadUnsignedInt(uint_16 index) { return lvt[index].UnsignedInt; }
+
+    int_64 loadLong(uint_16 index) { return lvt[index].Long; }
+    uint_64 loadUnsignedLong(uint_16 index) { return lvt[index].UnsignedLong; }
+
+    int_128 loadLongInt(uint_16 index) { return lvt[index].LongInt; }
+    uint_128 loadUnsignedLongInt(uint_16 index) { return lvt[index].UnsignedLongInt; }
+
+    int_256 loadLongLong(uint_16 index) { return lvt[index].LongLong; }
+    uint_256 loadUnsignedLongLong(uint_16 index) { return lvt[index].UnsignedLongLong; }
+
+    void setCheckPoint(uint_16 checkPoint, uint_64 index) { CHECK_POINTS[checkPoint] = index; }
+};
+
+extern bool Endianness;
 
 namespace MvM{
     bool IsLittleEndian();

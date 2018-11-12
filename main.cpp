@@ -18,37 +18,37 @@ uint_16 op(uint_16 o)
 
 int main(int count, const char** in) {
     MvM::Init();
-    uint_16 for_loop[] = {
-            op(iconst_0),
-            op(istore_0),
-            op(iconst_12),
-            op(istore_1),
+//    uint_16 for_loop[] = {
+//            op(iconst_0),
+//            op(istore_0),
+//            op(iconst_12),
+//            op(istore_1),
+////
+//            op(mark), 0,
+//            op(iload_0),
+//            op(iload_1),
+////
+//            op(icmple_i),
+//            op(if_t), 0, op(18),
 //
-            op(mark), 0,
-            op(iload_0),
-            op(iload_1),
+//            op(iconst_6),
+//            op(iload_0),
+//            op(imul_i),
+//            op(iprint),
+//            op(newline),
 //
-            op(icmple_i),
-            op(if_t), 0, op(18),
-
-            op(iconst_6),
-            op(iload_0),
-            op(imul_i),
-            op(iprint),
-            op(newline),
-
-            op(iinc_1), 0,
-
-            op(jumptomark), 0,
-
-            op(iconst_12),
-            op(iconst_12),
-            op(imul_i),
-            op(iprint)
-    };
+//            op(iinc_1), 0,
+//
+//            op(jumptomark), 0,
+//
+//            op(iconst_12),
+//            op(iconst_12),
+//            op(imul_i),
+//            op(iprint)
+//    };
 
 //    uint_16 ops[] = {op(iconst), op(0), op(20), op(iprint)};
-    uint_64 length = sizeof(for_loop);
+//    uint_64 length = sizeof(for_loop);
 
     pointer base = new unsigned char[4];
     Stack stack;
@@ -115,6 +115,12 @@ int main(int count, const char** in) {
     uint_64 index = 0;
 
     funcs::getAllImplementations(index);
+
+//    int i = -32;
+//
+//    i = (((unsigned int) i) / ((unsigned int) 3));
+//    std::cout << i << (-32 / 3) << std::endl;
+//
 
     MvM::execute(opStack, new MochaNativeInterface*[2], base, base, stack, opStack[entryPoint]);
 
