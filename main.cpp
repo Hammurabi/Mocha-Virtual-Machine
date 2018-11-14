@@ -1,11 +1,11 @@
 #include <iostream>
 #include "executor.h"
-#include "executorfuncs.h"
 
 #include <fstream>
 #include <iterator>
 #include <algorithm>
 #include <vector>
+#include <cmath>
 
 uint_16 op(uint_16 o)
 {
@@ -114,15 +114,11 @@ int main(int count, const char** in) {
 
     uint_64 index = 0;
 
-    funcs::getAllImplementations(index);
+//    funcs::getAllImplementations(index);
 
-//    int i = -32;
-//
-//    i = (((unsigned int) i) / ((unsigned int) 3));
-//    std::cout << i << (-32 / 3) << std::endl;
-//
+    Scope scope;
 
-    MvM::execute(opStack, new MochaNativeInterface*[2], base, base, stack, opStack[entryPoint]);
+    MvM::execute(opStack, new MochaNativeInterface*[2], base, base, scope, opStack[entryPoint]);
 
     return 0;
 }

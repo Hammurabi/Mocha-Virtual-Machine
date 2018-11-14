@@ -19,7 +19,20 @@
 
 #include "types.h"
 #include "endianness.h"
-#include "executorfuncs.h"
+
+struct mmstring{
+    const uint_16 length;
+    const char *  string;
+
+    mmstring(uint_16 size, const char * data) : length(size), string(data)
+    {
+    }
+
+    ~mmstring()
+    {
+        delete (string);
+    }
+};
 
 /**
  * Not a real stack, acts as a queue.
@@ -120,6 +133,18 @@ struct OP_STACK {
     unsigned long getLength()
     {
         return length;
+    }
+    pointer getMMString()
+    {
+        uint_16 length = getUnsignedShort();
+        char * str = new char[length];
+
+        for (int i = 0; i < length; i ++)
+            str[i] = getByte();
+
+        mmstring* string = new mmstring(length, str);
+
+        return (pointer) string;
     }
 };
 /**
@@ -1017,12 +1042,9 @@ struct Stack{
 #endif
 
 struct MochaNativeInterface{
-    virtual void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack stack_main, OP_STACK ops)
+    virtual void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main)
     {
     }
-};
-
-struct LocalVariableTable{
 };
 
 struct Field{
@@ -1114,9 +1136,12 @@ struct Scope{
     #define ptr_touint(x) (uint_64) (intptr_t) x
     scope_ptr_map scope_ptrs;
 
+//    pointer basePointer;
+//    Scope* parent;
 public:
+//    Scope(pointer bp, Scope* pt) : basePointer(bp), parent(pt) {}
     Scope() {}
-    Scope(const Scope& o) : stack(o.stack), lvt(o.lvt), CHECK_POINTS(o.CHECK_POINTS), scope_ptrs(o.scope_ptrs) {}
+    Scope(const Scope& o) : stack(o.stack), lvt(o.lvt), CHECK_POINTS(o.CHECK_POINTS), scope_ptrs(o.scope_ptrs) /**basePointer(o.basePointer), parent(o.parent)**/ {}
     void erasepointer(pointer p)
     {
         scope_ptr_map::iterator ptr = scope_ptrs.find(ptr_touint(p));
@@ -1150,51 +1175,183 @@ public:
         return p;
     }
 
+    inline void pushPointerSAFE(pointer p)
+    {
+        scope_ptrs[(uint_64) (intptr_t) p] = (std::shared_ptr<uint_8 >(p));
+        stack.pushPointer(p);
+    }
 
-    void storeByte(int_8 byte, uint_16 index) { localvarelement lve;            lve.Byte = byte; lvt[index] = lve; }
-    void storeUnsignedByte(uint_8 byte, uint_16 index) { localvarelement lve;   lve.UnsignedByte = byte; lvt[index] = lve; }
+    inline void pushPointerUNSAFE(pointer p) { stack.pushPointer(p); }
 
-    void storeShort(int_16 byte, uint_16 index) { localvarelement lve;          lve.Short = byte; lvt[index] = lve; }
-    void storeUnsignedShort(uint_16 byte, uint_16 index) { localvarelement lve; lve.UnsignedShort = byte; lvt[index] = lve; }
+    inline void pushByte(int_8 byte) { stack.pushByte(byte); }
+    inline void pushUnsignedByte(uint_8 byte) { stack.pushUnsignedByte(byte); }
+    inline void pushShort(int_16 byte) { stack.pushShort(byte); }
+    inline void pushUnsignedShort(uint_16 byte) { stack.pushUnsignedShort(byte); }
+    inline void pushInt(int_32 byte) { stack.pushInt(byte); }
+    inline void pushUnsignedInt(uint_32 byte) { stack.pushUnsignedInt(byte); }
+    inline void pushLong(int_64 byte) { stack.pushLong(byte); }
+    inline void pushUnsignedLong(uint_64 byte) { stack.pushUnsignedLong(byte); }
+    inline void pushLongInt(int_128 byte) { stack.pushLongInt(byte); }
+    inline void pushUnsignedLongInt(uint_128 byte) { stack.pushUnsignedLongInt(byte); }
+    inline void pushLongLong(int_256 byte) { stack.pushLongLong(byte); }
+    inline void pushUnsignedLongLong(uint_256 byte) { stack.pushUnsignedLongLong(byte); }
+//    inline void pushPointer(pointer p) { stack.pushPointer(p); }
+    inline void pushFloat(flt_32 byte) { stack.pushFloat(byte); }
+    inline void pushDouble(flt_64 byte) { stack.pushDouble(byte); }
+    inline void pushDoubleFloat(flt_128 byte) { stack.pushDoubleFloat(byte); }
+    inline void pushDoubleDouble(flt_256 byte) { stack.pushDoubleDouble(byte); }
 
-    void storeInt(int_32 byte, uint_16 index) { localvarelement lve;            lve.Int = byte; lvt[index] = lve; }
-    void storeUnsignedInt(uint_32 byte, uint_16 index) { localvarelement lve;   lve.UnsignedInt = byte; lvt[index] = lve; }
+    inline int_8    popByte() { return stack.popByte(); }
+    inline uint_8   popUnsignedByte() { return stack.popUnsignedByte(); }
+    inline int_16   popShort() { return stack.popShort(); }
+    inline uint_16  popUnsignedShort() { return stack.popUnsignedShort(); }
+    inline int_32   popInt() { return stack.popInt(); }
+    inline uint_32  popUnsignedInt() { return stack.popUnsignedInt(); }
+    inline int_64   popLong() { return stack.popLong(); }
+    inline uint_64  popUnsignedLong() { return stack.popUnsignedLong(); }
+    inline int_128  popLongInt() { return stack.popLongInt(); }
+    inline uint_128 popUnsignedLongInt() { return stack.popUnsignedLongInt(); }
+    inline int_256  popLongLong() { return stack.popLongLong(); }
+    inline uint_256 popUnsignedLongLong() { return stack.popUnsignedLongLong(); }
+    inline pointer  popPointer() { return stack.popPointer(); }
+    inline flt_32   popFloat() { return stack.popFloat(); }
+    inline flt_64   popDouble() { return stack.popDouble(); }
+    inline flt_128  popDoubleFloat() { return stack.popDoubleFloat(); }
+    inline flt_256  popDoubleDouble() { return stack.popDoubleDouble(); }
 
-    void storeLong(int_64 byte, uint_16 index) { localvarelement lve;           lve.Long = byte; lvt[index] = lve; }
-    void storeUnsignedLong(uint_64 byte, uint_16 index) { localvarelement lve;  lve.UnsignedLong = byte; lvt[index] = lve; }
+    inline void     storeByte(int_8 byte, uint_16 index) { localvarelement lve;             lve.Byte = byte;                            lvt[index] = lve; }
+    inline void     storeUnsignedByte(uint_8 byte, uint_16 index) { localvarelement lve;    lve.UnsignedByte = byte;                    lvt[index] = lve; }
+    inline void     storeShort(int_16 byte, uint_16 index) { localvarelement lve;           lve.Short = byte;                           lvt[index] = lve; }
+    inline void     storeUnsignedShort(uint_16 byte, uint_16 index) { localvarelement lve;  lve.UnsignedShort = byte;                   lvt[index] = lve; }
+    inline void     storeInt(int_32 byte, uint_16 index) { localvarelement lve;             lve.Int = byte;                             lvt[index] = lve; }
+    inline void     storeUnsignedInt(uint_32 byte, uint_16 index) { localvarelement lve;    lve.UnsignedInt = byte;                     lvt[index] = lve; }
+    inline void     storeLong(int_64 byte, uint_16 index) { localvarelement lve;            lve.Long = byte;                            lvt[index] = lve; }
+    inline void     storeUnsignedLong(uint_64 byte, uint_16 index) { localvarelement lve;   lve.UnsignedLong = byte;                    lvt[index] = lve; }
+    inline void     storeLongInt(int_128 byte, uint_16 index) { localvarelement lve;        lve.LongInt = byte;                         lvt[index] = lve; }
+    inline void     storeUnsignedLongInt(uint_128 byte, uint_16 index) { localvarelement lve; lve.UnsignedLongInt = byte;               lvt[index] = lve; }
+    inline void     storeLongLong(int_256 byte, uint_16 index) { localvarelement lve;       lve.LongLong = byte;                        lvt[index] = lve; }
+    inline void     storeUnsignedLongLong(uint_256 byte, uint_16 index) { localvarelement   lve; lve.UnsignedLongLong = byte;           lvt[index] = lve; }
+    inline void     storeFloat(flt_32 byte, uint_16 index) { localvarelement lve;           lve.Float = byte;                           lvt[index] = lve; }
+    inline void     storeDouble(flt_64 byte, uint_16 index) { localvarelement lve;          lve.Double = byte;                          lvt[index] = lve; }
+    inline void     storeDoubleFloat(flt_128 byte, uint_16 index) { localvarelement lve;    lve.DoubleFloat = byte;                     lvt[index] = lve; }
+    inline void     storeDoubleDouble(flt_256 byte, uint_16 index) { localvarelement lve;   lve.DoubleDouble = byte;                    lvt[index] = lve; }
+    inline void     storePointer(pointer byte, uint_16 index) { localvarelement lve;        lve.Pointer = byte;                         lvt[index] = lve; }
 
-    void storeLongInt(int_128 byte, uint_16 index) { localvarelement lve;       lve.LongInt = byte; lvt[index] = lve; }
-    void storeUnsignedLongInt(uint_128 byte, uint_16 index) { localvarelement lve; lve.UnsignedLongInt = byte; lvt[index] = lve; }
+    inline void     storeByte(uint_16 index) { localvarelement lve;                         lve.Byte = stack.popByte();                 lvt[index] = lve; }
+    inline void     storeUnsignedByte(uint_16 index) { localvarelement lve;                 lve.UnsignedByte = stack.popUnsignedByte(); lvt[index] = lve; }
+    inline void     storeShort(uint_16 index) { localvarelement lve;           lve.Short = stack.popShort();                           lvt[index] = lve; }
+    inline void     storeUnsignedShort(uint_16 index) { localvarelement lve;  lve.UnsignedShort = stack.popUnsignedShort();                   lvt[index] = lve; }
+    inline void     storeInt(uint_16 index) { localvarelement lve;             lve.Int = stack.popInt();                             lvt[index] = lve; }
+    inline void     storeUnsignedInt(uint_16 index) { localvarelement lve;    lve.UnsignedInt = stack.popUnsignedInt();                     lvt[index] = lve; }
+    inline void     storeLong(uint_16 index) { localvarelement lve;            lve.Long = stack.popLong();                            lvt[index] = lve; }
+    inline void     storeUnsignedLong(uint_16 index) { localvarelement lve;   lve.UnsignedLong = stack.popUnsignedLong();                    lvt[index] = lve; }
+    inline void     storeLongInt(uint_16 index) { localvarelement lve;        lve.LongInt = stack.popLongInt();                         lvt[index] = lve; }
+    inline void     storeUnsignedLongInt(uint_16 index) { localvarelement lve; lve.UnsignedLongInt = stack.popUnsignedLongInt();               lvt[index] = lve; }
+    inline void     storeLongLong(uint_16 index) { localvarelement lve;       lve.LongLong = stack.popLongLong();                        lvt[index] = lve; }
+    inline void     storeUnsignedLongLong(uint_16 index) { localvarelement   lve; lve.UnsignedLongLong = stack.popUnsignedLongLong();           lvt[index] = lve; }
+    inline void     storeFloat(uint_16 index) { localvarelement lve;           lve.Float = stack.popFloat();                           lvt[index] = lve; }
+    inline void     storeDouble(uint_16 index) { localvarelement lve;          lve.Double = stack.popDouble();                          lvt[index] = lve; }
+    inline void     storeDoubleFloat(uint_16 index) { localvarelement lve;    lve.DoubleFloat = stack.popDoubleFloat();                     lvt[index] = lve; }
+    inline void     storeDoubleDouble(uint_16 index) { localvarelement lve;   lve.DoubleDouble = stack.popDoubleDouble();                    lvt[index] = lve; }
+    inline void     storePointer(uint_16 index) { localvarelement lve;        lve.Pointer = stack.popPointer();                         lvt[index] = lve; }
+//    inline void     storePointerSAFE(uint_16 index) { localvarelement lve;        lve.Pointer = returnPointer();                         lvt[index] = lve; }
 
-    void storeLongLong(int_256 byte, uint_16 index) { localvarelement lve;      lve.LongLong = byte; lvt[index] = lve; }
-    void storeUnsignedLongLong(uint_256 byte, uint_16 index) { localvarelement  lve; lve.UnsignedLongLong = byte; lvt[index] = lve; }
+    inline int_8    mloadByte(uint_16 index) { return lvt[index].Byte; }
+    inline uint_8   mloadUnsignedByte(uint_16 index) { return lvt[index].UnsignedByte; }
+    inline int_16   mloadShort(uint_16 index) { return lvt[index].Short; }
+    inline uint_16  mloadUnsignedShort(uint_16 index) { return lvt[index].UnsignedShort; }
+    inline int_32   mloadInt(uint_16 index) { return lvt[index].Int; }
+    inline uint_32  mloadUnsignedInt(uint_16 index) { return lvt[index].UnsignedInt; }
+    inline int_64   mloadLong(uint_16 index) { return lvt[index].Long; }
+    inline uint_64  mloadUnsignedLong(uint_16 index) { return lvt[index].UnsignedLong; }
+    inline int_128  mloadLongInt(uint_16 index) { return lvt[index].LongInt; }
+    inline uint_128 mloadUnsignedLongInt(uint_16 index) { return lvt[index].UnsignedLongInt; }
+    inline int_256  mloadLongLong(uint_16 index) { return lvt[index].LongLong; }
+    inline uint_256 mloadUnsignedLongLong(uint_16 index) { return lvt[index].UnsignedLongLong; }
+    inline void     setCheckPoint(uint_16 checkPoint, uint_64 index) { CHECK_POINTS[checkPoint] = index; }
+    inline uint_64  getCheckPointer(uint_16 p) { return CHECK_POINTS[p]; }
 
-    void storeFloat(flt_32 byte, uint_16 index) { localvarelement lve;           lve.Float = byte; lvt[index] = lve; }
-    void storeDouble(flt_64 byte, uint_16 index) { localvarelement lve;          lve.Double = byte; lvt[index] = lve; }
-    void storeDoubleFloat(flt_128 byte, uint_16 index) { localvarelement lve;    lve.DoubleFloat = byte; lvt[index] = lve; }
-    void storeDoubleDouble(flt_256 byte, uint_16 index) { localvarelement lve;   lve.DoubleDouble = byte; lvt[index] = lve; }
+    inline void     loadByte(uint_16 index) { stack.pushByte(lvt[index].Byte); }
+    inline void     loadUnsignedByte(uint_16 index) { stack.pushUnsignedByte(lvt[index].UnsignedByte); }
 
-    void storePointer(pointer byte, uint_16 index) { localvarelement lve;        lve.Pointer = byte; lvt[index] = lve; }
+    inline void     loadShort(uint_16 index) { stack.pushShort(lvt[index].Short); }
+    inline void     loadUnsignedShort(uint_16 index) { stack.pushUnsignedShort(lvt[index].UnsignedShort); }
 
-    int_8 loadByte(uint_16 index) { return lvt[index].Byte; }
-    uint_8 loadUnsignedByte(uint_16 index) { return lvt[index].UnsignedByte; }
+    inline void     loadInt(uint_16 index) { stack.pushUnsignedInt(lvt[index].Int); }
+    inline void     loadUnsignedInt(uint_16 index) { stack.pushUnsignedInt(lvt[index].UnsignedInt); }
 
-    int_16 loadShort(uint_16 index) { return lvt[index].Short; }
-    uint_16 loadUnsignedShort(uint_16 index) { return lvt[index].UnsignedShort; }
+    inline void     loadLong(uint_16 index) { stack.pushLong(lvt[index].Long); }
+    inline void     loadUnsignedLong(uint_16 index) { stack.pushUnsignedLong(lvt[index].UnsignedLong); }
 
-    int_32 loadInt(uint_16 index) { return lvt[index].Int; }
-    uint_32 loadUnsignedInt(uint_16 index) { return lvt[index].UnsignedInt; }
+    inline void     loadLongInt(uint_16 index) { stack.pushLongInt(lvt[index].LongInt); }
+    inline void     loadUnsignedLongInt(uint_16 index) { stack.pushUnsignedLongInt(lvt[index].UnsignedLongInt); }
 
-    int_64 loadLong(uint_16 index) { return lvt[index].Long; }
-    uint_64 loadUnsignedLong(uint_16 index) { return lvt[index].UnsignedLong; }
+    inline void     loadLongLong(uint_16 index) { stack.pushLongLong(lvt[index].LongLong); }
+    inline void     loadUnsignedLongLong(uint_16 index) { stack.pushUnsignedLongLong(lvt[index].UnsignedLongLong); }
 
-    int_128 loadLongInt(uint_16 index) { return lvt[index].LongInt; }
-    uint_128 loadUnsignedLongInt(uint_16 index) { return lvt[index].UnsignedLongInt; }
+    inline void     loadFloat(uint_16 index) { stack.pushFloat(lvt[index].Float); }
+    inline void     loadDouble(uint_16 index) { stack.pushDouble(lvt[index].Double); }
 
-    int_256 loadLongLong(uint_16 index) { return lvt[index].LongLong; }
-    uint_256 loadUnsignedLongLong(uint_16 index) { return lvt[index].UnsignedLongLong; }
+    inline void     loadDoubleFloat(uint_16 index) { stack.pushDoubleFloat(lvt[index].DoubleFloat); }
+    inline void     loadDoubleDouble(uint_16 index) { stack.pushDoubleDouble(lvt[index].DoubleDouble); }
 
-    void setCheckPoint(uint_16 checkPoint, uint_64 index) { CHECK_POINTS[checkPoint] = index; }
+    inline void     loadPointer(uint_16 index) { stack.pushPointer(lvt[index].Pointer); }
+
+    inline void load(uint_16 i)
+    {
+    }
+
+    inline void loadm2(uint_16 i)
+    {
+    }
+
+    inline void loadm4(uint_16 i)
+    {
+    }
+
+    inline void store(uint_16 i)
+    {
+    }
+
+    inline void storem2(uint_16 i)
+    {
+    }
+
+    inline void storem4(uint_16 i)
+    {
+    }
+
+    inline void swap_1(){}
+    inline void swap_2(){}
+    inline void swap_3(){}
+    inline void swap_4(){}
+    inline void swap_5(){}
+    inline void swap_6(){}
+    inline void swap_7(){}
+    inline void swap_8(){}
+    inline void swap_9(){}
+    inline void swap_x(){}
+    inline void swap_x1(){}
+
+    inline void pushBool(bool b)
+    {
+        stack.pushByte(b);
+    }
+
+    inline bool popBool()
+    {
+        return stack.popByte();
+    }
+
+//    inline pointer getBasePointer()
+//    {
+//        return basePointer;
+//    }
+//
+//    inline Scope* getParentScope()
+//    {
+//        return parent;
+//    }
 };
 
 extern bool Endianness;
@@ -1205,6 +1362,9 @@ namespace MvM{
     bool IsBigEndian();
 
     void Init();
+
+    int_256 pow_big(int_256 a, int_256 b);
+    flt_256 pow_bigf(flt_256 a, flt_256 b);
 
     localvarelement lve_Byte(int_8 byte);
 
@@ -1242,6 +1402,14 @@ namespace MvM{
 
     localvarelement lve_UnsignedLongLong(uint_256 byte);
 
+    struct SmartContract{
+        bool loaded = false;
+        std::vector<OP_STACK> ops;
+        /** a script to lock funds directed to this contract **/
+        OP_STACK beneficiaryScript;
+    };
+
+    void accessExternalContract(SmartContract* contract);
 
     void accessMemoryAndSetByte(pointer base, uint_32 address, int_8 byte);
     int_8 accessMemoryAndGetByte(pointer base, int_32 address);
@@ -1323,7 +1491,7 @@ namespace MvM{
      * @param stack_main the stack of the previous scope.
      * @param ops the opcodes; all opcodes must be passed in bigendian order, other-wise errors will occur, use "EndianMachine" to fix endianness.
      */
-    void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Stack& stack_main, OP_STACK ops);
+    void execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Scope& parent, OP_STACK ops);
 }
 
 #endif //MVM_EXECUTOR_H
