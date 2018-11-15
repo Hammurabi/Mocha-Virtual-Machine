@@ -1299,6 +1299,7 @@ public:
 
     inline void load(uint_16 i)
     {
+        stack.pushLong(lvt[i].Long);
     }
 
     inline void loadm2(uint_16 i)
@@ -1311,6 +1312,9 @@ public:
 
     inline void store(uint_16 i)
     {
+        localvarelement lve;
+        lve.Long = stack.popLong();
+        lvt[i] = lve;
     }
 
     inline void storem2(uint_16 i)

@@ -144,6 +144,14 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case bset:
             {accessMemoryAndSetByte(scope.popPointer(), scope.popUnsignedLong(), scope.popByte());}
                 break;
+                /**increment an integer**/
+            case inc:
+            {scope.pushLong(scope.popLong() + 1);}
+                break;
+                /**increment an integer**/
+            case dec:
+            {scope.pushLong(scope.popLong() - 1);}
+                break;
                 /**invoke a function (static or otherwise)] p=12 {execute(globalTable, nativeTable, globalPointer, basePointer, scope, globalTable[ops.getUnsignedLong()**/
             case invoke:
             {execute(globalTable, nativeTable, globalPointer, basePointer, scope, globalTable[ops.getUnsignedLong()]);}
@@ -184,13 +192,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case store_2:
             {scope.store(2);}
                 break;
-                /**compare greater or equal**/
-            case ucmpge:
-            {scope.pushBool(scope.popUnsignedLong() >= scope.popUnsignedLong());}
+                /**increment an integer in local var #**/
+            case lddec:
+            {uint_16 loc; scope.pushLong(scope.mloadLong(loc = ops.getUnsignedShort()) - 1); scope.store(loc);}
                 break;
-                /**mark a check-point**/
-            case mark:
-            {scope.setCheckPoint(scope.popUnsignedShort(), ops.address);}
+                /**increment an integer in local var #**/
+            case ldinc:
+            {uint_16 loc; scope.pushLong(scope.mloadLong(loc = ops.getUnsignedShort()) + 1); scope.store(loc);}
                 break;
                 /**store max length data**/
             case store_3:
@@ -216,10 +224,6 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case store_0:
             {scope.store(0);}
                 break;
-                /**compare greater**/
-            case cmpg:
-            {scope.pushBool(scope.popLong() > scope.popLong());}
-                break;
                 /**load max length data**/
             case load_3:
             {scope.load(3);}
@@ -228,9 +232,21 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case load_4:
             {scope.load(4);}
                 break;
+                /**compare greater**/
+            case cmpg:
+            {scope.pushBool(scope.popLong() > scope.popLong());}
+                break;
                 /**load max length data] p=11**/
             case load_0:
             {scope.load(0);}
+                break;
+                /**mark a check-point**/
+            case mark:
+            {scope.setCheckPoint(scope.popUnsignedShort(), ops.address);}
+                break;
+                /**compare greater or equal**/
+            case ucmpge:
+            {scope.pushBool(scope.popUnsignedLong() >= scope.popUnsignedLong());}
                 break;
                 /**jump to a point**/
             case jump:
@@ -317,12 +333,12 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             {scope.pushLong(0);}
                 break;
 
-            case ifcmpg:
-            {if (scope.popLong() < scope.popLong()) ops.address += ops.getUnsignedInt();}
-                break;
-
             case ifcmpl:
             {if (scope.popLong() > scope.popLong()) ops.address += ops.getUnsignedInt();}
+                break;
+
+            case ifcmpg:
+            {if (scope.popLong() < scope.popLong()) ops.address += ops.getUnsignedInt();}
                 break;
                 /**cast long to short**/
             case l2d:
@@ -330,7 +346,7 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
                 break;
 
             case strprint:
-            {std::cout << scope.popPointer();}
+            {std::cout << ((mmstring*)scope.popPointer())->string;}
                 break;
                 /**compare two double doubles**/
             case dcmp:
@@ -356,6 +372,10 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case expt:
             {scope.pushLong(pow(scope.popLong(), scope.popLong()));}
                 break;
+                /**x256 int multiplication**/
+            case bmul:
+            {scope.pushLongLong(scope.popLongLong() * scope.popLongLong());}
+                break;
                 /**x256 int unsigned division**/
             case bdiv:
             {scope.pushUnsignedLongLong(scope.popUnsignedLongLong() / scope.popUnsignedLongLong());}
@@ -363,10 +383,6 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
                 /**x256 int subtraction**/
             case bsub:
             {scope.pushLongLong(scope.popLongLong() - scope.popLongLong());}
-                break;
-                /**x256 int multiplication**/
-            case bmul:
-            {scope.pushLongLong(scope.popLongLong() * scope.popLongLong());}
                 break;
                 /**x256 int signed division**/
             case bsdiv:
@@ -376,6 +392,10 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case badd:
             {scope.pushLongLong(scope.popLongLong() + scope.popLongLong());}
                 break;
+                /**bitwise xor**/
+            case _xor:
+            {scope.pushLong(scope.popLong() ^ scope.popLong());}
+                break;
                 /**bitwise and**/
             case _and:
             {scope.pushLong(scope.popLong() & scope.popLong());}
@@ -384,21 +404,13 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case swap:
             {scope.swap_1();}
                 break;
-                /**bitwise not**/
-            case _not:
-            {scope.pushLong(~scope.popLong());}
+                /**x256 left shift**/
+            case blshift:
+            {scope.pushLongLong(scope.popLongLong() << scope.popUnsignedByte());}
                 break;
                 /**x256 bitwise and**/
             case band:
             {scope.pushLongLong(scope.popLongLong() & scope.popLongLong());}
-                break;
-
-            case strload:
-            {scope.loadPointer(ops.getUnsignedShort());}
-                break;
-                /**x256 left shift**/
-            case blshift:
-            {scope.pushLongLong(scope.popLongLong() << scope.popUnsignedByte());}
                 break;
                 /**x256 right shift**/
             case brshift:
@@ -412,10 +424,6 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case bxor:
             {scope.pushLongLong(scope.popLongLong() & scope.popLongLong());}
                 break;
-                /**double pow(x, y)**/
-            case fexp:
-            {scope.pushDouble(pow(scope.popDouble(), scope.popDouble()));}
-                break;
 
             case strconst:
             {scope.pushPointerSAFE(ops.getMMString());}
@@ -424,9 +432,21 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case bor:
             {scope.pushLongLong(scope.popLongLong() | scope.popLongLong());}
                 break;
+
+            case strload:
+            {scope.loadPointer(ops.getUnsignedShort());}
+                break;
+                /**bitwise not**/
+            case _not:
+            {scope.pushLong(~scope.popLong());}
+                break;
                 /**bitwise or**/
             case _or:
             {scope.pushLong(scope.popLong() | scope.popLong());}
+                break;
+                /**double pow(x, y)**/
+            case fexp:
+            {scope.pushDouble(pow(scope.popDouble(), scope.popDouble()));}
                 break;
 
             case strstore:
@@ -436,25 +456,17 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case llconst:
             {scope.pushLongLong(ops.getLongLong());}
                 break;
-                /**bitwise xor**/
-            case _xor:
-            {scope.pushLong(scope.popLong() ^ scope.popLong());}
-                break;
                 /**push a long int**/
             case liconst:
             {scope.pushLongInt(ops.getLongInt());}
                 break;
-                /**invoke an external function from an online script**/
-            case invokeexternal:
-            {}
-                break;
-                /**right shift**/
-            case rshift:
-            {scope.pushLong(scope.popLong() >> scope.popUnsignedByte());}
-                break;
                 /**x256 double subtraction**/
             case dsub:
             {scope.pushDoubleDouble(scope.popDoubleDouble() - scope.popDoubleDouble());}
+                break;
+                /**invoke an external function from an online script**/
+            case invokeexternal:
+            {}
                 break;
                 /**x256 int modulo**/
             case bmod:
@@ -468,29 +480,33 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case dexp:
             {scope.pushDoubleDouble(pow_bigf(scope.popDoubleDouble(), scope.popDoubleDouble()));}
                 break;
-                /**x256 double division**/
-            case ddiv:
-            {scope.pushDoubleDouble(scope.popDoubleDouble() / scope.popDoubleDouble());}
+                /**x256 double addition**/
+            case dadd:
+            {scope.pushDoubleDouble(scope.popDoubleDouble() + scope.popDoubleDouble());}
                 break;
                 /**x256 double multiplication**/
             case dmul:
             {scope.pushDoubleDouble(scope.popDoubleDouble() * scope.popDoubleDouble());}
                 break;
-                /**push a double double**/
-            case ddconst:
-            {scope.pushDoubleDouble(ops.getDoubleDouble());}
+                /**right shift**/
+            case rshift:
+            {scope.pushLong(scope.popLong() >> scope.popUnsignedByte());}
                 break;
                 /**x256 int pow(x, y)**/
             case bexp:
             {scope.pushLongLong(pow_big(scope.popLongLong(), scope.popLongLong()));}
                 break;
+                /**push a double double**/
+            case ddconst:
+            {scope.pushDoubleDouble(ops.getDoubleDouble());}
+                break;
                 /**left shift**/
             case lshift:
             {scope.pushLong(scope.popLong() << scope.popUnsignedByte());}
                 break;
-                /**x256 double addition**/
-            case dadd:
-            {scope.pushDoubleDouble(scope.popDoubleDouble() + scope.popDoubleDouble());}
+                /**x256 double division**/
+            case ddiv:
+            {scope.pushDoubleDouble(scope.popDoubleDouble() / scope.popDoubleDouble());}
                 break;
                 /**duplicate a max element**/
             case dup:
@@ -505,12 +521,12 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             {std::cout << scope.popDoubleFloat();}
                 break;
 
-            case ddprint:
-            {std::cout << scope.popDoubleDouble();}
-                break;
-
             case fprint:
             {std::cout << scope.popFloat();}
+                break;
+
+            case cprint:
+            {std::cout << (char) scope.popShort();}
                 break;
                 /**cast long to double double**/
             case ll2dd:
@@ -533,48 +549,48 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             {scope.popLong();}
                 break;
 
-            case uiprint:
-            {std::cout << scope.popUnsignedInt();}
+            case bprint:
+            {std::cout << scope.popByte();}
                 break;
 
             case sprint:
             {std::cout << scope.popShort();}
                 break;
 
-            case cprint:
-            {std::cout << (char) scope.popShort();}
+            case aprint:
+            {std::cout << scope.popPointer();}
+                break;
+
+            case ddprint:
+            {std::cout << scope.popDoubleDouble();}
+                break;
+                /**swap the first and 3rd elements**/
+            case swap2:
+            {scope.swap_2();}
                 break;
                 /**cast long to double double**/
             case dd2ll:
             {scope.pushLongLong(static_cast<int_256> (scope.popDoubleDouble()));}
                 break;
 
-            case dprint:
-            {std::cout << scope.popDouble();}
-                break;
-                /**swap the first and 3rd elements**/
-            case swap2:
-            {scope.swap_2();}
-                break;
-
             case ullprint:
             {std::cout << scope.popUnsignedLongLong();}
                 break;
 
-            case aprint:
-            {std::cout << scope.popPointer();}
+            case dprint:
+            {std::cout << scope.popDouble();}
                 break;
 
             case usprint:
             {std::cout << scope.popUnsignedShort();}
                 break;
 
-            case bprint:
-            {std::cout << scope.popByte();}
-                break;
-
             case uprint:
             {std::cout << scope.popUnsignedLong();}
+                break;
+
+            case uiprint:
+            {std::cout << scope.popUnsignedInt();}
                 break;
 
             case ubprint:
@@ -589,14 +605,6 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             {std::cout << scope.popLong();}
                 break;
                 /**cast long to long long**/
-            case li2l:
-            {scope.pushLong(static_cast<long> (scope.popLongInt()));}
-                break;
-                /**cast double to float**/
-            case d2f:
-            {scope.pushFloat(static_cast<float> (scope.popDouble()));}
-                break;
-                /**cast long to long long**/
             case l2ll:
             {scope.pushLongLong(static_cast<int_256> (scope.popLong()));}
                 break;
@@ -604,25 +612,29 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case push_4:
             {scope.pushLong(4);}
                 break;
-                /**cast long to long int**/
-            case l2li:
-            {scope.pushLongInt(static_cast<int_128> (scope.popLong()));}
+                /**push 3L**/
+            case push_3:
+            {scope.pushLong(3);}
+                break;
+                /**cast double to float**/
+            case d2f:
+            {scope.pushFloat(static_cast<float> (scope.popDouble()));}
                 break;
                 /**cast long to byte**/
             case l2f:
             {scope.pushFloat(static_cast<float> (scope.popLong()));}
                 break;
-                /**push 2L**/
-            case push_2:
-            {scope.pushLong(2);}
-                break;
                 /**cast long to long long**/
             case ll2l:
             {scope.pushLong(static_cast<long> (scope.popLongLong()));}
                 break;
-                /**push 3L**/
-            case push_3:
-            {scope.pushLong(3);}
+                /**cast long to long long**/
+            case li2l:
+            {scope.pushLong(static_cast<long> (scope.popLongInt()));}
+                break;
+                /**cast long to long int**/
+            case l2li:
+            {scope.pushLongInt(static_cast<int_128> (scope.popLong()));}
                 break;
                 /**cast double to long**/
             case d2l:
@@ -636,6 +648,10 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case f2d:
             {scope.pushDouble(static_cast<double> (scope.popFloat()));}
                 break;
+                /**push 2L**/
+            case push_2:
+            {scope.pushLong(2);}
+                break;
                 /**swap the first and 4th elements**/
             case swap3:
             {scope.swap_3();}
@@ -648,69 +664,69 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
             case swap4:
             {scope.swap_4();}
                 break;
+                /**push time in nano seconds**/
+            case timens:
+            {scope.pushLong(gtimens());}
+                break;
                 /**swap the first and 6th elements**/
             case swap5:
             {scope.swap_5();}
-                break;
-                /**duplicate a max element twice**/
-            case dup3:
-            {long l; scope.stack.pushLong((l = scope.stack.peekLong())); scope.stack.pushLong(l); scope.stack.pushLong(l);}
-                break;
-                /**push time in milliseconds**/
-            case timems:
-            {scope.pushLong(gtimems());}
-                break;
-                /**duplicate a max element twice**/
-            case dup2:
-            {long l; scope.stack.pushLong((l = scope.stack.peekLong())); scope.stack.pushLong(l);}
                 break;
                 /**swap the first and 7th elements**/
             case swap6:
             {scope.swap_6();}
                 break;
+                /**duplicate a max element twice**/
+            case dup2:
+            {long l; scope.stack.pushLong((l = scope.stack.peekLong())); scope.stack.pushLong(l);}
+                break;
+                /**duplicate a max element twice**/
+            case dup3:
+            {long l; scope.stack.pushLong((l = scope.stack.peekLong())); scope.stack.pushLong(l); scope.stack.pushLong(l);}
+                break;
                 /**swap the first and 8th elements**/
             case swap7:
             {scope.swap_7();}
                 break;
-                /**push time in nano seconds**/
-            case timens:
-            {scope.pushLong(gtimens());}
-                break;
-                /**store four max length datas**/
-            case storem4:
-            {scope.storem4(ops.getUnsignedShort());}
-                break;
-                /**swap the first and 12th elements**/
-            case swapx1:
-            {scope.swap_x1();}
+                /**push time in milliseconds**/
+            case timems:
+            {scope.pushLong(gtimems());}
                 break;
 
             case halt:
             {exit(-1);}
                 break;
-                /**load two max length datas**/
-            case loadm2:
-            {scope.loadm2(ops.getUnsignedShort());}
-                break;
-                /**swap the first and 9th elements**/
-            case swap8:
-            {scope.swap_8();}
-                break;
                 /**swap the first and 10th elements**/
             case swap9:
             {scope.swap_9();}
-                break;
-                /**store two max length datas**/
-            case storem2:
-            {scope.storem2(ops.getUnsignedShort());}
                 break;
                 /**swap the first and 11th elements**/
             case swapx:
             {scope.swap_x();}
                 break;
+                /**load two max length datas**/
+            case loadm2:
+            {scope.loadm2(ops.getUnsignedShort());}
+                break;
+                /**store four max length datas**/
+            case storem4:
+            {scope.storem4(ops.getUnsignedShort());}
+                break;
+                /**store two max length datas**/
+            case storem2:
+            {scope.storem2(ops.getUnsignedShort());}
+                break;
                 /**load four max length datas**/
             case loadm4:
             {scope.loadm4(ops.getUnsignedShort());}
+                break;
+                /**swap the first and 12th elements**/
+            case swapx1:
+            {scope.swap_x1();}
+                break;
+                /**swap the first and 9th elements**/
+            case swap8:
+            {scope.swap_8();}
                 break;
         }
     }
