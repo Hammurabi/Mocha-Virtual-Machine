@@ -8,15 +8,213 @@ bool Endianness;
 
 // Created by Riverssen on 07.11.18.
 
+#ifdef _DEBUG_
+
+#ifndef __debugmaps__
+#define __debugmaps__
+
+
+#endif
+
+#endif
+
+//#define _DEBUG_
 
 void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, pointer globalPointer, pointer basePointer, Scope& parent, OP_STACK ops)
 {
+#ifdef _DEBUG_
+
+    std::map<int, const char *> _dopmap_;
+
+_dopmap_[7] = "add";
+_dopmap_[11] = "sdiv";
+_dopmap_[8] = "sub";
+_dopmap_[9] = "mul";
+_dopmap_[10] = "udiv";
+_dopmap_[163] = "store";
+_dopmap_[157] = "load";
+_dopmap_[12] = "mod";
+_dopmap_[103] = "liget";
+_dopmap_[107] = "dfget";
+_dopmap_[108] = "ddget";
+_dopmap_[104] = "llget";
+_dopmap_[105] = "fget";
+_dopmap_[106] = "dget";
+_dopmap_[48] = "push";
+_dopmap_[99] = "bget";
+_dopmap_[101] = "iget";
+_dopmap_[102] = "lget";
+_dopmap_[100] = "sget";
+_dopmap_[95] = "dset";
+_dopmap_[97] = "ddset";
+_dopmap_[98] = "aget";
+_dopmap_[96] = "dfset";
+_dopmap_[91] = "lset";
+_dopmap_[93] = "llset";
+_dopmap_[94] = "fset";
+_dopmap_[92] = "liset";
+_dopmap_[87] = "aset";
+_dopmap_[89] = "sset";
+_dopmap_[90] = "iset";
+_dopmap_[88] = "bset";
+_dopmap_[173] = "inc";
+_dopmap_[174] = "dec";
+_dopmap_[3] = "invoke";
+_dopmap_[72] = "dconst";
+_dopmap_[154] = "mspsh";
+_dopmap_[155] = "m2psh";
+_dopmap_[156] = "m4psh";
+_dopmap_[143] = "brnf";
+_dopmap_[127] = "newline";
+_dopmap_[142] = "brnt";
+_dopmap_[128] = "negate";
+_dopmap_[166] = "store_2";
+_dopmap_[176] = "lddec";
+_dopmap_[175] = "ldinc";
+_dopmap_[167] = "store_3";
+_dopmap_[168] = "store_4";
+_dopmap_[159] = "load_1";
+_dopmap_[160] = "load_2";
+_dopmap_[165] = "store_1";
+_dopmap_[164] = "store_0";
+_dopmap_[161] = "load_3";
+_dopmap_[162] = "load_4";
+_dopmap_[130] = "cmpg";
+_dopmap_[158] = "load_0";
+_dopmap_[146] = "mark";
+_dopmap_[138] = "ucmpge";
+_dopmap_[144] = "jump";
+_dopmap_[145] = "jmpm";
+_dopmap_[33] = "fmul";
+_dopmap_[34] = "fdiv";
+_dopmap_[135] = "ucmpg";
+_dopmap_[137] = "ucmple";
+_dopmap_[136] = "ucmpe";
+_dopmap_[131] = "cmpe";
+_dopmap_[133] = "cmpge";
+_dopmap_[134] = "ucmpl";
+_dopmap_[132] = "cmple";
+_dopmap_[31] = "fadd";
+_dopmap_[129] = "cmpl";
+_dopmap_[32] = "fsub";
+_dopmap_[27] = "aret";
+_dopmap_[29] = "mret2";
+_dopmap_[30] = "mret4";
+_dopmap_[28] = "mret";
+_dopmap_[26] = "ret";
+_dopmap_[5] = "invokedynamic";
+_dopmap_[49] = "push_0";
+_dopmap_[140] = "ifcmpl";
+_dopmap_[141] = "ifcmpg";
+_dopmap_[76] = "l2d";
+_dopmap_[153] = "strprint";
+_dopmap_[147] = "dcmp";
+_dopmap_[149] = "cmpub";
+_dopmap_[148] = "cmpb";
+_dopmap_[4] = "invokespecial";
+_dopmap_[139] = "ifcmpe";
+_dopmap_[13] = "expt";
+_dopmap_[38] = "bmul";
+_dopmap_[39] = "bdiv";
+_dopmap_[37] = "bsub";
+_dopmap_[40] = "bsdiv";
+_dopmap_[36] = "badd";
+_dopmap_[16] = "_xor";
+_dopmap_[14] = "_and";
+_dopmap_[58] = "swap";
+_dopmap_[25] = "blshift";
+_dopmap_[20] = "band";
+_dopmap_[24] = "brshift";
+_dopmap_[23] = "bnot";
+_dopmap_[22] = "bxor";
+_dopmap_[150] = "strconst";
+_dopmap_[21] = "bor";
+_dopmap_[152] = "strload";
+_dopmap_[17] = "_not";
+_dopmap_[15] = "_or";
+_dopmap_[35] = "fexp";
+_dopmap_[151] = "strstore";
+_dopmap_[70] = "llconst";
+_dopmap_[69] = "liconst";
+_dopmap_[44] = "dsub";
+_dopmap_[6] = "invokeexternal";
+_dopmap_[41] = "bmod";
+_dopmap_[73] = "dfconst";
+_dopmap_[47] = "dexp";
+_dopmap_[43] = "dadd";
+_dopmap_[45] = "dmul";
+_dopmap_[18] = "rshift";
+_dopmap_[42] = "bexp";
+_dopmap_[74] = "ddconst";
+_dopmap_[19] = "lshift";
+_dopmap_[46] = "ddiv";
+_dopmap_[55] = "dup";
+_dopmap_[50] = "push_1";
+_dopmap_[125] = "dfprint";
+_dopmap_[123] = "fprint";
+_dopmap_[112] = "cprint";
+_dopmap_[85] = "ll2dd";
+_dopmap_[121] = "uliprint";
+_dopmap_[115] = "liprint";
+_dopmap_[113] = "iprint";
+_dopmap_[54] = "pop";
+_dopmap_[110] = "bprint";
+_dopmap_[111] = "sprint";
+_dopmap_[109] = "aprint";
+_dopmap_[126] = "ddprint";
+_dopmap_[59] = "swap2";
+_dopmap_[86] = "dd2ll";
+_dopmap_[122] = "ullprint";
+_dopmap_[124] = "dprint";
+_dopmap_[118] = "usprint";
+_dopmap_[120] = "uprint";
+_dopmap_[119] = "uiprint";
+_dopmap_[117] = "ubprint";
+_dopmap_[116] = "llprint";
+_dopmap_[114] = "print";
+_dopmap_[82] = "l2ll";
+_dopmap_[53] = "push_4";
+_dopmap_[52] = "push_3";
+_dopmap_[79] = "d2f";
+_dopmap_[75] = "l2f";
+_dopmap_[83] = "ll2l";
+_dopmap_[84] = "li2l";
+_dopmap_[81] = "l2li";
+_dopmap_[80] = "d2l";
+_dopmap_[78] = "f2l";
+_dopmap_[77] = "f2d";
+_dopmap_[51] = "push_2";
+_dopmap_[60] = "swap3";
+_dopmap_[71] = "fconst";
+_dopmap_[61] = "swap4";
+_dopmap_[1] = "timens";
+_dopmap_[62] = "swap5";
+_dopmap_[63] = "swap6";
+_dopmap_[56] = "dup2";
+_dopmap_[57] = "dup3";
+_dopmap_[64] = "swap7";
+_dopmap_[2] = "timems";
+_dopmap_[0] = "func";
+_dopmap_[177] = "halt";
+_dopmap_[66] = "swap9";
+_dopmap_[67] = "swapx";
+_dopmap_[169] = "loadm2";
+_dopmap_[172] = "storem4";
+_dopmap_[171] = "storem2";
+_dopmap_[170] = "loadm4";
+_dopmap_[68] = "swapx1";
+_dopmap_[65] = "swap8";
+
+#endif
     Scope scope;
     pointer base = basePointer;
 
     while (ops.getRemaining() > 0)
     {
         Op undefined = ops.getOp();
+#ifdef _DEBUG_
+        std::cout << std::endl << _dopmap_[undefined] << " stack: " << scope.stack.stack.size() << std::endl;
+#endif
 
         switch (undefined)
         {
@@ -130,7 +328,10 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
                 break;
                 /**set point in memory to a pointer**/
             case aset:
-            {accessMemoryAndSetPointer(scope.returnPointer(), scope.popUnsignedLong(), scope.popPointer());}
+            {
+                std::cerr<<"unsupported operation: 'aset'\n";
+                exit(-12);
+                accessMemoryAndSetPointer(scope.returnPointer().get(), scope.popUnsignedLong(), scope.popPointer());}
                 break;
                 /**set point in memory to a short**/
             case sset:
@@ -242,7 +443,7 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
                 break;
                 /**mark a check-point**/
             case mark:
-            {scope.setCheckPoint(scope.popUnsignedShort(), ops.address);}
+            {scope.setCheckPoint(ops.getUnsignedShort(), ops.address);}
                 break;
                 /**compare greater or equal**/
             case ucmpge:
@@ -250,11 +451,11 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
                 break;
                 /**jump to a point**/
             case jump:
-            {ops.address = scope.popUnsignedLong();}
+            {ops.address = ops.getUnsignedLong();}
                 break;
                 /**jump to a marked point**/
             case jmpm:
-            {ops.address = scope.getCheckPointer(scope.popUnsignedShort());}
+            {ops.address = scope.getCheckPointer(ops.getUnsignedShort());}
                 break;
                 /**double multiplication**/
             case fmul:
@@ -306,19 +507,19 @@ void MvM::execute(OP_STACK* globalTable, MochaNativeInterface** nativeTable, poi
                 break;
                 /**return a pointer**/
             case aret:
-            {parent.pushPointerSAFE(scope.returnPointer());}
+            {parent.pushPointerSAFE(scope.returnPointer()); return;}
                 break;
                 /**return two max_size elements (x128)**/
             case mret2:
-            {parent.pushLongInt(scope.popLongInt());}
+            {parent.pushLongInt(scope.popLongInt()); return;}
                 break;
                 /**return four max_size elements (x256)**/
             case mret4:
-            {parent.pushLongLong(scope.popLongLong());}
+            {parent.pushLongLong(scope.popLongLong()); return;}
                 break;
                 /**return max_size element**/
             case mret:
-            {parent.pushLong(scope.popLong());}
+            {parent.pushLong(scope.popLong()); return;}
                 break;
                 /**return from scope**/
             case ret:

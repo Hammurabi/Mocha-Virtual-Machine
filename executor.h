@@ -1087,6 +1087,11 @@ struct GCObject{
     }
 };
 
+struct mobject{
+    const uint_64 __size__;
+    const pointer __data__;
+};
+
 /**
  * The method's "scope"/
  */
@@ -1141,7 +1146,14 @@ struct Scope{
 public:
 //    Scope(pointer bp, Scope* pt) : basePointer(bp), parent(pt) {}
     Scope() {}
-    Scope(const Scope& o) : stack(o.stack), lvt(o.lvt), CHECK_POINTS(o.CHECK_POINTS), scope_ptrs(o.scope_ptrs) /**basePointer(o.basePointer), parent(o.parent)**/ {}
+    Scope(const Scope& o) : stack(o.stack), lvt(o.lvt), CHECK_POINTS(o.CHECK_POINTS), scope_ptrs(o.scope_ptrs) /**basePointer(o.basePointer) , parent(o.parent)**/ {}
+    std::shared_ptr<uint_8> getPointer(pointer p)
+    {
+        scope_ptr_map::iterator ptr = scope_ptrs.find(ptr_touint(p));
+        if (ptr != scope_ptrs.end())
+            return ptr->second;
+        else return std::shared_ptr<uint_8> (p);
+    }
     void erasepointer(pointer p)
     {
         scope_ptr_map::iterator ptr = scope_ptrs.find(ptr_touint(p));
@@ -1167,18 +1179,31 @@ public:
 
         delete (p);
     }
-    pointer returnPointer()
+    pointer returnManualPointer()
     {
         pointer p = stack.popPointer();
         erasepointer(p);
+    }
 
-        return p;
+    std::shared_ptr<uint_8> returnPointer()
+    {
+        pointer p = stack.popPointer();
+        std::shared_ptr<uint_8> a = getPointer(p);
+        erasepointer(p);
+
+        return a;
     }
 
     inline void pushPointerSAFE(pointer p)
     {
         scope_ptrs[(uint_64) (intptr_t) p] = (std::shared_ptr<uint_8 >(p));
         stack.pushPointer(p);
+    }
+
+    inline void pushPointerSAFE(std::shared_ptr<unsigned char> p)
+    {
+        scope_ptrs[(uint_64) (intptr_t) p.get()] = p;
+        stack.pushPointer(p.get());
     }
 
     inline void pushPointerUNSAFE(pointer p) { stack.pushPointer(p); }

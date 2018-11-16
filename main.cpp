@@ -1,4 +1,6 @@
 #include <iostream>
+
+#define _DEBUG_
 #include "executor.h"
 
 #include <fstream>
