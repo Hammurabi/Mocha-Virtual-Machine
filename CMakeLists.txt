@@ -14,4 +14,4 @@ add_executable(Mocha_Virtual_Machine
         main.cpp
         opcodes.h
         README.md
-        types.h memory.cpp memory.h executorfuncs.cpp executorfuncs.h nucleus.h)
+        types.h memory.cpp memory.h executorfuncs.cpp executorfuncs.h nucleus.h src/mxxvm.cpp src/mxxvm.h)

@@ -121,7 +121,6 @@ enum Op
     bmod                 = 41,/**x256 int modulo**/
     dfconst              = 73,/**push a double float**/
     dexp                 = 47,/**x256 double division**/
-    dadd                 = 43,/**x256 double addition**/
     dmul                 = 45,/**x256 double multiplication**/
     rshift               = 18,/**right shift**/
     bexp                 = 42,/**x256 int pow(x, y)**/
