@@ -1,13 +1,13 @@
 #include <iostream>
+#include <vector>
 
-#define _DEBUG_
-#include "executor.h"
-
+#include "src/vm_structs.h"
 #include <fstream>
 #include <iterator>
 #include <algorithm>
 #include <vector>
 #include <cmath>
+#include <string>
 
 uint_16 op(uint_16 o)
 {
@@ -18,47 +18,40 @@ uint_16 op(uint_16 o)
     return ((uint_16 *)((uint_8[2]) {((pointer) &o)[1], ((pointer) &o)[0]}))[0];
 }
 
-int main(int count, const char** in) {
-    MvM::Init();
-//    uint_16 for_loop[] = {
-//            op(iconst_0),
-//            op(istore_0),
-//            op(iconst_12),
-//            op(istore_1),
-////
-//            op(mark), 0,
-//            op(iload_0),
-//            op(iload_1),
-////
-//            op(icmple_i),
-//            op(if_t), 0, op(18),
+void loadDLLs(std::vector<env::n_func>& funcs, int count, const char** in)
+{
+    for (int i = 0; i < count; i ++)
+    {
+        if (strcmp(in[i], "-d") == 0)
+        {
+            if (i + 1 < count)
+            {
+                i ++;
+            }
+        }
+    }
+}
+
+int main(int count, const char** in)
+{
+//    OP_STACK ops_(ops, 1);
+//    stack potat;
+//    pointer ptr = static_cast<pointer>(malloc(4));
 //
-//            op(iconst_6),
-//            op(iload_0),
-//            op(imul_i),
-//            op(iprint),
-//            op(newline),
+//    potat.pushByte(3);
+//    potat.pushPointer(ptr);
+//    potat.pushByte(24);
 //
-//            op(iinc_1), 0,
+////    alu::subtractors[unsigned_bit](potat);
 //
-//            op(jumptomark), 0,
+//    mem::init();
 //
-//            op(iconst_12),
-//            op(iconst_12),
-//            op(imul_i),
-//            op(iprint)
-//    };
+//
+//    melement_t e(0.4);
+//
+//    mem::registers[mem::spv](potat, ops_, e, 0);
 
-//    uint_16 ops[] = {op(iconst), op(0), op(20), op(iprint)};
-//    uint_64 length = sizeof(for_loop);
-
-    pointer base = new unsigned char[4];
-    Stack stack;
-
-
-
-
-    // open the file:
+// open the file:
     std::ifstream file(in[1], std::ios::binary);
 
     // Stop eating new lines in binary mode!!!
@@ -82,7 +75,7 @@ int main(int count, const char** in) {
 
     int entryPoint = 0;
 
-    std::vector<std::vector<uint_8>> ops;
+    std::vector<std::vector<uint_8>> operators;
     OP_STACK program(vec.data(), vec.size());
 
     while (program.getRemaining() > 0)
@@ -98,29 +91,25 @@ int main(int count, const char** in) {
             while (program.address < end)
                 prog.push_back(program.getUnsignedByte());
 
-            ops.push_back(prog);
-        } else { std::cerr << "opcode error 0x01 with opcode " << op << "\n"; }
+            operators.push_back(prog);
+        } else { std::cerr << "opcode " << op << " is not a valid opcode.\n"; }
     }
 
-    OP_STACK* opStack = new OP_STACK[ops.size()];
+    OP_STACK* opStack = new OP_STACK[operators.size()];
 
-    for (uint_64 i = 0; i < ops.size(); i ++)
-        opStack[i] = OP_STACK(ops[i].data(), ops[i].size());
+    for (uint_64 i = 0; i < operators.size(); i ++)
+        opStack[i] = OP_STACK(operators[i].data(), operators[i].size());
 
-//    uint_16 tests[] = {op(bconst_6), op(bprint)};
-//    OP_STACK o;
+    std::vector<env::n_func> nFuncVector;
 
-//std::cout << ops.size() << " programs found.\n";
+    loadDLLs(nFuncVector, count, in);
 
-    Stack stack_;
+    env::n_func* nFuncs = new env::n_func[nFuncVector.size()];
+    for (int i = 0; i < nFuncVector.size(); i ++)
+        nFuncs[i] = nFuncVector[i];
 
-    uint_64 index = 0;
-
-//    funcs::getAllImplementations(index);
-
-    Scope scope;
-
-    MvM::execute(opStack, new MochaNativeInterface*[2], base, base, scope, opStack[entryPoint]);
+    env genv(opStack, nFuncs);
+    genv.execute();
 
     return 0;
 }

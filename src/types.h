@@ -1,9 +1,9 @@
-//
-// Created by Riverssen on 08.11.18.
-//
+#ifndef MOCHAXX_TYPES_H
+#define MOCHAXX_TYPES_H
 
-#ifndef MOCHAVM_TYPES_H
-#define MOCHAVM_TYPES_H
+//
+// Created by Riverssen on 12.12.18.
+//
 
 #include <cstring>
 
@@ -98,4 +98,4 @@ public:
     }
 };
 
-#endif //MOCHAVM_TYPES_H
+#endif //MOCHAXX_TYPES_H

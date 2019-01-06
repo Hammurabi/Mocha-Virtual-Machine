@@ -1,9 +1,5 @@
-//
-// Created by Riverssen on 08.11.18.
-//
-
-#ifndef MOCHAVM_ENDIANNESS_H
-#define MOCHAVM_ENDIANNESS_H
+#ifndef MOCHAXX_ENDIANNESS_H
+#define MOCHAXX_ENDIANNESS_H
 
 #include "types.h"
 
@@ -71,5 +67,4 @@ public:
     bool isBigEndian();
 };
 
-
-#endif //MOCHAVM_ENDIANNESS_H
+#endif //MOCHAXX_ENDIANNESS_H

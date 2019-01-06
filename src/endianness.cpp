@@ -1,8 +1,8 @@
-//
-// Created by Riverssen on 08.11.18.
-//
-
 #include "endianness.h"
+
+//
+// Created by Riverssen on 12.12.18.
+//
 
 EndianMachine::EndianMachine()
 {
