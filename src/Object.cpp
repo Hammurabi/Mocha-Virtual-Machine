@@ -89,3 +89,41 @@ void Object::SetDoubleField(const mfieldid_t fieldID, const double i)
 {
     static_cast<double*> (mFields)[GetField(fieldID)] = i;
 }
+
+Object *Object::GetObjectField(const mfieldid_t fieldID)
+{
+    return reinterpret_cast<Object*> (GetLongField(fieldID));
+}
+
+void Object::SetObjectField(const mfieldid_t fieldID, const Object* i)
+{
+    SetLongField(fieldID, reinterpret_cast<long> (i));
+}
+
+Object::Object(Struct *type)
+{
+}
+
+Field::Field(std::string name, std::string tname, mfieldid_t fid, unsigned long size) : mName(name), mType(tname), mFieldID(fid), mSize(size)
+{
+}
+
+const std::string &Field::GetFieldName()
+{
+    return mName;
+}
+
+const std::string &Field::GetFieldTypeName()
+{
+    return mType;
+}
+
+const mfieldid_t &Field::GetFieldID()
+{
+    return mFieldID;
+}
+
+const unsigned long &Field::GetFieldSize()
+{
+    return mSize;
+}

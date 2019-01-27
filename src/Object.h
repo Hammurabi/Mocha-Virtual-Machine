@@ -17,18 +17,25 @@ private:
     const std::string   mName;
     const std::string   mType;
     const mfieldid_t    mFieldID;
+    const unsigned long mSize;
 protected:
 public:
+    Field(std::string name, std::string tname, mfieldid_t fid, unsigned long size);
+    const std::string& GetFieldName();
+    const std::string& GetFieldTypeName();
+    const mfieldid_t & GetFieldID();
+    const unsigned long & GetFieldSize();
 };
 
 class Struct
 {
 private:
 protected:
-    std::string     mTypeName;
-    Struct*         mParent;
-    const Field*    mFields;
-    unsigned long   mSize;
+    std::string         mTypeName;
+    Struct*             mParent;
+    const Field*        mFields;
+    unsigned long       mSize;
+    unsigned long       mRealSize;
 public:
     inline const Field& GetField(const mfieldid_t);
     inline const mfieldid_t& GetSize();
@@ -39,23 +46,26 @@ class Object
 {
 private:
 protected:
-    Struct*         mType;
-    void*           mFields;
-    inline mfieldid_t GetField(const mfieldid_t);
+    Struct*             mType;
+    void*               mFields;
+    inline mfieldid_t   GetField(const mfieldid_t);
 public:
-    inline char GetByteField(const mfieldid_t);
-    inline short GetShortField(const mfieldid_t);
-    inline int GetIntField(const mfieldid_t);
-    inline long GetLongField(const mfieldid_t);
-    inline float GetFloatField(const mfieldid_t);
-    inline double GetDoubleField(const mfieldid_t);
+                        Object(Struct* type);
+    inline char         GetByteField(const mfieldid_t);
+    inline short        GetShortField(const mfieldid_t);
+    inline int          GetIntField(const mfieldid_t);
+    inline long         GetLongField(const mfieldid_t);
+    inline float        GetFloatField(const mfieldid_t);
+    inline double       GetDoubleField(const mfieldid_t);
+    inline Object*      GetObjectField(const mfieldid_t);
 
-    inline void SetByteField(const mfieldid_t, const char);
-    inline void SetShortField(const mfieldid_t, const short);
-    inline void SetIntField(const mfieldid_t, const int);
-    inline void SetLongField(const mfieldid_t, const long);
-    inline void SetFloatField(const mfieldid_t, const float);
-    inline void SetDoubleField(const mfieldid_t, const double);
+    inline void         SetByteField(const mfieldid_t, const char);
+    inline void         SetShortField(const mfieldid_t, const short);
+    inline void         SetIntField(const mfieldid_t, const int);
+    inline void         SetLongField(const mfieldid_t, const long);
+    inline void         SetFloatField(const mfieldid_t, const float);
+    inline void         SetDoubleField(const mfieldid_t, const double);
+    inline void         SetObjectField(const mfieldid_t, const Object*);
 };
 
 
