@@ -1,0 +1,91 @@
+//
+// Created by Riverssen on 2019-01-27.
+// Copyright (c) 2019 Riverssen GmbH. All rights reserved.
+//
+
+#include <cstdint>
+#include "Object.h"
+
+
+
+
+const Field &Struct::GetField(const mfieldid_t fieldID)
+{
+    return mFields[fieldID % mSize];
+}
+
+const mfieldid_t &Struct::GetSize()
+{
+    return mSize;
+}
+
+const std::string &Struct::GetTypeName()
+{
+    return mTypeName;
+}
+
+
+mfieldid_t Object::GetField(const mfieldid_t fieldID)
+{
+    return fieldID % mType->GetSize();
+}
+
+char Object::GetByteField(const mfieldid_t fieldID)
+{
+    return static_cast<char*> (mFields)[GetField(fieldID)];
+}
+
+short Object::GetShortField(const mfieldid_t fieldID)
+{
+    return static_cast<short*> (mFields)[GetField(fieldID)];
+}
+
+int Object::GetIntField(const mfieldid_t fieldID)
+{
+    return static_cast<int*> (mFields)[GetField(fieldID)];
+}
+
+long Object::GetLongField(const mfieldid_t fieldID)
+{
+    return static_cast<long*> (mFields)[GetField(fieldID)];
+}
+
+float Object::GetFloatField(const mfieldid_t fieldID)
+{
+    return static_cast<float*> (mFields)[GetField(fieldID)];
+}
+
+double Object::GetDoubleField(const mfieldid_t fieldID)
+{
+    return static_cast<double*> (mFields)[GetField(fieldID)];
+}
+
+void Object::SetByteField(const mfieldid_t fieldID, const char i)
+{
+    static_cast<char*> (mFields)[GetField(fieldID)] = i;
+}
+
+void Object::SetShortField(const mfieldid_t fieldID, const short i)
+{
+    static_cast<short*> (mFields)[GetField(fieldID)] = i;
+}
+
+void Object::SetIntField(const mfieldid_t fieldID, const int i)
+{
+    static_cast<int*> (mFields)[GetField(fieldID)] = i;
+}
+
+void Object::SetLongField(const mfieldid_t fieldID, const long i)
+{
+    static_cast<long*> (mFields)[GetField(fieldID)] = i;
+}
+
+void Object::SetFloatField(const mfieldid_t fieldID, const float i)
+{
+    static_cast<float*> (mFields)[GetField(fieldID)] = i;
+}
+
+void Object::SetDoubleField(const mfieldid_t fieldID, const double i)
+{
+    static_cast<double*> (mFields)[GetField(fieldID)] = i;
+}
